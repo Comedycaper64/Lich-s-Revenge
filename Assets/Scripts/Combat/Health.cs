@@ -20,6 +20,8 @@ public class Health : MonoBehaviour
 
     public void DealDamage(int damage)
     {
+        health = Mathf.Max(health - damage, 0);
+
         if (health <= 0) 
         {
             if (!isDead)
@@ -29,8 +31,6 @@ public class Health : MonoBehaviour
             }
             return;
         }
-
-        health = Mathf.Max(health - damage, 0);
 
         OnTakeDamage?.Invoke();
 
