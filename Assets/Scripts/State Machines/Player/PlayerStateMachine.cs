@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStateMachine : StateMachine
 {
     [field: SerializeField] public InputReader InputReader{get; private set;}
+    [field: SerializeField] public LichStats Stats{get; private set;}
     [field: SerializeField] public CharacterController Controller {get; private set;}
     [field: SerializeField] public Animator Animator {get; private set;}
     [field: SerializeField] public Targetter Targetter {get; private set;}
@@ -29,6 +30,8 @@ public class PlayerStateMachine : StateMachine
         Cursor.visible = false;
 
         MainCameraTransform = Camera.main.transform;
+
+        Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetLichHealth()));
 
         SwitchState(new PlayerFreeLookState(this));
     }

@@ -8,6 +8,7 @@ public class EnemyStateMachine : StateMachine
 {
     [field: SerializeField] public Animator Animator {get; private set;}
     [field: SerializeField] public CharacterController Controller {get; private set;}
+    [field: SerializeField] public MeleeDwarfStats Stats {get; private set;}
     [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
     [field: SerializeField] public NavMeshAgent Agent {get; private set;}
     [field: SerializeField] public WeaponDamage Weapon {get; private set;}
@@ -27,6 +28,8 @@ public class EnemyStateMachine : StateMachine
 
         Agent.updatePosition = false;
         Agent.updateRotation = false;
+
+        Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetMeleeDwarfHealth()));
 
         SwitchState(new EnemyIdleState(this));    
     }

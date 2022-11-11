@@ -14,7 +14,7 @@ public class EnemyAttackingState : EnemyBaseState
     {
         FacePlayer();
 
-        stateMachine.Weapon.SetAttack(stateMachine.AttackDamage, stateMachine.AttackKnockback);
+        stateMachine.Weapon.SetAttack(Mathf.RoundToInt(stateMachine.Stats.GetMeleeDwarfAttack()), stateMachine.AttackKnockback);
 
         stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
     }
