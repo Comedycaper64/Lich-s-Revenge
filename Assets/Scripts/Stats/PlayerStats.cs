@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteAlways]
 public class PlayerStats : MonoBehaviour
 {
-   public static PlayerStats Instance {get; private set;}
+    public static PlayerStats Instance {get; private set;}
 
     private void Awake() 
     {
@@ -15,17 +16,43 @@ public class PlayerStats : MonoBehaviour
             return;
         }
         Instance = this;
+
+        Health = GetPlayerHealth();
+        Attack = GetPlayerAttack();
     }
 
-    public float playerHealthModifier;
-    public float playerAttackModifier;
+    [SerializeField] private BaseStats baseStats;
+
+    [Header("Health")]
+    [ShowOnly] [SerializeField] private float Health;
+    [SerializeField] private float healthMultiplicativeModifier;
+    [SerializeField] private float healthAdditiveModifier;
+    [SerializeField] private float healthOverride = 0;
+
+    [Header("Attack")]
+    [ShowOnly] [SerializeField] private float Attack;
+    [SerializeField] private float attackMultiplicativeModifier; 
+    [SerializeField] private float attackAdditiveModifier;
+    [SerializeField] private float attackOverride = 0;
 
     public float GetPlayerHealth()
     {
-        return BaseStats.Instance.baseHealth * playerHealthModifier;
+        if (healthOverride == 0)
+            return (baseStats.baseHealth * healthMultiplicativeModifier) + healthAdditiveModifier;
+        else
+            return healthOverride;
     }
     public float GetPlayerAttack()
     {
-        return BaseStats.Instance.baseAttack * playerAttackModifier;
+        if (attackOverride == 0)
+            return (baseStats.baseAttack * attackMultiplicativeModifier) + attackAdditiveModifier;
+        else
+            return attackOverride;
+    }
+
+    private void OnValidate() 
+    {
+        Health = GetPlayerHealth();
+        Attack = GetPlayerAttack();
     }
 }

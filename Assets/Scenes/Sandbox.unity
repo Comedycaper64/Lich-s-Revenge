@@ -722,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1769650236, guid: 4119dd675ac670b4cbd9359c2efdb6c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00000019466799
+      value: 0.00000019466798
       objectReference: {fileID: 0}
     - target: {fileID: 867053266241386, guid: 4119dd675ac670b4cbd9359c2efdb6c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1168,6 +1168,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3715148251250515888, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
+      propertyPath: Attack
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715148251250515888, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: Health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715148251250515888, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
       propertyPath: unitAttackModifier
       value: 1
       objectReference: {fileID: 0}
@@ -1175,6 +1185,16 @@ PrefabInstance:
         type: 3}
       propertyPath: unitHealthModifier
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715148251250515888, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: attackMultiplicativeModifier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3715148251250515888, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: healthMultiplicativeModifier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3760048733782981568, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
@@ -1514,17 +1534,17 @@ PrefabInstance:
     - target: {fileID: 7211765954988563222, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0052376455
+      value: 0.0052376487
       objectReference: {fileID: 0}
     - target: {fileID: 7211765954988563222, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 2.6884603e-10
+      value: 0.0000000013469935
       objectReference: {fileID: 0}
     - target: {fileID: 7211765954988563222, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.4081396e-12
+      value: -7.055175e-12
       objectReference: {fileID: 0}
     - target: {fileID: 7211765955100594706, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
@@ -1624,12 +1644,12 @@ PrefabInstance:
     - target: {fileID: 7211765956008974204, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017168148
+      value: 0.000000017168786
       objectReference: {fileID: 0}
     - target: {fileID: 7211765956008974204, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 4.014666e-10
+      value: -4.0148146e-10
       objectReference: {fileID: 0}
     - target: {fileID: 7211765956132786000, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
@@ -2049,8 +2069,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3729e8b8071dea940830b62f3527f4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitHealthModifier: 2
-  unitAttackModifier: 1
+  Health: 25
+  healthMultiplicativeModifier: 1
+  healthAdditiveModifier: 0
+  healthOverride: 0
+  Attack: 30
+  attackMultiplicativeModifier: 1
+  attackAdditiveModifier: 0
+  attackOverride: 0
 --- !u!1001 &976424664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2221,7 +2247,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126288642}
-  m_LocalRotation: {x: 0.02337799, y: -0.000000034386602, z: 8.0410933e-10, w: 0.9997267}
+  m_LocalRotation: {x: 0.02337799, y: 0.000000034386918, z: -8.0411683e-10, w: 0.9997267}
   m_LocalPosition: {x: 8.172462, y: 5.3157916, z: 2.7370167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2342,7 +2368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306b50104e4ec0c4585c3c663d98a23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 100
+  baseHealth: 50
   baseAttack: 40
 --- !u!114 &1174216182
 MonoBehaviour:
@@ -2356,8 +2382,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a21764dbb50ff04bba66ef175ee910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealthModifier: 0.5
-  enemyAttackModifier: 0.75
+  baseStats: {fileID: 1174216181}
+  Health: 25
+  healthMultiplicativeModifier: 0.5
+  healthAdditiveModifier: 0
+  healthOverride: 0
+  Attack: 30
+  attackMultiplicativeModifier: 0.75
+  attackAdditiveModifier: 0
+  attackOverride: 0
 --- !u!114 &1174216183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2370,8 +2403,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7652a46e1a20764cb04cc610ca84198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthModifier: 1
-  playerAttackModifier: 1.5
+  baseStats: {fileID: 1174216181}
+  Health: 50
+  healthMultiplicativeModifier: 1
+  healthAdditiveModifier: 0
+  healthOverride: 0
+  Attack: 60
+  attackMultiplicativeModifier: 1.5
+  attackAdditiveModifier: 0
+  attackOverride: 0
 --- !u!1001 &1250793032
 PrefabInstance:
   m_ObjectHideFlags: 0

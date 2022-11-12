@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseStats : MonoBehaviour
 {
+    /*
     public static BaseStats Instance {get; private set;}
 
     private void Awake() 
@@ -16,6 +17,7 @@ public class BaseStats : MonoBehaviour
         }
         Instance = this;
     }
+    */
 
     public float baseHealth;
     public float baseAttack;

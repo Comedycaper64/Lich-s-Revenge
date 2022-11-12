@@ -4,16 +4,47 @@ using UnityEngine;
 
 public class LichStats : MonoBehaviour
 {
-    [SerializeField] private float unitHealthModifier;
-    [SerializeField] private float unitAttackModifier;
+    [ExecuteInEditMode]
+    private void Awake() 
+    {
+        Health = GetLichHealth();
+        Attack = GetLichAttack();
+    }
+
+    [Header("Health")]
+    [ShowOnly] [SerializeField] private float Health;
+    [SerializeField] private float healthMultiplicativeModifier;
+    [SerializeField] private float healthAdditiveModifier;
+    [SerializeField] private float healthOverride = 0;
+
+    [Header("Attack")]
+    [ShowOnly] [SerializeField] private float Attack;
+    [SerializeField] private float attackMultiplicativeModifier; 
+    [SerializeField] private float attackAdditiveModifier;
+    [SerializeField] private float attackOverride = 0;
 
     public float GetLichHealth()
     {
-        return PlayerStats.Instance.GetPlayerHealth() * unitHealthModifier;
+        if (healthOverride == 0)
+            return (PlayerStats.Instance.GetPlayerHealth() * healthMultiplicativeModifier) + healthAdditiveModifier;
+        else
+            return healthOverride;
     }
-
     public float GetLichAttack()
     {
-        return PlayerStats.Instance.GetPlayerAttack() * unitAttackModifier;
+        if (attackOverride == 0)
+            return (PlayerStats.Instance.GetPlayerAttack() * attackMultiplicativeModifier) + attackAdditiveModifier;
+        else
+            return attackOverride;
+    }
+
+    private void OnValidate() 
+    {
+        if (PlayerStats.Instance)
+        {
+            Health = GetLichHealth();
+            Attack = GetLichAttack();
+        }
+        
     }
 }
