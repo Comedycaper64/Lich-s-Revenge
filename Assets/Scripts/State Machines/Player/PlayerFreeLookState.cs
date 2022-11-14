@@ -21,6 +21,7 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
+        //Move camera to normal view
     }
 
     public override void Exit()
@@ -34,6 +35,12 @@ public class PlayerFreeLookState : PlayerBaseState
         if (stateMachine.InputReader.isAttacking)
         {
             stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
+            return;
+        }
+
+        if (stateMachine.InputReader.isAiming)
+        {
+            stateMachine.SwitchState(new PlayerAimingState(stateMachine));
             return;
         }
 
