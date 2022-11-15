@@ -2,42 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAimingState : PlayerBaseState
+public class PlayerFireBoltState : PlayerBaseState
 {
-    private readonly int AimHash = Animator.StringToHash("Aim");
+    private readonly int FireboltHash = Animator.StringToHash("Firebolt Cast");
+    private float previousFrameTime;
 
-    public PlayerAimingState(PlayerStateMachine stateMachine) : base(stateMachine)
+    public PlayerFireBoltState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.1f);
+        stateMachine.Animator.CrossFadeInFixedTime(FireboltHash, 0.1f);
     }
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.InputReader.isAttacking)
-        {
-            stateMachine.SwitchState(new PlayerFireBoltState(stateMachine));
-            return;
-        }
-        
-        if (!stateMachine.InputReader.isAiming)
-        {
-            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-            return;
-        }
         Vector3 movement = CalculateMovement();
-
         Move(movement * stateMachine.AimingMovementSpeed, deltaTime);
+
+        float normalisedTime = GetNormalizedTime(stateMachine.Animator);
+        if (normalisedTime >= 1f)
+        {
+            stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+        }
+        previousFrameTime = normalisedTime;
 
         FaceLookDirection(movement, deltaTime);
     }
 
     public override void Exit()
     {
-        
+
     }
 
     private Vector3 CalculateMovement()
@@ -61,5 +57,5 @@ public class PlayerAimingState : PlayerBaseState
         stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
     }
 
-    
+ 
 }
