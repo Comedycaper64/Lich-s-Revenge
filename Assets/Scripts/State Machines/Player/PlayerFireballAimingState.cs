@@ -1,34 +1,51 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAimingState : PlayerBaseState
+public class PlayerFireballAimingState : PlayerBaseState
 {
-    private readonly int AimHash = Animator.StringToHash("Aim");
+    WeaponHandler weaponHandler;
 
-    public PlayerAimingState(PlayerStateMachine stateMachine) : base(stateMachine)
+    public PlayerFireballAimingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
+        weaponHandler = stateMachine.gameObject.GetComponent<WeaponHandler>();
     }
 
     public override void Enter()
     {
-        stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.1f);
-        stateMachine.InputReader.FireballEvent += OnFireball;   
+        stateMachine.InputReader.FireballEvent += OnFireball;
+        //display UI for fireball aim location + aoe
     }
 
     public override void Tick(float deltaTime)
     {
         if (stateMachine.InputReader.isAttacking)
         {
-            stateMachine.SwitchState(new PlayerFireBoltState(stateMachine));
+            stateMachine.SwitchState(new PlayerFireballCastState(stateMachine));
             return;
         }
-        
+
         if (!stateMachine.InputReader.isAiming)
         {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             return;
         }
+
+        //Use linerenderer to draw line
+
+        RaycastHit hit;
+        int layermask = 1 << 6;
+        //layermask = ~layermask;
+        if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(), out hit, 50f, layermask))
+        {
+            weaponHandler.UpdateFireballVisual(hit.point);
+        }
+        else
+        {
+            weaponHandler.UpdateFireballVisual(Vector3.zero);
+        }
+
         Vector3 movement = CalculateMovement();
 
         Move(movement * stateMachine.AimingMovementSpeed, deltaTime);
@@ -39,11 +56,7 @@ public class PlayerAimingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.FireballEvent -= OnFireball;
-    }
-
-    private void OnFireball()
-    {
-        stateMachine.SwitchState(new PlayerFireballAimingState(stateMachine));
+        weaponHandler.UpdateFireballVisual(Vector3.zero);
     }
 
     private Vector3 CalculateMovement()
@@ -70,5 +83,9 @@ public class PlayerAimingState : PlayerBaseState
         stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
     }
 
-    
+
+    private void OnFireball()
+    {
+        stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+    }
 }

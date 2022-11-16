@@ -10,6 +10,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action JumpEvent;
     public event Action DodgeEvent;
     public event Action TargetEvent;
+    public event Action FireballEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
 
@@ -21,6 +22,20 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         controls.Player.SetCallbacks(this);
 
         controls.Player.Enable();
+
+        
+    }
+
+    public void ToggleCameraMovement(bool enable)
+    {
+        if (enable)
+        {
+            controls.Player.Look.Enable();
+        }
+        else
+        {
+            controls.Player.Look.Disable();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -81,5 +96,12 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             isAiming = false;
         }
+    }
+
+    public void OnFireball(InputAction.CallbackContext context)
+    {
+        if (!context.performed) {return;}
+
+        FireballEvent?.Invoke();
     }
 }
