@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,7 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     public static EnemyStats Instance {get; private set;}
-   
-    private void Awake() 
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one EnemyStats! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-
-        Health = GetEnemyHealth();
-        Attack = GetEnemyAttack();
-    }
+    public event Action OnStatsChanged;
 
     [SerializeField] private BaseStats baseStats;
 
@@ -34,6 +22,35 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private float attackMultiplicativeModifier; 
     [SerializeField] private float attackAdditiveModifier;
     [SerializeField] private float attackOverride = 0;
+
+    [Header("Movement Speed")]
+    [ShowOnly] [SerializeField] private float Speed;
+    [SerializeField] private float speedMultiplicativeModifier; 
+    [SerializeField] private float speedAdditiveModifier;
+    [SerializeField] private float speedOverride = 0;
+
+    private void Awake() 
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("There's more than one EnemyStats! " + transform + " - " + Instance);
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
+        baseStats.OnStatsChanged += OnBaseStatsChanged;
+
+        RefreshStatDisplays();
+    }
+
+    private void Update() 
+    {
+        if (!Application.IsPlaying(gameObject))  
+        {
+            RefreshStatDisplays();
+        }  
+    }
 
     public float GetEnemyHealth()
     {
@@ -50,9 +67,29 @@ public class EnemyStats : MonoBehaviour
             return attackOverride;
     }
 
-    private void OnValidate() 
+    public float GetEnemySpeed()
+    {
+        if (speedOverride == 0)
+            return (baseStats.baseMovementSpeed * speedMultiplicativeModifier) + speedAdditiveModifier;
+        else
+            return speedOverride;
+    }
+
+    private void RefreshStatDisplays()
     {
         Health = GetEnemyHealth();
         Attack = GetEnemyAttack();
+        Speed = GetEnemySpeed();
+    }
+
+    private void OnBaseStatsChanged()
+    {
+        RefreshStatDisplays();
+        OnStatsChanged?.Invoke();
+    }
+
+    private void OnValidate() 
+    {
+        RefreshStatDisplays();
     }
 }

@@ -19,7 +19,7 @@ public class PlayerFireBoltState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         Vector3 movement = CalculateMovement();
-        Move(movement * stateMachine.AimingMovementSpeed, deltaTime);
+        Move(movement * stateMachine.Stats.GetLichSpeed(), deltaTime);
 
         float normalisedTime = GetNormalizedTime(stateMachine.Animator);
         if (normalisedTime >= 1f)

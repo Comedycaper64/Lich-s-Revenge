@@ -12,6 +12,7 @@ public class EnemyDeadState : EnemyBaseState
     {
         stateMachine.Weapon.gameObject.SetActive(false);
         GameObject.Destroy(stateMachine.Target);
+        GameObject.Destroy(stateMachine.gameObject);
     }
 
     public override void Exit()

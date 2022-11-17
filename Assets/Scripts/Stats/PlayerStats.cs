@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance {get; private set;}
-
-    private void Awake() 
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There's more than one PlayerStats! " + transform + " - " + Instance);
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-
-        Health = GetPlayerHealth();
-        Attack = GetPlayerAttack();
-    }
+    public event Action OnStatsChanged;
 
     [SerializeField] private BaseStats baseStats;
 
@@ -34,6 +22,35 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float attackMultiplicativeModifier; 
     [SerializeField] private float attackAdditiveModifier;
     [SerializeField] private float attackOverride = 0;
+
+    [Header("Movement Speed")]
+    [ShowOnly] [SerializeField] private float Speed;
+    [SerializeField] private float speedMultiplicativeModifier; 
+    [SerializeField] private float speedAdditiveModifier;
+    [SerializeField] private float speedOverride = 0;
+
+    private void Awake() 
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("There's more than one PlayerStats! " + transform + " - " + Instance);
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
+        baseStats.OnStatsChanged += OnBaseStatsChanged;
+
+        RefreshStatDisplays();
+    }
+
+    private void Update() 
+    {
+        if (!Application.IsPlaying(gameObject))  
+        {
+            RefreshStatDisplays();
+        }  
+    }
 
     public float GetPlayerHealth()
     {
@@ -50,9 +67,29 @@ public class PlayerStats : MonoBehaviour
             return attackOverride;
     }
 
-    private void OnValidate() 
+    public float GetPlayerSpeed()
+    {
+        if (speedOverride == 0)
+            return (baseStats.baseMovementSpeed * speedMultiplicativeModifier) + speedAdditiveModifier;
+        else
+            return speedOverride;
+    }
+
+    private void RefreshStatDisplays()
     {
         Health = GetPlayerHealth();
         Attack = GetPlayerAttack();
+        Speed = GetPlayerSpeed();
+    }
+
+    private void OnBaseStatsChanged()
+    {
+        RefreshStatDisplays();
+        OnStatsChanged?.Invoke();
+    }
+
+    private void OnValidate() 
+    {
+        RefreshStatDisplays();
     }
 }

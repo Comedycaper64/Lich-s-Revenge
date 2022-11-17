@@ -48,7 +48,7 @@ public class PlayerFireballAimingState : PlayerBaseState
 
         Vector3 movement = CalculateMovement();
 
-        Move(movement * stateMachine.AimingMovementSpeed, deltaTime);
+        Move(movement * stateMachine.Stats.GetLichSpeed(), deltaTime);
 
         FaceLookDirection(movement, deltaTime);
     }

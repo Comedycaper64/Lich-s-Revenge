@@ -883,6 +883,8 @@ GameObject:
   - component: {fileID: 1893517852259876666}
   - component: {fileID: 1893517852259876664}
   - component: {fileID: 6295152419149443792}
+  - component: {fileID: 4053204047510819178}
+  - component: {fileID: 3147815298079542782}
   - component: {fileID: 1893517852259876665}
   - component: {fileID: 7678113745960193620}
   m_Layer: 0
@@ -984,6 +986,52 @@ MonoBehaviour:
   attackMultiplicativeModifier: 0
   attackAdditiveModifier: 0
   attackOverride: 0
+  Speed: 0
+  speedMultiplicativeModifier: 0
+  speedAdditiveModifier: 0
+  speedOverride: 0
+  spellCooldown: 1
+  spellProjectileSpeed: 30
+--- !u!114 &4053204047510819178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909652661826298035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e16bde558a8e7646a117aa10a1ab7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellCooldown: 0.5
+  spellCooldownMultiplicativeModifier: 0
+  spellCooldownAdditiveModifier: 0
+  spellCooldownOverride: 0.5
+  SpellProjectileSpeed: 0
+  spellProjectileSpeedMultiplicativeModifier: 1.5
+  spellProjectileSpeedAdditiveModifier: 0
+  spellProjectileSpeedOverride: 0
+--- !u!114 &3147815298079542782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909652661826298035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68ca3e16e9a879449e0ee7ae5ed1eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellCooldown: 0
+  spellCooldownMultiplicativeModifier: 0
+  spellCooldownAdditiveModifier: 0
+  spellCooldownOverride: 0
+  SpellProjectileSpeed: 0
+  spellProjectileSpeedMultiplicativeModifier: 0
+  spellProjectileSpeedAdditiveModifier: 0
+  spellProjectileSpeedOverride: 0
 --- !u!114 &1893517852259876665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,7 +1077,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLogic: {fileID: 2914909764831921206}
   fireboltPrefab: {fileID: 0}
+  fireballPrefab: {fileID: 0}
   fireboltEmitter: {fileID: 0}
+  fireballEmitter: {fileID: 0}
+  fireballVisual: {fileID: 0}
+  cameraFocusPoint: 0
 --- !u!1 &2345380306129930409
 GameObject:
   m_ObjectHideFlags: 0

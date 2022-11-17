@@ -9,7 +9,7 @@ public class FireBoltProjectile : MonoBehaviour
     private float knockback;
 
     [SerializeField] private float timeToLive;
-    [SerializeField] private float projectileSpeed;
+    private float projectileSpeed;
 
     private void Start() 
     {
@@ -25,6 +25,11 @@ public class FireBoltProjectile : MonoBehaviour
     {
         this.damage = damage;
         this.knockback = knockback;
+    }
+
+    public void SetProjectileSpeed(float projectileSpeed)
+    {
+        this.projectileSpeed = projectileSpeed;
     }
 
     public void SetPlayerCollider(Collider playerCollider)
@@ -44,6 +49,11 @@ public class FireBoltProjectile : MonoBehaviour
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {
             forceReceiver.AddForce((other.transform.position - playerCollider.transform.position).normalized * knockback);
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.layer == 6)
+        {
             Destroy(gameObject);
         }
     }
