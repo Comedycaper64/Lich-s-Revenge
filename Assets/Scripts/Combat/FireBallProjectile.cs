@@ -11,6 +11,7 @@ public class FireBallProjectile : MonoBehaviour
     [SerializeField] private float timeToLive;
     private float projectileSpeed;
     [SerializeField] private float fireballExplodeRadius;
+    [SerializeField] private GameObject fireballVFX;
 
     private void Start() 
     {
@@ -43,6 +44,7 @@ public class FireBallProjectile : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, fireballExplodeRadius);
 
         //Explode VFX + SFX
+        Instantiate(fireballVFX, transform.position, Quaternion.identity);
 
         foreach(Collider collider in colliders)
         {

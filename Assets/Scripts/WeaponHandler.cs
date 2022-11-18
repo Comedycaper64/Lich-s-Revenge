@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    private LichStats lichStats;
-    private FireboltStats fireboltStats;
-    private FireballStats fireballStats;
-
     private PlayerStateMachine stateMachine;
+    private LichStats lichStats;
     [SerializeField] private GameObject weaponLogic;
-    [SerializeField] private GameObject fireboltPrefab;
-    [SerializeField] private GameObject fireballPrefab;
-    public Transform fireboltEmitter;
-    public Transform fireballEmitter;
-    public Transform fireballVisual;
     [SerializeField] private float cameraFocusPoint;
 
+    [Header("Firebolt")]
+    private FireboltStats fireboltStats;
+    [SerializeField] private GameObject fireboltPrefab;
+    public Transform fireboltEmitter;
+    
+    [Header("Firebolt")]
+    private FireballStats fireballStats;
+    [SerializeField] private GameObject fireballPrefab;
+    public Transform fireballEmitter;
+    public Transform fireballVisual;
     private Quaternion fireballRotation;
 
     private void Start() 
