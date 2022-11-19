@@ -14,11 +14,12 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private GameObject fireboltPrefab;
     public Transform fireboltEmitter;
     
-    [Header("Firebolt")]
+    [Header("Fireball")]
     private FireballStats fireballStats;
     [SerializeField] private GameObject fireballPrefab;
     public Transform fireballEmitter;
     public Transform fireballVisual;
+    private FireBallProjectile currentFireball;
     private Quaternion fireballRotation;
 
     private void Start() 
@@ -61,11 +62,6 @@ public class WeaponHandler : MonoBehaviour
         }
     }
 
-    public void SetFireballRotation()
-    {
-        fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(), Vector3.up);
-    }
-
     public void SpawnFirebolt()
     {
         //Instantiates firebolt at emitter, sets damage of firebolt, ensures it doesn't hit player
@@ -77,9 +73,14 @@ public class WeaponHandler : MonoBehaviour
 
     public void SpawnFireball()
     {
-        FireBallProjectile fireBall = Instantiate(fireballPrefab, fireballEmitter.transform.position, fireballRotation).GetComponent<FireBallProjectile>();
-        fireBall.SetAttack(Mathf.RoundToInt(lichStats.GetLichAttack()), 10);
-        fireBall.SetProjectileSpeed(fireballStats.GetFireballSpellProjectileSpeed());
-        fireBall.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
+        fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(), Vector3.up);
+        currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform.position, fireballRotation).GetComponent<FireBallProjectile>();
+        currentFireball.SetAttack(Mathf.RoundToInt(lichStats.GetLichAttack()), 10);
+        currentFireball.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
+    }
+
+    public void LaunchFireball()
+    {
+        currentFireball.SetProjectileSpeed(fireballStats.GetFireballSpellProjectileSpeed());
     }
 }

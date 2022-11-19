@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FireBoltProjectile : MonoBehaviour
 {
+    [SerializeField] private GameObject fireboltExplosion;
+    
     private Collider playerCollider;
     private int damage;
     private float knockback;
@@ -56,5 +58,11 @@ public class FireBoltProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy() 
+    {
+        GameObject explosion = Instantiate(fireboltExplosion, transform.position, Quaternion.identity);    
+        Destroy(explosion, 1f);
     }
 }
