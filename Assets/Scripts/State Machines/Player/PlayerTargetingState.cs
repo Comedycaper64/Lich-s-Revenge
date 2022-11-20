@@ -37,7 +37,7 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
         Vector3 movement = CalculateMovement(deltaTime);
-        Move(movement * stateMachine.Stats.GetLichSpeed(), deltaTime);
+        Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
 
         UpdateAnimator(deltaTime);
 
@@ -65,8 +65,10 @@ public class PlayerTargetingState : PlayerBaseState
 
     private void OnDodge()
     {
-        if (stateMachine.dodgeCooldown <= 0f)
+        if (stateMachine.Cooldowns.IsDodgeReady())
+        {
             stateMachine.SwitchState(new PlayerDodgeState(stateMachine, stateMachine.InputReader.MovementValue));
+        }
     }
 
     private Vector3 CalculateMovement(float deltaTime)

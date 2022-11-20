@@ -20,10 +20,13 @@ public class PlayerFireballAimingState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.InputReader.isAttacking)
+        if (stateMachine.InputReader.isAttacking && stateMachine.Cooldowns.IsFireballReady())
         {
-            stateMachine.SwitchState(new PlayerFireballCastState(stateMachine));
-            return;
+            if (stateMachine.Mana.TryUseMana(stateMachine.FireballStats.GetFireballSpellManaCost())) 
+            {
+                stateMachine.SwitchState(new PlayerFireballCastState(stateMachine));
+                return;
+            }
         }
 
         if (!stateMachine.InputReader.isAiming)
@@ -48,7 +51,7 @@ public class PlayerFireballAimingState : PlayerBaseState
 
         Vector3 movement = CalculateMovement();
 
-        Move(movement * stateMachine.Stats.GetLichSpeed(), deltaTime);
+        Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
 
         FaceLookDirection(movement, deltaTime);
     }

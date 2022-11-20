@@ -43,8 +43,9 @@ public class FireBallProjectile : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, fireballExplodeRadius);
 
-        //Explode VFX + SFX
-        Instantiate(fireballVFX, transform.position, Quaternion.identity);
+        //Explode SFX
+        GameObject explosion = Instantiate(fireballVFX, transform.position, Quaternion.identity);
+        Destroy(explosion, 3f);
 
         foreach(Collider collider in colliders)
         {

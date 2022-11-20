@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private Image healthBar;
 
     private int health;
     public bool isDead;
@@ -19,6 +21,7 @@ public class Health : MonoBehaviour
     {
         maxHealth = newHealth;
         health = maxHealth;
+        UpdateHealthbar();
     }
 
     public void SetInvulnerable(bool invuln)
@@ -33,11 +36,23 @@ public class Health : MonoBehaviour
         }
     }
 
+    public float GetHealthNormalised()
+    {
+        return (float)health / maxHealth;
+    }
+
+    public void UpdateHealthbar()
+    {
+        healthBar.fillAmount = GetHealthNormalised();
+    }
+
     public void DealDamage(int damage)
     {
         if (invulnerable) {return;}
 
         health = Mathf.Max(health - damage, 0);
+
+        UpdateHealthbar();
 
         if (health <= 0) 
         {
@@ -50,7 +65,5 @@ public class Health : MonoBehaviour
         }
 
         OnTakeDamage?.Invoke();
-
-        Debug.Log(health);
     }
 }

@@ -19,6 +19,12 @@ public class FireboltStats : MonoBehaviour
     [SerializeField] private float spellProjectileSpeedAdditiveModifier;
     [SerializeField] private float spellProjectileSpeedOverride;
 
+    [Header("Spell Mana Cost")]
+    [ShowOnly] [SerializeField] private float SpellManaCost;
+    [SerializeField] private float spellManaCostMultiplicativeModifier;
+    [SerializeField] private float spellManaCostAdditiveModifier;
+    [SerializeField] private float spellManaCostOverride;
+
     private void Awake() 
     {
         RefreshStatDisplays();
@@ -50,6 +56,14 @@ public class FireboltStats : MonoBehaviour
             return spellProjectileSpeedOverride;
     }
 
+    public float GetFireboltSpellManaCost()
+    {
+        if (spellManaCostOverride == 0)
+            return (lichStats.GetLichSpellManaCost() * spellManaCostMultiplicativeModifier) + spellManaCostAdditiveModifier;
+        else
+            return spellManaCostOverride;
+    }
+
     private void OnLichStatsChanged()
     {
         RefreshStatDisplays();
@@ -61,6 +75,7 @@ public class FireboltStats : MonoBehaviour
         {
             SpellCooldown = GetFireboltSpellCooldown();
             SpellProjectileSpeed = GetFireboltSpellProjectileSpeed();
+            SpellManaCost = GetFireboltSpellManaCost();
         }
     }
 

@@ -19,7 +19,7 @@ public class PlayerFireBoltState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         Vector3 movement = CalculateMovement();
-        Move(movement * stateMachine.Stats.GetLichSpeed(), deltaTime);
+        Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
 
         float normalisedTime = GetNormalizedTime(stateMachine.Animator);
         if (normalisedTime >= 1f)
@@ -33,7 +33,7 @@ public class PlayerFireBoltState : PlayerBaseState
 
     public override void Exit()
     {
-
+        stateMachine.Cooldowns.SetFireboltCooldown();
     }
 
     private Vector3 CalculateMovement()

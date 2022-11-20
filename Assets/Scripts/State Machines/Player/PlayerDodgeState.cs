@@ -14,10 +14,12 @@ public class PlayerDodgeState : PlayerBaseState
 
     public override void Enter()
     {
-        remainingDodgeTime = stateMachine.Stats.GetLichDodgeDuration();
+        remainingDodgeTime = stateMachine.LichStats.GetLichDodgeDuration();
         stateMachine.Health.SetInvulnerable(true);
-
         //Fiery poof effect, go invisible, emit flames while moving
+        GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
+        GameObject.Destroy(dashVFX, 3f);
+        stateMachine.PlayerMesh.SetActive(false);
     }
 
     public override void Tick(float deltaTime)
@@ -26,15 +28,15 @@ public class PlayerDodgeState : PlayerBaseState
 
         if (stateMachine.Targetter.CurrentTarget)
         {
-            movement += stateMachine.transform.right * dodgingDirectionInput.x * stateMachine.Stats.GetLichDodgeDistance() / stateMachine.Stats.GetLichDodgeDuration();
-            movement += stateMachine.transform.forward * dodgingDirectionInput.y * stateMachine.Stats.GetLichDodgeDistance() / stateMachine.Stats.GetLichDodgeDuration();
+            movement += stateMachine.transform.right * dodgingDirectionInput.x * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
+            movement += stateMachine.transform.forward * dodgingDirectionInput.y * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
             FaceTarget();
         }
         else
         {
             //Bug: Player flies into the air when dodging if camera is looking up / down
-            movement += stateMachine.MainCameraTransform.right * dodgingDirectionInput.x * stateMachine.Stats.GetLichDodgeDistance() / stateMachine.Stats.GetLichDodgeDuration();
-            movement += stateMachine.MainCameraTransform.forward * dodgingDirectionInput.y * stateMachine.Stats.GetLichDodgeDistance() / stateMachine.Stats.GetLichDodgeDuration();
+            movement += stateMachine.MainCameraTransform.right * dodgingDirectionInput.x * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
+            movement += stateMachine.MainCameraTransform.forward * dodgingDirectionInput.y * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
         }
 
         Move(movement, deltaTime);
@@ -50,9 +52,13 @@ public class PlayerDodgeState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.Health.SetInvulnerable(false);
-        stateMachine.SetDodgeCooldown(stateMachine.Stats.GetLichDodgeCooldown());
+        stateMachine.Cooldowns.SetDodgeCooldown();
+        stateMachine.PlayerMesh.SetActive(true);
+        GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
+        GameObject.Destroy(dashVFX, 3f);
         //Fiery poof, become visible
     }
+
 
  
 }

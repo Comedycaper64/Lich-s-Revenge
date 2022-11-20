@@ -47,7 +47,7 @@ public class PlayerFreeLookState : PlayerBaseState
 
         Vector3 movement = CalculateMovement();
 
-        Move(movement * stateMachine.Stats.GetLichSpeed(), deltaTime);
+        Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
 
         if (stateMachine.InputReader.MovementValue == Vector2.zero)
         {
@@ -92,7 +92,9 @@ public class PlayerFreeLookState : PlayerBaseState
 
     private void OnDodge()
     {
-        if (stateMachine.dodgeCooldown <= 0f)
+        if (stateMachine.Cooldowns.IsDodgeReady())
+        {
             stateMachine.SwitchState(new PlayerDodgeState(stateMachine, stateMachine.InputReader.MovementValue));
+        }
     }
 }

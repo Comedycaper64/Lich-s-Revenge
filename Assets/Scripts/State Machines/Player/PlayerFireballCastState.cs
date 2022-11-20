@@ -32,5 +32,6 @@ public class PlayerFireballCastState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.ToggleCameraMovement(true);
+        stateMachine.Cooldowns.SetFireballCooldown();
     }
 }

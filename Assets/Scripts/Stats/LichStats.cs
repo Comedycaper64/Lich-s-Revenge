@@ -23,9 +23,14 @@ public class LichStats : MonoBehaviour
     [SerializeField] private float speedAdditiveModifier;
     [SerializeField] private float speedOverride = 0;
 
+    [Header("Mana")]
+    [SerializeField] private float maxMana;
+    [SerializeField] private float manaRegenRate;
+
     [Header("Spells")]
     [SerializeField] private float spellCooldown;
     [SerializeField] private float spellProjectileSpeed;
+    [SerializeField] private float spellManaCost;
 
     [Header("Dodging")]
     [SerializeField] private float dodgeDistance;
@@ -72,6 +77,16 @@ public class LichStats : MonoBehaviour
             return speedOverride;
     }
 
+    public float GetLichMaxMana()
+    {
+        return maxMana;
+    }
+
+    public float GetLichManaRegen()
+    {
+        return manaRegenRate;
+    }
+
     public float GetLichSpellCooldown()
     {
         return spellCooldown;
@@ -80,6 +95,11 @@ public class LichStats : MonoBehaviour
     public float GetLichSpellProjectileSpeed()
     {
         return spellProjectileSpeed;
+    }
+
+    public float GetLichSpellManaCost()
+    {
+        return spellManaCost;
     }
 
     public float GetLichDodgeDistance()
