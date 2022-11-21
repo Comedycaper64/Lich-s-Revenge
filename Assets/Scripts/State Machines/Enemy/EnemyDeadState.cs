@@ -11,6 +11,7 @@ public class EnemyDeadState : EnemyBaseState
     public override void Enter()
     {
         stateMachine.Weapon.gameObject.SetActive(false);
+        GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
         GameObject.Destroy(stateMachine.Target);
         GameObject.Destroy(stateMachine.gameObject);
     }
