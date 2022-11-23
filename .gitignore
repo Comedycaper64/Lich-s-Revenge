@@ -27,6 +27,7 @@
 /[Aa]ssets/Package Assets
 /[Aa]ssets/Animations
 /[Aa]ssets/Models
+/[Aa]ssets/TextMesh Pro
 
 # Visual Studio cache directory
 .vs/

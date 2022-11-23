@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LichBones : MonoBehaviour
 {
     [SerializeField] private int maxBones;
     private int bones;
+    [SerializeField] private TextMeshProUGUI boneText;
 
     private void Awake() 
     {
-        bones = maxBones;    
+        UpdateBoneText();    
     }
 
     public bool TryUseBones(int bonesToUse)
@@ -17,9 +19,15 @@ public class LichBones : MonoBehaviour
         if (bonesToUse <= bones)
         {
             bones -= bonesToUse;
+            UpdateBoneText();
             return true;
         }
         return false;
+    }
+
+    private void UpdateBoneText()
+    {
+        boneText.text = "x " + bones;
     }
 
     public void AddBone()
@@ -27,6 +35,7 @@ public class LichBones : MonoBehaviour
         if (bones < maxBones)
         {
             bones++;
+            UpdateBoneText();
         }
     }
 }
