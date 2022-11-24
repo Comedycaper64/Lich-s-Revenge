@@ -13,6 +13,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action FireballEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
+    public bool isHealing {get; private set;}
 
     private Controls controls;
 
@@ -103,5 +104,17 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         if (!context.performed) {return;}
 
         FireballEvent?.Invoke();
+    }
+
+    public void OnHeal(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isHealing = true;
+        }
+        else if (context.canceled)
+        {
+            isHealing = false;
+        }
     }
 }

@@ -31,6 +31,12 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
+        if (stateMachine.InputReader.isHealing)
+        {
+            stateMachine.SwitchState(new PlayerHealingState(stateMachine));
+            return;
+        }
+
         if (stateMachine.Targetter.CurrentTarget == null)
         {
             stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));

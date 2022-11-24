@@ -26,6 +26,12 @@ public class PlayerAimingState : PlayerBaseState
                 return;
             }
         }
+
+        if (stateMachine.InputReader.isHealing)
+        {
+            stateMachine.SwitchState(new PlayerHealingState(stateMachine));
+            return;
+        }
         
         if (!stateMachine.InputReader.isAiming)
         {

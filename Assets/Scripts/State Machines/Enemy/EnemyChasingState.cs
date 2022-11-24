@@ -58,7 +58,7 @@ public class EnemyChasingState : EnemyBaseState
         if(stateMachine.Agent.isOnNavMesh)
         {
             stateMachine.Agent.destination = stateMachine.Player.transform.position;
-            Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.MovementSpeed, deltaTime);
+            Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetMeleeDwarfSpeed(), deltaTime);
         }
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;
     }

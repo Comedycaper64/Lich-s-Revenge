@@ -66,4 +66,10 @@ public class Health : MonoBehaviour
 
         OnTakeDamage?.Invoke();
     }
+
+    public void Heal(int healing)
+    {
+        health = Mathf.Min(health + healing, maxHealth);
+        UpdateHealthbar();
+    }
 }
