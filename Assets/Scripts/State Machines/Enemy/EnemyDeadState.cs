@@ -12,7 +12,6 @@ public class EnemyDeadState : EnemyBaseState
     {
         stateMachine.Weapon.gameObject.SetActive(false);
         GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
-        GameObject.Destroy(stateMachine.Target);
         GameObject.Destroy(stateMachine.gameObject);
     }
 

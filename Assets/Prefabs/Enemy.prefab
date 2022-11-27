@@ -2168,7 +2168,6 @@ GameObject:
   - component: {fileID: 6098511159983460445}
   - component: {fileID: 6098511159983460442}
   - component: {fileID: 6098511159983460420}
-  - component: {fileID: 6098511159983460440}
   - component: {fileID: 6098511159983460443}
   - component: {fileID: 6098511159983460418}
   - component: {fileID: 6098511159983460441}
@@ -2200,7 +2199,7 @@ Transform:
   - {fileID: 7466826800827109049}
   - {fileID: 521633301629606258}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6098511159983460442
 CharacterController:
@@ -2242,18 +2241,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6098511159983460440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6098511159983460444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39e78cc63ecd37143b203a442edf6459, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6098511159983460443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2332,13 +2319,10 @@ MonoBehaviour:
   <Agent>k__BackingField: {fileID: 6098511159983460420}
   <Weapon>k__BackingField: {fileID: 6098511160556500254}
   <Health>k__BackingField: {fileID: 6098511159983460443}
-  <Target>k__BackingField: {fileID: 6098511159983460440}
   <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
     type: 3}
   <PlayerChasingRange>k__BackingField: 10
-  <MovementSpeed>k__BackingField: 3
   <AttackRange>k__BackingField: 1.5
-  <AttackDamage>k__BackingField: 20
   <AttackKnockback>k__BackingField: 10
 --- !u!114 &6098511159983460423
 MonoBehaviour:

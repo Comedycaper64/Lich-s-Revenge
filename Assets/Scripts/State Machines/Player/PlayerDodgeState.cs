@@ -25,19 +25,9 @@ public class PlayerDodgeState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         Vector3 movement = new Vector3();
-
-        if (stateMachine.Targetter.CurrentTarget)
-        {
-            movement += stateMachine.transform.right * dodgingDirectionInput.x * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
-            movement += stateMachine.transform.forward * dodgingDirectionInput.y * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
-            FaceTarget();
-        }
-        else
-        {
-            //Bug: Player flies into the air when dodging if camera is looking up / down
-            movement += stateMachine.MainCameraTransform.right * dodgingDirectionInput.x * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
-            movement += stateMachine.MainCameraTransform.forward * dodgingDirectionInput.y * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
-        }
+        //Bug: Player flies into the air when dodging if camera is looking up / down
+        movement += stateMachine.MainCameraTransform.right * dodgingDirectionInput.x * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
+        movement += stateMachine.MainCameraTransform.forward * dodgingDirectionInput.y * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
 
         Move(movement, deltaTime);
 
@@ -45,7 +35,7 @@ public class PlayerDodgeState : PlayerBaseState
 
         if (remainingDodgeTime <= 0f)
         {
-            ReturnToLocomotion();
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
     }
 

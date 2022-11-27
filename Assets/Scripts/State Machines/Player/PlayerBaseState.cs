@@ -20,26 +20,4 @@ public abstract class PlayerBaseState : State
    {
       stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
    }
-
-   protected void FaceTarget()
-   {
-      if (stateMachine.Targetter.CurrentTarget != null)
-      {
-         Vector3 lookPos = stateMachine.Targetter.CurrentTarget.transform.position - stateMachine.transform.position;
-         lookPos.y = 0f;
-         stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
-      }
-   }
-
-   protected void ReturnToLocomotion()
-   {
-      if (stateMachine.Targetter.CurrentTarget != null)
-      {
-         stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-      }
-      else
-      {
-         stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-      }
-   }
 }

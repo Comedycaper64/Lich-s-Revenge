@@ -36,6 +36,7 @@ public class LichStats : MonoBehaviour
     [SerializeField] private float dodgeDistance;
     [SerializeField] private float dodgeDuration;
     [SerializeField] private float dodgeCooldown;
+    [SerializeField] private float dodgeManaCost;
 
     public event Action OnStatsChanged;
 
@@ -113,6 +114,10 @@ public class LichStats : MonoBehaviour
     public float GetLichDodgeCooldown()
     {
         return dodgeCooldown;
+    }
+    public float GetLichDodgeManaCost()
+    {
+        return dodgeManaCost;
     }
 
     private void OnPlayerStatsChanged()

@@ -15,6 +15,7 @@ public class PlayerFireballCastState : PlayerBaseState
     {
         stateMachine.Animator.CrossFadeInFixedTime(FireballHash, 0.1f);
         stateMachine.InputReader.ToggleCameraMovement(false);
+        stateMachine.InputReader.DodgeEvent += OnDodge;
     }
 
     public override void Tick(float deltaTime)
@@ -33,5 +34,17 @@ public class PlayerFireballCastState : PlayerBaseState
     {
         stateMachine.InputReader.ToggleCameraMovement(true);
         stateMachine.Cooldowns.SetFireballCooldown();
+        stateMachine.InputReader.DodgeEvent -= OnDodge;
+    }
+
+    private void OnDodge()
+    {
+        if (stateMachine.Cooldowns.IsDodgeReady())
+        {
+            if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichDodgeManaCost()))
+            {
+                stateMachine.SwitchState(new PlayerDodgeState(stateMachine, stateMachine.InputReader.MovementValue));
+            }
+        }
     }
 }

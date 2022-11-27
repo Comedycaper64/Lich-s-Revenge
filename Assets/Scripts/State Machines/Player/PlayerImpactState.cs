@@ -29,7 +29,7 @@ public class PlayerImpactState : PlayerBaseState
 
         if (duration <= 0f)
         {
-            ReturnToLocomotion();
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
     }
 }

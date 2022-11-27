@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class PlayerAimingState : PlayerBaseState
     {
         stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.1f);
         stateMachine.InputReader.FireballEvent += OnFireball;   
+        stateMachine.InputReader.DodgeEvent += OnDodge;
     }
 
     public override void Tick(float deltaTime)
@@ -48,11 +50,7 @@ public class PlayerAimingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.FireballEvent -= OnFireball;
-    }
-
-    private void OnFireball()
-    {
-        stateMachine.SwitchState(new PlayerFireballAimingState(stateMachine));
+        stateMachine.InputReader.DodgeEvent -= OnDodge;
     }
 
     private Vector3 CalculateMovement()
@@ -79,5 +77,19 @@ public class PlayerAimingState : PlayerBaseState
         stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
     }
 
+    private void OnDodge()
+    {
+        if (stateMachine.Cooldowns.IsDodgeReady())
+        {
+            if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichDodgeManaCost()))
+            {
+                stateMachine.SwitchState(new PlayerDodgeState(stateMachine, stateMachine.InputReader.MovementValue));
+            }
+        }
+    }
     
+    private void OnFireball()
+    {
+        stateMachine.SwitchState(new PlayerFireballAimingState(stateMachine));
+    }
 }

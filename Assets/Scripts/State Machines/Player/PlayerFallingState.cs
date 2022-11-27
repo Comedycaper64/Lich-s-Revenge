@@ -29,8 +29,8 @@ public class PlayerFallingState : PlayerBaseState
         Move(momentum, deltaTime);
 
         if (stateMachine.Controller.isGrounded)
-            ReturnToLocomotion();
-
-        FaceTarget();    
+        {
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));  
+        }
     }
 }

@@ -9,7 +9,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Vector2 MovementValue {get; private set;}
     public event Action JumpEvent;
     public event Action DodgeEvent;
-    public event Action TargetEvent;
+    // public event Action TargetEvent;
     public event Action FireballEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
@@ -68,12 +68,12 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         controls.Player.Disable();
     }
 
-    public void OnTarget(InputAction.CallbackContext context)
-    {
-        if (!context.performed) {return;}
+    // public void OnTarget(InputAction.CallbackContext context)
+    // {
+    //     if (!context.performed) {return;}
 
-        TargetEvent?.Invoke();
-    }
+    //     TargetEvent?.Invoke();
+    // }
 
     public void OnAttack(InputAction.CallbackContext context)
     {

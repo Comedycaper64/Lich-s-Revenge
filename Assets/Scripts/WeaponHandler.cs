@@ -8,6 +8,7 @@ public class WeaponHandler : MonoBehaviour
     private LichStats lichStats;
     [SerializeField] private GameObject weaponLogic;
     [SerializeField] private float cameraFocusPoint;
+    [SerializeField] private LineRenderer fireballAimLine;
 
     [Header("Firebolt")]
     private FireboltStats fireboltStats;
@@ -59,6 +60,19 @@ public class WeaponHandler : MonoBehaviour
         else
         {
             fireballVisual.gameObject.SetActive(false);
+        }
+    }
+
+    public void UpdateFireballAimLine(Vector3[] newLine)
+    {
+        if (newLine != null)
+        {
+            fireballAimLine.enabled = true;
+            fireballAimLine.SetPositions(newLine);  
+        }
+        else
+        {
+            fireballAimLine.enabled = false;
         }
     }
 

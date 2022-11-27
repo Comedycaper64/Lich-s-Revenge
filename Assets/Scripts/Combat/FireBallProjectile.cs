@@ -8,6 +8,7 @@ public class FireBallProjectile : MonoBehaviour
     private int damage;
     private float knockback;
 
+    private float animationTime = 2f;
     [SerializeField] private float timeToLive;
     private float projectileSpeed;
     [SerializeField] private float fireballExplodeRadius;
@@ -15,7 +16,7 @@ public class FireBallProjectile : MonoBehaviour
 
     private void Start() 
     {
-        Destroy(gameObject, timeToLive);
+        StartCoroutine(SeeIfLaunched());
     }
 
     private void Update() 
@@ -37,6 +38,19 @@ public class FireBallProjectile : MonoBehaviour
     public void SetPlayerCollider(Collider playerCollider)
     {
         this.playerCollider = playerCollider;
+    }
+    
+    private IEnumerator SeeIfLaunched()
+    {
+        yield return new WaitForSeconds(animationTime);
+        if (projectileSpeed == 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject, timeToLive);
+        }
     }
 
     private void ExplodeFireball()

@@ -22,12 +22,12 @@ public class PlayerHealingState : PlayerBaseState
         if (normalisedTime >= 1f)
         {
             stateMachine.Health.Heal(20);
-            ReturnToLocomotion();
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
 
         if (!stateMachine.InputReader.isHealing && normalisedTime <= 0.7f)
         {
-            ReturnToLocomotion();
+            stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
         }
     }
 

@@ -18,7 +18,6 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Enter()
     {
-        stateMachine.InputReader.TargetEvent += OnTarget;
         stateMachine.InputReader.JumpEvent += OnJump;
         stateMachine.InputReader.DodgeEvent += OnDodge;
         stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
@@ -26,20 +25,13 @@ public class PlayerFreeLookState : PlayerBaseState
 
     public override void Exit()
     {
-        stateMachine.InputReader.TargetEvent -= OnTarget;
         stateMachine.InputReader.JumpEvent -= OnJump;
         stateMachine.InputReader.DodgeEvent -= OnDodge;
     }
 
     public override void Tick(float deltaTime)
     {
-        if (stateMachine.InputReader.isAttacking)
-        {
-            stateMachine.SwitchState(new PlayerAttackingState(stateMachine, 0));
-            return;
-        }
-
-        if (stateMachine.InputReader.isHealing)
+        if (stateMachine.InputReader.isHealing && stateMachine.Bones.TryUseBones(1))
         {
             stateMachine.SwitchState(new PlayerHealingState(stateMachine));
             return;
@@ -89,18 +81,14 @@ public class PlayerFreeLookState : PlayerBaseState
         stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
     }
 
-    private void OnTarget()
-    {
-        if (!stateMachine.Targetter.SelectTarget()) {return;}
-        
-        stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
-    }
-
     private void OnDodge()
     {
         if (stateMachine.Cooldowns.IsDodgeReady())
         {
-            stateMachine.SwitchState(new PlayerDodgeState(stateMachine, stateMachine.InputReader.MovementValue));
+            if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichDodgeManaCost()))
+            {
+                stateMachine.SwitchState(new PlayerDodgeState(stateMachine, stateMachine.InputReader.MovementValue));
+            }
         }
     }
 }

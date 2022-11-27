@@ -42,15 +42,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Target",
-                    "type": "Button",
-                    "id": "52b6354a-f36f-4669-aff5-0a5ea5e2034a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Attack",
                     "type": "Button",
                     "id": "2aa90a8c-2c05-4dbd-8bbe-bf06ce1ce990",
@@ -266,28 +257,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6e97045d-3dba-43c0-9d2c-1e31911b98b3",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse & Keyboard",
-                    "action": "Target",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "644cbb9e-a4c3-4345-bae9-d6f99b54a45b",
-                    "path": "<Gamepad>/rightStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Target",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b4b57884-d010-4d3f-b8d3-a6be77af7646",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -344,7 +313,7 @@
                 {
                     "name": "",
                     "id": "184acd3f-4188-402f-9fdd-55be38e99c13",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

@@ -36,6 +36,6 @@ public class PlayerJumpingState : PlayerBaseState
             stateMachine.SwitchState(new PlayerFallingState(stateMachine));
         }
 
-        FaceTarget();
+        //FaceTarget();
     }
 }

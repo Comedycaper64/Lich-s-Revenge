@@ -12,15 +12,13 @@ public class PlayerStateMachine : StateMachine
     [field: SerializeField] public PlayerCooldowns Cooldowns{get; private set;}
     [field: SerializeField] public CharacterController Controller {get; private set;}
     [field: SerializeField] public Animator Animator {get; private set;}
-    [field: SerializeField] public Targetter Targetter {get; private set;}
     [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
-    [field: SerializeField] public WeaponDamage WeaponDamage {get; private set;}
     [field: SerializeField] public Health Health {get; private set;}
     [field: SerializeField] public Mana Mana {get; private set;}
+    [field: SerializeField] public LichBones Bones {get; private set;}
     [field: SerializeField] public Ragdoll Ragdoll {get; private set;}
     [field: SerializeField] public float RotationDamping {get; private set;}
     [field: SerializeField] public float JumpForce {get; private set;}
-    [field: SerializeField] public Attack[] Attacks {get; private set;}
     [field: SerializeField] public GameObject dashVFX {get; private set;}
 
     public Transform MainCameraTransform {get; private set;}

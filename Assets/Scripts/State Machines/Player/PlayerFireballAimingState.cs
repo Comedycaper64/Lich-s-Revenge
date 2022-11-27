@@ -15,6 +15,7 @@ public class PlayerFireballAimingState : PlayerBaseState
     public override void Enter()
     {
         stateMachine.InputReader.FireballEvent += OnFireball;
+        stateMachine.InputReader.DodgeEvent += OnDodge;
         //display UI for fireball aim location + aoe
     }
 
@@ -43,10 +44,13 @@ public class PlayerFireballAimingState : PlayerBaseState
         if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(), out hit, 50f, layermask))
         {
             weaponHandler.UpdateFireballVisual(hit.point);
+            Vector3[] positionArray = new Vector3[2] {weaponHandler.fireballEmitter.position, hit.point};
+            weaponHandler.UpdateFireballAimLine(positionArray); 
         }
         else
         {
             weaponHandler.UpdateFireballVisual(Vector3.zero);
+            weaponHandler.UpdateFireballAimLine(null);
         }
 
         Vector3 movement = CalculateMovement();
@@ -59,7 +63,9 @@ public class PlayerFireballAimingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.FireballEvent -= OnFireball;
+        stateMachine.InputReader.DodgeEvent -= OnDodge;
         weaponHandler.UpdateFireballVisual(Vector3.zero);
+        weaponHandler.UpdateFireballAimLine(null);
     }
 
     private Vector3 CalculateMovement()
@@ -86,9 +92,19 @@ public class PlayerFireballAimingState : PlayerBaseState
         stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
     }
 
-
     private void OnFireball()
     {
         stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+    }
+
+    private void OnDodge()
+    {
+        if (stateMachine.Cooldowns.IsDodgeReady())
+        {
+            if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichDodgeManaCost()))
+            {
+                stateMachine.SwitchState(new PlayerDodgeState(stateMachine, stateMachine.InputReader.MovementValue));
+            }
+        }
     }
 }
