@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDeadState : EnemyBaseState
+public class DwarfMinerDeadState : DwarfMinerBaseState
 {
-    public EnemyDeadState(EnemyStateMachine stateMachine) : base(stateMachine)
+    public DwarfMinerDeadState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
     {
     }
 

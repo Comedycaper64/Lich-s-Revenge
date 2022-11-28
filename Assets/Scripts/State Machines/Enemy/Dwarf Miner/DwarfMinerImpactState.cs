@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyImpactState : EnemyBaseState
+public class DwarfMinerImpactState : DwarfMinerBaseState
 {
     private readonly int ImpactHash = Animator.StringToHash("Impact");
 
     private float duration = 1f;
 
-    public EnemyImpactState(EnemyStateMachine stateMachine) : base(stateMachine)
+    public DwarfMinerImpactState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
@@ -30,7 +30,7 @@ public class EnemyImpactState : EnemyBaseState
 
         if (duration <= 0f)
         {
-            stateMachine.SwitchState(new EnemyIdleState(stateMachine));
+            stateMachine.SwitchState(new DwarfMinerIdleState(stateMachine));
         }
     }
 }

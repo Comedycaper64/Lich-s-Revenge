@@ -1,14 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyStateMachine : StateMachine
+public class DwarfRangerStateMachine : StateMachine
 {
     [field: SerializeField] public Animator Animator {get; private set;}
     [field: SerializeField] public CharacterController Controller {get; private set;}
-    [field: SerializeField] public MeleeDwarfStats Stats {get; private set;}
+    [field: SerializeField] public DwarfRangerStats Stats {get; private set;}
     [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
     [field: SerializeField] public NavMeshAgent Agent {get; private set;}
     [field: SerializeField] public WeaponDamage Weapon {get; private set;}
@@ -27,9 +26,9 @@ public class EnemyStateMachine : StateMachine
         Agent.updatePosition = false;
         Agent.updateRotation = false;
 
-        Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetMeleeDwarfHealth()));
+        Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetDwarfRangerHealth()));
 
-        SwitchState(new EnemyIdleState(this));    
+        SwitchState(new DwarfRangerIdleState(this));    
     }
 
    private void OnEnable() 
@@ -46,12 +45,12 @@ public class EnemyStateMachine : StateMachine
 
     private void HandleTakeDamage()
     {
-        SwitchState(new EnemyImpactState(this));
+        SwitchState(new DwarfRangerImpactState(this));
     }
 
     private void HandleDeath()
     {
-        SwitchState(new EnemyDeadState(this));
+        SwitchState(new DwarfRangerDeadState(this));
     }
 
     private void OnDrawGizmosSelected() 

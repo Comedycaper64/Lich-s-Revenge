@@ -2169,13 +2169,13 @@ GameObject:
   - component: {fileID: 6098511159983460442}
   - component: {fileID: 6098511159983460420}
   - component: {fileID: 6098511159983460443}
-  - component: {fileID: 6098511159983460418}
+  - component: {fileID: 7214834972037576113}
+  - component: {fileID: 5624535302351483326}
   - component: {fileID: 6098511159983460441}
-  - component: {fileID: 6098511159983460422}
   - component: {fileID: 6098511159983460423}
   - component: {fileID: 6098511159983460421}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Dwarf Ranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2256,7 +2256,7 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 1051185528881188290}
   isDead: 0
---- !u!114 &6098511159983460418
+--- !u!114 &7214834972037576113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2265,20 +2265,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 6098511159983460444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3729e8b8071dea940830b62f3527f4d9, type: 3}
+  m_Script: {fileID: 11500000, guid: e53bebba501232d4581bdeee6d132a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
-  healthMultiplicativeModifier: 1
+  <Animator>k__BackingField: {fileID: 6098511159983460441}
+  <Controller>k__BackingField: {fileID: 6098511159983460442}
+  <Stats>k__BackingField: {fileID: 5624535302351483326}
+  <ForceReceiver>k__BackingField: {fileID: 6098511159983460423}
+  <Agent>k__BackingField: {fileID: 6098511159983460420}
+  <Weapon>k__BackingField: {fileID: 6098511160556500254}
+  <Health>k__BackingField: {fileID: 6098511159983460443}
+  <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
+    type: 3}
+  <PlayerChasingRange>k__BackingField: 10
+  <AttackRange>k__BackingField: 1
+  <AttackKnockback>k__BackingField: 5
+--- !u!114 &5624535302351483326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098511159983460444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1ef37e753c3524aac7995079504679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 0
+  healthMultiplicativeModifier: 0.5
   healthAdditiveModifier: 0
   healthOverride: 0
-  Attack: 30
-  attackMultiplicativeModifier: 1
+  Attack: 0
+  attackMultiplicativeModifier: 1.5
   attackAdditiveModifier: 0
   attackOverride: 0
-  Speed: 5
+  Speed: 0
   speedMultiplicativeModifier: 1
-  speedAdditiveModifier: 0
+  speedAdditiveModifier: -2
   speedOverride: 0
 --- !u!95 &6098511159983460441
 Animator:
@@ -2300,30 +2324,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6098511159983460422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6098511159983460444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60778623663405a4792228441940af9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 6098511159983460441}
-  <Controller>k__BackingField: {fileID: 6098511159983460442}
-  <Stats>k__BackingField: {fileID: 6098511159983460418}
-  <ForceReceiver>k__BackingField: {fileID: 6098511159983460423}
-  <Agent>k__BackingField: {fileID: 6098511159983460420}
-  <Weapon>k__BackingField: {fileID: 6098511160556500254}
-  <Health>k__BackingField: {fileID: 6098511159983460443}
-  <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
-    type: 3}
-  <PlayerChasingRange>k__BackingField: 10
-  <AttackRange>k__BackingField: 1.5
-  <AttackKnockback>k__BackingField: 10
 --- !u!114 &6098511159983460423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2353,6 +2353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLogic: {fileID: 6098511160556500242}
   cameraFocusPoint: 0
+  fireballAimLine: {fileID: 0}
   fireboltPrefab: {fileID: 0}
   fireboltEmitter: {fileID: 0}
   fireballPrefab: {fileID: 0}

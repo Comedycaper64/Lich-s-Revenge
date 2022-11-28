@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyBaseState : State
+public abstract class DwarfMinerBaseState : State
 {
-    protected EnemyStateMachine stateMachine;
+    protected DwarfMinerStateMachine stateMachine;
 
-    public EnemyBaseState(EnemyStateMachine stateMachine)
+    public DwarfMinerBaseState(DwarfMinerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
     }

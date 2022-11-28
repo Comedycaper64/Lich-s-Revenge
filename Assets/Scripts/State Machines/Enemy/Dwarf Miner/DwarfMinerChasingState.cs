@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChasingState : EnemyBaseState
+public class DwarfMinerChasingState : DwarfMinerBaseState
 {
     private readonly int LocomotionBlendTreeHash = Animator.StringToHash("Locomotion");
     private readonly int SpeedParameterHash = Animator.StringToHash("Speed");
 
-    public EnemyChasingState(EnemyStateMachine stateMachine) : base(stateMachine)
+    public DwarfMinerChasingState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
@@ -27,12 +27,12 @@ public class EnemyChasingState : EnemyBaseState
     {
         if (!IsInChaseRange())
         {
-            stateMachine.SwitchState(new EnemyIdleState(stateMachine));
+            stateMachine.SwitchState(new DwarfMinerIdleState(stateMachine));
             return;
         }
         else if (IsInAttackRange())
         {
-            stateMachine.SwitchState(new EnemyAttackingState(stateMachine));
+            stateMachine.SwitchState(new DwarfMinerAttackingState(stateMachine));
             return;
         }
 
@@ -58,7 +58,7 @@ public class EnemyChasingState : EnemyBaseState
         if(stateMachine.Agent.isOnNavMesh)
         {
             stateMachine.Agent.destination = stateMachine.Player.transform.position;
-            Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetMeleeDwarfSpeed(), deltaTime);
+            Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetDwarfMinerSpeed(), deltaTime);
         }
         stateMachine.Agent.velocity = stateMachine.Controller.velocity;
     }

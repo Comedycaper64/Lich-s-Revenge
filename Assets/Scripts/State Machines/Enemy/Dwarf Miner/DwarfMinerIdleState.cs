@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdleState : EnemyBaseState
+public class DwarfMinerIdleState : DwarfMinerBaseState
 {
     private readonly int LocomotionBlendTreeHash = Animator.StringToHash("Locomotion");
     private readonly int SpeedParameterHash = Animator.StringToHash("Speed");
 
-    public EnemyIdleState(EnemyStateMachine stateMachine) : base(stateMachine)
+    public DwarfMinerIdleState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
     {
 
     }
@@ -28,7 +28,7 @@ public class EnemyIdleState : EnemyBaseState
         Move(deltaTime);
         if (IsInChaseRange())
         {
-            stateMachine.SwitchState(new EnemyChasingState(stateMachine));
+            stateMachine.SwitchState(new DwarfMinerChasingState(stateMachine));
             return;
         }
 

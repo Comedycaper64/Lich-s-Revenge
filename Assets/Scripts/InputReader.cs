@@ -68,13 +68,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         controls.Player.Disable();
     }
 
-    // public void OnTarget(InputAction.CallbackContext context)
-    // {
-    //     if (!context.performed) {return;}
-
-    //     TargetEvent?.Invoke();
-    // }
-
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)

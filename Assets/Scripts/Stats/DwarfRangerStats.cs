@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeDwarfStats : MonoBehaviour
+public class DwarfRangerStats : MonoBehaviour
 {
-    [Header("Health")]
+   [Header("Health")]
     [ShowOnly] [SerializeField] private float Health;
     [SerializeField] private float healthMultiplicativeModifier;
     [SerializeField] private float healthAdditiveModifier;
@@ -38,7 +37,7 @@ public class MeleeDwarfStats : MonoBehaviour
         }  
     }
 
-    public float GetMeleeDwarfHealth()
+    public float GetDwarfRangerHealth()
     {
         if (healthOverride == 0)
             return (EnemyStats.Instance.GetEnemyHealth() * healthMultiplicativeModifier) + healthAdditiveModifier;
@@ -47,7 +46,7 @@ public class MeleeDwarfStats : MonoBehaviour
         
     }
 
-    public float GetMeleeDwarfAttack()
+    public float GetDwarfRangerAttack()
     {
         if (attackOverride == 0)
             return (EnemyStats.Instance.GetEnemyAttack() * attackMultiplicativeModifier) + attackAdditiveModifier;
@@ -55,7 +54,7 @@ public class MeleeDwarfStats : MonoBehaviour
             return attackOverride;
     }
 
-    public float GetMeleeDwarfSpeed()
+    public float GetDwarfRangerSpeed()
     {
         if (speedOverride == 0)
             return (EnemyStats.Instance.GetEnemySpeed() * speedMultiplicativeModifier) + speedAdditiveModifier;
@@ -65,9 +64,9 @@ public class MeleeDwarfStats : MonoBehaviour
 
     private void RefreshStatDisplays()
     {
-        Health = GetMeleeDwarfHealth();
-        Attack = GetMeleeDwarfAttack();
-        Speed = GetMeleeDwarfSpeed();
+        Health = GetDwarfRangerHealth();
+        Attack = GetDwarfRangerAttack();
+        Speed = GetDwarfRangerSpeed();
     }
 
     private void OnEnemyStatsChanged()

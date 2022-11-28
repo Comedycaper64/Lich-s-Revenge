@@ -799,6 +799,103 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 444058057}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &515745010
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 739935213}
+    m_Modifications:
+    - target: {fileID: 5624535302351483326, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: Speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624535302351483326, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: Attack
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624535302351483326, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: Health
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624535302351483326, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: speedAdditiveModifier
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460444, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_Name
+      value: Dwarf Ranger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37a326c4f08d12a42ad1feed9d38c181, type: 3}
+--- !u!4 &515745011 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6098511159983460445, guid: 37a326c4f08d12a42ad1feed9d38c181,
+    type: 3}
+  m_PrefabInstance: {fileID: 515745010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &601611138
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -839,9 +936,9 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 150
-    m_AccelTime: 0.2
-    m_DecelTime: 0.1
+    m_MaxSpeed: 120
+    m_AccelTime: 0.1
+    m_DecelTime: 0.05
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
@@ -864,8 +961,8 @@ MonoBehaviour:
     Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 150
-    m_AccelTime: 0.2
-    m_DecelTime: 0.1
+    m_AccelTime: 0.1
+    m_DecelTime: 0.05
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -1536,7 +1633,7 @@ PrefabInstance:
     - target: {fileID: 6098511159983460444, guid: 54190ab40b3bce648b8a1911115f7964,
         type: 3}
       propertyPath: m_Name
-      value: Enemy (1)
+      value: Dwarf Miner 1
       objectReference: {fileID: 0}
     - target: {fileID: 6098511159983460445, guid: 54190ab40b3bce648b8a1911115f7964,
         type: 3}
@@ -1627,6 +1724,7 @@ Transform:
   - {fileID: 959613899}
   - {fileID: 1457986030}
   - {fileID: 845414205}
+  - {fileID: 515745011}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2124,7 +2222,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126288642}
-  m_LocalRotation: {x: 0.02337799, y: -0.000000034436987, z: 8.052876e-10, w: 0.9997267}
+  m_LocalRotation: {x: 0.02337799, y: 0.000000034386602, z: -8.0410933e-10, w: 0.9997267}
   m_LocalPosition: {x: 8.172462, y: 5.3157916, z: 2.7370167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2261,12 +2359,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats: {fileID: 1174216181}
-  Health: 100
-  healthMultiplicativeModifier: 1
+  Health: 90
+  healthMultiplicativeModifier: 0.9
   healthAdditiveModifier: 0
   healthOverride: 0
-  Attack: 30
-  attackMultiplicativeModifier: 0.75
+  Attack: 20
+  attackMultiplicativeModifier: 0.5
   attackAdditiveModifier: 0
   attackOverride: 0
   Speed: 5
@@ -2803,13 +2901,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6098511159983460418, guid: 54190ab40b3bce648b8a1911115f7964,
         type: 3}
+      propertyPath: Attack
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098511159983460418, guid: 54190ab40b3bce648b8a1911115f7964,
+        type: 3}
       propertyPath: Health
-      value: 500
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6098511159983460444, guid: 54190ab40b3bce648b8a1911115f7964,
         type: 3}
       propertyPath: m_Name
-      value: Enemy (2)
+      value: Dwarf Miner 2
       objectReference: {fileID: 0}
     - target: {fileID: 6098511159983460445, guid: 54190ab40b3bce648b8a1911115f7964,
         type: 3}
@@ -6906,7 +7009,7 @@ PrefabInstance:
     - target: {fileID: 6098511159983460444, guid: 54190ab40b3bce648b8a1911115f7964,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Dwarf Miner
       objectReference: {fileID: 0}
     - target: {fileID: 6098511159983460445, guid: 54190ab40b3bce648b8a1911115f7964,
         type: 3}
@@ -8174,7 +8277,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7211765955759818261}
-  m_LocalRotation: {x: 0.0000000037252903, y: -0.000000051639052, z: 0.000000002416416,
+  m_LocalRotation: {x: 0.0000000055879354, y: -0.000000017230303, z: 8.062809e-10,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
