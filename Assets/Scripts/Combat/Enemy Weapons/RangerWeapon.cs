@@ -2,12 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponDamage : MonoBehaviour
+public class RangerWeapon : MonoBehaviour
 {
-    [SerializeField] private Collider myCollider;
+    private Collider myCollider;
     private List<Collider> alreadyCollidedWith = new List<Collider>();
     private int damage;
     private float knockback;
+    private float projectileSpeed;
+
+    [SerializeField] private float timeToLive;
+
+    private void Awake() 
+    {
+        Destroy(gameObject, timeToLive);    
+    }
+
+    private void FixedUpdate() 
+    {
+        transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);    
+    }
 
     public void SetAttack(int damage, float knockback)
     {
@@ -15,9 +28,19 @@ public class WeaponDamage : MonoBehaviour
         this.knockback = knockback;
     }
 
+    public void SetSpeed(float speed)
+    {
+        projectileSpeed = speed;
+    }
+
     private void OnEnable() 
     {
         alreadyCollidedWith.Clear();    
+    }
+
+    public void SetCollider(Collider collider)
+    {
+        myCollider = collider;
     }
 
     private void OnTriggerEnter(Collider other) 

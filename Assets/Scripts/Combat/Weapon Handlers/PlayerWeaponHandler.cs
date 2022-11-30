@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Stats;
+using Units.Player;
 using UnityEngine;
 
-public class WeaponHandler : MonoBehaviour
+public class PlayerWeaponHandler : MonoBehaviour
 {
     private PlayerStateMachine stateMachine;
     private LichStats lichStats;
-    [SerializeField] private GameObject weaponLogic;
     [SerializeField] private float cameraFocusPoint;
     [SerializeField] private LineRenderer fireballAimLine;
 
@@ -29,16 +30,6 @@ public class WeaponHandler : MonoBehaviour
         fireboltStats = gameObject.GetComponent<FireboltStats>();
         fireballStats = gameObject.GetComponent<FireballStats>();
         stateMachine = gameObject.GetComponent<PlayerStateMachine>();
-    }
-
-    public void EnableWeapon()
-    {
-        weaponLogic.SetActive(true);
-    }
-
-    public void DisableWeapon()
-    {
-        weaponLogic.SetActive(false);
     }
 
     public Vector3 GetDirectionToCameraCentre()

@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDeadState : PlayerBaseState
+namespace Units.Player
 {
-    public PlayerDeadState(PlayerStateMachine stateMachine) : base(stateMachine)
+    public class PlayerDeadState : PlayerBaseState
     {
-    }
+        public PlayerDeadState(PlayerStateMachine stateMachine) : base(stateMachine)
+        {
+        }
 
-    public override void Enter()
-    {
-        stateMachine.Ragdoll.ToggleRagdoll(true);
-    }
+        public override void Enter()
+        {
+            stateMachine.Ragdoll.ToggleRagdoll(true);
+        }
 
-    public override void Exit()
-    {
+        public override void Exit()
+        {
 
-    }
+        }
 
-    public override void Tick(float deltaTime)
-    {
+        public override void Tick(float deltaTime)
+        {
 
+        }
     }
 }

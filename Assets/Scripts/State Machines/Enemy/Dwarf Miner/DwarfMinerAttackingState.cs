@@ -2,31 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DwarfMinerAttackingState : DwarfMinerBaseState
+namespace Units.Enemy.Miner
 {
-    private readonly int AttackHash = Animator.StringToHash("Attack");
-
-    public DwarfMinerAttackingState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
+    public class DwarfMinerAttackingState : DwarfMinerBaseState
     {
-    }
+        private readonly int AttackHash = Animator.StringToHash("Attack");
 
-    public override void Enter()
-    {
-        FacePlayer();
+        public DwarfMinerAttackingState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
+        {
+        }
 
-        stateMachine.Weapon.SetAttack(Mathf.RoundToInt(stateMachine.Stats.GetDwarfMinerAttack()), stateMachine.AttackKnockback);
+        public override void Enter()
+        {
+            FacePlayer();
 
-        stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
-    }
+            stateMachine.Weapon.SetAttack(Mathf.RoundToInt(stateMachine.Stats.GetDwarfMinerAttack()), stateMachine.AttackKnockback);
 
-    public override void Exit()
-    {
+            stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
+        }
 
-    }
+        public override void Exit()
+        {
 
-    public override void Tick(float deltaTime)
-    {
-        if (GetNormalizedTime(stateMachine.Animator) >= 1)
-            stateMachine.SwitchState(new DwarfMinerChasingState(stateMachine));
+        }
+
+        public override void Tick(float deltaTime)
+        {
+            if (GetNormalizedTime(stateMachine.Animator) >= 1)
+                stateMachine.SwitchState(new DwarfMinerChasingState(stateMachine));
+        }
     }
 }

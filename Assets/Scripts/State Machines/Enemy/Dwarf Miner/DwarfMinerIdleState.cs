@@ -3,37 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DwarfMinerIdleState : DwarfMinerBaseState
+namespace Units.Enemy.Miner
 {
-    private readonly int LocomotionBlendTreeHash = Animator.StringToHash("Locomotion");
-    private readonly int SpeedParameterHash = Animator.StringToHash("Speed");
-
-    public DwarfMinerIdleState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
+    public class DwarfMinerIdleState : DwarfMinerBaseState
     {
+        private readonly int LocomotionBlendTreeHash = Animator.StringToHash("Locomotion");
+        private readonly int SpeedParameterHash = Animator.StringToHash("Speed");
 
-    }
-
-    public override void Enter()
-    {
-        stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
-    }
-
-    public override void Exit()
-    {
-
-    }
-
-    public override void Tick(float deltaTime)
-    {
-        Move(deltaTime);
-        if (IsInChaseRange())
+        public DwarfMinerIdleState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
         {
-            stateMachine.SwitchState(new DwarfMinerChasingState(stateMachine));
-            return;
+
         }
 
-        stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
+        public override void Enter()
+        {
+            stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
+        }
+
+        public override void Exit()
+        {
+
+        }
+
+        public override void Tick(float deltaTime)
+        {
+            Move(deltaTime);
+            if (IsInChaseRange())
+            {
+                stateMachine.SwitchState(new DwarfMinerChasingState(stateMachine));
+                return;
+            }
+
+            stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
+        }
     }
-
-
 }

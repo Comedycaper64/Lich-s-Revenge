@@ -1,62 +1,66 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Stats;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class DwarfMinerStateMachine : StateMachine
+namespace Units.Enemy.Miner
 {
-    [field: SerializeField] public Animator Animator {get; private set;}
-    [field: SerializeField] public CharacterController Controller {get; private set;}
-    [field: SerializeField] public DwarfMinerStats Stats {get; private set;}
-    [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
-    [field: SerializeField] public NavMeshAgent Agent {get; private set;}
-    [field: SerializeField] public WeaponDamage Weapon {get; private set;}
-    [field: SerializeField] public Health Health {get; private set;}
-    [field: SerializeField] public GameObject Bone  {get; private set;}
-    [field: SerializeField] public float PlayerChasingRange {get; private set;}
-    [field: SerializeField] public float AttackRange {get; private set;}
-    [field: SerializeField] public int AttackKnockback {get; private set;}
-
-    public Health Player {get; private set;}
-
-    private void Start() 
+    public class DwarfMinerStateMachine : StateMachine
     {
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        [field: SerializeField] public Animator Animator {get; private set;}
+        [field: SerializeField] public CharacterController Controller {get; private set;}
+        [field: SerializeField] public DwarfMinerStats Stats {get; private set;}
+        [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
+        [field: SerializeField] public NavMeshAgent Agent {get; private set;}
+        [field: SerializeField] public MinerWeapon Weapon {get; private set;}
+        [field: SerializeField] public Health Health {get; private set;}
+        [field: SerializeField] public GameObject Bone  {get; private set;}
+        [field: SerializeField] public float PlayerChasingRange {get; private set;}
+        [field: SerializeField] public float AttackRange {get; private set;}
+        [field: SerializeField] public int AttackKnockback {get; private set;}
 
-        Agent.updatePosition = false;
-        Agent.updateRotation = false;
+        public Health Player {get; private set;}
 
-        Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetDwarfMinerHealth()));
+        private void Start() 
+        {
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
 
-        SwitchState(new DwarfMinerIdleState(this));    
-    }
+            Agent.updatePosition = false;
+            Agent.updateRotation = false;
 
-   private void OnEnable() 
-    {   
-        Health.OnTakeDamage += HandleTakeDamage;
-        Health.OnDie += HandleDeath;
-    }
+            Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetDwarfMinerHealth()));
 
-    private void OnDisable() 
-    {
-        Health.OnTakeDamage -= HandleTakeDamage;
-        Health.OnDie -= HandleDeath;
-    }
+            SwitchState(new DwarfMinerIdleState(this));    
+        }
 
-    private void HandleTakeDamage()
-    {
-        SwitchState(new DwarfMinerImpactState(this));
-    }
+    private void OnEnable() 
+        {   
+            Health.OnTakeDamage += HandleTakeDamage;
+            Health.OnDie += HandleDeath;
+        }
 
-    private void HandleDeath()
-    {
-        SwitchState(new DwarfMinerDeadState(this));
-    }
+        private void OnDisable() 
+        {
+            Health.OnTakeDamage -= HandleTakeDamage;
+            Health.OnDie -= HandleDeath;
+        }
 
-    private void OnDrawGizmosSelected() 
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, PlayerChasingRange);    
+        private void HandleTakeDamage()
+        {
+            SwitchState(new DwarfMinerImpactState(this));
+        }
+
+        private void HandleDeath()
+        {
+            SwitchState(new DwarfMinerDeadState(this));
+        }
+
+        private void OnDrawGizmosSelected() 
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, PlayerChasingRange);    
+        }
     }
 }

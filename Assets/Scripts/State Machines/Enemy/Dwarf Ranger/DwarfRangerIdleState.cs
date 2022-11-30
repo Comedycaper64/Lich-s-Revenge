@@ -2,35 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DwarfRangerIdleState : DwarfRangerBaseState
+namespace Units.Enemy.Ranger
 {
-    private readonly int LocomotionBlendTreeHash = Animator.StringToHash("Locomotion");
-    private readonly int SpeedParameterHash = Animator.StringToHash("Speed");
-
-    public DwarfRangerIdleState(DwarfRangerStateMachine stateMachine) : base(stateMachine)
+    public class DwarfRangerIdleState : DwarfRangerBaseState
     {
+        private readonly int LocomotionBlendTreeHash = Animator.StringToHash("Locomotion");
+        private readonly int SpeedParameterHash = Animator.StringToHash("Speed");
 
-    }
-
-    public override void Enter()
-    {
-        stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
-    }
-
-    public override void Exit()
-    {
-
-    }
-
-    public override void Tick(float deltaTime)
-    {
-        Move(deltaTime);
-        if (IsInChaseRange())
+        public DwarfRangerIdleState(DwarfRangerStateMachine stateMachine) : base(stateMachine)
         {
-            stateMachine.SwitchState(new DwarfRangerRunningState(stateMachine));
-            return;
+
         }
 
-        stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
+        public override void Enter()
+        {
+            stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
+        }
+
+        public override void Exit()
+        {
+
+        }
+
+        public override void Tick(float deltaTime)
+        {
+            Move(deltaTime);
+
+            if (IsInAttackRange())
+            {
+                stateMachine.SwitchState(new DwarfRangerAttackingState(stateMachine));
+            }
+
+            if (IsInFleeRange())
+            {
+                stateMachine.SwitchState(new DwarfRangerRunningState(stateMachine));
+                return;
+            }
+
+            stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
+        }
+
+        private bool IsInAttackRange()
+        {
+            if (stateMachine.Player.isDead) {return false;}
+
+            float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
+
+            return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
+        }
     }
 }

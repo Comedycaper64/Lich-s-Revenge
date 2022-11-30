@@ -1,61 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
+using Stats;
 using UnityEngine;
 
-public class PlayerStateMachine : StateMachine
+namespace Units.Player
 {
-    [field: SerializeField] public InputReader InputReader{get; private set;}
-    [field: SerializeField] public GameObject PlayerMesh{get; private set;}
-    [field: SerializeField] public LichStats LichStats{get; private set;}
-    [field: SerializeField] public FireboltStats FireboltStats {get; private set;}
-    [field: SerializeField] public FireballStats FireballStats{get; private set;}
-    [field: SerializeField] public PlayerCooldowns Cooldowns{get; private set;}
-    [field: SerializeField] public CharacterController Controller {get; private set;}
-    [field: SerializeField] public Animator Animator {get; private set;}
-    [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
-    [field: SerializeField] public Health Health {get; private set;}
-    [field: SerializeField] public Mana Mana {get; private set;}
-    [field: SerializeField] public LichBones Bones {get; private set;}
-    [field: SerializeField] public Ragdoll Ragdoll {get; private set;}
-    [field: SerializeField] public float RotationDamping {get; private set;}
-    [field: SerializeField] public float JumpForce {get; private set;}
-    [field: SerializeField] public GameObject dashVFX {get; private set;}
-
-    public Transform MainCameraTransform {get; private set;}
-
-    void Start()
+    public class PlayerStateMachine : StateMachine
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        [field: SerializeField] public InputReader InputReader{get; private set;}
+        [field: SerializeField] public GameObject PlayerMesh{get; private set;}
+        [field: SerializeField] public LichStats LichStats{get; private set;}
+        [field: SerializeField] public FireboltStats FireboltStats {get; private set;}
+        [field: SerializeField] public FireballStats FireballStats{get; private set;}
+        [field: SerializeField] public PlayerCooldowns Cooldowns{get; private set;}
+        [field: SerializeField] public CharacterController Controller {get; private set;}
+        [field: SerializeField] public Animator Animator {get; private set;}
+        [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
+        [field: SerializeField] public Health Health {get; private set;}
+        [field: SerializeField] public Mana Mana {get; private set;}
+        [field: SerializeField] public LichBones Bones {get; private set;}
+        [field: SerializeField] public Ragdoll Ragdoll {get; private set;}
+        [field: SerializeField] public float RotationDamping {get; private set;}
+        [field: SerializeField] public float JumpForce {get; private set;}
+        [field: SerializeField] public GameObject dashVFX {get; private set;}
 
-        MainCameraTransform = Camera.main.transform;
+        public Transform MainCameraTransform {get; private set;}
 
-        Health.SetMaxHealth(Mathf.RoundToInt(LichStats.GetLichHealth()));
-        Mana.SetMaxMana(LichStats.GetLichMaxMana());
-        Mana.SetManaRegenRate(LichStats.GetLichManaRegen());
+        void Start()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
-        SwitchState(new PlayerFreeLookState(this));
-    }
+            MainCameraTransform = Camera.main.transform;
 
-    private void OnEnable() 
-    {   
-        Health.OnTakeDamage += HandleTakeDamage;
-        Health.OnDie += HandleDeath;
-    }
+            Health.SetMaxHealth(Mathf.RoundToInt(LichStats.GetLichHealth()));
+            Mana.SetMaxMana(LichStats.GetLichMaxMana());
+            Mana.SetManaRegenRate(LichStats.GetLichManaRegen());
 
-    private void OnDisable() 
-    {
-        Health.OnTakeDamage -= HandleTakeDamage;
-        Health.OnDie -= HandleDeath;
-    }
+            SwitchState(new PlayerFreeLookState(this));
+        }
 
-    private void HandleTakeDamage()
-    {
-        SwitchState(new PlayerImpactState(this));
-    }
+        private void OnEnable() 
+        {   
+            Health.OnTakeDamage += HandleTakeDamage;
+            Health.OnDie += HandleDeath;
+        }
 
-    private void HandleDeath()
-    {
-        SwitchState(new PlayerDeadState(this));
+        private void OnDisable() 
+        {
+            Health.OnTakeDamage -= HandleTakeDamage;
+            Health.OnDie -= HandleDeath;
+        }
+
+        private void HandleTakeDamage()
+        {
+            SwitchState(new PlayerImpactState(this));
+        }
+
+        private void HandleDeath()
+        {
+            SwitchState(new PlayerDeadState(this));
+        }
     }
 }

@@ -18,7 +18,7 @@ public class FireBoltProjectile : MonoBehaviour
         Destroy(gameObject, timeToLive);
     }
 
-    private void Update() 
+    private void FixedUpdate() 
     {
         transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);    
     }

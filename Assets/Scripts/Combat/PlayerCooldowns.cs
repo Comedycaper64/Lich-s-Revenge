@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Units.Player;
 using UnityEngine;
 
 public class PlayerCooldowns : MonoBehaviour

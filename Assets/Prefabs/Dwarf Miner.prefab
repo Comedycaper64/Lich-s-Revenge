@@ -2173,7 +2173,7 @@ GameObject:
   - component: {fileID: 6098511159983460441}
   - component: {fileID: 6098511159983460422}
   - component: {fileID: 6098511159983460423}
-  - component: {fileID: 6098511159983460421}
+  - component: {fileID: 3263953459859692643}
   m_Layer: 6
   m_Name: Dwarf Miner
   m_TagString: Untagged
@@ -2339,7 +2339,7 @@ MonoBehaviour:
   controller: {fileID: 6098511159983460442}
   agent: {fileID: 6098511159983460420}
   drag: 0.3
---- !u!114 &6098511159983460421
+--- !u!114 &3263953459859692643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2348,17 +2348,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6098511159983460444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea1adfee57b3baa40a06172317542e50, type: 3}
+  m_Script: {fileID: 11500000, guid: 6699651af736a434ca387510e7c311a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLogic: {fileID: 6098511160556500242}
-  cameraFocusPoint: 0
-  fireballAimLine: {fileID: 0}
-  fireboltPrefab: {fileID: 0}
-  fireboltEmitter: {fileID: 0}
-  fireballPrefab: {fileID: 0}
-  fireballEmitter: {fileID: 0}
-  fireballVisual: {fileID: 0}
 --- !u!1 &6098511160264926704
 GameObject:
   m_ObjectHideFlags: 0
