@@ -10,6 +10,7 @@ namespace Units.Player
         [field: SerializeField] public InputReader InputReader{get; private set;}
         [field: SerializeField] public GameObject PlayerMesh{get; private set;}
         [field: SerializeField] public LichStats LichStats{get; private set;}
+        [field: SerializeField] public LichAegis Aegis{get; private set;}
         [field: SerializeField] public FireboltStats FireboltStats {get; private set;}
         [field: SerializeField] public FireballStats FireballStats{get; private set;}
         [field: SerializeField] public PlayerCooldowns Cooldowns{get; private set;}

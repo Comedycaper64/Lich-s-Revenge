@@ -24,6 +24,13 @@ namespace Stats
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
 
+        [Header("Other")]
+        [SerializeField] private float projectileSpeed;
+        [SerializeField] private float projectileTimeToLive;
+        [SerializeField] private float attackRange;
+        [SerializeField] private float fleeRange;
+
+
         [ExecuteInEditMode]
         private void Awake() 
         {
@@ -65,6 +72,26 @@ namespace Stats
                 return (EnemyStats.Instance.GetEnemySpeed() * speedMultiplicativeModifier) + speedAdditiveModifier;
             else
                 return speedOverride;
+        }
+
+        public float GetDwarfRangerProjectileSpeed()
+        {
+            return projectileSpeed;
+        }
+
+        public float GetDwarfRangerProjectileTimeToLive()
+        {
+            return projectileTimeToLive;
+        }
+
+        public float GetDwarfRangerAttackRange()
+        {
+            return attackRange;
+        }
+
+        public float GetDwarfRangerFleeRange()
+        {
+            return fleeRange;
         }
 
         private void RefreshStatDisplays()

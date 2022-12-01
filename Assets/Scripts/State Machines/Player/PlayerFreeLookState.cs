@@ -33,7 +33,7 @@ namespace Units.Player
 
         public override void Tick(float deltaTime)
         {
-            if (stateMachine.InputReader.isHealing && stateMachine.Bones.TryUseBones(1))
+            if (stateMachine.InputReader.isHealing && stateMachine.Bones.GetBones() > 0)
             {
                 stateMachine.SwitchState(new PlayerHealingState(stateMachine));
                 return;

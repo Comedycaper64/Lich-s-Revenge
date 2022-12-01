@@ -51,6 +51,11 @@ public class RangerWeapon : MonoBehaviour
 
         alreadyCollidedWith.Add(other);
 
+        if(other.TryGetComponent<LichAegis>(out LichAegis aegis))
+        {
+            Destroy(gameObject);
+        }
+
         if(other.TryGetComponent<Health>(out Health health))
         {
             health.DealDamage(damage);
@@ -58,7 +63,13 @@ public class RangerWeapon : MonoBehaviour
 
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {
-            forceReceiver.AddForce((other.transform.position - myCollider.transform.position).normalized * knockback);
+            forceReceiver.AddForce((other.transform.position - GetComponent<Collider>().transform.position).normalized * knockback);
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.layer == 6)
+        {
+            Destroy(gameObject);
         }
     }
 }

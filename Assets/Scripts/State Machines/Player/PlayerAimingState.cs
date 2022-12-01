@@ -18,6 +18,7 @@ namespace Units.Player
             stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.1f);
             stateMachine.InputReader.FireballEvent += OnFireball;   
             stateMachine.InputReader.DodgeEvent += OnDodge;
+            stateMachine.Aegis.ToggleAegis(true);
         }
 
         public override void Tick(float deltaTime)
@@ -31,7 +32,7 @@ namespace Units.Player
                 }
             }
 
-            if (stateMachine.InputReader.isHealing)
+            if (stateMachine.InputReader.isHealing && stateMachine.Bones.GetBones() > 0)
             {
                 stateMachine.SwitchState(new PlayerHealingState(stateMachine));
                 return;
@@ -53,6 +54,7 @@ namespace Units.Player
         {
             stateMachine.InputReader.FireballEvent -= OnFireball;
             stateMachine.InputReader.DodgeEvent -= OnDodge;
+            stateMachine.Aegis.ToggleAegis(false);
         }
 
         private Vector3 CalculateMovement()

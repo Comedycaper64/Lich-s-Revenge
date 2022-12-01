@@ -14,9 +14,8 @@ namespace Units.Enemy.Ranger
         [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
         [field: SerializeField] public NavMeshAgent Agent {get; private set;}
         [field: SerializeField] public Health Health {get; private set;}
-        [field: SerializeField] public GameObject Bone  {get; private set;}
-        [field: SerializeField] public float PlayerChasingRange {get; private set;}
-        [field: SerializeField] public float AttackRange {get; private set;}
+        [field: SerializeField] public GameObject Bone {get; private set;}
+        [field: SerializeField] public RangerWeaponHandler RangerWeapon {get; private set;}
         [field: SerializeField] public int AttackKnockback {get; private set;}
 
         public Health Player {get; private set;}
@@ -33,7 +32,7 @@ namespace Units.Enemy.Ranger
             SwitchState(new DwarfRangerIdleState(this));    
         }
 
-    private void OnEnable() 
+        private void OnEnable() 
         {   
             Health.OnTakeDamage += HandleTakeDamage;
             Health.OnDie += HandleDeath;
@@ -58,7 +57,7 @@ namespace Units.Enemy.Ranger
         private void OnDrawGizmosSelected() 
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, PlayerChasingRange);    
+            Gizmos.DrawWireSphere(transform.position, Stats.GetDwarfRangerFleeRange());    
         }
     }
 }

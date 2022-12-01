@@ -23,7 +23,7 @@ namespace Units.Enemy.Ranger
 
         public override void Exit()
         {
-
+            stateMachine.RangerWeapon.StowWeapon();
         }
 
         public override void Tick(float deltaTime)
@@ -33,6 +33,11 @@ namespace Units.Enemy.Ranger
             if (GetNormalizedTime(stateMachine.Animator) >= 1)
             {
                 stateMachine.SwitchState(new DwarfRangerRunningState(stateMachine));
+            }
+
+            if (!stateMachine.RangerWeapon.weaponFired)
+            {
+                stateMachine.RangerWeapon.SetAimVisual();
             }
         }
     }

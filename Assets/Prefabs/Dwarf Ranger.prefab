@@ -2277,8 +2277,7 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 6098511159983460443}
   <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
     type: 3}
-  <PlayerChasingRange>k__BackingField: 10
-  <AttackRange>k__BackingField: 15
+  <RangerWeapon>k__BackingField: {fileID: -7762561861267608845}
   <AttackKnockback>k__BackingField: 5
 --- !u!114 &5624535302351483326
 MonoBehaviour:
@@ -2304,6 +2303,10 @@ MonoBehaviour:
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
+  projectileSpeed: 20
+  projectileTimeToLive: 5
+  attackRange: 20
+  fleeRange: 5
 --- !u!95 &6098511159983460441
 Animator:
   serializedVersion: 4
@@ -2351,10 +2354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc9d624818ba4d4b94261a5010d8658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponFired: 0
   rangerProjectile: {fileID: 3531978045944807280, guid: a4658973549a63e49af19b072ce03ae0,
     type: 3}
   projectileEmitter: {fileID: 6098511160556500243}
-  aimRenderer: {fileID: 7939065109239995727}
   aimingMaterial: {fileID: 2100000, guid: 033e2acf85024554382c1bc4f0514530, type: 2}
   firingMaterial: {fileID: 2100000, guid: 97089f2a76831354b80522fdff0072d4, type: 2}
 --- !u!120 &7939065109239995727
@@ -2570,14 +2573,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6098511160556500242}
-  m_LocalRotation: {x: 0.000000041655206, y: 0.12039332, z: -0.000000105008766, w: 0.9927263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7930055, y: 1.3569988, z: 0.027011096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6098511160264926705}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 13.83, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &6098511160556500240
 CapsuleCollider:
   m_ObjectHideFlags: 0

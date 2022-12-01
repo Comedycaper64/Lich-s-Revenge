@@ -2317,7 +2317,7 @@ MonoBehaviour:
   <Stats>k__BackingField: {fileID: 6098511159983460418}
   <ForceReceiver>k__BackingField: {fileID: 6098511159983460423}
   <Agent>k__BackingField: {fileID: 6098511159983460420}
-  <Weapon>k__BackingField: {fileID: 6098511160556500254}
+  <WeaponHandler>k__BackingField: {fileID: 3263953459859692643}
   <Health>k__BackingField: {fileID: 6098511159983460443}
   <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
     type: 3}
@@ -2351,7 +2351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6699651af736a434ca387510e7c311a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponLogic: {fileID: 6098511160556500242}
+  weaponLogic: {fileID: 6098511160556500254}
 --- !u!1 &6098511160264926704
 GameObject:
   m_ObjectHideFlags: 0

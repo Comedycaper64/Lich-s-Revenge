@@ -48,7 +48,7 @@ namespace Units.Enemy.Ranger
             if (stateMachine.Player.isDead) {return false;}
 
             Vector3 toPlayer = stateMachine.Player.transform.position - stateMachine.transform.position;
-            return toPlayer.magnitude <= stateMachine.PlayerChasingRange;
+            return toPlayer.magnitude <= stateMachine.Stats.GetDwarfRangerFleeRange();
         }
     }
 }

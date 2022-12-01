@@ -7,6 +7,7 @@ namespace Units.Player
     public class PlayerHealingState : PlayerBaseState
     {
         private readonly int HealingHash = Animator.StringToHash("Healing");
+        private bool hasHealed = false;
         public PlayerHealingState(PlayerStateMachine stateMachine) : base(stateMachine)
         {
         }
@@ -14,6 +15,7 @@ namespace Units.Player
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(HealingHash, 0.1f);
+            hasHealed = false;
         }
 
         public override void Tick(float deltaTime)
@@ -23,7 +25,6 @@ namespace Units.Player
             float normalisedTime = GetNormalizedTime(stateMachine.Animator);
             if (normalisedTime >= 1f)
             {
-                stateMachine.Health.Heal(20);
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             }
 
@@ -31,11 +32,23 @@ namespace Units.Player
             {
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
             }
+
+            if (normalisedTime > 0.7f && !hasHealed)
+            {
+                Heal();
+            }
         }
 
         public override void Exit()
         {
             
+        }
+
+        private void Heal()
+        {   
+            stateMachine.Bones.TryUseBones(1);
+            stateMachine.Health.Heal(stateMachine.LichStats.GetLichHealAmount());
+            hasHealed = true;
         }
     }
 }

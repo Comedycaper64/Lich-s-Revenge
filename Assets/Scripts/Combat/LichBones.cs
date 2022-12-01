@@ -25,6 +25,11 @@ public class LichBones : MonoBehaviour
         return false;
     }
 
+    public int GetBones()
+    {
+        return bones;
+    }
+
     private void UpdateBoneText()
     {
         boneText.text = "x " + bones;

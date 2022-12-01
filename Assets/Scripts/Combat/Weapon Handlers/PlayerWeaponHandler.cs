@@ -37,7 +37,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         //Gets rotation that points to middles of screen, cameraFocusPoint determines how far away the centre is from the player
         Vector3 viewportCentre = new Vector3(0.5f, 0.5f, cameraFocusPoint);
         Vector3 cameraCentre = Camera.main.ViewportToWorldPoint(viewportCentre);
-        Vector3 relativePos = cameraCentre - transform.position;
+        Vector3 relativePos = cameraCentre - fireboltEmitter.position;
         return relativePos;
     }
 
@@ -70,7 +70,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     public void SpawnFirebolt()
     {
         //Instantiates firebolt at emitter, sets damage of firebolt, ensures it doesn't hit player
-        FireBoltProjectile firebolt = Instantiate(fireboltPrefab, fireboltEmitter.transform.position, Quaternion.LookRotation(GetDirectionToCameraCentre(), Vector3.up)).GetComponent<FireBoltProjectile>();
+        FireBoltProjectile firebolt = Instantiate(fireboltPrefab, fireboltEmitter.position, Quaternion.LookRotation(GetDirectionToCameraCentre(), Vector3.up)).GetComponent<FireBoltProjectile>();
         firebolt.SetAttack(Mathf.RoundToInt(lichStats.GetLichAttack()), 10);
         firebolt.SetProjectileSpeed(fireboltStats.GetFireboltSpellProjectileSpeed());
         firebolt.SetPlayerCollider(gameObject.GetComponent<CharacterController>());

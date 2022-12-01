@@ -12,6 +12,7 @@ namespace Units.Enemy.Ranger
 
         public override void Enter()
         {
+            stateMachine.ForceReceiver.enabled = false;
             GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(stateMachine.gameObject);
         }

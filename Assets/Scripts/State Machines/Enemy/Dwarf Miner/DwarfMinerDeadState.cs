@@ -12,7 +12,8 @@ namespace Units.Enemy.Miner
 
         public override void Enter()
         {
-            stateMachine.Weapon.gameObject.SetActive(false);
+            stateMachine.WeaponHandler.DisableWeapon();
+            stateMachine.ForceReceiver.enabled = false;
             GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(stateMachine.gameObject);
         }

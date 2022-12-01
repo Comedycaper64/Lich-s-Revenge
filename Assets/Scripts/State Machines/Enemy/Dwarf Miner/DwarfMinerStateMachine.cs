@@ -14,7 +14,7 @@ namespace Units.Enemy.Miner
         [field: SerializeField] public DwarfMinerStats Stats {get; private set;}
         [field: SerializeField] public ForceReceiver ForceReceiver {get; private set;}
         [field: SerializeField] public NavMeshAgent Agent {get; private set;}
-        [field: SerializeField] public MinerWeapon Weapon {get; private set;}
+        [field: SerializeField] public MinerWeaponHandler WeaponHandler {get; private set;}
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public GameObject Bone  {get; private set;}
         [field: SerializeField] public float PlayerChasingRange {get; private set;}
