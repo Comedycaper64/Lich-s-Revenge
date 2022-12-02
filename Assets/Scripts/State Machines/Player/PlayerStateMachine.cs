@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Stats;
@@ -27,6 +28,8 @@ namespace Units.Player
 
         public Transform MainCameraTransform {get; private set;}
 
+        public event EventHandler<State> OnSwitchState;
+
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -39,6 +42,12 @@ namespace Units.Player
             Mana.SetManaRegenRate(LichStats.GetLichManaRegen());
 
             SwitchState(new PlayerFreeLookState(this));
+        }
+
+        public override void SwitchState(State newState)
+        {
+            base.SwitchState(newState);
+            OnSwitchState?.Invoke(this, newState);
         }
 
         private void OnEnable() 

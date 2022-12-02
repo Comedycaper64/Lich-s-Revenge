@@ -48,4 +48,10 @@ public class Mana : MonoBehaviour
         UpdateManaBar();
         return true;
     }
+
+    public void UseMana(float manaUse)
+    {
+        mana = Mathf.Max(mana - manaUse, 0);
+        UpdateManaBar();
+    }
 }

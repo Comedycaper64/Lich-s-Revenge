@@ -10,6 +10,11 @@ public abstract class State
     
     public abstract void Exit();
 
+    public virtual string GetStateName()
+    {
+        return "State";
+    }
+
     protected float GetNormalizedTime(Animator animator)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);

@@ -34,6 +34,7 @@ namespace Stats
         [SerializeField] private float spellProjectileSpeed;
         [SerializeField] private float spellManaCost;
         [SerializeField] private int healAmount;
+        [SerializeField] private float aegisBreakCooldown;
 
         [Header("Dodging")]
         [SerializeField] private float dodgeDistance;
@@ -109,6 +110,11 @@ namespace Stats
         public int GetLichHealAmount()
         {
             return healAmount;
+        }
+
+        public float GetLichAegisBreakCooldown()
+        {
+            return aegisBreakCooldown;
         }
 
         public float GetLichDodgeDistance()

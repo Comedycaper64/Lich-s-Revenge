@@ -7,6 +7,9 @@ public class MinerWeapon : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
     private MinerWeaponHandler handler;
+    private Health unitHealth;
+    private ForceReceiver unitForceReceiver;
+    private Collider unitCollider;
     private List<Collider> alreadyCollidedWith = new List<Collider>();
     private int damage;
     private float knockback;
@@ -14,6 +17,9 @@ public class MinerWeapon : MonoBehaviour
     public void SetHandler(MinerWeaponHandler handler)
     {
         this.handler = handler;
+        unitHealth = handler.GetComponent<Health>();
+        unitForceReceiver = handler.GetComponent<ForceReceiver>();
+        unitCollider = handler.GetComponent<Collider>();
     }
 
     public void SetAttack(int damage, float knockback)
@@ -38,7 +44,17 @@ public class MinerWeapon : MonoBehaviour
         if(other.TryGetComponent<LichAegis>(out LichAegis aegis))
         {
             //End attack, weapon bounce state, or something similar
-            handler.DisableWeapon();
+            if (aegis.IsParrying())
+            {
+                handler.DisableWeapon();
+                unitHealth.DealDamage(0);
+                unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
+            }
+            else
+            {
+                aegis.DamageAegis(damage);
+                handler.DisableWeapon();
+            }
         }
 
         if(other.TryGetComponent<Health>(out Health health))

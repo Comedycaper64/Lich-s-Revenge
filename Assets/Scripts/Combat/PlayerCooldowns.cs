@@ -7,15 +7,17 @@ public class PlayerCooldowns : MonoBehaviour
 {
     [SerializeField] private PlayerStateMachine stateMachine;
 
-    public float dodgeCooldown;
-    public float fireboltCooldown;
-    public float fireballCooldown;
+    private float dodgeCooldown;
+    private float fireboltCooldown;
+    private float fireballCooldown;
+    private float aegisCooldown;
 
     private void Start() 
     {
         SetDodgeCooldown();
         SetFireboltCooldown();
         SetFireballCooldown();
+        SetAegisCooldown();
     }
 
     void Update()
@@ -31,6 +33,10 @@ public class PlayerCooldowns : MonoBehaviour
         if (fireballCooldown > 0f)
         {
             fireballCooldown -= Time.deltaTime;
+        }
+        if (aegisCooldown > 0f)
+        {
+            aegisCooldown -= Time.deltaTime;
         }
     }
 
@@ -70,6 +76,18 @@ public class PlayerCooldowns : MonoBehaviour
         }
     }
 
+    public bool IsAegisReady()
+    {
+        if (aegisCooldown > 0f)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public void SetDodgeCooldown()
     {
         dodgeCooldown = stateMachine.LichStats.GetLichDodgeCooldown();
@@ -83,5 +101,10 @@ public class PlayerCooldowns : MonoBehaviour
     public void SetFireballCooldown()
     {
         fireballCooldown = stateMachine.FireballStats.GetFireballSpellCooldown();
+    }
+
+    public void SetAegisCooldown()
+    {
+        aegisCooldown = stateMachine.LichStats.GetLichAegisBreakCooldown();
     }
 }

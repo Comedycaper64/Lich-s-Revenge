@@ -25,12 +25,6 @@ namespace Units.Player
             stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
         }
 
-        public override void Exit()
-        {
-            stateMachine.InputReader.JumpEvent -= OnJump;
-            stateMachine.InputReader.DodgeEvent -= OnDodge;
-        }
-
         public override void Tick(float deltaTime)
         {
             if (stateMachine.InputReader.isHealing && stateMachine.Bones.GetBones() > 0)
@@ -57,7 +51,18 @@ namespace Units.Player
 
             stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
             FaceMovementDirection(movement, deltaTime);
-        }    
+        } 
+
+        public override void Exit()
+        {
+            stateMachine.InputReader.JumpEvent -= OnJump;
+            stateMachine.InputReader.DodgeEvent -= OnDodge;
+        }
+
+        public override string GetStateName()
+        {
+            return "FreeLookState";
+        }
 
         private Vector3 CalculateMovement()
         {

@@ -18,7 +18,15 @@ namespace Units.Player
             stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.1f);
             stateMachine.InputReader.FireballEvent += OnFireball;   
             stateMachine.InputReader.DodgeEvent += OnDodge;
-            stateMachine.Aegis.ToggleAegis(true);
+            if (stateMachine.Aegis.canEnable)
+            {
+                stateMachine.Aegis.ToggleAegis(true);
+            }
+            else if (stateMachine.Cooldowns.IsAegisReady())
+            {
+                stateMachine.Aegis.ToggleCanEnable(true);
+                stateMachine.Aegis.ToggleAegis(true);
+            }
         }
 
         public override void Tick(float deltaTime)
@@ -55,6 +63,11 @@ namespace Units.Player
             stateMachine.InputReader.FireballEvent -= OnFireball;
             stateMachine.InputReader.DodgeEvent -= OnDodge;
             stateMachine.Aegis.ToggleAegis(false);
+        }
+
+        public override string GetStateName()
+        {
+            return "AimingState";
         }
 
         private Vector3 CalculateMovement()
