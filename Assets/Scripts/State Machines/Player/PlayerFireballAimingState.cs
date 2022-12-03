@@ -43,7 +43,7 @@ namespace Units.Player
             RaycastHit hit;
             int layermask = 1 << 6;
             //layermask = ~layermask;
-            if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(), out hit, 50f, layermask))
+            if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(weaponHandler.fireballEmitter), out hit, 50f, layermask))
             {
                 weaponHandler.UpdateFireballVisual(hit.point);
                 Vector3[] positionArray = new Vector3[2] {weaponHandler.fireballEmitter.position, hit.point};

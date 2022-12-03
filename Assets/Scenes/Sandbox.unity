@@ -899,10 +899,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 0, z: 0.03}
-  ShoulderOffset: {x: 0, y: 1, z: 0}
+  ShoulderOffset: {x: 1, y: -0.2, z: 0}
   VerticalArmLength: 0.5
   CameraSide: 1
-  CameraDistance: 7
+  CameraDistance: 2
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -2011,7 +2011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962496015}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.41522598, y: 6.993741, z: -14.499649}
+  m_LocalPosition: {x: 0.584774, y: 5.793741, z: -9.499649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2212,7 +2212,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126288642}
-  m_LocalRotation: {x: 0.02337799, y: 0.000000034386602, z: -8.0410933e-10, w: 0.9997267}
+  m_LocalRotation: {x: 0.02337799, y: -0.000000034436987, z: 8.052876e-10, w: 0.9997267}
   m_LocalPosition: {x: 8.172462, y: 5.3157916, z: 2.7370167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4713,7 +4713,7 @@ MonoBehaviour:
     m_ActivateAfter: 0
     m_MinDuration: 0
   - m_FullHash: -1347012201
-    m_VirtualCamera: {fileID: 7211765955935868078}
+    m_VirtualCamera: {fileID: 962496013}
     m_ActivateAfter: 0
     m_MinDuration: 0
   - m_FullHash: -412414666
@@ -5066,7 +5066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1adfee57b3baa40a06172317542e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraFocusPoint: 40
+  defaultCameraFocusPoint: 20
   fireballAimLine: {fileID: 7264873973311296232}
   fireboltPrefab: {fileID: 4365010490009713644, guid: 98ce7023204b1054c8ed6e8f3600b4e6,
     type: 3}
@@ -8509,8 +8509,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7211765954632682099}
-  m_LocalRotation: {x: -0.018141452, y: -0.000000034945383, z: 0.0000000010003328,
-    w: 0.99983543}
+  m_LocalRotation: {x: -0.018141452, y: -0.000000033870425, z: 9.695614e-10, w: 0.99983543}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8777,7 +8776,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7211765955384745521}
-  m_LocalRotation: {x: 0.01818949, y: -0.000000030631988, z: 0.0000000019923725, w: 0.9998346}
+  m_LocalRotation: {x: 0.018189494, y: -0.00000003434942, z: 0.0000000022341626, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9109,7 +9108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7211765955759818261}
-  m_LocalRotation: {x: 0.0000000055879354, y: -0.000000017230303, z: 8.062809e-10,
+  m_LocalRotation: {x: 0.0000000037252903, y: -0.000000051639052, z: 0.000000002416416,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -9186,7 +9185,7 @@ MonoBehaviour:
     m_SensorSize: {x: 1, y: 1}
   m_Transitions:
     m_BlendHint: 2
-    m_InheritPosition: 1
+    m_InheritPosition: 0
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []

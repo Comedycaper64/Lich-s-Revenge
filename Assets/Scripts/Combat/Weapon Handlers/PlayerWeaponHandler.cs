@@ -8,7 +8,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 {
     private PlayerStateMachine stateMachine;
     private LichStats lichStats;
-    [SerializeField] private float cameraFocusPoint;
+    private float defaultCameraFocusPoint = 50f;
     [SerializeField] private LineRenderer fireballAimLine;
 
     [Header("Firebolt")]
@@ -32,13 +32,24 @@ public class PlayerWeaponHandler : MonoBehaviour
         stateMachine = gameObject.GetComponent<PlayerStateMachine>();
     }
 
-    public Vector3 GetDirectionToCameraCentre()
+    public Vector3 GetDirectionToCameraCentre(Transform emitter)
     {
         //Gets rotation that points to middles of screen, cameraFocusPoint determines how far away the centre is from the player
-        Vector3 viewportCentre = new Vector3(0.5f, 0.5f, cameraFocusPoint);
-        Vector3 cameraCentre = Camera.main.ViewportToWorldPoint(viewportCentre);
-        Vector3 relativePos = cameraCentre - fireboltEmitter.position;
-        return relativePos;
+        RaycastHit hit;
+        Vector3 relativePos;
+        int layermask = 1 << 6;
+        if (Physics.Raycast(stateMachine.MainCameraTransform.position, stateMachine.MainCameraTransform.forward, out hit, 100f, layermask))
+        {
+            relativePos = hit.point - emitter.position;
+            return relativePos;
+        }
+        else
+        {
+            Vector3 viewportCentre = new Vector3(0.5f, 0.5f, defaultCameraFocusPoint);
+            Vector3 cameraCentre = Camera.main.ViewportToWorldPoint(viewportCentre);
+            relativePos = cameraCentre - emitter.position;
+            return relativePos;
+        }
     }
 
     public void UpdateFireballVisual(Vector3 newLocation)
@@ -70,7 +81,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     public void SpawnFirebolt()
     {
         //Instantiates firebolt at emitter, sets damage of firebolt, ensures it doesn't hit player
-        FireBoltProjectile firebolt = Instantiate(fireboltPrefab, fireboltEmitter.position, Quaternion.LookRotation(GetDirectionToCameraCentre(), Vector3.up)).GetComponent<FireBoltProjectile>();
+        FireBoltProjectile firebolt = Instantiate(fireboltPrefab, fireboltEmitter.position, Quaternion.LookRotation(GetDirectionToCameraCentre(fireboltEmitter), Vector3.up)).GetComponent<FireBoltProjectile>();
         firebolt.SetAttack(Mathf.RoundToInt(lichStats.GetLichAttack()), 10);
         firebolt.SetProjectileSpeed(fireboltStats.GetFireboltSpellProjectileSpeed());
         firebolt.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
@@ -78,7 +89,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     public void SpawnFireball()
     {
-        fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(), Vector3.up);
+        fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(fireballEmitter), Vector3.up);
         currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform.position, fireballRotation).GetComponent<FireBallProjectile>();
         currentFireball.SetAttack(Mathf.RoundToInt(lichStats.GetLichAttack()), 10);
         currentFireball.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
