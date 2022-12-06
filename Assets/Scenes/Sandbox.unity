@@ -3865,6 +3865,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityUIContainer: {fileID: 1491643448}
   crosshairUI: {fileID: 771532454}
+  moveAbilityUI: {fileID: 5825319124747651475, guid: 05f450f4157563748bc5b73388273ba3,
+    type: 3}
+  jumpAbilityUI: {fileID: 5825319124747651475, guid: 843c4c3e98351ca4d8edc7f293955608,
+    type: 3}
   dashAbilityUI: {fileID: 5825319124747651475, guid: 65d2828d68c42a14e839549b12935721,
     type: 3}
   fireboltAbilityUI: {fileID: 8597810412878039397, guid: eb34e6c1e7069c741840d17fa87bfe23,
@@ -3872,6 +3876,8 @@ MonoBehaviour:
   fireballAbilityUI: {fileID: 800516224823255578, guid: 73185a9de8494184cb93d92a1df88e64,
     type: 3}
   aimAbilityUI: {fileID: 3431684523547990441, guid: c4ce19c43974912498cb21e3669fd7db,
+    type: 3}
+  healAbilityUI: {fileID: 5825319124747651475, guid: 3d08958b30ed2d64cabe9dc0eaafcec7,
     type: 3}
 --- !u!1 &2034218691
 GameObject:
@@ -4721,8 +4727,8 @@ MonoBehaviour:
     m_ActivateAfter: 0
     m_MinDuration: 0
   m_DefaultBlend:
-    m_Style: 2
-    m_Time: 0.5
+    m_Style: 1
+    m_Time: 0.25
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -5066,7 +5072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1adfee57b3baa40a06172317542e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCameraFocusPoint: 20
   fireballAimLine: {fileID: 7264873973311296232}
   fireboltPrefab: {fileID: 4365010490009713644, guid: 98ce7023204b1054c8ed6e8f3600b4e6,
     type: 3}
@@ -8776,7 +8781,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7211765955384745521}
-  m_LocalRotation: {x: 0.018189494, y: -0.00000003434942, z: 0.0000000022341626, w: 0.9998346}
+  m_LocalRotation: {x: 0.01818949, y: -0.000000030631988, z: 0.0000000019923725, w: 0.9998346}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

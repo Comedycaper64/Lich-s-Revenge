@@ -9,10 +9,13 @@ public class PlayerUI : MonoBehaviour
 
     [SerializeField] private Transform abilityUIContainer;
     [SerializeField] private GameObject crosshairUI;
+    [SerializeField] GameObject moveAbilityUI;
+    [SerializeField] GameObject jumpAbilityUI;
     [SerializeField] GameObject dashAbilityUI;
     [SerializeField] GameObject fireboltAbilityUI;
     [SerializeField] GameObject fireballAbilityUI;
     [SerializeField] GameObject aimAbilityUI;
+    [SerializeField] GameObject healAbilityUI;
 
     private void Awake() 
     {
@@ -25,17 +28,22 @@ public class PlayerUI : MonoBehaviour
         if (currentState.GetStateName() == "FreeLookState")
         {
             ClearAbilityUIs();
+            Instantiate(moveAbilityUI, abilityUIContainer);
+            Instantiate(jumpAbilityUI, abilityUIContainer);
             Instantiate(dashAbilityUI, abilityUIContainer);
             Instantiate(aimAbilityUI, abilityUIContainer);
+            Instantiate(healAbilityUI, abilityUIContainer);
             crosshairUI.SetActive(false);
             
         }
         else if (currentState.GetStateName() == "AimingState")
         {
             ClearAbilityUIs();
+            Instantiate(moveAbilityUI, abilityUIContainer);
             Instantiate(dashAbilityUI, abilityUIContainer);
             Instantiate(fireboltAbilityUI, abilityUIContainer);
             Instantiate(fireballAbilityUI, abilityUIContainer);
+            Instantiate(healAbilityUI, abilityUIContainer);
             crosshairUI.SetActive(true);
         }
     }
