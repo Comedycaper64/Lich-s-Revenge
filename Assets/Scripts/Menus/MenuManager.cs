@@ -28,4 +28,12 @@ public class MenuManager : MonoBehaviour
         screen.SetActive(false);
         currentOpenScreen = null;
     }
+
+    private void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }     
+    }
 }

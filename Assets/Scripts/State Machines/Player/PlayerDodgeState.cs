@@ -37,7 +37,14 @@ namespace Units.Player
 
             if (remainingDodgeTime <= 0f)
             {
-                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                if (stateMachine.InputReader.isAiming)
+                {
+                    stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+                }
+                else
+                {
+                    stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                }
             }
         }
 

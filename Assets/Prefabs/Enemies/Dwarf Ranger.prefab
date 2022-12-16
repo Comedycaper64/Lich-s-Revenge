@@ -2177,7 +2177,7 @@ GameObject:
   - component: {fileID: 7939065109239995727}
   m_Layer: 6
   m_Name: Dwarf Ranger
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1ef37e753c3524aac7995079504679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 45
+  Health: 50
   healthMultiplicativeModifier: 0.5
   healthAdditiveModifier: 0
   healthOverride: 0
@@ -2304,8 +2304,8 @@ MonoBehaviour:
   speedAdditiveModifier: 0
   speedOverride: 0
   projectileSpeed: 20
-  projectileTimeToLive: 5
-  attackRange: 20
+  projectileTimeToLive: 10
+  attackRange: 40
   fleeRange: 5
 --- !u!95 &6098511159983460441
 Animator:

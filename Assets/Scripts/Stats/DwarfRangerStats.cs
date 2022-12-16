@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Stats
 {
     public class DwarfRangerStats : MonoBehaviour
     {
         [Header("Health")]
+
         [ShowOnly] [SerializeField] private float Health;
+
         [SerializeField] private float healthMultiplicativeModifier;
         [SerializeField] private float healthAdditiveModifier;
         [SerializeField] private float healthOverride = 0;
