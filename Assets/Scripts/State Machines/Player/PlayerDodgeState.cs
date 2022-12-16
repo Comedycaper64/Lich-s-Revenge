@@ -8,6 +8,7 @@ namespace Units.Player
     {
         private Vector3 dodgingDirectionInput;
         private float remainingDodgeTime;
+        private GameObject dodgeVisual;
 
         public PlayerDodgeState(PlayerStateMachine stateMachine, Vector3 dodgingDirectionInput) : base(stateMachine)
         {
@@ -20,6 +21,7 @@ namespace Units.Player
             stateMachine.Health.SetInvulnerable(true);
             //Fiery poof effect, go invisible, emit flames while moving
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
+            dodgeVisual = GameObject.Instantiate(stateMachine.dashVFX2, stateMachine.transform);
             GameObject.Destroy(dashVFX, 3f);
             stateMachine.PlayerMesh.SetActive(false);
         }
@@ -55,6 +57,7 @@ namespace Units.Player
             stateMachine.PlayerMesh.SetActive(true);
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(dashVFX, 3f);
+            GameObject.Destroy(dodgeVisual);
             //Fiery poof, become visible
         } 
     }

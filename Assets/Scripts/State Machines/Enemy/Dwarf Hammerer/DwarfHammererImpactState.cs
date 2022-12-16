@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Units.Player
+namespace Units.Enemy.Hammerer
 {
-    public class PlayerImpactState : PlayerBaseState
+    public class DwarfHammererImpactState : DwarfHammererBaseState
     {
         private readonly int ImpactHash = Animator.StringToHash("Impact");
 
-        private float duration = 0.5f;
+        private float duration = 1f;
 
-        public PlayerImpactState(PlayerStateMachine stateMachine) : base(stateMachine)
+        public DwarfHammererImpactState(DwarfHammererStateMachine stateMachine) : base(stateMachine)
         {
         }
 
@@ -21,17 +21,18 @@ namespace Units.Player
 
         public override void Exit()
         {
-
+            
         }
 
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
+
             duration -= deltaTime;
 
             if (duration <= 0f)
             {
-                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                stateMachine.SwitchState(new DwarfHammererIdleState(stateMachine));
             }
         }
     }

@@ -25,6 +25,7 @@ namespace Units.Player
         [field: SerializeField] public float RotationDamping {get; private set;}
         [field: SerializeField] public float JumpForce {get; private set;}
         [field: SerializeField] public GameObject dashVFX {get; private set;}
+        [field: SerializeField] public GameObject dashVFX2 {get; private set;}
 
         public Transform MainCameraTransform {get; private set;}
 

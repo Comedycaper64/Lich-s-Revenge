@@ -33,7 +33,8 @@ public class RangerWeaponHandler : MonoBehaviour
 
     public void SetAimVisual()
     {
-        Vector3[] positionArray = new Vector3[3] {projectileEmitter.position, GetPlayerPosition(), GetPlayerPosition() + (GetPlayerPosition() - projectileEmitter.position)};
+        Vector3[] positionArray = new Vector3[2] {projectileEmitter.position, GetPlayerPosition()};
+        //, GetPlayerPosition() + (GetPlayerPosition() - projectileEmitter.position)  <-  extension of ray
         aimRenderer.SetPositions(positionArray);
     }
 
