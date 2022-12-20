@@ -356,7 +356,7 @@ RectTransform:
   - {fileID: 7711505067381456337}
   - {fileID: 2065416577}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -505,6 +505,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8795224245418727922, guid: c4119462986cbbb40932e6160b977ebe,
+        type: 3}
+      propertyPath: blockAbilityUI
+      value: 
+      objectReference: {fileID: 3431684523547990441, guid: 79c095288044f9347b30a264ac0f1abc,
+        type: 3}
     - target: {fileID: 8795224245418727923, guid: c4119462986cbbb40932e6160b977ebe,
         type: 3}
       propertyPath: m_Pivot.x

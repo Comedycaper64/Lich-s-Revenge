@@ -37,7 +37,9 @@ public class PlayerWeaponHandler : MonoBehaviour
         //Gets rotation that points to middles of screen, cameraFocusPoint determines how far away the centre is from the player
         RaycastHit hit;
         Vector3 relativePos;
-        int layermask = 1 << 6;
+        int layermask1 = 1 << 7;
+        int layermask2 = 1 << 6;
+        int layermask = layermask1 | layermask2;
         if (Physics.Raycast(stateMachine.MainCameraTransform.position, stateMachine.MainCameraTransform.forward, out hit, 100f, layermask))
         {
             relativePos = hit.point - emitter.position;
@@ -91,7 +93,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     {
         fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(fireballEmitter), Vector3.up);
         currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform.position, fireballRotation).GetComponent<FireBallProjectile>();
-        currentFireball.SetAttack(Mathf.RoundToInt(lichStats.GetLichAttack()), 10);
+        currentFireball.SetAttack(Mathf.RoundToInt(lichStats.GetLichAttack() * 3), 20);
         currentFireball.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
     }
 

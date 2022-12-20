@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Units.Player
 {
-    public class PlayerFreeLookState : PlayerBaseState
+    public class PlayerBlockingState : PlayerBaseState
     {
         private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
         private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
@@ -13,16 +13,25 @@ namespace Units.Player
         private const float AnimatorDampTime = 0.05f;
         private const float CrossFadeDuration = 0.1f;
 
-        public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
+        public PlayerBlockingState(PlayerStateMachine stateMachine) : base(stateMachine)
         {
 
         }
 
         public override void Enter()
         {
-            stateMachine.InputReader.JumpEvent += OnJump;
             stateMachine.InputReader.DodgeEvent += OnDodge;
             stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
+
+            if (stateMachine.Aegis.canEnable)
+            {
+                stateMachine.Aegis.ToggleAegis(true);
+            }
+            else if (stateMachine.Cooldowns.IsAegisReady())
+            {
+                stateMachine.Aegis.ToggleCanEnable(true);
+                stateMachine.Aegis.ToggleAegis(true);
+            }
         }
 
         public override void Tick(float deltaTime)
@@ -33,9 +42,9 @@ namespace Units.Player
                 return;
             }
 
-            if (stateMachine.InputReader.isBlocking)
+            if (!stateMachine.InputReader.isBlocking)
             {
-                stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
                 return;
             }
 
@@ -47,7 +56,9 @@ namespace Units.Player
 
             Vector3 movement = CalculateMovement();
 
-            Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
+            //Move slower while blocking?
+
+            Move(movement * stateMachine.LichStats.GetLichSpeed() * 0.6f, deltaTime);
 
             if (stateMachine.InputReader.MovementValue == Vector2.zero)
             {
@@ -61,14 +72,10 @@ namespace Units.Player
 
         public override void Exit()
         {
-            stateMachine.InputReader.JumpEvent -= OnJump;
             stateMachine.InputReader.DodgeEvent -= OnDodge;
+            stateMachine.Aegis.ToggleAegis(false);
         }
 
-        public override string GetStateName()
-        {
-            return "FreeLookState";
-        }
 
         private Vector3 CalculateMovement()
         {
@@ -89,10 +96,6 @@ namespace Units.Player
             stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationDamping * deltaTime);
         }
 
-        private void OnJump()
-        {
-            stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
-        }
 
         private void OnDodge()
         {

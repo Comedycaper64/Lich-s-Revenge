@@ -32,7 +32,7 @@ namespace Units.Player
             //Bug: Player flies into the air when dodging if camera is looking up / down
             movement += stateMachine.MainCameraTransform.right * dodgingDirectionInput.x * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
             movement += stateMachine.MainCameraTransform.forward * dodgingDirectionInput.y * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
-
+            movement.y = 0;
             Move(movement, deltaTime);
 
             remainingDodgeTime -= deltaTime;

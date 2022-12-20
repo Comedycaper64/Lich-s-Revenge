@@ -8,6 +8,12 @@ public class MenuManager : MonoBehaviour
     //Set this as main menu if using as main menu manager
     [SerializeField] private GameObject currentOpenScreen;
 
+    private void Start() 
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;    
+    }
+
     public void LoadLevel(int levelNumber)
     {
         SceneManager.LoadScene(levelNumber);

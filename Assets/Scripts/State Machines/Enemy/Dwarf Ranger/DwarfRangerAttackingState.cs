@@ -35,10 +35,12 @@ namespace Units.Enemy.Ranger
                 stateMachine.SwitchState(new DwarfRangerRunningState(stateMachine));
             }
 
-            if (!stateMachine.RangerWeapon.weaponFired)
-            {
-                stateMachine.RangerWeapon.SetAimVisual();
-            }
+            stateMachine.RangerWeapon.SetAimVisual();
+
+            // if (!stateMachine.RangerWeapon.weaponFired)
+            // {
+                
+            // }
         }
     }
 }

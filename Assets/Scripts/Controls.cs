@@ -98,6 +98,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""010e8408-707e-48bb-a408-74d8f197eb7d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -364,6 +373,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""015bbe30-cce6-45c6-9a55-07b7f2f9d93a"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""916cea58-4df5-4d05-8bb2-4c7d1dfcf88b"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -408,6 +439,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Fireball = m_Player.FindAction("Fireball", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+        m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -475,6 +507,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Fireball;
     private readonly InputAction m_Player_Heal;
+    private readonly InputAction m_Player_Block;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -487,6 +520,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Fireball => m_Wrapper.m_Player_Fireball;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
+        public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -520,6 +554,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Heal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
+                @Block.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
+                @Block.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
+                @Block.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -548,6 +585,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
+                @Block.started += instance.OnBlock;
+                @Block.performed += instance.OnBlock;
+                @Block.canceled += instance.OnBlock;
             }
         }
     }
@@ -580,5 +620,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnFireball(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
     }
 }

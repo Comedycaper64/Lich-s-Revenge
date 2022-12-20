@@ -500,9 +500,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lichMana: {fileID: 5334516548349113555}
   cooldowns: {fileID: 4113573329148648660}
-  parryWindow: 0.5
-  parryMaterial: {fileID: 2100000, guid: 47a9fc3d1f498be45937eee02e7b86de, type: 2}
-  blockMaterial: {fileID: 2100000, guid: 5db295423e69a8c47a9b9a983a4aee5d, type: 2}
   canEnable: 1
 --- !u!54 &742611467766673524
 Rigidbody:
@@ -3815,7 +3812,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8366632211991707488}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.192463, y: 11.295792, z: 39.887016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3927,7 +3924,7 @@ MonoBehaviour:
   speedAdditiveModifier: 0
   speedOverride: 0
   maxMana: 100
-  manaRegenRate: 20
+  manaRegenRate: 10
   spellCooldown: 1
   spellProjectileSpeed: 30
   spellManaCost: 20
@@ -3957,10 +3954,10 @@ MonoBehaviour:
   spellProjectileSpeedMultiplicativeModifier: 1
   spellProjectileSpeedAdditiveModifier: 0
   spellProjectileSpeedOverride: 0
-  SpellManaCost: 2
+  SpellManaCost: 20
   spellManaCostMultiplicativeModifier: 1
   spellManaCostAdditiveModifier: 0
-  spellManaCostOverride: 2
+  spellManaCostOverride: 0
 --- !u!114 &4986333630843343405
 MonoBehaviour:
   m_ObjectHideFlags: 0

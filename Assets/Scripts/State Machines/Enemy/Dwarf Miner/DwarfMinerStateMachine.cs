@@ -35,7 +35,7 @@ namespace Units.Enemy.Miner
             SwitchState(new DwarfMinerIdleState(this));    
         }
 
-    private void OnEnable() 
+        private void OnEnable() 
         {   
             Health.OnTakeDamage += HandleTakeDamage;
             Health.OnDie += HandleDeath;

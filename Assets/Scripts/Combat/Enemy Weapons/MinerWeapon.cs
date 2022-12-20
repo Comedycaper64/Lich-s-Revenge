@@ -43,18 +43,23 @@ public class MinerWeapon : MonoBehaviour
 
         if(other.TryGetComponent<LichAegis>(out LichAegis aegis))
         {
+            handler.DisableWeapon();
+            unitHealth.DealDamage(0);
+            unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
+            aegis.DamageAegis(damage);
+
             //End attack, weapon bounce state, or something similar
-            if (aegis.IsParrying())
-            {
-                handler.DisableWeapon();
-                unitHealth.DealDamage(0);
-                unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
-            }
-            else
-            {
-                aegis.DamageAegis(damage);
-                handler.DisableWeapon();
-            }
+            // if (aegis.IsParrying())
+            // {
+            //     handler.DisableWeapon();
+            //     unitHealth.DealDamage(0);
+            //     unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
+            // }
+            // else
+            // {
+            //     aegis.DamageAegis(damage);
+            //     handler.DisableWeapon();
+            // }
         }
 
         if(other.TryGetComponent<Health>(out Health health))

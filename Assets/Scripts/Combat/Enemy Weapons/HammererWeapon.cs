@@ -42,18 +42,10 @@ public class HammererWeapon : MonoBehaviour
 
         if(other.TryGetComponent<LichAegis>(out LichAegis aegis))
         {
-            //End attack, weapon bounce state, or something similar
-            if (aegis.IsParrying())
-            {
-                handler.DisableWeapon();
-                unitHealth.DealDamage(0);
-                unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
-            }
-            else
-            {
-                aegis.DamageAegis(damage);
-                handler.DisableWeapon();
-            }
+            handler.DisableWeapon();
+            unitHealth.DealDamage(0);
+            unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
+            aegis.DamageAegis(damage);
         }
 
         if(other.TryGetComponent<Health>(out Health health))

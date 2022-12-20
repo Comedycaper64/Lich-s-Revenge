@@ -40,6 +40,8 @@ namespace Units.Player
 
             //Use linerenderer to draw line
 
+                //Implement curve to fireball launch?
+
             RaycastHit hit;
             int layermask = 1 << 6;
             //layermask = ~layermask;

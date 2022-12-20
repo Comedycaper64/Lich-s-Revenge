@@ -6,18 +6,18 @@ public class LichAegis : MonoBehaviour
 {
     [SerializeField] private Mana lichMana;
     [SerializeField] private PlayerCooldowns cooldowns;
-    [SerializeField] private float parryWindow;
-    [SerializeField] private Material parryMaterial;
-    [SerializeField] private Material blockMaterial;
+    //[SerializeField] private float parryWindow;
+    //[SerializeField] private Material parryMaterial;
+    //[SerializeField] private Material blockMaterial;
 
-    private MeshRenderer aegisRenderer;
+    //private MeshRenderer aegisRenderer;
 
     public bool canEnable = true;
-    private bool parrying = false;
+    //private bool parrying = false;
 
     private void Awake() 
     {
-        aegisRenderer = GetComponent<MeshRenderer>();
+        //aegisRenderer = GetComponent<MeshRenderer>();
     }
 
     public void ToggleCanEnable(bool canEnable)
@@ -30,26 +30,26 @@ public class LichAegis : MonoBehaviour
         if (canEnable)
         {
             gameObject.SetActive(enable);
-            parrying = enable;
-            if (enable == true)
-            {
-                StartCoroutine(AegisActivating());
-            }
+            //parrying = enable;
+            // if (enable == true)
+            // {
+            //     StartCoroutine(AegisActivating());
+            // }
         }
     }
 
-    public bool IsParrying()
-    {
-        return parrying;
-    }
+    // public bool IsParrying()
+    // {
+    //     return parrying;
+    // }
 
-    private IEnumerator AegisActivating()
-    {
-        aegisRenderer.material = parryMaterial;
-        yield return new WaitForSeconds(parryWindow);
-        parrying = false;
-        aegisRenderer.material = blockMaterial;
-    }
+    // private IEnumerator AegisActivating()
+    // {
+    //     aegisRenderer.material = parryMaterial;
+    //     yield return new WaitForSeconds(parryWindow);
+    //     parrying = false;
+    //     aegisRenderer.material = blockMaterial;
+    // }
 
     public void DamageAegis(float damage)
     {

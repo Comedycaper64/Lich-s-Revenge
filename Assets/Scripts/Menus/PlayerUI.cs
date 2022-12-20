@@ -15,6 +15,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject fireboltAbilityUI;
     [SerializeField] GameObject fireballAbilityUI;
     [SerializeField] GameObject aimAbilityUI;
+    [SerializeField] GameObject blockAbilityUI;
     [SerializeField] GameObject healAbilityUI;
 
     private void Awake() 
@@ -29,10 +30,11 @@ public class PlayerUI : MonoBehaviour
         {
             ClearAbilityUIs();
             Instantiate(moveAbilityUI, abilityUIContainer);
-            Instantiate(jumpAbilityUI, abilityUIContainer);
             Instantiate(dashAbilityUI, abilityUIContainer);
-            Instantiate(aimAbilityUI, abilityUIContainer);
             Instantiate(healAbilityUI, abilityUIContainer);
+            Instantiate(aimAbilityUI, abilityUIContainer);
+            Instantiate(blockAbilityUI, abilityUIContainer);
+            Instantiate(jumpAbilityUI, abilityUIContainer);
             crosshairUI.SetActive(false);
             
         }
@@ -41,9 +43,9 @@ public class PlayerUI : MonoBehaviour
             ClearAbilityUIs();
             Instantiate(moveAbilityUI, abilityUIContainer);
             Instantiate(dashAbilityUI, abilityUIContainer);
+            Instantiate(healAbilityUI, abilityUIContainer);
             Instantiate(fireboltAbilityUI, abilityUIContainer);
             Instantiate(fireballAbilityUI, abilityUIContainer);
-            Instantiate(healAbilityUI, abilityUIContainer);
             crosshairUI.SetActive(true);
         }
     }

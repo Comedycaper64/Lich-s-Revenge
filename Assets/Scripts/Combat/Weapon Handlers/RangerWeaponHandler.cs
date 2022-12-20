@@ -11,6 +11,7 @@ public class RangerWeaponHandler : MonoBehaviour
     private LineRenderer aimRenderer;
     private Vector3 playerDirection;
     public bool weaponFired = false;
+    private RangerWeapon projectile;
 
     [SerializeField] private GameObject rangerProjectile;
     [SerializeField] private Transform projectileEmitter;    
@@ -33,7 +34,22 @@ public class RangerWeaponHandler : MonoBehaviour
 
     public void SetAimVisual()
     {
-        Vector3[] positionArray = new Vector3[2] {projectileEmitter.position, GetPlayerPosition()};
+        Vector3[] positionArray = new Vector3[2];
+        RaycastHit hit;
+        int layermask = 1 << 6;
+        if (!weaponFired)
+        {        
+            Physics.Raycast(projectileEmitter.position, GetPlayerPosition() - projectileEmitter.position, out hit, 100f, layermask);
+            positionArray = new Vector3[2] {projectileEmitter.position, hit.point};
+        }
+        else
+        {
+            if (projectile)
+            {
+                Physics.Raycast(projectile.transform.position, playerDirection, out hit, 100f, layermask);
+                positionArray = new Vector3[2] {projectile.transform.position, hit.point};
+            }
+        }
         //, GetPlayerPosition() + (GetPlayerPosition() - projectileEmitter.position)  <-  extension of ray
         aimRenderer.SetPositions(positionArray);
     }
@@ -42,12 +58,12 @@ public class RangerWeaponHandler : MonoBehaviour
     {
         SetAimVisual();
         playerDirection = (GetPlayerPosition() - projectileEmitter.position);
-        RangerWeapon projectile = Instantiate(rangerProjectile, projectileEmitter.position, Quaternion.LookRotation(playerDirection, Vector3.up)).GetComponent<RangerWeapon>();
+        projectile = Instantiate(rangerProjectile, projectileEmitter.position, Quaternion.LookRotation(playerDirection, Vector3.up)).GetComponent<RangerWeapon>();
         weaponFired = true;
         projectile.SetCollider(GetComponent<CharacterController>());
         projectile.SetAttack(Mathf.RoundToInt(rangerStats.GetDwarfRangerAttack()), 5f);
         projectile.SetSpeed(rangerStats.GetDwarfRangerProjectileSpeed());
-
+        playerDirection = (GetPlayerPosition() - projectile.transform.position);
         aimRenderer.material = firingMaterial;
     }
 

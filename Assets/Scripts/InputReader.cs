@@ -13,6 +13,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action FireballEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
+    public bool isBlocking {get; private set;}
     public bool isHealing {get; private set;}
 
     private Controls controls;
@@ -89,6 +90,18 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         else if (context.canceled)
         {
             isAiming = false;
+        }
+    }
+
+    public void OnBlock(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isBlocking = true;
+        }
+        else if (context.canceled)
+        {
+            isBlocking = false;
         }
     }
 

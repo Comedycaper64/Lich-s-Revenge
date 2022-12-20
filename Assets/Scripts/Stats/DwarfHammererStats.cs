@@ -27,8 +27,11 @@ namespace Stats
         [ExecuteInEditMode]
         private void Awake() 
         {
-            RefreshStatDisplays();
-            EnemyStats.Instance.OnStatsChanged += OnEnemyStatsChanged;
+            if (EnemyStats.Instance)
+            {
+                RefreshStatDisplays();
+                EnemyStats.Instance.OnStatsChanged += OnEnemyStatsChanged;
+            }
         }
 
         private void Update() 
