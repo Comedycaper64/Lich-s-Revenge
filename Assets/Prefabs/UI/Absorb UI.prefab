@@ -12,7 +12,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3f4ea5eb84235a34fa0ef85c4c8e2a36,
+      objectReference: {fileID: 21300000, guid: 86ad3ce6f971b5d44a87537648381cf7,
         type: 3}
     - target: {fileID: 1974923247683484116, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
@@ -107,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 8597810412298652783, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
       propertyPath: m_text
-      value: Ctrl
+      value: R
       objectReference: {fileID: 0}
     - target: {fileID: 8597810412878039396, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
@@ -217,7 +217,7 @@ PrefabInstance:
     - target: {fileID: 8597810412878039397, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
       propertyPath: m_Name
-      value: Block UI
+      value: Absorb UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

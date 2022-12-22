@@ -88,6 +88,26 @@ public class PlayerCooldowns : MonoBehaviour
         }
     }
 
+    public float GetDodgeCooldownNormalised()
+    {
+        return dodgeCooldown / stateMachine.LichStats.GetLichDodgeCooldown();
+    }
+
+    public float GetFireboltCooldownNormalised()
+    {
+        return fireboltCooldown / stateMachine.FireboltStats.GetFireboltSpellCooldown();
+    }
+
+    public float GetFireballCooldownNormalised()
+    {
+        return fireballCooldown / stateMachine.FireballStats.GetFireballSpellCooldown();
+    }
+
+    public float GetAegisCooldownNormalised()
+    {
+        return aegisCooldown / stateMachine.LichStats.GetLichAegisBreakCooldown();
+    }
+
     public void SetDodgeCooldown()
     {
         dodgeCooldown = stateMachine.LichStats.GetLichDodgeCooldown();
