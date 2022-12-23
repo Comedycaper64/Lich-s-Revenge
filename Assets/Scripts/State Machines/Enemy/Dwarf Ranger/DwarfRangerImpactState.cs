@@ -33,6 +33,7 @@ namespace Units.Enemy.Ranger
             if (duration <= 0f)
             {
                 stateMachine.SwitchState(new DwarfRangerIdleState(stateMachine));
+                return;
             }
         }
     }

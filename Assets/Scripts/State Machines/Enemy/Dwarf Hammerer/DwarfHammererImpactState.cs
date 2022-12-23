@@ -33,6 +33,7 @@ namespace Units.Enemy.Hammerer
             if (duration <= 0f)
             {
                 stateMachine.SwitchState(new DwarfHammererIdleState(stateMachine));
+                return;
             }
         }
     }

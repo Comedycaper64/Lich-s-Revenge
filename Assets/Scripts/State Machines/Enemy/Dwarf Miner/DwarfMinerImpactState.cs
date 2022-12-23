@@ -33,6 +33,7 @@ namespace Units.Enemy.Miner
             if (duration <= 0f)
             {
                 stateMachine.SwitchState(new DwarfMinerIdleState(stateMachine));
+                return;
             }
         }
     }

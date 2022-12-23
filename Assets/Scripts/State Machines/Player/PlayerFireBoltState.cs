@@ -27,6 +27,7 @@ namespace Units.Player
             if (normalisedTime >= 1f)
             {
                 stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+                return;
             }
             previousFrameTime = normalisedTime;
 

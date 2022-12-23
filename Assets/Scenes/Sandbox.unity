@@ -2680,17 +2680,17 @@ PrefabInstance:
     - target: {fileID: 1421207274088936270, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.023377996
+      value: 0.023377994
       objectReference: {fileID: 0}
     - target: {fileID: 1421207274088936270, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017168148
+      value: -0.000000017268839
       objectReference: {fileID: 0}
     - target: {fileID: 1421207274088936270, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.014666e-10
+      value: 4.0382112e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1421207274518670178, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
@@ -2737,11 +2737,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -1.4081396e-12
       objectReference: {fileID: 0}
+    - target: {fileID: 3116958685763754040, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: SpellAttack
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4029095673228042834, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 1680706179}
+    - target: {fileID: 4094123526072091820, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: SpellAttack
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909672599973100418, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: castingSpeedMultiplicativeModifier
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5907609119998453000, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.x

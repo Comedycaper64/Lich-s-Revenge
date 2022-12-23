@@ -42,10 +42,12 @@ namespace Units.Player
                 if (stateMachine.InputReader.isAiming)
                 {
                     stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+                    return;
                 }
                 else
                 {
                     stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                    return;
                 }
             }
         }

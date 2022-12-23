@@ -29,7 +29,10 @@ namespace Units.Enemy.Miner
         public override void Tick(float deltaTime)
         {
             if (GetNormalizedTime(stateMachine.Animator) >= 1)
+            {
                 stateMachine.SwitchState(new DwarfMinerChasingState(stateMachine));
+                return;
+            }
         }
     }
 }

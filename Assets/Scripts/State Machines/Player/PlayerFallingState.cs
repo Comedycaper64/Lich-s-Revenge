@@ -33,6 +33,7 @@ namespace Units.Player
             if (stateMachine.Controller.isGrounded)
             {
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));  
+                return;
             }
         }
     }

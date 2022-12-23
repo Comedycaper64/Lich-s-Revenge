@@ -33,6 +33,7 @@ namespace Units.Enemy.Ranger
             if (GetNormalizedTime(stateMachine.Animator) >= 1)
             {
                 stateMachine.SwitchState(new DwarfRangerRunningState(stateMachine));
+                return;
             }
 
             stateMachine.RangerWeapon.SetAimVisual();

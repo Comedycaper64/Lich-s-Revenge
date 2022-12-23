@@ -3958,6 +3958,10 @@ MonoBehaviour:
   spellManaCostMultiplicativeModifier: 1
   spellManaCostAdditiveModifier: 0
   spellManaCostOverride: 0
+  SpellAttack: 0
+  spellAttackMultiplicativeModifier: 1
+  spellAttackAdditiveModifier: 0
+  spellAttackOverride: 0
 --- !u!114 &4986333630843343405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3982,6 +3986,10 @@ MonoBehaviour:
   spellManaCostMultiplicativeModifier: 3
   spellManaCostAdditiveModifier: 0
   spellManaCostOverride: 0
+  SpellAttack: 0
+  spellAttackMultiplicativeModifier: 3
+  spellAttackAdditiveModifier: 0
+  spellAttackOverride: 0
 --- !u!114 &7970330452390705878
 MonoBehaviour:
   m_ObjectHideFlags: 0

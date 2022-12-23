@@ -24,6 +24,7 @@ namespace Stats
         [SerializeField] private float speedMultiplicativeModifier; 
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
+        [SerializeField] private float castingSpeedMultiplicativeModifier;
 
         [Header("Mana")]
         [SerializeField] private float maxMana;
@@ -80,6 +81,11 @@ namespace Stats
                 return (PlayerStats.Instance.GetPlayerSpeed() * speedMultiplicativeModifier) + speedAdditiveModifier;
             else
                 return speedOverride;
+        }
+
+        public float GetCastingMovementSpeed()
+        {
+            return GetLichSpeed() * castingSpeedMultiplicativeModifier;
         }
 
         public float GetLichMaxMana()
@@ -148,7 +154,7 @@ namespace Stats
 
         private void OnValidate() 
         {
-            if (PlayerStats.Instance)
+            if (PlayerStats.Instance != null)
             {
                 RefreshStatDisplays();
                 OnStatsChanged?.Invoke();

@@ -26,11 +26,13 @@ namespace Units.Player
             if (normalisedTime >= 1f)
             {
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                return;
             }
 
             if (!stateMachine.InputReader.isHealing && normalisedTime <= 0.7f)
             {
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                return;
             }
 
             if (normalisedTime > 0.7f && !hasHealed)

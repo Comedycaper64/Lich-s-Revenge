@@ -31,6 +31,7 @@ namespace Units.Enemy.Ranger
             if (IsInAttackRange())
             {
                 stateMachine.SwitchState(new DwarfRangerAttackingState(stateMachine));
+                return;
             }
 
             if (IsInFleeRange())

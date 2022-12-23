@@ -16,7 +16,7 @@ namespace Units.Player
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.1f);
-            stateMachine.InputReader.FireballEvent += OnFireball;   
+            //stateMachine.InputReader.FireballEvent += OnFireball;   
             stateMachine.InputReader.DodgeEvent += OnDodge;
         }
 
@@ -27,6 +27,15 @@ namespace Units.Player
                 if (stateMachine.Mana.TryUseMana(stateMachine.FireboltStats.GetFireboltSpellManaCost()))
                 {
                     stateMachine.SwitchState(new PlayerFireBoltState(stateMachine));
+                    return;
+                }
+            }
+
+            if (stateMachine.InputReader.isFireballing && stateMachine.Cooldowns.IsFireballReady())
+            {
+                if (stateMachine.Mana.TryUseMana(stateMachine.FireballStats.GetFireballSpellManaCost())) 
+                {
+                    stateMachine.SwitchState(new PlayerFireballCastState(stateMachine));
                     return;
                 }
             }
@@ -51,7 +60,7 @@ namespace Units.Player
 
         public override void Exit()
         {
-            stateMachine.InputReader.FireballEvent -= OnFireball;
+            //stateMachine.InputReader.FireballEvent -= OnFireball;
             stateMachine.InputReader.DodgeEvent -= OnDodge;
         }
 
@@ -95,9 +104,9 @@ namespace Units.Player
             }
         }
         
-        private void OnFireball()
-        {
-            stateMachine.SwitchState(new PlayerFireballAimingState(stateMachine));
-        }
+        // private void OnFireball()
+        // {
+        //     stateMachine.SwitchState(new PlayerFireballAimingState(stateMachine));
+        // }
     }
 }

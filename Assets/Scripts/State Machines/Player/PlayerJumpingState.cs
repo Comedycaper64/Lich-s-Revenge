@@ -36,6 +36,7 @@ namespace Units.Player
             if (stateMachine.Controller.velocity.y <= 0f)
             {
                 stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+                return;
             }
 
             //FaceTarget();

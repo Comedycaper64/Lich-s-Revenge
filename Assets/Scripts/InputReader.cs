@@ -9,12 +9,12 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Vector2 MovementValue {get; private set;}
     public event Action JumpEvent;
     public event Action DodgeEvent;
-    // public event Action TargetEvent;
-    public event Action FireballEvent;
+    //public event Action FireballEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
     public bool isBlocking {get; private set;}
     public bool isHealing {get; private set;}
+    public bool isFireballing {get; private set;}
 
     private Controls controls;
 
@@ -22,10 +22,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         controls = new Controls();
         controls.Player.SetCallbacks(this);
-
-        controls.Player.Enable();
-
-        
+        controls.Player.Enable();        
     }
 
     public void ToggleCameraMovement(bool enable)
@@ -107,9 +104,15 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnFireball(InputAction.CallbackContext context)
     {
-        if (!context.performed) {return;}
-
-        FireballEvent?.Invoke();
+        if (context.performed) 
+        {
+            isFireballing = true;
+        }
+        else if (context.canceled)
+        {
+            isFireballing = false;
+        }
+        //FireballEvent?.Invoke();
     }
 
     public void OnHeal(InputAction.CallbackContext context)

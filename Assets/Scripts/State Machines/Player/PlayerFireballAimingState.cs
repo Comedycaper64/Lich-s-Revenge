@@ -16,7 +16,7 @@ namespace Units.Player
 
         public override void Enter()
         {
-            stateMachine.InputReader.FireballEvent += OnFireball;
+            //stateMachine.InputReader.FireballEvent += OnFireball;
             stateMachine.InputReader.DodgeEvent += OnDodge;
             //display UI for fireball aim location + aoe
         }
@@ -38,13 +38,30 @@ namespace Units.Player
                 return;
             }
 
-            //Use linerenderer to draw line
 
-                //Implement curve to fireball launch?
+            //Implement curve to fireball launch?
 
+            DrawAimLine();
+
+            Vector3 movement = CalculateMovement();
+
+            Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
+
+            FaceLookDirection(movement, deltaTime);
+        }
+
+        public override void Exit()
+        {
+            //stateMachine.InputReader.FireballEvent -= OnFireball;
+            stateMachine.InputReader.DodgeEvent -= OnDodge;
+            weaponHandler.UpdateFireballVisual(Vector3.zero);
+            weaponHandler.UpdateFireballAimLine(null);
+        }
+
+        private void DrawAimLine()
+        {
             RaycastHit hit;
             int layermask = 1 << 6;
-            //layermask = ~layermask;
             if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(weaponHandler.fireballEmitter), out hit, 50f, layermask))
             {
                 weaponHandler.UpdateFireballVisual(hit.point);
@@ -56,20 +73,6 @@ namespace Units.Player
                 weaponHandler.UpdateFireballVisual(Vector3.zero);
                 weaponHandler.UpdateFireballAimLine(null);
             }
-
-            Vector3 movement = CalculateMovement();
-
-            Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
-
-            FaceLookDirection(movement, deltaTime);
-        }
-
-        public override void Exit()
-        {
-            stateMachine.InputReader.FireballEvent -= OnFireball;
-            stateMachine.InputReader.DodgeEvent -= OnDodge;
-            weaponHandler.UpdateFireballVisual(Vector3.zero);
-            weaponHandler.UpdateFireballAimLine(null);
         }
 
         private Vector3 CalculateMovement()

@@ -32,6 +32,7 @@ namespace Units.Player
             if (duration <= 0f)
             {
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                return;
             }
         }
     }

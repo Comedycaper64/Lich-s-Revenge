@@ -9,8 +9,11 @@ namespace Units.Player
         private readonly int FireballHash = Animator.StringToHash("Fireball Cast");
         private float previousFrameTime; 
 
+        PlayerWeaponHandler weaponHandler;
+
         public PlayerFireballCastState(PlayerStateMachine stateMachine) : base(stateMachine)
         {
+            weaponHandler = stateMachine.gameObject.GetComponent<PlayerWeaponHandler>();
         }
 
         public override void Enter()
@@ -22,14 +25,31 @@ namespace Units.Player
 
         public override void Tick(float deltaTime)
         {
-            Move(deltaTime);
+            if (!stateMachine.InputReader.isFireballing)
+            {
+                stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+                return;
+            }
 
             float normalisedTime = GetNormalizedTime(stateMachine.Animator);
             if (normalisedTime >= 1f)
             {
                 stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+                return;
             }
+
+            if (normalisedTime <= 0.7f)
+            {
+                DrawAimLine();
+            }
+
             previousFrameTime = normalisedTime;
+
+            Vector3 movement = CalculateMovement();
+
+            Move(movement * stateMachine.LichStats.GetCastingMovementSpeed(), deltaTime);
+
+            FaceLookDirection(movement, deltaTime);
         }
 
         public override void Exit()
@@ -37,6 +57,49 @@ namespace Units.Player
             stateMachine.InputReader.ToggleCameraMovement(true);
             stateMachine.Cooldowns.SetFireballCooldown();
             stateMachine.InputReader.DodgeEvent -= OnDodge;
+            weaponHandler.UpdateFireballVisual(Vector3.zero);
+            weaponHandler.UpdateFireballAimLine(null);
+        }
+
+        private void DrawAimLine()
+        {
+            RaycastHit hit;
+            int layermask = 1 << 6;
+            if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(weaponHandler.fireballEmitter), out hit, 50f, layermask))
+            {
+                weaponHandler.UpdateFireballVisual(hit.point);
+                Vector3[] positionArray = new Vector3[2] {weaponHandler.fireballEmitter.position, hit.point};
+                weaponHandler.UpdateFireballAimLine(positionArray); 
+            }
+            else
+            {
+                weaponHandler.UpdateFireballVisual(Vector3.zero);
+                weaponHandler.UpdateFireballAimLine(null);
+            }
+        }
+
+        private Vector3 CalculateMovement()
+        {
+            Vector3 forward = stateMachine.MainCameraTransform.forward;
+            forward.y = 0f;
+            forward.Normalize();
+
+            Vector3 right = stateMachine.MainCameraTransform.right;
+            right.y = 0f;
+            right.Normalize();
+
+            return forward * stateMachine.InputReader.MovementValue.y +
+                right * stateMachine.InputReader.MovementValue.x;
+        }
+
+        private void FaceLookDirection(Vector3 movement, float deltaTime)
+        {
+            //Rotates player on Y axis to face where camera is looking
+            //Doesn't rotate on X and Z because it looks bad with current model, might work with lich
+
+            Quaternion lookDirection = stateMachine.MainCameraTransform.rotation;
+            lookDirection.eulerAngles = new Vector3(0, lookDirection.eulerAngles.y, 0);
+            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
         }
 
         private void OnDodge()

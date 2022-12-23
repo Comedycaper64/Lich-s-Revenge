@@ -27,6 +27,12 @@ namespace Stats
         [SerializeField] private float spellManaCostAdditiveModifier;
         [SerializeField] private float spellManaCostOverride;
 
+        [Header("Spell Attack")]
+        [ShowOnly] [SerializeField] private float SpellAttack;
+        [SerializeField] private float spellAttackMultiplicativeModifier;
+        [SerializeField] private float spellAttackAdditiveModifier;
+        [SerializeField] private float spellAttackOverride;
+
 
         private void Awake() 
         {
@@ -67,6 +73,14 @@ namespace Stats
                 return spellManaCostOverride;
         }
 
+        public float GetFireballSpellAttack()
+        {
+            if (spellAttackOverride == 0)
+                return (lichStats.GetLichAttack() * spellAttackMultiplicativeModifier) + spellAttackAdditiveModifier;
+            else
+                return spellAttackOverride;
+        }
+
         private void OnLichStatsChanged()
         {
             RefreshStatDisplays();
@@ -79,6 +93,10 @@ namespace Stats
                 SpellCooldown = GetFireballSpellCooldown();
                 SpellProjectileSpeed = GetFireballSpellProjectileSpeed();
                 SpellManaCost = GetFireballSpellManaCost();
+                if (PlayerStats.Instance)
+                {
+                    SpellAttack = GetFireballSpellAttack();
+                }
             }
         }
 

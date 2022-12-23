@@ -58,7 +58,7 @@ namespace Units.Player
 
             //Move slower while blocking?
 
-            Move(movement * stateMachine.LichStats.GetLichSpeed() * 0.6f, deltaTime);
+            Move(movement * stateMachine.LichStats.GetCastingMovementSpeed(), deltaTime);
 
             if (stateMachine.InputReader.MovementValue == Vector2.zero)
             {
