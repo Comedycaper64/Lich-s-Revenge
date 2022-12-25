@@ -51,6 +51,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         DodgeEvent?.Invoke();
     }
 
+    public void OnAbsorb(InputAction.CallbackContext context)
+    {
+        if (!context.performed) {return;}
+
+        AbsorbEvent?.Invoke();
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         MovementValue = context.ReadValue<Vector2>();
@@ -125,12 +132,5 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             isHealing = false;
         }
-    }
-
-    public void OnAbsorb(InputAction.CallbackContext context)
-    {
-        if (!context.performed) {return;}
-
-        AbsorbEvent?.Invoke();
     }
 }

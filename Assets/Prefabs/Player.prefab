@@ -500,6 +500,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lichMana: {fileID: 5334516548349113555}
   cooldowns: {fileID: 4113573329148648660}
+  lichStats: {fileID: 0}
+  absorbMaterial: {fileID: 2100000, guid: 47a9fc3d1f498be45937eee02e7b86de, type: 2}
+  blockMaterial: {fileID: 2100000, guid: 5db295423e69a8c47a9b9a983a4aee5d, type: 2}
+  aegisRenderer: {fileID: 742611467766673481}
+  aegisCollider: {fileID: 742611467766673480}
   canEnable: 1
 --- !u!54 &742611467766673524
 Rigidbody:
@@ -3919,10 +3924,12 @@ MonoBehaviour:
   attackMultiplicativeModifier: 1
   attackAdditiveModifier: 0
   attackOverride: 0
+  attackBuffMultiplier: 5
   Speed: 6
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
+  castingSpeedMultiplicativeModifier: 0
   maxMana: 100
   manaRegenRate: 10
   spellCooldown: 1
@@ -3930,6 +3937,7 @@ MonoBehaviour:
   spellManaCost: 20
   healAmount: 50
   aegisBreakCooldown: 5
+  absorbBuffDuration: 5
   dodgeDistance: 10
   dodgeDuration: 0.5
   dodgeCooldown: 2
@@ -3958,7 +3966,7 @@ MonoBehaviour:
   spellManaCostMultiplicativeModifier: 1
   spellManaCostAdditiveModifier: 0
   spellManaCostOverride: 0
-  SpellAttack: 0
+  SpellAttack: 20
   spellAttackMultiplicativeModifier: 1
   spellAttackAdditiveModifier: 0
   spellAttackOverride: 0
@@ -3986,7 +3994,7 @@ MonoBehaviour:
   spellManaCostMultiplicativeModifier: 3
   spellManaCostAdditiveModifier: 0
   spellManaCostOverride: 0
-  SpellAttack: 0
+  SpellAttack: 60
   spellAttackMultiplicativeModifier: 3
   spellAttackAdditiveModifier: 0
   spellAttackOverride: 0
@@ -4044,6 +4052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBones: 5
+  bones: 0
   boneText: {fileID: 0}
 --- !u!114 &293418511149191559
 MonoBehaviour:

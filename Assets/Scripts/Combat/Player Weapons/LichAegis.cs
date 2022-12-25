@@ -1,23 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Stats;
 using UnityEngine;
 
 public class LichAegis : MonoBehaviour
 {
     [SerializeField] private Mana lichMana;
     [SerializeField] private PlayerCooldowns cooldowns;
-    //[SerializeField] private float parryWindow;
-    //[SerializeField] private Material parryMaterial;
-    //[SerializeField] private Material blockMaterial;
-
-    //private MeshRenderer aegisRenderer;
+    [SerializeField] private LichStats lichStats;
+    [SerializeField] private Material absorbMaterial;
+    [SerializeField] private Material blockMaterial;
+    [SerializeField] private MeshRenderer aegisRenderer;
+    [SerializeField] private Collider aegisCollider;
 
     public bool canEnable = true;
-    //private bool parrying = false;
+    private bool absorbing = false;
+    private bool attackBuffed = false;
 
-    private void Awake() 
+    private float remainingBuffTime = 0;
+
+    private void Update() 
     {
-        //aegisRenderer = GetComponent<MeshRenderer>();
+        if (attackBuffed)
+        {
+            remainingBuffTime -= Time.deltaTime;
+            if (remainingBuffTime < 0f)
+            {
+                lichStats.ResetAttack();
+                attackBuffed = false;
+            }
+        }    
     }
 
     public void ToggleCanEnable(bool canEnable)
@@ -29,36 +42,45 @@ public class LichAegis : MonoBehaviour
     {
         if (canEnable)
         {
-            gameObject.SetActive(enable);
-            //parrying = enable;
-            // if (enable == true)
-            // {
-            //     StartCoroutine(AegisActivating());
-            // }
+            aegisRenderer.material = blockMaterial;
+            aegisCollider.enabled = enable;
+            aegisRenderer.enabled = enable;
         }
     }
 
-    // public bool IsParrying()
-    // {
-    //     return parrying;
-    // }
-
-    // private IEnumerator AegisActivating()
-    // {
-    //     aegisRenderer.material = parryMaterial;
-    //     yield return new WaitForSeconds(parryWindow);
-    //     parrying = false;
-    //     aegisRenderer.material = blockMaterial;
-    // }
-
-    public void DamageAegis(float damage)
+    public void ToggleAbsorb(bool enable)
     {
-        if (!lichMana.TryUseMana(damage))
+        aegisRenderer.material = absorbMaterial;
+        aegisCollider.enabled = enable;
+        aegisRenderer.enabled = enable;
+        absorbing = enable;
+    }
+
+    public void DamageAegis(float damage, bool isProjectile)
+    {
+        if (absorbing)
+        {
+            if (isProjectile)
+            {
+                AbsorbProjectile();
+            }
+        }
+        else if (!lichMana.TryUseMana(damage))
         {
             lichMana.UseMana(damage);
             ToggleAegis(false);
             ToggleCanEnable(false);
             cooldowns.SetAegisCooldown();
         }
+    }
+
+    private void AbsorbProjectile()
+    {
+        if (!attackBuffed)
+        {
+            lichStats.BuffAttack();
+        }
+        remainingBuffTime = lichStats.GetLichAbsorbBuffDuration();
+        attackBuffed = true;
     }
 }

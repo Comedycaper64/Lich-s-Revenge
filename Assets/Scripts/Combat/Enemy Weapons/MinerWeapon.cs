@@ -46,7 +46,7 @@ public class MinerWeapon : MonoBehaviour
             handler.DisableWeapon();
             unitHealth.DealDamage(0);
             unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
-            aegis.DamageAegis(damage);
+            aegis.DamageAegis(damage, false);
 
             //End attack, weapon bounce state, or something similar
             // if (aegis.IsParrying())

@@ -18,6 +18,7 @@ namespace Stats
         [SerializeField] private float attackMultiplicativeModifier; 
         [SerializeField] private float attackAdditiveModifier;
         [SerializeField] private float attackOverride = 0;
+        [SerializeField] private float attackBuffMultiplier;
 
         [Header("Movement Speed")]
         [ShowOnly] [SerializeField] private float Speed;
@@ -36,6 +37,7 @@ namespace Stats
         [SerializeField] private float spellManaCost;
         [SerializeField] private int healAmount;
         [SerializeField] private float aegisBreakCooldown;
+        [SerializeField] private float absorbBuffDuration;
 
         [Header("Dodging")]
         [SerializeField] private float dodgeDistance;
@@ -123,6 +125,11 @@ namespace Stats
             return aegisBreakCooldown;
         }
 
+        public float GetLichAbsorbBuffDuration()
+        {
+            return absorbBuffDuration;
+        }
+
         public float GetLichDodgeDistance()
         {
             return dodgeDistance;
@@ -159,7 +166,16 @@ namespace Stats
                 RefreshStatDisplays();
                 OnStatsChanged?.Invoke();
             }
-            
+        }
+
+        public void BuffAttack()
+        {
+            attackOverride = GetLichAttack() * attackBuffMultiplier;
+        }
+
+        public void ResetAttack()
+        {
+            attackOverride = 0;
         }
     }
 }

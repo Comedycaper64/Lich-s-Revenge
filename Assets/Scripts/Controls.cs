@@ -418,7 +418,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e2f94ba4-7409-4c9c-a7d0-2f1ca2d2724d"",
+                    ""id"": ""7f15def8-7298-4d0e-b00f-ea095406deae"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
