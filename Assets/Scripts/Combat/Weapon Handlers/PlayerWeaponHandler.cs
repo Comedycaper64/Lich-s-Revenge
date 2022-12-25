@@ -99,6 +99,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     public void LaunchFireball()
     {
+        stateMachine.Mana.UseMana(fireballStats.GetFireballSpellManaCost());
         fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(fireballEmitter), Vector3.up);
         currentFireball.transform.SetParent(null);
         currentFireball.transform.rotation = fireballRotation;

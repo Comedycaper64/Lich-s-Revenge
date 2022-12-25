@@ -107,6 +107,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Absorb"",
+                    ""type"": ""Button"",
+                    ""id"": ""94475c1d-b068-4a3b-86cb-5564f1ea2c12"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -223,7 +232,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""8398ce91-7919-4c94-87a5-28d08eb1eeac"",
-                    ""path"": ""<Joystick>/stick/up"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -234,7 +243,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""1cad60b3-8a01-4bb4-8778-a7c549ccd9c6"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -245,7 +254,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""37e9ca83-ad7a-4220-b0e3-220c339e6f97"",
-                    ""path"": ""<Joystick>/stick/left"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -256,7 +265,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""d0ebb363-049f-4ef8-aeac-c808418b7e66"",
-                    ""path"": ""<Joystick>/stick/right"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -322,7 +331,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d5843c8f-a64e-4325-b7d9-5f9e1fb1cc9b"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -395,6 +404,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c8654dc-2ba5-414b-aff0-75cf95aad4a5"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Absorb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2f94ba4-7409-4c9c-a7d0-2f1ca2d2724d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Absorb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -440,6 +471,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Fireball = m_Player.FindAction("Fireball", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
+        m_Player_Absorb = m_Player.FindAction("Absorb", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -508,6 +540,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fireball;
     private readonly InputAction m_Player_Heal;
     private readonly InputAction m_Player_Block;
+    private readonly InputAction m_Player_Absorb;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -521,6 +554,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Fireball => m_Wrapper.m_Player_Fireball;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
         public InputAction @Block => m_Wrapper.m_Player_Block;
+        public InputAction @Absorb => m_Wrapper.m_Player_Absorb;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -557,6 +591,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Block.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                 @Block.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                 @Block.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
+                @Absorb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
+                @Absorb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
+                @Absorb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -588,6 +625,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Block.started += instance.OnBlock;
                 @Block.performed += instance.OnBlock;
                 @Block.canceled += instance.OnBlock;
+                @Absorb.started += instance.OnAbsorb;
+                @Absorb.performed += instance.OnAbsorb;
+                @Absorb.canceled += instance.OnAbsorb;
             }
         }
     }
@@ -621,5 +661,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnFireball(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
+        void OnAbsorb(InputAction.CallbackContext context);
     }
 }

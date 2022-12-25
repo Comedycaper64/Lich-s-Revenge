@@ -9,7 +9,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Vector2 MovementValue {get; private set;}
     public event Action JumpEvent;
     public event Action DodgeEvent;
-    //public event Action FireballEvent;
+    public event Action AbsorbEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
     public bool isBlocking {get; private set;}
@@ -18,7 +18,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     private Controls controls;
 
-    void Start()
+    void Awake()
     {
         controls = new Controls();
         controls.Player.SetCallbacks(this);
@@ -80,13 +80,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAim(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            isAiming = true;
-        }
-        else if (context.canceled)
+        if (context.canceled)
         {
             isAiming = false;
+        }
+        else if (context.performed)
+        {
+            isAiming = true;
         }
     }
 
@@ -125,5 +125,12 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             isHealing = false;
         }
+    }
+
+    public void OnAbsorb(InputAction.CallbackContext context)
+    {
+        if (!context.performed) {return;}
+
+        AbsorbEvent?.Invoke();
     }
 }

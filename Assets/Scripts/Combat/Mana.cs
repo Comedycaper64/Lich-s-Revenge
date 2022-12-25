@@ -49,6 +49,17 @@ public class Mana : MonoBehaviour
         return true;
     }
 
+    public bool HasMana(float manaAmount)
+    {
+        return manaAmount < mana;
+    }
+
+    // public void AddMana(float manaAdd)
+    // {
+    //     mana = Mathf.Min(mana + manaAdd, maxMana);
+    //     UpdateManaBar();
+    // }
+
     public void UseMana(float manaUse)
     {
         mana = Mathf.Max(mana - manaUse, 0);

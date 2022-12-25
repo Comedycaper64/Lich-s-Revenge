@@ -16,12 +16,18 @@ namespace Units.Player
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.1f);
-            //stateMachine.InputReader.FireballEvent += OnFireball;   
+            stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.InputReader.DodgeEvent += OnDodge;
         }
 
         public override void Tick(float deltaTime)
         {
+            if (!stateMachine.InputReader.isAiming)
+            {
+                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
+                return;
+            }
+
             if (stateMachine.InputReader.isAttacking && stateMachine.Cooldowns.IsFireboltReady())
             {
                 if (stateMachine.Mana.TryUseMana(stateMachine.FireboltStats.GetFireboltSpellManaCost()))
@@ -33,7 +39,7 @@ namespace Units.Player
 
             if (stateMachine.InputReader.isFireballing && stateMachine.Cooldowns.IsFireballReady())
             {
-                if (stateMachine.Mana.TryUseMana(stateMachine.FireballStats.GetFireballSpellManaCost())) 
+                if (stateMachine.Mana.HasMana(stateMachine.FireballStats.GetFireballSpellManaCost())) 
                 {
                     stateMachine.SwitchState(new PlayerFireballCastState(stateMachine));
                     return;
@@ -46,11 +52,6 @@ namespace Units.Player
                 return;
             }
             
-            if (!stateMachine.InputReader.isAiming)
-            {
-                stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));
-                return;
-            }
             Vector3 movement = CalculateMovement();
 
             Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
@@ -60,7 +61,7 @@ namespace Units.Player
 
         public override void Exit()
         {
-            //stateMachine.InputReader.FireballEvent -= OnFireball;
+            stateMachine.InputReader.AbsorbEvent -= OnAbsorb; 
             stateMachine.InputReader.DodgeEvent -= OnDodge;
         }
 
@@ -104,9 +105,12 @@ namespace Units.Player
             }
         }
         
-        // private void OnFireball()
-        // {
-        //     stateMachine.SwitchState(new PlayerFireballAimingState(stateMachine));
-        // }
+        private void OnAbsorb()
+        {
+            if (stateMachine.Bones.TryUseBones(1))
+            {
+                stateMachine.SwitchState(new PlayerAbsorbState(stateMachine));
+            }
+        }
     }
 }

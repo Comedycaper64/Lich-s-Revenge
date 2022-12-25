@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Absorb",
+                    "type": "Button",
+                    "id": "94475c1d-b068-4a3b-86cb-5564f1ea2c12",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -201,7 +210,7 @@
                 {
                     "name": "up",
                     "id": "8398ce91-7919-4c94-87a5-28d08eb1eeac",
-                    "path": "<Joystick>/stick/up",
+                    "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -212,7 +221,7 @@
                 {
                     "name": "down",
                     "id": "1cad60b3-8a01-4bb4-8778-a7c549ccd9c6",
-                    "path": "<Joystick>/stick/down",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -223,7 +232,7 @@
                 {
                     "name": "left",
                     "id": "37e9ca83-ad7a-4220-b0e3-220c339e6f97",
-                    "path": "<Joystick>/stick/left",
+                    "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -234,7 +243,7 @@
                 {
                     "name": "right",
                     "id": "d0ebb363-049f-4ef8-aeac-c808418b7e66",
-                    "path": "<Joystick>/stick/right",
+                    "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -300,7 +309,7 @@
                 {
                     "name": "",
                     "id": "d5843c8f-a64e-4325-b7d9-5f9e1fb1cc9b",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -371,6 +380,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c8654dc-2ba5-414b-aff0-75cf95aad4a5",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse & Keyboard",
+                    "action": "Absorb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2f94ba4-7409-4c9c-a7d0-2f1ca2d2724d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Absorb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

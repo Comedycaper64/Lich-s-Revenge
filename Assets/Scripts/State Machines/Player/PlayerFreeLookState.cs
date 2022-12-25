@@ -22,6 +22,7 @@ namespace Units.Player
         {
             stateMachine.InputReader.JumpEvent += OnJump;
             stateMachine.InputReader.DodgeEvent += OnDodge;
+            stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
         }
 
@@ -63,6 +64,7 @@ namespace Units.Player
         {
             stateMachine.InputReader.JumpEvent -= OnJump;
             stateMachine.InputReader.DodgeEvent -= OnDodge;
+            stateMachine.InputReader.AbsorbEvent -= OnAbsorb; 
         }
 
         public override string GetStateName()
@@ -102,6 +104,14 @@ namespace Units.Player
                 {
                     stateMachine.SwitchState(new PlayerDodgeState(stateMachine, stateMachine.InputReader.MovementValue));
                 }
+            }
+        }
+
+        private void OnAbsorb()
+        {
+            if (stateMachine.Bones.TryUseBones(1))
+            {
+                stateMachine.SwitchState(new PlayerAbsorbState(stateMachine));
             }
         }
     }

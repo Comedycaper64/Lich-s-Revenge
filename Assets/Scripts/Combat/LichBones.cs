@@ -6,7 +6,7 @@ using TMPro;
 public class LichBones : MonoBehaviour
 {
     [SerializeField] private int maxBones;
-    private int bones;
+    [SerializeField] private int bones;
     [SerializeField] private TextMeshProUGUI boneText;
 
     private void Awake() 
