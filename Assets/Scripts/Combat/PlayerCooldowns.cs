@@ -12,12 +12,12 @@ public class PlayerCooldowns : MonoBehaviour
     private float fireballCooldown;
     private float aegisCooldown;
 
-    private void Start() 
+    private void Awake() 
     {
-        SetDodgeCooldown();
-        SetFireboltCooldown();
-        SetFireballCooldown();
-        SetAegisCooldown();
+        dodgeCooldown = 0;
+        fireballCooldown = 0;
+        fireboltCooldown = 0;
+        aegisCooldown = 0;
     }
 
     void Update()

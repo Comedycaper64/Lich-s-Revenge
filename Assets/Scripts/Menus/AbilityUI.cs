@@ -5,21 +5,36 @@ using UnityEngine.UI;
 
 public class AbilityUI : MonoBehaviour
 {
-    [SerializeField] private Slider uiSlider;
+    [SerializeField] private Slider cooldownSlider;
+    [SerializeField] private Slider manaSlider;
     [SerializeField] private Image uiImage;
+
+    private Color activeColour = new Color(255f, 255f, 255f, 1);
+    private Color inactiveColour = new Color(80f, 80f, 80f, 0.1f);
 
     public float GetSliderValue()
     {
-        return uiSlider.value;
+        return cooldownSlider.value;
     }
 
-    public void SetImageColour(Color newColor)
+    public void SetImageActive(bool active)
     {
-        uiImage.color = newColor;
+        if (active)
+        {
+            uiImage.color = activeColour;
+        }
+        else
+        {
+            uiImage.color = inactiveColour;
+        }
     }
 
-    public void SetSliderValue(float newValue)
+    public void SetCooldownSliderValue(float newValue)
     {
-        uiSlider.value = newValue;
+        cooldownSlider.value = newValue;
+    }
+    public void SetManaSliderValue(float newValue)
+    {
+        manaSlider.value = newValue;
     }
 }
