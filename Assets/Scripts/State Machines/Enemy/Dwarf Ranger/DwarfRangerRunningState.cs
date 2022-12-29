@@ -44,7 +44,7 @@ namespace Units.Enemy.Ranger
             if(stateMachine.Agent.isOnNavMesh)
             {
                 stateMachine.Agent.destination = stateMachine.Player.transform.position;
-                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetDwarfRangerSpeed() * -1, deltaTime);
+                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetSpeed() * -1, deltaTime);
             }
             stateMachine.Agent.velocity = stateMachine.Controller.velocity;
         }

@@ -60,7 +60,7 @@ namespace Units.Enemy.Miner
             if(stateMachine.Agent.isOnNavMesh)
             {
                 stateMachine.Agent.destination = stateMachine.Player.transform.position;
-                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetDwarfMinerSpeed(), deltaTime);
+                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetSpeed(), deltaTime);
             }
             stateMachine.Agent.velocity = stateMachine.Controller.velocity;
         }

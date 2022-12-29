@@ -27,7 +27,7 @@ namespace Units.Enemy.Ranger
             Agent.updatePosition = false;
             Agent.updateRotation = false;
 
-            Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetDwarfRangerHealth()));
+            Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
 
             SwitchState(new DwarfRangerIdleState(this));    
         }
@@ -57,7 +57,7 @@ namespace Units.Enemy.Ranger
         private void OnDrawGizmosSelected() 
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, Stats.GetDwarfRangerFleeRange());    
+            Gizmos.DrawWireSphere(transform.position, Stats.GetFleeRange());    
         }
     }
 }

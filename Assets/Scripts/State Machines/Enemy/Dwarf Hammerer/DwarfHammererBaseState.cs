@@ -23,22 +23,26 @@ namespace Units.Enemy.Hammerer
             stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
         }
 
+        protected void LeapMove(Vector3 motion, float deltaTime)
+        {
+            stateMachine.Controller.Move(motion * deltaTime);
+        }
+
         protected void FacePlayer()
-    {
+        {
             if (stateMachine.Player != null)
             {
                 Vector3 lookPos = stateMachine.Player.transform.position - stateMachine.transform.position;
                 lookPos.y = 0f;
                 stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
             }
-    }
+        }
 
-        protected bool IsInChaseRange()
+        protected bool IsInChaseRange(float playerDistanceSqr)
         {
             if (stateMachine.Player.isDead) {return false;}
 
-            Vector3 toPlayer = stateMachine.Player.transform.position - stateMachine.transform.position;
-            return toPlayer.magnitude <= stateMachine.PlayerChasingRange;
+            return playerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;
         }
     }
 }

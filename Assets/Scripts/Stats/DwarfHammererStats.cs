@@ -42,7 +42,7 @@ namespace Stats
             }  
         }
 
-        public float GetDwarfHammererHealth()
+        public float GetHealth()
         {
             if (healthOverride == 0)
                 return (EnemyStats.Instance.GetEnemyHealth() * healthMultiplicativeModifier) + healthAdditiveModifier;
@@ -51,7 +51,7 @@ namespace Stats
             
         }
 
-        public float GetDwarfHammererAttack()
+        public float GetAttack()
         {
             if (attackOverride == 0)
                 return (EnemyStats.Instance.GetEnemyAttack() * attackMultiplicativeModifier) + attackAdditiveModifier;
@@ -59,7 +59,7 @@ namespace Stats
                 return attackOverride;
         }
 
-        public float GetDwarfHammererSpeed()
+        public float GetSpeed()
         {
             if (speedOverride == 0)
                 return (EnemyStats.Instance.GetEnemySpeed() * speedMultiplicativeModifier) + speedAdditiveModifier;
@@ -69,9 +69,9 @@ namespace Stats
 
         private void RefreshStatDisplays()
         {
-            Health = GetDwarfHammererHealth();
-            Attack = GetDwarfHammererAttack();
-            Speed = GetDwarfHammererSpeed();
+            Health = GetHealth();
+            Attack = GetAttack();
+            Speed = GetSpeed();
         }
 
         private void OnEnemyStatsChanged()

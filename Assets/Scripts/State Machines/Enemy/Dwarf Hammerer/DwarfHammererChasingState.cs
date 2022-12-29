@@ -27,12 +27,18 @@ namespace Units.Enemy.Hammerer
 
         public override void Tick(float deltaTime)
         {
-            if (!IsInChaseRange())
+            float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
+            if (!IsInChaseRange(playerDistanceSqr))
             {
                 stateMachine.SwitchState(new DwarfHammererIdleState(stateMachine));
                 return;
             }
-            else if (IsInAttackRange())
+            else if (IsInLeapRange(playerDistanceSqr) && stateMachine.IsSlamReady())
+            {
+                stateMachine.SwitchState(new DwarfHammererLeapState(stateMachine, Mathf.Sqrt(playerDistanceSqr)));
+                return;
+            }
+            else if (IsInAttackRange(playerDistanceSqr))
             {
                 stateMachine.SwitchState(new DwarfHammererAttackingState(stateMachine));
                 return;
@@ -46,21 +52,32 @@ namespace Units.Enemy.Hammerer
             stateMachine.Animator.SetFloat(SpeedParameterHash, 1f, 0.1f, deltaTime);
         }
 
-        private bool IsInAttackRange()
+        private bool IsInAttackRange(float playerDistanceSqr)
         {
             if (stateMachine.Player.isDead) {return false;}
 
-            float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
-
             return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
+        }
+
+        private bool IsInLeapRange(float playerDistanceSqr)
+        {
+            if (stateMachine.Player.isDead) {return false;}
+
+            return (playerDistanceSqr <= stateMachine.LeapMaxRange * stateMachine.LeapMaxRange) && (playerDistanceSqr >= stateMachine.LeapMinRange * stateMachine.LeapMinRange);
         }
 
         private void MoveToPlayer(float deltaTime)
         {
             if(stateMachine.Agent.isOnNavMesh)
             {
+                //Debug.Log("On Nav Mesh");
                 stateMachine.Agent.destination = stateMachine.Player.transform.position;
-                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetDwarfHammererSpeed(), deltaTime);
+                Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetSpeed(), deltaTime);
+                //Debug.Log("Movement Velocity: " + stateMachine.Agent.desiredVelocity.normalized);
+            }
+            else
+            {
+                //Debug.Log("Not On Nav Mesh");
             }
             stateMachine.Agent.velocity = stateMachine.Controller.velocity;
         }

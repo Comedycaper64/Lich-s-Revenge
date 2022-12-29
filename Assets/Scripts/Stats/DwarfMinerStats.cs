@@ -40,7 +40,7 @@ namespace Stats
             }  
         }
 
-        public float GetDwarfMinerHealth()
+        public float GetHealth()
         {
             if (healthOverride == 0)
                 return (EnemyStats.Instance.GetEnemyHealth() * healthMultiplicativeModifier) + healthAdditiveModifier;
@@ -49,7 +49,7 @@ namespace Stats
             
         }
 
-        public float GetDwarfMinerAttack()
+        public float GetAttack()
         {
             if (attackOverride == 0)
                 return (EnemyStats.Instance.GetEnemyAttack() * attackMultiplicativeModifier) + attackAdditiveModifier;
@@ -57,7 +57,7 @@ namespace Stats
                 return attackOverride;
         }
 
-        public float GetDwarfMinerSpeed()
+        public float GetSpeed()
         {
             if (speedOverride == 0)
                 return (EnemyStats.Instance.GetEnemySpeed() * speedMultiplicativeModifier) + speedAdditiveModifier;
@@ -67,9 +67,9 @@ namespace Stats
 
         private void RefreshStatDisplays()
         {
-            Health = GetDwarfMinerHealth();
-            Attack = GetDwarfMinerAttack();
-            Speed = GetDwarfMinerSpeed();
+            Health = GetHealth();
+            Attack = GetAttack();
+            Speed = GetSpeed();
         }
 
         private void OnEnemyStatsChanged()

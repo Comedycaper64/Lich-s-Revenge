@@ -63,8 +63,8 @@ public class RangerWeaponHandler : MonoBehaviour
         projectile = Instantiate(rangerProjectile, projectileEmitter.position, Quaternion.LookRotation(playerDirection, Vector3.up)).GetComponent<RangerWeapon>();
         weaponFired = true;
         projectile.SetCollider(GetComponent<CharacterController>());
-        projectile.SetAttack(Mathf.RoundToInt(rangerStats.GetDwarfRangerAttack()), 5f);
-        projectile.SetSpeed(rangerStats.GetDwarfRangerProjectileSpeed());
+        projectile.SetAttack(Mathf.RoundToInt(rangerStats.GetAttack()), 5f);
+        projectile.SetSpeed(rangerStats.GetProjectileSpeed());
         playerDirection = (GetPlayerPosition() - projectile.transform.position);
         aimRenderer.material = firingMaterial;
     }

@@ -2170,10 +2170,10 @@ GameObject:
   - component: {fileID: 6098511159983460420}
   - component: {fileID: 6098511159983460443}
   - component: {fileID: 6098511159983460441}
-  - component: {fileID: 7480656227009812645}
+  - component: {fileID: 5196932429125823356}
+  - component: {fileID: 6951523835278017276}
   - component: {fileID: 6098511159983460423}
-  - component: {fileID: 8492051974594629762}
-  - component: {fileID: 3176697230401948271}
+  - component: {fileID: 1776911853489750296}
   m_Layer: 7
   m_Name: Dwarf Hammerer
   m_TagString: Enemy
@@ -2217,7 +2217,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.03
-  m_MinMoveDistance: 0
+  m_MinMoveDistance: 0.01
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &6098511159983460420
 NavMeshAgent:
@@ -2276,7 +2276,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7480656227009812645
+--- !u!114 &5196932429125823356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2285,21 +2285,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 6098511159983460444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3729e8b8071dea940830b62f3527f4d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94402123631865e41a3dbc5894ea0f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 200
-  healthMultiplicativeModifier: 2
+  Health: 100
+  healthMultiplicativeModifier: 1
   healthAdditiveModifier: 0
   healthOverride: 0
-  Attack: 60
-  attackMultiplicativeModifier: 3
+  Attack: 20
+  attackMultiplicativeModifier: 1
   attackAdditiveModifier: 0
   attackOverride: 0
-  Speed: 3
-  speedMultiplicativeModifier: 0.6
+  Speed: 5
+  speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
+--- !u!114 &6951523835278017276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6098511159983460444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c2a8c6467ce18429edb5295a2863e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 6098511159983460441}
+  <Controller>k__BackingField: {fileID: 6098511159983460442}
+  <Stats>k__BackingField: {fileID: 5196932429125823356}
+  <ForceReceiver>k__BackingField: {fileID: 6098511159983460423}
+  <Agent>k__BackingField: {fileID: 6098511159983460420}
+  <WeaponHandler>k__BackingField: {fileID: 1776911853489750296}
+  <Health>k__BackingField: {fileID: 6098511159983460443}
+  <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
+    type: 3}
+  <PlayerChasingRange>k__BackingField: 30
+  <AttackRange>k__BackingField: 3
+  <LeapMinRange>k__BackingField: 15
+  <LeapMaxRange>k__BackingField: 30
+  <AttackKnockback>k__BackingField: 5
+  <SlamJumpHeight>k__BackingField: 5
+  slamCooldownMin: 5
+  slamCooldownMax: 10
 --- !u!114 &6098511159983460423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2315,7 +2344,7 @@ MonoBehaviour:
   controller: {fileID: 6098511159983460442}
   agent: {fileID: 6098511159983460420}
   drag: 0.3
---- !u!114 &8492051974594629762
+--- !u!114 &1776911853489750296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2324,34 +2353,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6098511159983460444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60778623663405a4792228441940af9e, type: 3}
+  m_Script: {fileID: 11500000, guid: b4e6c7dfe89bb44478537006b336978c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 6098511159983460441}
-  <Controller>k__BackingField: {fileID: 6098511159983460442}
-  <Stats>k__BackingField: {fileID: 7480656227009812645}
-  <ForceReceiver>k__BackingField: {fileID: 6098511159983460423}
-  <Agent>k__BackingField: {fileID: 6098511159983460420}
-  <WeaponHandler>k__BackingField: {fileID: 3176697230401948271}
-  <Health>k__BackingField: {fileID: 6098511159983460443}
-  <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
-    type: 3}
-  <PlayerChasingRange>k__BackingField: 30
-  <AttackRange>k__BackingField: 3
-  <AttackKnockback>k__BackingField: 15
---- !u!114 &3176697230401948271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6098511159983460444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6699651af736a434ca387510e7c311a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponLogic: {fileID: 7292937743232680388}
+  weaponLogic: {fileID: 1833965644367123132}
 --- !u!1 &6098511160264926704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2452,7 @@ GameObject:
   - component: {fileID: 6098511160556500243}
   - component: {fileID: 6098511160556500240}
   - component: {fileID: 6098511160556500241}
-  - component: {fileID: 7292937743232680388}
+  - component: {fileID: 1833965644367123132}
   m_Layer: 7
   m_Name: WeaponLogic
   m_TagString: Untagged
@@ -2500,7 +2505,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7292937743232680388
+--- !u!114 &1833965644367123132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2509,7 +2514,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6098511160556500242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a72f3cdc99a48742a41e31f3856b8bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f4188d4668d4e644bca1fa7b54b1753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myCollider: {fileID: 6098511159983460442}

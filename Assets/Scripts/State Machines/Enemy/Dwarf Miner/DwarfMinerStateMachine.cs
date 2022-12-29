@@ -30,7 +30,7 @@ namespace Units.Enemy.Miner
             Agent.updatePosition = false;
             Agent.updateRotation = false;
 
-            Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetDwarfMinerHealth()));
+            Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
 
             SwitchState(new DwarfMinerIdleState(this));    
         }

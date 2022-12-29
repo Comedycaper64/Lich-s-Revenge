@@ -52,7 +52,7 @@ namespace Stats
             }  
         }
 
-        public float GetDwarfRangerHealth()
+        public float GetHealth()
         {
             if (healthOverride == 0)
                 return (EnemyStats.Instance.GetEnemyHealth() * healthMultiplicativeModifier) + healthAdditiveModifier;
@@ -61,7 +61,7 @@ namespace Stats
             
         }
 
-        public float GetDwarfRangerAttack()
+        public float GetAttack()
         {
             if (attackOverride == 0)
                 return (EnemyStats.Instance.GetEnemyAttack() * attackMultiplicativeModifier) + attackAdditiveModifier;
@@ -69,7 +69,7 @@ namespace Stats
                 return attackOverride;
         }
 
-        public float GetDwarfRangerSpeed()
+        public float GetSpeed()
         {
             if (speedOverride == 0)
                 return (EnemyStats.Instance.GetEnemySpeed() * speedMultiplicativeModifier) + speedAdditiveModifier;
@@ -77,31 +77,31 @@ namespace Stats
                 return speedOverride;
         }
 
-        public float GetDwarfRangerProjectileSpeed()
+        public float GetProjectileSpeed()
         {
             return projectileSpeed;
         }
 
-        public float GetDwarfRangerProjectileTimeToLive()
+        public float GetProjectileTimeToLive()
         {
             return projectileTimeToLive;
         }
 
-        public float GetDwarfRangerAttackRange()
+        public float GetAttackRange()
         {
             return attackRange;
         }
 
-        public float GetDwarfRangerFleeRange()
+        public float GetFleeRange()
         {
             return fleeRange;
         }
 
         private void RefreshStatDisplays()
         {
-            Health = GetDwarfRangerHealth();
-            Attack = GetDwarfRangerAttack();
-            Speed = GetDwarfRangerSpeed();
+            Health = GetHealth();
+            Attack = GetAttack();
+            Speed = GetSpeed();
         }
 
         private void OnEnemyStatsChanged()

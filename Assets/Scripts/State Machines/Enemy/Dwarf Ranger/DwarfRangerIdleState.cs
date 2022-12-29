@@ -49,7 +49,7 @@ namespace Units.Enemy.Ranger
 
             float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
-            return playerDistanceSqr <= stateMachine.Stats.GetDwarfRangerAttackRange() * stateMachine.Stats.GetDwarfRangerAttackRange();
+            return playerDistanceSqr <= stateMachine.Stats.GetAttackRange() * stateMachine.Stats.GetAttackRange();
         }
     }
 }
