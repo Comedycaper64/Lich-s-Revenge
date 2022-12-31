@@ -56,14 +56,14 @@ namespace Units.Enemy.Hammerer
         {
             if (stateMachine.Player.isDead) {return false;}
 
-            return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;
+            return playerDistanceSqr <= Mathf.Pow(stateMachine.Stats.GetAttackRange(), 2f);
         }
 
         private bool IsInLeapRange(float playerDistanceSqr)
         {
             if (stateMachine.Player.isDead) {return false;}
 
-            return (playerDistanceSqr <= stateMachine.LeapMaxRange * stateMachine.LeapMaxRange) && (playerDistanceSqr >= stateMachine.LeapMinRange * stateMachine.LeapMinRange);
+            return stateMachine.Stats.IsInLeapRange(Mathf.Sqrt(playerDistanceSqr));
         }
 
         private void MoveToPlayer(float deltaTime)

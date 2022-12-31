@@ -25,16 +25,18 @@ namespace Units.Enemy.Hammerer
             playerPosition = stateMachine.Player.transform.position;
             startYValue = stateMachine.transform.position.y;
             movementDirection = playerPosition - stateMachine.transform.position;
+            stateMachine.WeaponHandler.SetSlamVisualLocation(playerPosition);
+            stateMachine.WeaponHandler.EnableSlamVisual(true);
         }
 
         public override void Tick(float deltaTime)
         {
-            LeapMove(movementDirection.normalized * stateMachine.Stats.GetSpeed() * 3f , deltaTime);
+            LeapMove(movementDirection.normalized * stateMachine.Stats.GetLeapSpeed(), deltaTime);
             Vector3 groundedPosition = stateMachine.transform.position;
             groundedPosition.y = startYValue;
             Vector3 targetDirection = playerPosition - groundedPosition;
             float distanceFromTarget = targetDirection.magnitude;
-            float leapYValue = startYValue + (stateMachine.SlamJumpHeight * Mathf.Sin(3.142f * (leapStartDistance - distanceFromTarget) / (1f * leapStartDistance)));
+            float leapYValue = startYValue + (stateMachine.Stats.GetSlamJumpHeight() * Mathf.Sin(Mathf.PI * (leapStartDistance - distanceFromTarget) / (leapStartDistance)));
             stateMachine.transform.position = new Vector3(
                 stateMachine.transform.position.x,
                 leapYValue,
@@ -42,17 +44,18 @@ namespace Units.Enemy.Hammerer
             
             //Once reached ground do big slam attack (Slam State)
             float dotProduct = Vector3.Dot(movementDirection, (targetDirection));
-            if ((0.3f > distanceFromTarget) || (stateMachine.Controller.isGrounded && distanceFromTarget < (leapStartDistance / 2)) || (dotProduct < 0f))
+            if ((0.1f > distanceFromTarget) || (stateMachine.Controller.isGrounded && distanceFromTarget < (leapStartDistance / 2)) || (dotProduct < 0f))
             {
-                stateMachine.SwitchState(new DwarfHammererIdleState(stateMachine));
-                //stateMachine.SwitchState(new DwarfHammererImpactState(stateMachine));
+                stateMachine.SwitchState(new DwarfHammererSlamState(stateMachine));
                 return;
             }
         }
 
         public override void Exit()
         {
-            stateMachine.ForceReceiver.AddForce(Vector3.down);
+            //Manages to reset the navmesh somehow
+            stateMachine.ForceReceiver.AddForce(Vector3.up);
+            stateMachine.WeaponHandler.EnableSlamVisual(false);
             stateMachine.SetSlamCooldown();
         }
     }

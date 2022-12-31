@@ -24,6 +24,18 @@ namespace Stats
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
 
+        [Header("Hammerer Unique")]
+        [SerializeField] private float slamRadius;
+        [SerializeField] private float leapSpeedModifier;
+        [SerializeField] private float slamCooldownMin;
+        [SerializeField] private float slamCooldownMax;
+        [SerializeField] private float playerChasingRange; 
+        [SerializeField] private float attackRange;
+        [SerializeField] private float leapMinRange;
+        [SerializeField] private float leapMaxRange; 
+        [SerializeField] private int attackKnockback; 
+        [SerializeField] private int slamJumpHeight;
+
         [ExecuteInEditMode]
         private void Awake() 
         {
@@ -65,6 +77,46 @@ namespace Stats
                 return (EnemyStats.Instance.GetEnemySpeed() * speedMultiplicativeModifier) + speedAdditiveModifier;
             else
                 return speedOverride;
+        }
+
+        public float GetSlamCooldown()
+        {
+            return Random.Range(slamCooldownMin, slamCooldownMax);
+        }
+
+        public float GetLeapSpeed()
+        {
+            return GetSpeed() * leapSpeedModifier;
+        }
+
+        public float GetSlamRadius()
+        {
+            return slamRadius;
+        }
+
+        public float GetChaseRange()
+        {
+            return playerChasingRange;
+        }
+
+        public float GetAttackRange()
+        {
+            return attackRange;
+        }
+
+        public bool IsInLeapRange(float distanceFromPlayer)
+        {
+            return (leapMinRange < distanceFromPlayer) && (distanceFromPlayer < leapMaxRange);
+        }
+
+        public float GetSlamJumpHeight()
+        {
+            return slamJumpHeight;
+        }
+
+        public float GetAttackKnockback()
+        {
+            return attackKnockback;
         }
 
         private void RefreshStatDisplays()

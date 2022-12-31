@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HammererWeapon : MonoBehaviour
 {
-     [SerializeField] private Collider myCollider;
+    [SerializeField] private Collider myCollider;
     private HammererWeaponHandler handler;
     private Health unitHealth;
     private ForceReceiver unitForceReceiver;
@@ -34,28 +34,53 @@ public class HammererWeapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other ==  myCollider) {return;}
+        TryAttack(other);
+    }
 
-        if (alreadyCollidedWith.Contains(other)) {return;}
+    private void TryAttack(Collider collider)
+    {
+        if (collider ==  myCollider) {return;}
 
-        alreadyCollidedWith.Add(other);
+        if (alreadyCollidedWith.Contains(collider)) {return;}
 
-        if(other.TryGetComponent<LichAegis>(out LichAegis aegis))
+        alreadyCollidedWith.Add(collider);
+
+        if(collider.TryGetComponent<LichAegis>(out LichAegis aegis))
         {
             handler.DisableWeapon();
             unitHealth.DealDamage(0);
-            unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
+            unitForceReceiver.AddForce((unitCollider.transform.position - collider.transform.position).normalized * knockback);
             aegis.DamageAegis(999f, false);
         }
 
-        if(other.TryGetComponent<Health>(out Health health))
+        if(collider.TryGetComponent<Health>(out Health health))
         {
             health.DealDamage(damage);
         }
 
-        if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
+        if (collider.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
         {
-            forceReceiver.AddForce((other.transform.position - myCollider.transform.position).normalized * knockback);
+            forceReceiver.AddForce((collider.transform.position - myCollider.transform.position).normalized * knockback);
+        }
+    }
+
+    public void TrySlamAttack(Collider collider)
+    {
+        if(collider.TryGetComponent<LichAegis>(out LichAegis aegis))
+        {
+            aegis.DamageAegis(damage, false);
+        }
+        else
+        {
+            if(collider.TryGetComponent<Health>(out Health health))
+            {
+                health.DealDamage(damage);
+            }
+
+            if (collider.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
+            {
+                forceReceiver.AddForce((collider.transform.position - myCollider.transform.position).normalized * knockback);
+            }
         }
     }
 }

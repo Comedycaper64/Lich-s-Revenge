@@ -42,7 +42,7 @@ namespace Units.Enemy.Hammerer
         {
             if (stateMachine.Player.isDead) {return false;}
 
-            return playerDistanceSqr <= stateMachine.PlayerChasingRange * stateMachine.PlayerChasingRange;
+            return playerDistanceSqr <= Mathf.Pow(stateMachine.Stats.GetChaseRange(), 2f);
         }
     }
 }

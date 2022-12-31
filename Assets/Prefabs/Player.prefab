@@ -3899,7 +3899,7 @@ MonoBehaviour:
   <Bones>k__BackingField: {fileID: 8420443934070497428}
   <Ragdoll>k__BackingField: {fileID: 7970330452390705886}
   <RotationDamping>k__BackingField: 10
-  <JumpForce>k__BackingField: 5
+  <JumpForce>k__BackingField: 10
   <dashVFX>k__BackingField: {fileID: 2077259520154301884, guid: daa3f42276ebdad4393925c6ccc13fb8,
     type: 3}
   <dashVFX2>k__BackingField: {fileID: 729651334358243720, guid: eb0052beb720871439bf30dbf0ec5559,

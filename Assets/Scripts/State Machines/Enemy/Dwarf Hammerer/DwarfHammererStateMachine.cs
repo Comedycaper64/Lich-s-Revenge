@@ -17,15 +17,8 @@ namespace Units.Enemy.Hammerer
         [field: SerializeField] public HammererWeaponHandler WeaponHandler {get; private set;}
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public GameObject Bone  {get; private set;}
-        [field: SerializeField] public float PlayerChasingRange {get; private set;}
-        [field: SerializeField] public float AttackRange {get; private set;}
-        [field: SerializeField] public float LeapMinRange {get; private set;}
-        [field: SerializeField] public float LeapMaxRange {get; private set;}
-        [field: SerializeField] public int AttackKnockback {get; private set;}
-        [field: SerializeField] public int SlamJumpHeight {get; private set;}
         private float slamCooldown = 5f;
-        [field: SerializeField] private float slamCooldownMin;
-        [field: SerializeField] private float slamCooldownMax;
+        
 
         public Health Player {get; private set;}
 
@@ -37,6 +30,7 @@ namespace Units.Enemy.Hammerer
             Agent.updateRotation = false;
 
             Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
+            WeaponHandler.SetupSlamVisual(Stats.GetSlamRadius());
 
             SwitchState(new DwarfHammererIdleState(this));    
         }
@@ -64,7 +58,7 @@ namespace Units.Enemy.Hammerer
 
         public void SetSlamCooldown()
         {
-            slamCooldown = Random.Range(slamCooldownMin, slamCooldownMax);
+            slamCooldown = Stats.GetSlamCooldown();
         }
 
         private void OnEnable() 
@@ -92,7 +86,10 @@ namespace Units.Enemy.Hammerer
         private void OnDrawGizmosSelected() 
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, PlayerChasingRange);    
+            Gizmos.DrawWireSphere(transform.position, Stats.GetChaseRange());    
+            Gizmos.DrawCube(transform.position, new Vector3(Stats.GetSlamRadius() * 2, 1f, Stats.GetSlamRadius() * 2));
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, Stats.GetSlamRadius());
         }
     }
 }
