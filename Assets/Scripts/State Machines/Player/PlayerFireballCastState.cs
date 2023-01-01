@@ -31,6 +31,11 @@ namespace Units.Player
                 return;
             }
 
+            if (stateMachine.InputReader.isAttacking && stateMachine.WeaponHandler.QTEActive)
+            {
+                stateMachine.WeaponHandler.CompleteQTE();
+            }
+
             float normalisedTime = GetNormalizedTime(stateMachine.Animator);
             if (normalisedTime >= 1f)
             {
@@ -54,6 +59,18 @@ namespace Units.Player
 
         public override void Exit()
         {
+            if (stateMachine.WeaponHandler.fireballLaunched)
+            {
+                if (stateMachine.WeaponHandler.QTESucceeded)
+                {
+                    stateMachine.Mana.UseMana(stateMachine.FireballStats.GetFireballQTEMana());
+                }
+                else
+                {
+                    stateMachine.Mana.UseMana(stateMachine.FireballStats.GetFireballSpellManaCost());
+                }
+            }
+            
             stateMachine.InputReader.ToggleCameraMovement(true);
             stateMachine.Cooldowns.SetFireballCooldown();
             stateMachine.InputReader.DodgeEvent -= OnDodge;

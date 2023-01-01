@@ -16,7 +16,7 @@ namespace Units.Enemy.Miner
         {
             FacePlayer();
 
-            stateMachine.WeaponHandler.SetAttack(Mathf.RoundToInt(stateMachine.Stats.GetAttack()), stateMachine.AttackKnockback);
+            stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.AttackKnockback);
 
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
         }

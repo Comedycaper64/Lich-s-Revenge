@@ -33,6 +33,10 @@ namespace Stats
         [SerializeField] private float spellAttackAdditiveModifier;
         [SerializeField] private float spellAttackOverride;
 
+        [Header("Misc")]
+        [SerializeField] private float QTEDamageModifier;
+        [SerializeField] private float QTEManaModifier;
+
 
         private void Awake() 
         {
@@ -73,12 +77,22 @@ namespace Stats
                 return spellManaCostOverride;
         }
 
+        public float GetFireballQTEMana()
+        {
+            return GetFireballSpellManaCost() * QTEManaModifier;
+        }
+
         public float GetFireballSpellAttack()
         {
             if (spellAttackOverride == 0)
                 return (lichStats.GetLichAttack() * spellAttackMultiplicativeModifier) + spellAttackAdditiveModifier;
             else
                 return spellAttackOverride;
+        }
+
+        public float GetFireballQTEAttack()
+        {
+            return GetFireballSpellAttack() * QTEDamageModifier;
         }
 
         private void OnLichStatsChanged()

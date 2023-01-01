@@ -6,7 +6,7 @@ public class RangerWeapon : MonoBehaviour
 {
     private Collider myCollider;
     private List<Collider> alreadyCollidedWith = new List<Collider>();
-    private int damage;
+    private float damage;
     private float knockback;
     private float projectileSpeed;
 
@@ -22,7 +22,7 @@ public class RangerWeapon : MonoBehaviour
         transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);    
     }
 
-    public void SetAttack(int damage, float knockback)
+    public void SetAttack(float damage, float knockback)
     {
         this.damage = damage;
         this.knockback = knockback;

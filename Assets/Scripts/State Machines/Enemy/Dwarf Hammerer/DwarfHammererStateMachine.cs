@@ -29,7 +29,7 @@ namespace Units.Enemy.Hammerer
             Agent.updatePosition = false;
             Agent.updateRotation = false;
 
-            Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
+            Health.SetMaxHealth(Stats.GetHealth());
             WeaponHandler.SetupSlamVisual(Stats.GetSlamRadius());
 
             SwitchState(new DwarfHammererIdleState(this));    

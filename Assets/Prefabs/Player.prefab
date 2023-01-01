@@ -3896,6 +3896,7 @@ MonoBehaviour:
   <ForceReceiver>k__BackingField: {fileID: 7970330452725956041}
   <Health>k__BackingField: {fileID: 7970330452390705878}
   <Mana>k__BackingField: {fileID: 5334516548349113555}
+  <WeaponHandler>k__BackingField: {fileID: 293418511149191559}
   <Bones>k__BackingField: {fileID: 8420443934070497428}
   <Ragdoll>k__BackingField: {fileID: 7970330452390705886}
   <RotationDamping>k__BackingField: 10
@@ -3998,6 +3999,8 @@ MonoBehaviour:
   spellAttackMultiplicativeModifier: 3
   spellAttackAdditiveModifier: 0
   spellAttackOverride: 0
+  QTEDamageModifier: 2
+  QTEManaModifier: 0.5
 --- !u!114 &7970330452390705878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4066,6 +4069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1adfee57b3baa40a06172317542e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QTESucceeded: 0
+  QTEActive: 0
+  fireballLaunched: 0
   fireballAimLine: {fileID: 7970330450914685244}
   fireboltPrefab: {fileID: 4365010490009713644, guid: 98ce7023204b1054c8ed6e8f3600b4e6,
     type: 3}

@@ -40,7 +40,7 @@ public class HammererWeaponHandler : MonoBehaviour
         }
     }
 
-    public void SetAttack(int attack, int attackKnockback) => weaponLogic.SetAttack(attack, attackKnockback);
+    public void SetAttack(float attack, float attackKnockback) => weaponLogic.SetAttack(attack, attackKnockback);
 
     public void EnableSlamVisual(bool enable) => slamLogic.EnableSlamVisual(enable);
     public void SetSlamVisualLocation(Vector3 newLocation) => slamLogic.SetSlamVisualLocation(newLocation);

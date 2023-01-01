@@ -14,7 +14,7 @@ namespace Units.Enemy.Hammerer
 
         public override void Enter()
         {
-            stateMachine.WeaponHandler.SetAttack(Mathf.RoundToInt(stateMachine.Stats.GetAttack()), Mathf.RoundToInt(stateMachine.Stats.GetAttackKnockback()));
+            stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.Stats.GetAttackKnockback());
             stateMachine.Animator.CrossFadeInFixedTime(ImpactHash, 0.1f);
             stateMachine.WeaponHandler.Slam(stateMachine.Stats.GetSlamRadius());
         }

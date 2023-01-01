@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Units.Player;
 using UnityEngine;
 
 public class FireBallProjectile : MonoBehaviour
 {
     private Collider playerCollider;
-    private int damage;
+    private float damage;
     private float knockback;
+
+    private bool damagePlayer;
 
     private float animationTime = 2f;
     [SerializeField] private float timeToLive;
@@ -24,10 +27,15 @@ public class FireBallProjectile : MonoBehaviour
         transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);    
     }
 
-    public void SetAttack(int damage, float knockback)
+    public void SetAttack(float damage, float knockback)
     {
         this.damage = damage;
         this.knockback = knockback;
+    }
+
+    public void SetDamagePlayer(bool enable)
+    {
+        damagePlayer = enable;
     }
 
     public void SetProjectileSpeed(float projectileSpeed)
@@ -65,7 +73,14 @@ public class FireBallProjectile : MonoBehaviour
         {
             if (collider.TryGetComponent<Health>(out Health health))
             {
-                health.DealDamage(damage);
+                if (collider.TryGetComponent<PlayerStateMachine>(out PlayerStateMachine playerStateMachine) && !damagePlayer)
+                {
+                    continue;
+                }
+                else
+                {
+                    health.DealDamage(damage);
+                }
             }
 
             if (collider.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))

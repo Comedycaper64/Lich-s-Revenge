@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private float maxHealth = 100;
     [SerializeField] private Image healthBar;
 
-    private int health;
+    private float health;
     public bool isDead;
 
     private bool invulnerable;
@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     public event Action OnTakeDamage;
     public event Action OnDie;
 
-    public void SetMaxHealth(int newHealth)
+    public void SetMaxHealth(float newHealth)
     {
         maxHealth = newHealth;
         health = maxHealth;
@@ -38,7 +38,7 @@ public class Health : MonoBehaviour
 
     public float GetHealthNormalised()
     {
-        return (float)health / maxHealth;
+        return health / maxHealth;
     }
 
     public void UpdateHealthbar()
@@ -46,7 +46,7 @@ public class Health : MonoBehaviour
         healthBar.fillAmount = GetHealthNormalised();
     }
 
-    public void DealDamage(int damage)
+    public void DealDamage(float damage)
     {
         if (invulnerable) {return;}
 
@@ -67,7 +67,7 @@ public class Health : MonoBehaviour
         OnTakeDamage?.Invoke();
     }
 
-    public void Heal(int healing)
+    public void Heal(float healing)
     {
         health = Mathf.Min(health + healing, maxHealth);
         UpdateHealthbar();

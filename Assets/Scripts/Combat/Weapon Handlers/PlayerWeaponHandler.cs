@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class PlayerWeaponHandler : MonoBehaviour
 {
-    private PlayerStateMachine stateMachine;
     private LichStats lichStats;
+    public bool QTESucceeded = false;
+    public bool QTEActive = false;
+    public bool fireballLaunched = false;
     private float defaultCameraFocusPoint = 50f;
+    private Transform MainCameraTransform;
     [SerializeField] private LineRenderer fireballAimLine;
 
     [Header("Firebolt")]
@@ -29,7 +32,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         lichStats = gameObject.GetComponent<LichStats>();
         fireboltStats = gameObject.GetComponent<FireboltStats>();
         fireballStats = gameObject.GetComponent<FireballStats>();
-        stateMachine = gameObject.GetComponent<PlayerStateMachine>();
+        MainCameraTransform = Camera.main.transform;
     }
 
     public Vector3 GetDirectionToCameraCentre(Transform emitter)
@@ -40,7 +43,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         int layermask1 = 1 << 7;
         int layermask2 = 1 << 6;
         int layermask = layermask1 | layermask2;
-        if (Physics.Raycast(stateMachine.MainCameraTransform.position, stateMachine.MainCameraTransform.forward, out hit, 100f, layermask))
+        if (Physics.Raycast(MainCameraTransform.position, MainCameraTransform.forward, out hit, 100f, layermask))
         {
             relativePos = hit.point - emitter.position;
             return relativePos;
@@ -84,7 +87,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     {
         //Instantiates firebolt at emitter, sets damage of firebolt, ensures it doesn't hit player
         FireBoltProjectile firebolt = Instantiate(fireboltPrefab, fireboltEmitter.position, Quaternion.LookRotation(GetDirectionToCameraCentre(fireboltEmitter), Vector3.up)).GetComponent<FireBoltProjectile>();
-        firebolt.SetAttack(Mathf.RoundToInt(fireboltStats.GetFireboltSpellAttack()), 10);
+        firebolt.SetAttack(fireboltStats.GetFireboltSpellAttack(), 10f);
         firebolt.SetProjectileSpeed(fireboltStats.GetFireboltSpellProjectileSpeed());
         firebolt.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
     }
@@ -93,16 +96,43 @@ public class PlayerWeaponHandler : MonoBehaviour
     {
         //currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform.position, fireballRotation).GetComponent<FireBallProjectile>();
         currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform).GetComponent<FireBallProjectile>();
-        currentFireball.SetAttack(Mathf.RoundToInt(fireballStats.GetFireballSpellAttack()), 20);
+        currentFireball.SetAttack(fireballStats.GetFireballSpellAttack(), 20f);
         currentFireball.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
+        QTESucceeded = false;
+        fireballLaunched = false;
+    }
+
+    public void StartQTE()
+    {
+        QTEActive = true;
+    }
+
+    public void CompleteQTE()
+    {
+        QTESucceeded = true;
+        QTEActive = false;
+        LaunchFireball();
     }
 
     public void LaunchFireball()
     {
-        stateMachine.Mana.UseMana(fireballStats.GetFireballSpellManaCost());
-        fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(fireballEmitter), Vector3.up);
-        currentFireball.transform.SetParent(null);
-        currentFireball.transform.rotation = fireballRotation;
-        currentFireball.SetProjectileSpeed(fireballStats.GetFireballSpellProjectileSpeed());
+        if (!fireballLaunched)
+        {
+            fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(fireballEmitter), Vector3.up);
+            currentFireball.transform.SetParent(null);
+            currentFireball.transform.rotation = fireballRotation;
+            currentFireball.SetProjectileSpeed(fireballStats.GetFireballSpellProjectileSpeed());
+            if (!QTESucceeded)
+            {   
+                QTEActive = false;
+                currentFireball.SetDamagePlayer(true);
+            }
+            else
+            {
+                currentFireball.SetDamagePlayer(false);
+                currentFireball.SetAttack(fireballStats.GetFireballQTEAttack(), 20f);
+            }
+            fireballLaunched = true;
+        }
     }
 }

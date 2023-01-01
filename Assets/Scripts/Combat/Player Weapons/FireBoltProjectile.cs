@@ -7,7 +7,7 @@ public class FireBoltProjectile : MonoBehaviour
     [SerializeField] private GameObject fireboltExplosion;
     
     private Collider playerCollider;
-    private int damage;
+    private float damage;
     private float knockback;
 
     [SerializeField] private float timeToLive;
@@ -23,7 +23,7 @@ public class FireBoltProjectile : MonoBehaviour
         transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);    
     }
 
-    public void SetAttack(int damage, float knockback)
+    public void SetAttack(float damage, float knockback)
     {
         this.damage = damage;
         this.knockback = knockback;

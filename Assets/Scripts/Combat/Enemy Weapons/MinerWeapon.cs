@@ -11,7 +11,7 @@ public class MinerWeapon : MonoBehaviour
     private ForceReceiver unitForceReceiver;
     private Collider unitCollider;
     private List<Collider> alreadyCollidedWith = new List<Collider>();
-    private int damage;
+    private float damage;
     private float knockback;
 
     public void SetHandler(MinerWeaponHandler handler)
@@ -22,7 +22,7 @@ public class MinerWeapon : MonoBehaviour
         unitCollider = handler.GetComponent<Collider>();
     }
 
-    public void SetAttack(int damage, float knockback)
+    public void SetAttack(float damage, float knockback)
     {
         this.damage = damage;
         this.knockback = knockback;

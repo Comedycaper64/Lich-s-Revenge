@@ -16,7 +16,7 @@ namespace Units.Enemy.Hammerer
         {
             FacePlayer();
 
-            stateMachine.WeaponHandler.SetAttack(Mathf.RoundToInt(stateMachine.Stats.GetAttack()), Mathf.RoundToInt(stateMachine.Stats.GetAttackKnockback()));
+            stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.Stats.GetAttackKnockback());
 
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
         }

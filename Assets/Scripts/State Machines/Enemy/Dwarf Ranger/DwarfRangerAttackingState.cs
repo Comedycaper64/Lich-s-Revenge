@@ -16,8 +16,6 @@ namespace Units.Enemy.Ranger
         {
             FacePlayer();
 
-            //stateMachine.Weapon.SetAttack(Mathf.RoundToInt(stateMachine.Stats.GetDwarfRangerAttack()), stateMachine.AttackKnockback);
-
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
         }
 

@@ -10,7 +10,7 @@ public class HammererWeapon : MonoBehaviour
     private ForceReceiver unitForceReceiver;
     private Collider unitCollider;
     private List<Collider> alreadyCollidedWith = new List<Collider>();
-    private int damage;
+    private float damage;
     private float knockback;
 
     public void SetHandler(HammererWeaponHandler handler)
@@ -21,7 +21,7 @@ public class HammererWeapon : MonoBehaviour
         unitCollider = handler.GetComponent<Collider>();
     }
 
-    public void SetAttack(int damage, float knockback)
+    public void SetAttack(float damage, float knockback)
     {
         this.damage = damage;
         this.knockback = knockback;

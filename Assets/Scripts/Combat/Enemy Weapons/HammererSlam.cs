@@ -9,6 +9,7 @@ public class HammererSlam : MonoBehaviour
     private void Awake() 
     {
         slamVisual.transform.parent = null;    
+        EnableSlamVisual(false);
     }
 
     public void SetupSlamVisual(float slamRadius)

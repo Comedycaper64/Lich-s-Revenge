@@ -23,5 +23,5 @@ public class MinerWeaponHandler : MonoBehaviour
         weaponLogic.gameObject.SetActive(false);
     }
 
-    public void SetAttack(int attack, int attackKnockback) => weaponLogic.SetAttack(attack, attackKnockback);
+    public void SetAttack(float attack, float attackKnockback) => weaponLogic.SetAttack(attack, attackKnockback);
 }
