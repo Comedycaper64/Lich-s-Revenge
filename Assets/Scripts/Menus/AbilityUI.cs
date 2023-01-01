@@ -5,12 +5,23 @@ using UnityEngine.UI;
 
 public class AbilityUI : MonoBehaviour
 {
+    
+
     [SerializeField] private Slider cooldownSlider;
     [SerializeField] private Slider manaSlider;
     [SerializeField] private Image uiImage;
+    [SerializeField] private Image controlImage;
+
+
+    [SerializeField] private Sprite keyboardSprite;
+    [SerializeField] private Sprite xboxSprite;
+    [SerializeField] private Sprite playstationSprite;
+
+    //private Sprite currentUI;
 
     private Color activeColour = new Color(255f, 255f, 255f, 1);
     private Color inactiveColour = new Color(80f, 80f, 80f, 0.1f);
+
 
     public float GetSliderValue()
     {
@@ -27,6 +38,21 @@ public class AbilityUI : MonoBehaviour
         {
             uiImage.color = inactiveColour;
         }
+    }
+
+    public void SetKeyboardUI()
+    {
+        controlImage.sprite = keyboardSprite;
+    }
+
+    public void SetXboxUI()
+    {
+        controlImage.sprite = xboxSprite;
+    }
+
+    public void SetPlaystationUI()
+    {
+        controlImage.sprite = playstationSprite;
     }
 
     public void SetCooldownSliderValue(float newValue)

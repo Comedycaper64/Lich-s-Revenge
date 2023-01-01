@@ -4,6 +4,7 @@ using Stats;
 using UnityEngine;
 using UnityEngine.AI;
 using Units.Enemy.Miner;
+using Units.Player;
 
 namespace Units.Enemy.Hammerer
 {
@@ -21,10 +22,12 @@ namespace Units.Enemy.Hammerer
         
 
         public Health Player {get; private set;}
+        public PlayerStateMachine PlayerStateMachine;
 
         private void Start() 
         {
             Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+            PlayerStateMachine = Player.GetComponent<PlayerStateMachine>();
 
             Agent.updatePosition = false;
             Agent.updateRotation = false;

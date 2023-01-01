@@ -27,6 +27,8 @@ namespace Units.Player
         [field: SerializeField] public float JumpForce {get; private set;}
         [field: SerializeField] public GameObject dashVFX {get; private set;}
         [field: SerializeField] public GameObject dashVFX2 {get; private set;}
+        
+        public bool isDashing;
 
         public Transform MainCameraTransform {get; private set;}
 
@@ -50,6 +52,11 @@ namespace Units.Player
         {
             base.SwitchState(newState);
             OnSwitchState?.Invoke(this, newState);
+        }
+
+        public bool CanJumpToPlayer()
+        {
+            return (Controller.isGrounded && !isDashing);
         }
 
         private void OnEnable() 

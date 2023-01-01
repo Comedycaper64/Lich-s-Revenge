@@ -24,6 +24,7 @@ namespace Units.Player
             dodgeVisual = GameObject.Instantiate(stateMachine.dashVFX2, stateMachine.transform);
             GameObject.Destroy(dashVFX, 3f);
             stateMachine.PlayerMesh.SetActive(false);
+            stateMachine.isDashing = true;
         }
 
         public override void Tick(float deltaTime)
@@ -57,6 +58,7 @@ namespace Units.Player
             stateMachine.Health.SetInvulnerable(false);
             stateMachine.Cooldowns.SetDodgeCooldown();
             stateMachine.PlayerMesh.SetActive(true);
+            stateMachine.isDashing = false;
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(dashVFX, 3f);
             GameObject.Destroy(dodgeVisual);

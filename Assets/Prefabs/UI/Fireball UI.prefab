@@ -44,6 +44,24 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2530099552376318512, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: xboxSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ed05e4607c5bdf40a7b9599c74d4342,
+        type: 3}
+    - target: {fileID: 2530099552376318512, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: keyboardSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 59dc8c90008bc244486e127877a3c5ce,
+        type: 3}
+    - target: {fileID: 2530099552376318512, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: playstationSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 15db0d7f160d6714aab08c33582341cd,
+        type: 3}
     - target: {fileID: 4837983128869389988, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -70,6 +88,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4837983128869389988, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467628157613761427, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467628157613761427, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467628157613761427, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467628157613761427, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467628157613761427, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467628157613761427, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0

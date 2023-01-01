@@ -11,7 +11,7 @@ namespace Units.Player
         private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
 
         private const float AnimatorDampTime = 0.05f;
-        private const float CrossFadeDuration = 0.1f;
+        private const float CrossFadeDuration = 0.01f;
 
         public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
         {

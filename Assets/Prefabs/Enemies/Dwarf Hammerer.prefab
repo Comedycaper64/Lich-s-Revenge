@@ -2246,7 +2246,7 @@ Transform:
   - {fileID: 521633301629606258}
   - {fileID: 4912890257135417777}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6098511159983460442
 CharacterController:
@@ -2355,7 +2355,7 @@ MonoBehaviour:
   attackRange: 2
   leapMinRange: 10
   leapMaxRange: 30
-  attackKnockback: 50
+  attackKnockback: 30
   slamJumpHeight: 4
 --- !u!114 &6951523835278017276
 MonoBehaviour:
@@ -2378,6 +2378,7 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 6098511159983460443}
   <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
     type: 3}
+  PlayerStateMachine: {fileID: 0}
 --- !u!114 &6098511159983460423
 MonoBehaviour:
   m_ObjectHideFlags: 0

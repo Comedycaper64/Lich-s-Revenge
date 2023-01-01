@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Stats;
@@ -13,6 +14,7 @@ public class PlayerUI : MonoBehaviour
     private LichStats playerStats;
     private FireballStats fireballStats;
     private FireboltStats fireboltStats;
+    private InputReader inputReader;
 
     [SerializeField] private Transform abilityUIContainer;
     [SerializeField] private GameObject crosshairUI;
@@ -32,6 +34,10 @@ public class PlayerUI : MonoBehaviour
     private AbilityUI healSlider;
     private AbilityUI absorbSlider;
 
+    private List<AbilityUI> sliders = new List<AbilityUI>();
+
+    private string currentInput;
+
     private StateEnum currentState;
 
     private void Awake() 
@@ -44,16 +50,21 @@ public class PlayerUI : MonoBehaviour
         playerStats = player.GetComponent<LichStats>();
         fireboltStats = player.GetComponent<FireboltStats>();
         fireballStats = player.GetComponent<FireballStats>();
+        inputReader = player.GetComponent<InputReader>();
         playerStateMachine.OnSwitchState += UpdateUI;
         ClearAbilityUIs();
-        fireboltSlider = Instantiate(fireboltAbilityUI, abilityUIContainer).GetComponent<AbilityUI>();
-        fireballSlider = Instantiate(fireballAbilityUI, abilityUIContainer).GetComponent<AbilityUI>();
-        aimSlider = Instantiate(aimAbilityUI, abilityUIContainer).GetComponent<AbilityUI>();
-        dashSlider = Instantiate(dashAbilityUI, abilityUIContainer).GetComponent<AbilityUI>();
-        healSlider = Instantiate(healAbilityUI, abilityUIContainer).GetComponent<AbilityUI>();
-        blockSlider = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>();
-        absorbSlider = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>();
+        sliders.Add(fireboltSlider = Instantiate(fireboltAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        sliders.Add(fireballSlider = Instantiate(fireballAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        sliders.Add(aimSlider = Instantiate(aimAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        sliders.Add(dashSlider = Instantiate(dashAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        sliders.Add(healSlider = Instantiate(healAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        sliders.Add(blockSlider = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        sliders.Add(absorbSlider = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         currentState = StateEnum.FreeLook;
+
+        inputReader.KeyboardAndMouseInput += OnKeyboardInput;
+        inputReader.XboxGamepadInput += OnXboxInput;
+        inputReader.PlaystationGamepadInput += OnPlaystationInput;
     }
 
     private void Update() 
@@ -130,6 +141,39 @@ public class PlayerUI : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void OnPlaystationInput()
+    {
+        if (currentInput == "Playstation") {return;}
+
+        foreach(AbilityUI slider in sliders)
+        {
+            slider.SetPlaystationUI();
+        }
+        currentInput = "Playstation";
+    }
+
+    private void OnXboxInput()
+    {
+        if (currentInput == "Xbox") {return;}
+
+        foreach(AbilityUI slider in sliders)
+        {
+            slider.SetXboxUI();
+        }
+        currentInput = "Xbox";
+    }
+
+    private void OnKeyboardInput()
+    {
+        if (currentInput == "Keyboard") {return;}
+
+        foreach(AbilityUI slider in sliders)
+        {
+            slider.SetKeyboardUI();
+        }
+        currentInput = "Keyboard";
     }
 
     private void OnDestroy() 

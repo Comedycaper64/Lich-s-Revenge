@@ -33,7 +33,7 @@ namespace Units.Enemy.Hammerer
                 stateMachine.SwitchState(new DwarfHammererIdleState(stateMachine));
                 return;
             }
-            else if (IsInLeapRange(playerDistanceSqr) && stateMachine.IsSlamReady())
+            else if (IsInLeapRange(playerDistanceSqr) && stateMachine.IsSlamReady() && stateMachine.PlayerStateMachine.CanJumpToPlayer())
             {
                 stateMachine.SwitchState(new DwarfHammererLeapState(stateMachine, Mathf.Sqrt(playerDistanceSqr)));
                 return;

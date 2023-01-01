@@ -16,13 +16,43 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public bool isHealing {get; private set;}
     public bool isFireballing {get; private set;}
 
+    public event Action KeyboardAndMouseInput;
+    public event Action XboxGamepadInput;
+    public event Action PlaystationGamepadInput;
+
     private Controls controls;
 
     void Awake()
     {
         controls = new Controls();
         controls.Player.SetCallbacks(this);
-        controls.Player.Enable();        
+        controls.Player.Enable();       
+        InputSystem.onActionChange += InputActionChangeCallback; 
+    }
+
+    private void InputActionChangeCallback(object obj, InputActionChange change)
+    {
+        if (change == InputActionChange.ActionPerformed)
+            {
+                InputAction receivedInputAction = (InputAction) obj;
+                InputDevice lastDevice = receivedInputAction.activeControl.device;
+ 
+                if(lastDevice.name.Equals("Keyboard") || lastDevice.name.Equals("Mouse"))
+                {
+                    KeyboardAndMouseInput?.Invoke();
+                    //Debug.Log("Using Keyboard / Mouse");
+                }
+                else if (lastDevice.name.Equals("XInputControllerWindows"))
+                {
+                    XboxGamepadInput?.Invoke();
+                    //Debug.Log("Using Xbox Controller");
+                }
+                else if (lastDevice.name.Equals("DualShock4GamepadHID"))
+                {
+                    PlaystationGamepadInput?.Invoke();
+                    //Debug.Log("Using Playstation Controller");
+                }
+            }
     }
 
     public void ToggleCameraMovement(bool enable)
