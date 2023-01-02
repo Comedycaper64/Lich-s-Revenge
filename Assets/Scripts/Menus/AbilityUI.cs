@@ -33,10 +33,12 @@ public class AbilityUI : MonoBehaviour
         if (active)
         {
             uiImage.color = activeColour;
+            controlImage.color = activeColour;
         }
         else
         {
             uiImage.color = inactiveColour;
+            controlImage.color = inactiveColour;
         }
     }
 

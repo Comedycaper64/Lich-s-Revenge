@@ -43,7 +43,7 @@ namespace Units.Enemy.Hammerer
                 stateMachine.transform.position.z);
             
             //Once reached ground do big slam attack (Slam State)
-            float dotProduct = Vector3.Dot(movementDirection, (targetDirection));
+            float dotProduct = Vector3.Dot(movementDirection, targetDirection);
             if ((0.1f > distanceFromTarget) || (stateMachine.Controller.isGrounded && distanceFromTarget < (leapStartDistance / 2)) || (dotProduct < 0f))
             {
                 stateMachine.SwitchState(new DwarfHammererSlamState(stateMachine));

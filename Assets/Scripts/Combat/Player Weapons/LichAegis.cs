@@ -8,6 +8,7 @@ public class LichAegis : MonoBehaviour
 {
     [SerializeField] private Mana lichMana;
     [SerializeField] private PlayerCooldowns cooldowns;
+    [SerializeField] private Health lichHealth;
     [SerializeField] private LichStats lichStats;
     [SerializeField] private Material absorbMaterial;
     [SerializeField] private Material blockMaterial;
@@ -15,6 +16,7 @@ public class LichAegis : MonoBehaviour
     [SerializeField] private Collider aegisCollider;
 
     public bool canEnable = true;
+    public bool blocking = false;
     private bool absorbing = false;
     private bool attackBuffed = false;
 
@@ -42,17 +44,21 @@ public class LichAegis : MonoBehaviour
     {
         if (canEnable)
         {
+            blocking = enable;
             aegisRenderer.material = blockMaterial;
             aegisCollider.enabled = enable;
             aegisRenderer.enabled = enable;
+            lichHealth.SetInvulnerable(enable);
         }
     }
 
     public void ToggleAbsorb(bool enable)
     {
+        blocking = enable;
         aegisRenderer.material = absorbMaterial;
         aegisCollider.enabled = enable;
         aegisRenderer.enabled = enable;
+        lichHealth.SetInvulnerable(enable);
         absorbing = enable;
     }
 

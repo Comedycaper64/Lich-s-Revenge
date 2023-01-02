@@ -521,7 +521,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &742611469532107562
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3905,7 @@ MonoBehaviour:
     type: 3}
   <dashVFX2>k__BackingField: {fileID: 729651334358243720, guid: eb0052beb720871439bf30dbf0ec5559,
     type: 3}
+  isDashing: 0
 --- !u!114 &4161487224015547651
 MonoBehaviour:
   m_ObjectHideFlags: 0

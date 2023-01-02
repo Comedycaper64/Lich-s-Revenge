@@ -25,17 +25,12 @@ public class HammererWeaponHandler : MonoBehaviour
 
     public void Slam(float slamRadius)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, slamRadius, playerLayerMask);
-        Collider[] colliders1 = Physics.OverlapBox(transform.position, new Vector3(slamRadius, 1f, slamRadius), Quaternion.identity, playerLayerMask);
-        foreach (Collider collider in colliders)
+        if (Physics.CheckBox(transform.position, new Vector3(slamRadius, 1f, slamRadius), Quaternion.identity, playerLayerMask))
         {
-            foreach (Collider collider1 in colliders1)
+            Collider[] colliders = Physics.OverlapSphere(transform.position, slamRadius, playerLayerMask);
+            foreach (Collider collider in colliders)
             {
-                if (collider == collider1)
-                {
-                    Debug.Log(collider.gameObject.name);
-                    weaponLogic.TrySlamAttack(collider);
-                }
+                weaponLogic.TrySlamAttack(collider);
             }
         }
     }
