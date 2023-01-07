@@ -62,7 +62,7 @@ public class MinerWeapon : MonoBehaviour
             // }
         }
 
-        if(other.TryGetComponent<Health>(out Health health))
+        if(other.TryGetComponent<Health>(out Health health) && other.gameObject.layer != 7)
         {
             health.DealDamage(damage);
         }

@@ -21,11 +21,6 @@ namespace Units.Enemy.Miner
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
         }
 
-        public override void Exit()
-        {
-
-        }
-
         public override void Tick(float deltaTime)
         {
             if (GetNormalizedTime(stateMachine.Animator) >= 1)
@@ -33,6 +28,10 @@ namespace Units.Enemy.Miner
                 stateMachine.SwitchState(new DwarfMinerChasingState(stateMachine));
                 return;
             }
+        }
+        
+        public override void Exit()
+        {
         }
     }
 }

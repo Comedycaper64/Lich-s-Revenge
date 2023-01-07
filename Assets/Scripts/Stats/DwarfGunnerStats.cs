@@ -28,8 +28,6 @@ namespace Stats
         [SerializeField] private float speedOverride = 0;
 
         [Header("Other")]
-        [SerializeField] private float projectileSpeed;
-        [SerializeField] private float projectileTimeToLive;
         [SerializeField] private float attackRange;
         [SerializeField] private float chaseRange;
         [SerializeField] private float fleeRange;
@@ -77,16 +75,6 @@ namespace Stats
                 return (EnemyStats.Instance.GetEnemySpeed() * speedMultiplicativeModifier) + speedAdditiveModifier;
             else
                 return speedOverride;
-        }
-
-        public float GetProjectileSpeed()
-        {
-            return projectileSpeed;
-        }
-
-        public float GetProjectileTimeToLive()
-        {
-            return projectileTimeToLive;
         }
 
         public float GetAttackRange()

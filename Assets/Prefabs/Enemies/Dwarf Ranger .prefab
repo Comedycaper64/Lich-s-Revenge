@@ -3100,15 +3100,15 @@ GameObject:
   - component: {fileID: 7122006348204970709}
   - component: {fileID: 3762299948715493551}
   - component: {fileID: 2817701306319895354}
+  - component: {fileID: 6769835269184994689}
+  - component: {fileID: 6395639980812692723}
   - component: {fileID: 259272707358335212}
+  - component: {fileID: 4512957670110549957}
   - component: {fileID: 6970218857226910531}
   - component: {fileID: 2316461505739531393}
   - component: {fileID: 5141454991735257434}
-  - component: {fileID: 4391125140788437643}
-  - component: {fileID: 8793761100523884297}
-  - component: {fileID: 5157941363716007570}
   m_Layer: 7
-  m_Name: Dwarf Gunner
+  m_Name: 'Dwarf Ranger '
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3138,7 +3138,7 @@ Transform:
   - {fileID: 8941806798036239600}
   - {fileID: 2333490089812963344}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3762299948715493551
 Animator:
@@ -3150,7 +3150,7 @@ Animator:
   m_GameObject: {fileID: 7610418881678919791}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: af98c74a402c70b4fa52878b67d70ddd, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5ef5cef0604d68a459137e9d1a9481c0, type: 2}
+  m_Controller: {fileID: 9100000, guid: f4335e7995226a042b645dc0192ccf6b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3175,6 +3175,56 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 3011080545580426400}
   isDead: 0
+--- !u!114 &6769835269184994689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7610418881678919791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53bebba501232d4581bdeee6d132a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 3762299948715493551}
+  <Controller>k__BackingField: {fileID: 2316461505739531393}
+  <Stats>k__BackingField: {fileID: 6395639980812692723}
+  <ForceReceiver>k__BackingField: {fileID: 259272707358335212}
+  <Agent>k__BackingField: {fileID: 5141454991735257434}
+  <Health>k__BackingField: {fileID: 2817701306319895354}
+  <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
+    type: 3}
+  <RangerWeapon>k__BackingField: {fileID: 4512957670110549957}
+  <AttackKnockback>k__BackingField: 5
+--- !u!114 &6395639980812692723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7610418881678919791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1ef37e753c3524aac7995079504679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 50
+  healthMultiplicativeModifier: 0.5
+  healthAdditiveModifier: 0
+  healthOverride: 0
+  Attack: 30
+  attackMultiplicativeModifier: 1.5
+  attackAdditiveModifier: 0
+  attackOverride: 0
+  Speed: 5
+  speedMultiplicativeModifier: 1
+  speedAdditiveModifier: 0
+  speedOverride: 0
+  projectileSpeed: 30
+  projectileTimeToLive: 10
+  attackRange: 50
+  fleeRange: 5
 --- !u!114 &259272707358335212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3190,6 +3240,24 @@ MonoBehaviour:
   controller: {fileID: 2316461505739531393}
   agent: {fileID: 5141454991735257434}
   drag: 0.3
+--- !u!114 &4512957670110549957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7610418881678919791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc9d624818ba4d4b94261a5010d8658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponFired: 0
+  rangerProjectile: {fileID: 3531978045944807280, guid: a4658973549a63e49af19b072ce03ae0,
+    type: 3}
+  projectileEmitter: {fileID: 917582982867377727}
+  aimingMaterial: {fileID: 2100000, guid: 46295220b8388bb42b10c4918f2f466c, type: 2}
+  firingMaterial: {fileID: 2100000, guid: 0f9d7c3487ed987479cc86c634aec579, type: 2}
 --- !u!120 &6970218857226910531
 LineRenderer:
   serializedVersion: 2
@@ -3333,70 +3401,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4391125140788437643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7610418881678919791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 085d97fa37c82114a8244b427bbcc1c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 100
-  healthMultiplicativeModifier: 1
-  healthAdditiveModifier: 0
-  healthOverride: 0
-  Attack: 20
-  attackMultiplicativeModifier: 1
-  attackAdditiveModifier: 0
-  attackOverride: 0
-  Speed: 5
-  speedMultiplicativeModifier: 1
-  speedAdditiveModifier: 0
-  speedOverride: 0
-  projectileSpeed: 5
-  projectileTimeToLive: 5
-  attackRange: 8
-  chaseRange: 20
-  fleeRange: 4
-  attackarc: 0.5
---- !u!114 &8793761100523884297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7610418881678919791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc66869ff621ba640be1b7b115793122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 3762299948715493551}
-  <Controller>k__BackingField: {fileID: 2316461505739531393}
-  <Stats>k__BackingField: {fileID: 4391125140788437643}
-  <ForceReceiver>k__BackingField: {fileID: 259272707358335212}
-  <Agent>k__BackingField: {fileID: 5141454991735257434}
-  <Health>k__BackingField: {fileID: 2817701306319895354}
-  <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
-    type: 3}
-  <GunnerWeapon>k__BackingField: {fileID: 5157941363716007570}
---- !u!114 &5157941363716007570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7610418881678919791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48088a164281ba2408fb838d6349ab4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponTransform: {fileID: 917582982867377727}
 --- !u!1 &8025853796835028100
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,8 +21,9 @@ public class GunnerWeaponHandler : MonoBehaviour
     public void FireWeapon()
     {
         playerDirection = (GetPlayerPosition() - weaponTransform.position).normalized;
+        float playerDistance = (GetPlayerPosition() - weaponTransform.position).magnitude;
         //Debug.Log("Dot Product: " + Vector3.Dot(playerDirection, transform.forward));
-        if ((playerDirection.magnitude < gunnerStats.GetAttackRange()) && (Vector3.Dot(playerDirection, transform.forward) > gunnerStats.GetAttackArc()))
+        if ((playerDistance < gunnerStats.GetAttackRange()) && (Vector3.Dot(playerDirection, transform.forward) > gunnerStats.GetAttackArc()))
         {
             float damage = gunnerStats.GetAttack();
             float knockback = gunnerStats.GetAttack() * 2;    

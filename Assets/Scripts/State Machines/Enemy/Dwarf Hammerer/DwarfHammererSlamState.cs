@@ -6,7 +6,7 @@ namespace Units.Enemy.Hammerer
 {
     public class DwarfHammererSlamState : DwarfHammererBaseState
     {
-        private readonly int ImpactHash = Animator.StringToHash("Impact");
+        private readonly int SlamHash = Animator.StringToHash("Attack");
 
         public DwarfHammererSlamState(DwarfHammererStateMachine stateMachine) : base(stateMachine)
         {
@@ -15,7 +15,7 @@ namespace Units.Enemy.Hammerer
         public override void Enter()
         {
             stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.Stats.GetAttackKnockback());
-            stateMachine.Animator.CrossFadeInFixedTime(ImpactHash, 0.1f);
+            stateMachine.Animator.CrossFadeInFixedTime(SlamHash, 0.1f);
             stateMachine.WeaponHandler.Slam(stateMachine.Stats.GetSlamRadius());
         }
 
