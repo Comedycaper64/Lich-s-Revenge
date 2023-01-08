@@ -54,6 +54,7 @@ namespace Units.Enemy.Miner
 
         private void HandleDeath()
         {
+            EnemyUnitDied(gameObject);
             SwitchState(new DwarfMinerDeadState(this));
         }
 

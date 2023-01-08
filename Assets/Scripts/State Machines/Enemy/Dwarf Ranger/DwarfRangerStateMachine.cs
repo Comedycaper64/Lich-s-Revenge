@@ -51,6 +51,7 @@ namespace Units.Enemy.Ranger
 
         private void HandleDeath()
         {
+            EnemyUnitDied(gameObject);
             SwitchState(new DwarfRangerDeadState(this));
         }
 

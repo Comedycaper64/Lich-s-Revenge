@@ -3153,7 +3153,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5ef5cef0604d68a459137e9d1a9481c0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -3357,8 +3357,6 @@ MonoBehaviour:
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
-  projectileSpeed: 5
-  projectileTimeToLive: 5
   attackRange: 8
   chaseRange: 20
   fleeRange: 4

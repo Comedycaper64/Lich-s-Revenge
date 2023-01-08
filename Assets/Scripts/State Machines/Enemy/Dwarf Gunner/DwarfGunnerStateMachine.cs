@@ -50,6 +50,7 @@ namespace Units.Enemy.Gunner
 
         private void HandleDeath()
         {
+            EnemyUnitDied(gameObject);
             SwitchState(new DwarfGunnerDeadState(this));
         }
 

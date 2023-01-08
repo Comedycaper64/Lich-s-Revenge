@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Units.Player
 {
@@ -13,16 +15,20 @@ namespace Units.Player
         public override void Enter()
         {
             stateMachine.Ragdoll.ToggleRagdoll(true);
-        }
-
-        public override void Exit()
-        {
-
+            stateMachine.menuManager.ToggleDeathUI(true);
+            stateMachine.InputReader.MenuEvent += stateMachine.Respawn;
         }
 
         public override void Tick(float deltaTime)
         {
+            
+        }
 
+        public override void Exit()
+        {
+            stateMachine.Ragdoll.ToggleRagdoll(false);
+            stateMachine.menuManager.ToggleDeathUI(false);
+            stateMachine.InputReader.MenuEvent -= stateMachine.Respawn;
         }
     }
 }

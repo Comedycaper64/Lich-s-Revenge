@@ -10,6 +10,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action JumpEvent;
     public event Action DodgeEvent;
     public event Action AbsorbEvent;
+    public event Action MenuEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
     public bool isBlocking {get; private set;}
@@ -69,6 +70,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused) {return;}
+
         if (!context.performed) {return;}
 
         JumpEvent?.Invoke();
@@ -76,6 +79,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnDodge(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused) {return;}
+
         if (!context.performed) {return;}
 
         DodgeEvent?.Invoke();
@@ -83,9 +88,18 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAbsorb(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused) {return;}
+
         if (!context.performed) {return;}
 
         AbsorbEvent?.Invoke();
+    }
+
+    public void OnMenu(InputAction.CallbackContext context)
+    {
+        if (!context.performed) {return;}
+
+        MenuEvent?.Invoke();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -105,6 +119,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused) {return;}
+
         if (context.performed)
         {
             isAttacking = true;
@@ -117,6 +133,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAim(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused) {return;}
+
         if (context.canceled)
         {
             isAiming = false;
@@ -129,6 +147,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnBlock(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused) {return;}
+
         if (context.performed)
         {
             isBlocking = true;
@@ -141,6 +161,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnFireball(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused) {return;}
+
         if (context.performed) 
         {
             isFireballing = true;
@@ -154,6 +176,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnHeal(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused) {return;}
+
         if (context.performed)
         {
             isHealing = true;

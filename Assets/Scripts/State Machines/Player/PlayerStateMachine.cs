@@ -27,18 +27,20 @@ namespace Units.Player
         [field: SerializeField] public float JumpForce {get; private set;}
         [field: SerializeField] public GameObject dashVFX {get; private set;}
         [field: SerializeField] public GameObject dashVFX2 {get; private set;}
+        [field: SerializeField] public Transform respawnPoint {get; private set;}
         
         public bool isDashing;
 
         public Transform MainCameraTransform {get; private set;}
-
+        public MenuManager menuManager;
         public event EventHandler<State> OnSwitchState;
+        public event Action OnRespawn;
 
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
+            menuManager = GameObject.FindGameObjectWithTag("Menu").GetComponent<MenuManager>();
             MainCameraTransform = Camera.main.transform;
 
             Health.SetMaxHealth(LichStats.GetLichHealth());
@@ -79,6 +81,23 @@ namespace Units.Player
         private void HandleDeath()
         {
             SwitchState(new PlayerDeadState(this));
+        }
+
+        public void SetRespawnPoint(Transform respawnTransform)
+        {
+            respawnPoint = respawnTransform;
+        }
+
+        public void Respawn()
+        {
+            if (respawnPoint != null)
+            {
+                transform.position = respawnPoint.position;
+            }
+            Health.Heal(LichStats.GetLichHealth());
+            Health.isDead = false;
+            SwitchState(new PlayerFreeLookState(this));
+            OnRespawn?.Invoke();
         }
     }
 }

@@ -83,6 +83,7 @@ namespace Units.Enemy.Hammerer
 
         private void HandleDeath()
         {
+            EnemyUnitDied(gameObject);
             SwitchState(new DwarfHammererDeadState(this));
         }
 

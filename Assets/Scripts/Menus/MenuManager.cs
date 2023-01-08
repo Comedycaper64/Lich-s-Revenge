@@ -5,18 +5,61 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public static bool gameIsPaused;
     //Set this as main menu if using as main menu manager
     [SerializeField] private GameObject currentOpenScreen;
+    [SerializeField] private GameObject menuScreen;
+    [SerializeField] private GameObject deathScreen;
 
     private void Start() 
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;    
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;  
+        }  
+    }
+
+    public void OpenMenu()
+    {
+        if (!menuScreen.activeInHierarchy)
+        {
+            menuScreen.SetActive(true);
+            currentOpenScreen = menuScreen;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true; 
+            Time.timeScale = 0f;
+            gameIsPaused = true;
+        }
+        else
+        {
+            CloseMenu();
+        }
+    }
+
+    public void CloseMenu()
+    {
+        currentOpenScreen.SetActive(false);
+        currentOpenScreen = null;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false; 
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+    }
+
+    public void ToggleDeathUI(bool enable)
+    {
+        deathScreen.SetActive(enable);
     }
 
     public void LoadLevel(int levelNumber)
     {
         SceneManager.LoadScene(levelNumber);
+    }
+
+    public void ReloadCurrentLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OpenScreen(GameObject screen)
@@ -35,11 +78,9 @@ public class MenuManager : MonoBehaviour
         currentOpenScreen = null;
     }
 
-    private void Update() 
+    public void ExitGame()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }     
+        Application.Quit();
     }
+
 }
