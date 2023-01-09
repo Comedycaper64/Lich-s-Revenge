@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
+    public static bool controllerBeingUsed;
+
     public Vector2 MovementValue {get; private set;}
     public event Action JumpEvent;
     public event Action DodgeEvent;
@@ -41,16 +43,19 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
                 if(lastDevice.name.Equals("Keyboard") || lastDevice.name.Equals("Mouse"))
                 {
                     KeyboardAndMouseInput?.Invoke();
+                    controllerBeingUsed = false;
                     //Debug.Log("Using Keyboard / Mouse");
                 }
                 else if (lastDevice.name.Equals("XInputControllerWindows"))
                 {
                     XboxGamepadInput?.Invoke();
+                    controllerBeingUsed = true;
                     //Debug.Log("Using Xbox Controller");
                 }
                 else if (lastDevice.name.Equals("DualShock4GamepadHID"))
                 {
                     PlaystationGamepadInput?.Invoke();
+                    controllerBeingUsed = true;
                     //Debug.Log("Using Playstation Controller");
                 }
             }

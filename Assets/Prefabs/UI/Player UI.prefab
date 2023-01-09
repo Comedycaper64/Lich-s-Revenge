@@ -407,6 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityUIContainer: {fileID: 8795224244995041085}
+  menuUITransform: {fileID: 0}
   crosshairUI: {fileID: 8795224246956666275}
   dashAbilityUI: {fileID: 3500231993576217928, guid: db84f58673b178940bc3650e698fd39f,
     type: 3}
@@ -421,6 +422,8 @@ MonoBehaviour:
   healAbilityUI: {fileID: 3500231993576217928, guid: b098200a3b3ecff48bdd9c8c37a0e2d7,
     type: 3}
   absorbAbilityUI: {fileID: 3500231993576217928, guid: f95aba9a3dffe7d4c959bea422348632,
+    type: 3}
+  menuButtonUI: {fileID: 3500231993576217928, guid: ecb61442136da074bafeefdd70a9d84e,
     type: 3}
 --- !u!1 &8795224245534866886
 GameObject:

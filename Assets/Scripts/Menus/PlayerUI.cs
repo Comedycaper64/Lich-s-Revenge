@@ -17,6 +17,7 @@ public class PlayerUI : MonoBehaviour
     private InputReader inputReader;
 
     [SerializeField] private Transform abilityUIContainer;
+    [SerializeField] private Transform menuUITransform;
     [SerializeField] private GameObject crosshairUI;
     [SerializeField] GameObject dashAbilityUI;
     [SerializeField] GameObject fireboltAbilityUI;
@@ -25,6 +26,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject blockAbilityUI;
     [SerializeField] GameObject healAbilityUI;
     [SerializeField] GameObject absorbAbilityUI;
+    [SerializeField] GameObject menuButtonUI;
 
     private AbilityUI fireboltSlider;
     private AbilityUI fireballSlider;
@@ -33,6 +35,7 @@ public class PlayerUI : MonoBehaviour
     private AbilityUI dashSlider;
     private AbilityUI healSlider;
     private AbilityUI absorbSlider;
+    private AbilityUI menuSlider;
 
     private List<AbilityUI> sliders = new List<AbilityUI>();
 
@@ -60,6 +63,7 @@ public class PlayerUI : MonoBehaviour
         sliders.Add(healSlider = Instantiate(healAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         sliders.Add(blockSlider = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         sliders.Add(absorbSlider = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        sliders.Add(menuSlider = Instantiate(menuButtonUI, menuUITransform).GetComponent<AbilityUI>());
         currentState = StateEnum.FreeLook;
 
         inputReader.KeyboardAndMouseInput += OnKeyboardInput;
@@ -129,6 +133,7 @@ public class PlayerUI : MonoBehaviour
         fireballSlider.SetImageActive(!IsFreeLookState());
         aimSlider.SetImageActive(IsFreeLookState());
         blockSlider.SetImageActive(IsFreeLookState());
+        menuSlider.SetImageActive(IsFreeLookState());
     }
 
     private bool IsFreeLookState()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject currentOpenScreen;
     [SerializeField] private GameObject menuScreen;
     [SerializeField] private GameObject deathScreen;
+    [SerializeField] private TutorialManager tutorialManager;
+    [SerializeField] private CinemachineVirtualCamera lookCamera;
+    [SerializeField] private CinemachineVirtualCamera aimCamera;
+    private CinemachinePOV lookPOV;
+    private CinemachinePOV aimPOV;
 
     private void Start() 
     {
@@ -18,6 +24,40 @@ public class MenuManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;  
         }  
+        if (lookCamera)
+        {
+            lookPOV = lookCamera.GetCinemachineComponent<CinemachinePOV>();
+        }
+        if (aimCamera)
+        {
+            aimPOV = aimCamera.GetCinemachineComponent<CinemachinePOV>();
+        }
+    }
+
+    private void Update() 
+    {
+        if (tutorialManager.currentOpenScreen && currentOpenScreen)
+        {
+            currentOpenScreen.SetActive(false);
+        }    
+        else if (currentOpenScreen)
+        {
+            currentOpenScreen.SetActive(true);
+        }
+
+        if (gameIsPaused)
+        {
+            if (InputReader.controllerBeingUsed)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }   
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true; 
+            }
+        }
     }
 
     public void OpenMenu()
@@ -26,8 +66,6 @@ public class MenuManager : MonoBehaviour
         {
             menuScreen.SetActive(true);
             currentOpenScreen = menuScreen;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true; 
             Time.timeScale = 0f;
             gameIsPaused = true;
         }
@@ -39,11 +77,13 @@ public class MenuManager : MonoBehaviour
 
     public void CloseMenu()
     {
+        if (tutorialManager.currentOpenScreen != null) {return;}
+
         currentOpenScreen.SetActive(false);
         currentOpenScreen = null;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false; 
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         gameIsPaused = false;
     }
 
@@ -76,6 +116,26 @@ public class MenuManager : MonoBehaviour
     {
         screen.SetActive(false);
         currentOpenScreen = null;
+    }
+    
+    public void SetLookSensitivityX(float speed)
+    {
+        lookPOV.m_HorizontalAxis.m_MaxSpeed = (160f * speed);
+    }
+
+    public void SetLookSensitivityY(float speed)
+    {
+        lookPOV.m_VerticalAxis.m_MaxSpeed = (80f * speed);
+    }
+
+    public void SetAimSensitivityX(float speed)
+    {
+        aimPOV.m_HorizontalAxis.m_MaxSpeed = (80f * speed);   
+    }
+
+    public void SetAimSensitivityY(float speed)
+    {
+        aimPOV.m_VerticalAxis.m_MaxSpeed = (40f * speed);
     }
 
     public void ExitGame()

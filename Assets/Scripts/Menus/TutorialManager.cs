@@ -6,7 +6,7 @@ public class TutorialManager : MonoBehaviour
 {
     private int tutorialScreenIndex = 0;
     [SerializeField] private GameObject[] tutorialScreens;
-    [SerializeField] private GameObject currentOpenScreen;
+    public GameObject currentOpenScreen;
     [SerializeField] private GameObject background;
 
     public void OpenScreen(GameObject screen)
