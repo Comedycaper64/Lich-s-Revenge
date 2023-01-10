@@ -1018,7 +1018,7 @@ PrefabInstance:
     - target: {fileID: 4123251056410007646, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4248046112152913289, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -2260,6 +2260,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1588770563}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &955955948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6632386991331824573, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8623393354544346453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &986925481 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4123251056410007646, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
@@ -4160,6 +4172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dwarf Ranger 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610418881678919791, guid: 5219fe0287f6176408364f7fe9f5639d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -6221,6 +6238,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.07068424
+      objectReference: {fileID: 0}
+    - target: {fileID: 917582982867377727, guid: 20ac85517400f404e8fd34f60a62a7f7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917582982867377727, guid: 20ac85517400f404e8fd34f60a62a7f7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 917582982867377727, guid: 20ac85517400f404e8fd34f60a62a7f7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 942598469378006915, guid: 20ac85517400f404e8fd34f60a62a7f7,
         type: 3}
@@ -10173,6 +10205,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 7.0407e-12
       objectReference: {fileID: 0}
+    - target: {fileID: 2375637823478865085, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: CameraDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375637823478865085, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: ShoulderOffset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956473862575299559, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.493741
+      objectReference: {fileID: 0}
+    - target: {fileID: 3956473862575299559, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.499649
+      objectReference: {fileID: 0}
     - target: {fileID: 4029095673228042834, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: manaBar
@@ -10218,11 +10270,41 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 4.014666e-10
       objectReference: {fileID: 0}
+    - target: {fileID: 6632386991331824573, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_Priority
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200562062647045608, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_TagString
+      value: StateCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 8425150010534401411, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8425150010534401411, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_ChildCameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 1666674926}
+    - target: {fileID: 8425150010534401411, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_ChildCameras.Array.data[1]
+      value: 
+      objectReference: {fileID: 259991547}
+    - target: {fileID: 8425150010534401411, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_ChildCameras.Array.data[2]
+      value: 
+      objectReference: {fileID: 955955948}
+    - target: {fileID: 8425150010534401411, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_Instructions.Array.data[3].m_VirtualCamera
+      value: 
+      objectReference: {fileID: 955955948}
     - target: {fileID: 8623393354070077142, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_VerticalAxis.m_MaxSpeed

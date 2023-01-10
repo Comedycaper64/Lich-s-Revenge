@@ -12,8 +12,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject menuScreen;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private TutorialManager tutorialManager;
-    [SerializeField] private CinemachineVirtualCamera lookCamera;
-    [SerializeField] private CinemachineVirtualCamera aimCamera;
+    // private CinemachineVirtualCamera lookCamera;
+    // private CinemachineVirtualCamera aimCamera;
     private CinemachinePOV lookPOV;
     private CinemachinePOV aimPOV;
 
@@ -23,14 +23,14 @@ public class MenuManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;  
-        }  
-        if (lookCamera)
+        } 
+
+        CinemachineVirtualCamera[] camera = GameObject.FindGameObjectWithTag("StateCamera").GetComponentsInChildren<CinemachineVirtualCamera>();
+
+        if (camera.Length >= 2)
         {
-            lookPOV = lookCamera.GetCinemachineComponent<CinemachinePOV>();
-        }
-        if (aimCamera)
-        {
-            aimPOV = aimCamera.GetCinemachineComponent<CinemachinePOV>();
+            aimPOV = camera[0].GetCinemachineComponent<CinemachinePOV>();
+            lookPOV = camera[1].GetCinemachineComponent<CinemachinePOV>();
         }
     }
 
@@ -49,7 +49,7 @@ public class MenuManager : MonoBehaviour
         {
             if (InputReader.controllerBeingUsed)
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }   
             else
@@ -82,7 +82,7 @@ public class MenuManager : MonoBehaviour
         currentOpenScreen.SetActive(false);
         currentOpenScreen = null;
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         gameIsPaused = false;
     }

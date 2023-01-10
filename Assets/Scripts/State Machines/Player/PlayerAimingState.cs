@@ -15,7 +15,7 @@ namespace Units.Player
 
         public override void Enter()
         {
-            stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.01f);
+            stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.5f);
             stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.InputReader.DodgeEvent += OnDodge;
             stateMachine.transform.rotation = stateMachine.MainCameraTransform.rotation;

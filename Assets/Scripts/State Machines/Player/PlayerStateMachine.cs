@@ -27,7 +27,7 @@ namespace Units.Player
         [field: SerializeField] public float JumpForce {get; private set;}
         [field: SerializeField] public GameObject dashVFX {get; private set;}
         [field: SerializeField] public GameObject dashVFX2 {get; private set;}
-        [field: SerializeField] public Transform respawnPoint {get; private set;}
+        private Transform respawnPoint;
         
         public bool isDashing;
 

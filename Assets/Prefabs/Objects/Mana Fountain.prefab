@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6462207158181864314}
   - component: {fileID: 6462207158181864313}
   - component: {fileID: 6462207158181864324}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fountain Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6462207159711736832}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Respawn Location
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 6462207159714820632}
   - component: {fileID: 6462207159714820634}
   - component: {fileID: 6462207159714820633}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mana Fountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ Transform:
   - {fileID: 6462207158181864312}
   - {fileID: 6462207159711736832}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6462207159714820634
 MonoBehaviour:

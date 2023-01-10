@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143726661765333972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0025, y: 0.00975, z: 0.00602}
+  m_LocalPosition: {x: 0.00031, y: 0.00975, z: 0.00143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3138,7 +3138,7 @@ Transform:
   - {fileID: 8941806798036239600}
   - {fileID: 2333490089812963344}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3762299948715493551
 Animator:
@@ -3156,7 +3156,10 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'Armature.005'\n\tFrom animation clip 'Dwarf
+    Gunner Shoot'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3395,6 +3398,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTransform: {fileID: 917582982867377727}
+  blastVFX: {fileID: 2432710454942829051, guid: 607cec65655a04a41bf6b57d18e0184a,
+    type: 3}
 --- !u!1 &8025853796835028100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4199,52 +4204,52 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0015
+      value: -0.00288
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00733
+      value: -0.00073
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.01069
+      value: -0.01186
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7504581
+      value: 0.7197263
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.26071763
+      value: 0.09529456
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.16021281
+      value: 0.042772375
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5858078
+      value: 0.6863553
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 35.382
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 4.572
+      value: 11.126
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 77.41
+      value: 87.719
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 31cdb08100172db468a86ad921a0ab06,
         type: 3}

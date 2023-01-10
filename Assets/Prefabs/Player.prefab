@@ -407,7 +407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &742611467766673487
 Transform:
   m_ObjectHideFlags: 0
@@ -506,6 +506,7 @@ MonoBehaviour:
   blockMaterial: {fileID: 2100000, guid: 5db295423e69a8c47a9b9a983a4aee5d, type: 2}
   aegisRenderer: {fileID: 742611467766673481}
   aegisCollider: {fileID: 742611467766673480}
+  buffVFX: {fileID: 8215610696996955440, guid: 62db95981e036c2479a809a1819a2c60, type: 3}
   canEnable: 1
   blocking: 0
 --- !u!54 &742611467766673524
@@ -3907,6 +3908,7 @@ MonoBehaviour:
   <dashVFX2>k__BackingField: {fileID: 729651334358243720, guid: eb0052beb720871439bf30dbf0ec5559,
     type: 3}
   isDashing: 0
+  menuManager: {fileID: 0}
 --- !u!114 &4161487224015547651
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Stats;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class LichAegis : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class LichAegis : MonoBehaviour
     [SerializeField] private Material blockMaterial;
     [SerializeField] private MeshRenderer aegisRenderer;
     [SerializeField] private Collider aegisCollider;
+    [SerializeField] public GameObject buffVFX;
+    private VisualEffect activeBuffVFX;
 
     public bool canEnable = true;
     public bool blocking = false;
@@ -27,12 +30,21 @@ public class LichAegis : MonoBehaviour
         if (attackBuffed)
         {
             remainingBuffTime -= Time.deltaTime;
+            
             if (remainingBuffTime < 0f)
             {
                 lichStats.ResetAttack();
                 attackBuffed = false;
             }
         }    
+    }
+
+    private void LateUpdate() 
+    {
+        if (attackBuffed && activeBuffVFX)
+        {
+            activeBuffVFX.transform.position = transform.position;
+        }
     }
 
     public void ToggleCanEnable(bool canEnable)
@@ -87,6 +99,9 @@ public class LichAegis : MonoBehaviour
             lichStats.BuffAttack();
         }
         remainingBuffTime = lichStats.GetLichAbsorbBuffDuration();
+        activeBuffVFX = Instantiate(buffVFX, transform.position, Quaternion.identity).GetComponent<VisualEffect>();
+        activeBuffVFX.SetFloat("Lifetime", lichStats.GetLichAbsorbBuffDuration());
+        Destroy(activeBuffVFX.gameObject, lichStats.GetLichAbsorbBuffDuration() + 1f);
         attackBuffed = true;
     }
 }
