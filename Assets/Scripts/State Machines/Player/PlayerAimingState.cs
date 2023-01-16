@@ -18,7 +18,7 @@ namespace Units.Player
             stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.5f);
             stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.InputReader.DodgeEvent += OnDodge;
-            stateMachine.transform.rotation = stateMachine.MainCameraTransform.rotation;
+            //stateMachine.transform.rotation = stateMachine.MainCameraTransform.rotation;
         }
 
         public override void Tick(float deltaTime)

@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start() 
     {
+        UnpauseGame();
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             Cursor.lockState = CursorLockMode.None;
@@ -81,8 +82,13 @@ public class MenuManager : MonoBehaviour
 
         currentOpenScreen.SetActive(false);
         currentOpenScreen = null;
+        UnpauseGame();
+    }
+
+    private void UnpauseGame()
+    {
         Time.timeScale = 1f;
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         gameIsPaused = false;
     }

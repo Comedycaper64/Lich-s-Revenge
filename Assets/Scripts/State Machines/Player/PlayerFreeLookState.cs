@@ -29,6 +29,12 @@ namespace Units.Player
 
         public override void Tick(float deltaTime)
         {
+            if (stateMachine.Controller.velocity.y <= -1f)
+            {
+                stateMachine.SwitchState(new PlayerFallingState(stateMachine));
+                return;
+            }
+
             if (stateMachine.InputReader.isHealing && stateMachine.Bones.GetBones() > 0)
             {
                 stateMachine.SwitchState(new PlayerHealingState(stateMachine));
