@@ -110,4 +110,10 @@ public class FireBallProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void OnDestroy() 
+    {
+        GameObject explosion = Instantiate(fireballVFX, transform.position, Quaternion.identity);    
+        Destroy(explosion, 0.3f);
+    }
 }

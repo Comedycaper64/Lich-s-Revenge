@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 100
   baseAttack: 40
-  baseMovementSpeed: 5
+  baseMovementSpeed: 7
 --- !u!114 &1895507799393817371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   attackMultiplicativeModifier: 0.5
   attackAdditiveModifier: 0
   attackOverride: 0
-  Speed: 5
+  Speed: 7
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   attackMultiplicativeModifier: 0.5
   attackAdditiveModifier: 0
   attackOverride: 0
-  Speed: 6
+  Speed: 8.400001
   speedMultiplicativeModifier: 1.2
   speedAdditiveModifier: 0
   speedOverride: 0

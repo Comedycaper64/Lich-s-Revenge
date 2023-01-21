@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemySpawn
 {
     [SerializeField] private GameObject enemyUnit;
-    [SerializeField] private Vector3 spawnPosition;
+    private Vector3 spawnPosition;
 
     public EnemySpawn(GameObject enemyUnit, Vector3 spawnPosition)
     {
@@ -22,5 +22,10 @@ public class EnemySpawn
     public Vector3 GetSpawnPoint()
     {
         return spawnPosition;
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        spawnPosition = newSpawnPoint;
     }
 }

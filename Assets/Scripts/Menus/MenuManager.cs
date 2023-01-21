@@ -12,8 +12,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject menuScreen;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private TutorialManager tutorialManager;
-    // private CinemachineVirtualCamera lookCamera;
-    // private CinemachineVirtualCamera aimCamera;
     private CinemachinePOV lookPOV;
     private CinemachinePOV aimPOV;
 

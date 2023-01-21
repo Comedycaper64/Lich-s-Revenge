@@ -17,11 +17,12 @@ namespace Units.Player
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(ImpactHash, 0.1f);
+            stateMachine.InputReader.MenuEvent += OnMenu; 
         }
 
         public override void Exit()
         {
-
+            stateMachine.InputReader.MenuEvent -= OnMenu; 
         }
 
         public override void Tick(float deltaTime)

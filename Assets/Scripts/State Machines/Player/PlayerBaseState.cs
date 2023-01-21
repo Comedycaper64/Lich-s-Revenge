@@ -22,5 +22,15 @@ namespace Units.Player
       {
          stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
       }
+
+      protected void MoveNoGravity(Vector3 motion, float deltaTime)
+      {
+         stateMachine.Controller.Move(motion * deltaTime);
+      }
+
+      protected void OnMenu()
+        {
+            stateMachine.menuManager.OpenMenu();
+        }
    }
 }

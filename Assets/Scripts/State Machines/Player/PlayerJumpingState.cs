@@ -18,6 +18,7 @@ namespace Units.Player
         {
             stateMachine.ForceReceiver.Jump(stateMachine.JumpForce);
             stateMachine.InputReader.DodgeEvent += OnDodge;
+            stateMachine.InputReader.MenuEvent += OnMenu;
 
             momentum = stateMachine.Controller.velocity;
             momentum.y = 0f;
@@ -41,6 +42,7 @@ namespace Units.Player
         public override void Exit()
         {
             stateMachine.InputReader.DodgeEvent -= OnDodge;
+            stateMachine.InputReader.MenuEvent -= OnMenu;
         }
 
         private void OnDodge()

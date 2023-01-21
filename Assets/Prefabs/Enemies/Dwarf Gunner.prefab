@@ -3360,10 +3360,10 @@ MonoBehaviour:
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
-  attackRange: 8
+  attackRange: 12
   chaseRange: 20
   fleeRange: 4
-  attackarc: 0.5
+  attackarc: 0.302
 --- !u!114 &8793761100523884297
 MonoBehaviour:
   m_ObjectHideFlags: 0

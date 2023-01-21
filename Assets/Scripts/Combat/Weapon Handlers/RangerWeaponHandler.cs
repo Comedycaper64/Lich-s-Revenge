@@ -36,19 +36,19 @@ public class RangerWeaponHandler : MonoBehaviour
     {
         Vector3[] positionArray = new Vector3[2];
         RaycastHit hit;
-        int layermask1 = 1 << 0;
+        int layermask1 = 1 << 8;
         int layermask2 = 1 << 6;
         int layermask = layermask1 | layermask2;
         if (!weaponFired)
         {        
-            Physics.Raycast(projectileEmitter.position, GetPlayerPosition() - projectileEmitter.position, out hit, 100f, layermask);
+            Physics.Raycast(projectileEmitter.position, GetPlayerPosition() - projectileEmitter.position, out hit, 500f, layermask);
             positionArray = new Vector3[2] {projectileEmitter.position, hit.point};
         }
         else
         {
             if (projectile)
             {
-                Physics.Raycast(projectile.transform.position, playerDirection, out hit, 100f, layermask);
+                Physics.Raycast(projectile.transform.position, playerDirection, out hit, 500f, layermask);
                 positionArray = new Vector3[2] {projectile.transform.position, hit.point};
             }
         }

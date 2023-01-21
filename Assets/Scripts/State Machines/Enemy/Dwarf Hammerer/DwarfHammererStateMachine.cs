@@ -91,7 +91,7 @@ namespace Units.Enemy.Hammerer
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, Stats.GetChaseRange());    
-            Gizmos.DrawCube(transform.position, new Vector3(Stats.GetSlamRadius() * 2, 1f, Stats.GetSlamRadius() * 2));
+            //Gizmos.DrawCube(transform.position, new Vector3(Stats.GetSlamRadius() * 2, 1f, Stats.GetSlamRadius() * 2));
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, Stats.GetSlamRadius());
         }

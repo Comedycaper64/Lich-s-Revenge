@@ -56,15 +56,20 @@ public class Health : MonoBehaviour
 
         if (health <= 0) 
         {
-            if (!isDead)
-            {
-                OnDie?.Invoke();
-                isDead = true;
-            }
+            Die();
             return;
         }
 
         OnTakeDamage?.Invoke();
+    }
+
+    public void Die()
+    {
+        if (!isDead)
+        {
+            OnDie?.Invoke();
+            isDead = true;
+        }
     }
 
     public void Heal(float healing)

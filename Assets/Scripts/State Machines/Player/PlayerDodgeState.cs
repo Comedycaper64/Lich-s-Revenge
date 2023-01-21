@@ -19,22 +19,21 @@ namespace Units.Player
         {
             remainingDodgeTime = stateMachine.LichStats.GetLichDodgeDuration();
             stateMachine.Health.SetInvulnerable(true);
-            //Fiery poof effect, go invisible, emit flames while moving
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
             dodgeVisual = GameObject.Instantiate(stateMachine.dashVFX2, stateMachine.transform);
             GameObject.Destroy(dashVFX, 3f);
             stateMachine.PlayerMesh.SetActive(false);
             stateMachine.isDashing = true;
+            stateMachine.InputReader.MenuEvent += OnMenu;
         }
 
         public override void Tick(float deltaTime)
         {
             Vector3 movement = new Vector3();
-            //Bug: Player flies into the air when dodging if camera is looking up / down
             movement += stateMachine.MainCameraTransform.right * dodgingDirectionInput.x * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
             movement += stateMachine.MainCameraTransform.forward * dodgingDirectionInput.y * stateMachine.LichStats.GetLichDodgeDistance() / stateMachine.LichStats.GetLichDodgeDuration();
             movement.y = 0;
-            Move(movement, deltaTime);
+            MoveNoGravity(movement, deltaTime);
 
             remainingDodgeTime -= deltaTime;
 
@@ -62,7 +61,7 @@ namespace Units.Player
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(dashVFX, 3f);
             GameObject.Destroy(dodgeVisual);
-            //Fiery poof, become visible
+            stateMachine.InputReader.MenuEvent -= OnMenu;
         } 
     }
 }

@@ -56,8 +56,10 @@ namespace Units.Enemy.Gunner
 
         private void OnDrawGizmosSelected() 
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, Stats.GetAttackRange());   
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, Stats.GetChaseRange());   
         }
     }
 }

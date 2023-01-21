@@ -58,7 +58,7 @@ namespace Units.Enemy.Ranger
         private void OnDrawGizmosSelected() 
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, Stats.GetFleeRange());    
+            Gizmos.DrawWireSphere(transform.position, Stats.GetAttackRange());    
         }
     }
 }

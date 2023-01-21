@@ -3221,8 +3221,8 @@ MonoBehaviour:
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
-  projectileSpeed: 30
-  projectileTimeToLive: 10
+  projectileSpeed: 70
+  projectileTimeToLive: 5
   attackRange: 50
   fleeRange: 5
 --- !u!114 &259272707358335212
