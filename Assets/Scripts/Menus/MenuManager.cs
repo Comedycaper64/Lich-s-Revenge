@@ -12,29 +12,24 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject menuScreen;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private TutorialManager tutorialManager;
-    private CinemachinePOV lookPOV;
-    private CinemachinePOV aimPOV;
+
+    private int currentSceneIndex;
 
     private void Start() 
     {
         UnpauseGame();
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex == 0)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;  
         } 
-
-        CinemachineVirtualCamera[] camera = GameObject.FindGameObjectWithTag("StateCamera").GetComponentsInChildren<CinemachineVirtualCamera>();
-
-        if (camera.Length >= 2)
-        {
-            aimPOV = camera[0].GetCinemachineComponent<CinemachinePOV>();
-            lookPOV = camera[1].GetCinemachineComponent<CinemachinePOV>();
-        }
     }
 
     private void Update() 
     {
+        //if (currentSceneIndex == 0) {return;}
+
         if (tutorialManager.currentOpenScreen && currentOpenScreen)
         {
             currentOpenScreen.SetActive(false);
@@ -61,7 +56,7 @@ public class MenuManager : MonoBehaviour
 
     public void OpenMenu()
     {
-        if (!menuScreen.activeInHierarchy)
+        if (!menuScreen.activeInHierarchy && !currentOpenScreen)
         {
             menuScreen.SetActive(true);
             currentOpenScreen = menuScreen;
@@ -122,25 +117,6 @@ public class MenuManager : MonoBehaviour
         currentOpenScreen = null;
     }
     
-    public void SetLookSensitivityX(float speed)
-    {
-        lookPOV.m_HorizontalAxis.m_MaxSpeed = (160f * speed);
-    }
-
-    public void SetLookSensitivityY(float speed)
-    {
-        lookPOV.m_VerticalAxis.m_MaxSpeed = (80f * speed);
-    }
-
-    public void SetAimSensitivityX(float speed)
-    {
-        aimPOV.m_HorizontalAxis.m_MaxSpeed = (80f * speed);   
-    }
-
-    public void SetAimSensitivityY(float speed)
-    {
-        aimPOV.m_VerticalAxis.m_MaxSpeed = (40f * speed);
-    }
 
     public void ExitGame()
     {

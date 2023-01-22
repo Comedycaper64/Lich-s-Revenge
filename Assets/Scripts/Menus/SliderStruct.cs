@@ -9,6 +9,10 @@ public class SliderStruct
         Master,
         Music,
         SFX,
+        LookX,
+        LookY,
+        AimX,
+        AimY,
     } 
    
     private SliderType slider;

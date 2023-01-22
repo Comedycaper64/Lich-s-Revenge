@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 5980093282084505503}
   - component: {fileID: 3149875653570746487}
   - component: {fileID: 7459773872982599552}
+  - component: {fileID: 471693315445384876}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -376,17 +377,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 7617772272427579537}
   m_HandleRect: {fileID: 4389150062912607133}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.1
+  m_MaxValue: 40
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.23
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5973046721883351294}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: SetAimSensitivityY
-        m_Mode: 0
+      - m_Target: {fileID: 471693315445384876}
+        m_TargetAssemblyTypeName: SensitivitySlider, Assembly-CSharp
+        m_MethodName: OnSliderChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -415,6 +416,19 @@ MonoBehaviour:
   m_FlexibleWidth: 3
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &471693315445384876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944494368269041160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586a0b8a8c7102141b490a1657806067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderType: 6
 --- !u!1 &954679424293452003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1341,7 @@ GameObject:
   - component: {fileID: 4001072287141836623}
   - component: {fileID: 2206348154595735490}
   - component: {fileID: 8633485746705238513}
+  - component: {fileID: 3441804479301743612}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1401,17 +1416,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 4894508626281609148}
   m_HandleRect: {fileID: 571775059477625445}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.1
+  m_MaxValue: 80
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5973046721883351294}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: SetLookSensitivityY
-        m_Mode: 0
+      - m_Target: {fileID: 3441804479301743612}
+        m_TargetAssemblyTypeName: SensitivitySlider, Assembly-CSharp
+        m_MethodName: OnSliderChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1440,6 +1455,19 @@ MonoBehaviour:
   m_FlexibleWidth: 3
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &3441804479301743612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291561690425600229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586a0b8a8c7102141b490a1657806067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderType: 4
 --- !u!1 &2786043622534389114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3557,6 +3585,7 @@ GameObject:
   - component: {fileID: 5565449441476670917}
   - component: {fileID: 7244873086295024594}
   - component: {fileID: 8206641212406901143}
+  - component: {fileID: 366306669796120285}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -3631,17 +3660,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 2438728865691245597}
   m_HandleRect: {fileID: 8404996917161257784}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.1
+  m_MaxValue: 80
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.18
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5973046721883351294}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: SetAimSensitivityX
-        m_Mode: 0
+      - m_Target: {fileID: 366306669796120285}
+        m_TargetAssemblyTypeName: SensitivitySlider, Assembly-CSharp
+        m_MethodName: OnSliderChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3670,6 +3699,19 @@ MonoBehaviour:
   m_FlexibleWidth: 3
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &366306669796120285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6058407959446265072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586a0b8a8c7102141b490a1657806067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderType: 5
 --- !u!1 &6130527980344559569
 GameObject:
   m_ObjectHideFlags: 0
@@ -3681,6 +3723,7 @@ GameObject:
   - component: {fileID: 3898178010558564280}
   - component: {fileID: 3702438723552334997}
   - component: {fileID: 5627565610846304589}
+  - component: {fileID: 6349022672333954712}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -3755,17 +3798,17 @@ MonoBehaviour:
   m_FillRect: {fileID: 5455494583282268422}
   m_HandleRect: {fileID: 1209679813327810039}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.1
+  m_MaxValue: 160
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5973046721883351294}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: SetLookSensitivityX
-        m_Mode: 0
+      - m_Target: {fileID: 6349022672333954712}
+        m_TargetAssemblyTypeName: SensitivitySlider, Assembly-CSharp
+        m_MethodName: OnSliderChanged
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3794,6 +3837,19 @@ MonoBehaviour:
   m_FlexibleWidth: 3
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6349022672333954712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6130527980344559569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586a0b8a8c7102141b490a1657806067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderType: 3
 --- !u!1 &6151167324719977967
 GameObject:
   m_ObjectHideFlags: 0
@@ -4897,7 +4953,7 @@ RectTransform:
   - {fileID: 407267997091134426}
   - {fileID: 3509047584717991301}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

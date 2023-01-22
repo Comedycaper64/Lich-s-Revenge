@@ -29,7 +29,7 @@ namespace Units.Player
 
         public override void Tick(float deltaTime)
         {
-            if (stateMachine.Controller.velocity.y < -1f)
+            if (stateMachine.Controller.velocity.y < -5f)
             {
                 stateMachine.SwitchState(new PlayerFallingState(stateMachine));
                 return;

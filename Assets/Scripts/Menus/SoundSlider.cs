@@ -8,10 +8,12 @@ public class SoundSlider : MonoBehaviour
 {
     [SerializeField] private SliderStruct.SliderType sliderType;
 
-    public static event EventHandler<SliderStruct> OnAnySliderChanged;
+    public static event EventHandler<SliderStruct> OnAnySoundSliderChanged;
 
     private void Start() 
     {
+        if (!SoundManager.Instance) {return;}
+
         switch (sliderType)
         {
             case SliderStruct.SliderType.Master:
@@ -29,6 +31,6 @@ public class SoundSlider : MonoBehaviour
 
     public void OnSliderChanged()
     {
-        OnAnySliderChanged?.Invoke(this, new SliderStruct(sliderType, GetComponent<Slider>().value));
+        OnAnySoundSliderChanged?.Invoke(this, new SliderStruct(sliderType, GetComponent<Slider>().value));
     }
 }

@@ -177,4 +177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  enemySpawns: []
+  minerEnemy: {fileID: 4123251056410007646, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
+    type: 3}
+  rangerEnemy: {fileID: 7610418881678919791, guid: 5219fe0287f6176408364f7fe9f5639d,
+    type: 3}
+  gunnerEnemy: {fileID: 7610418881678919791, guid: 20ac85517400f404e8fd34f60a62a7f7,
+    type: 3}
+  hammererEnemy: {fileID: 7097039680618807537, guid: ecd8645c34eddc64cadcc029d136218e,
+    type: 3}

@@ -2973,7 +2973,7 @@ Transform:
   - {fileID: 3668806977799905729}
   - {fileID: 8212623517029613826}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4599938307914154033
 Animator:
@@ -2988,7 +2988,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: aa4c774a20d6dc343836720c287d013a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -3022,20 +3022,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94402123631865e41a3dbc5894ea0f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 200
   healthMultiplicativeModifier: 2
   healthAdditiveModifier: 0
   healthOverride: 0
-  Attack: 20
+  Attack: 30
   attackMultiplicativeModifier: 1.5
   attackAdditiveModifier: 0
   attackOverride: 0
-  Speed: 5
+  Speed: 7
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
   slamRadius: 7
-  leapSpeedModifier: 3
+  leapSpeedModifier: 1.5
   slamCooldownMin: 3
   slamCooldownMax: 5
   playerChasingRange: 30
@@ -3043,7 +3043,7 @@ MonoBehaviour:
   leapMinRange: 10
   leapMaxRange: 30
   attackKnockback: 30
-  slamJumpHeight: 4
+  slamJumpHeight: 5
 --- !u!114 &554039831816192945
 MonoBehaviour:
   m_ObjectHideFlags: 0
