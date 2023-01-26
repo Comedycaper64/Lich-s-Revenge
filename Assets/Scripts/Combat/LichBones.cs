@@ -7,9 +7,9 @@ public class LichBones : MonoBehaviour
 {
     [SerializeField] private int maxBones;
     [SerializeField] private int bones;
-    [SerializeField] private TextMeshProUGUI boneText;
+    [SerializeField] public TextMeshProUGUI boneText;
 
-    private void Awake() 
+    private void Start() 
     {
         UpdateBoneText();    
     }

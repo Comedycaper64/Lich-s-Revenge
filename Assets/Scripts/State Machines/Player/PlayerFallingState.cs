@@ -6,7 +6,7 @@ namespace Units.Player
 {
     public class PlayerFallingState : PlayerBaseState
     {
-        private readonly int FallHash = Animator.StringToHash("fall");
+        private readonly int FallHash = Animator.StringToHash("Movement");
 
         private Vector3 momentum;
 
@@ -60,6 +60,7 @@ namespace Units.Player
 
         private void FaceMovementDirection(Vector3 movement, float deltaTime)
         {
+            if (movement == Vector3.zero) {return;}
             stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationDamping * deltaTime);
         }
 

@@ -6,7 +6,7 @@ namespace Units.Player
 {
     public class PlayerJumpingState : PlayerBaseState
     {
-        private readonly int JumpHash = Animator.StringToHash("jump");
+        //private readonly int JumpHash = Animator.StringToHash("jump");
 
         private Vector3 momentum;
 
@@ -23,7 +23,7 @@ namespace Units.Player
             momentum = stateMachine.Controller.velocity;
             momentum.y = 0f;
 
-            stateMachine.Animator.CrossFadeInFixedTime(JumpHash, 0.1f);
+            //stateMachine.Animator.CrossFadeInFixedTime(JumpHash, 0.1f);
         }
 
         public override void Tick(float deltaTime)

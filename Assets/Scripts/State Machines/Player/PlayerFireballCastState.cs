@@ -6,7 +6,7 @@ namespace Units.Player
 {
     public class PlayerFireballCastState : PlayerBaseState
     {
-        private readonly int FireballHash = Animator.StringToHash("Fireball Cast");
+        private readonly int FireballHash = Animator.StringToHash("Fireball");
         private float previousFrameTime; 
 
         PlayerWeaponHandler weaponHandler;

@@ -22,7 +22,10 @@ namespace Units.Player
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
             dodgeVisual = GameObject.Instantiate(stateMachine.dashVFX2, stateMachine.transform);
             GameObject.Destroy(dashVFX, 3f);
-            stateMachine.PlayerMesh.SetActive(false);
+            foreach(GameObject mesh in stateMachine.PlayerMesh)
+            {
+                mesh.SetActive(false);
+            }  
             stateMachine.isDashing = true;
             stateMachine.InputReader.MenuEvent += OnMenu;
         }
@@ -56,7 +59,10 @@ namespace Units.Player
         {
             stateMachine.Health.SetInvulnerable(false);
             stateMachine.Cooldowns.SetDodgeCooldown();
-            stateMachine.PlayerMesh.SetActive(true);
+            foreach(GameObject mesh in stateMachine.PlayerMesh)
+            {
+                mesh.SetActive(true);
+            }
             stateMachine.isDashing = false;
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(dashVFX, 3f);

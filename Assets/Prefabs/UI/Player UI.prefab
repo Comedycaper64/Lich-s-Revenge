@@ -425,6 +425,9 @@ MonoBehaviour:
     type: 3}
   menuButtonUI: {fileID: 3500231993576217928, guid: ecb61442136da074bafeefdd70a9d84e,
     type: 3}
+  healthImage: {fileID: 8795224246461128787}
+  manaImage: {fileID: 8795224245720318342}
+  boneText: {fileID: 8795224246870790406}
 --- !u!1 &8795224245534866886
 GameObject:
   m_ObjectHideFlags: 0

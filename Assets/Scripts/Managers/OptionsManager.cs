@@ -22,7 +22,7 @@ public class OptionsManager : MonoBehaviour
         SetUpSingleton();
         if (Instance != null)
         {
-            Debug.LogError("There's more than one OptionsManager! " + transform + " - " + Instance);
+            //Debug.LogError("There's more than one OptionsManager! " + transform + " - " + Instance);
             Destroy(gameObject);
             return;
         }

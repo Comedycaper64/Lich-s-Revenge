@@ -8,13 +8,17 @@ namespace Units.Player
 {
     public class PlayerDeadState : PlayerBaseState
     {
+        private readonly int DeathHash = Animator.StringToHash("Death");
+
         public PlayerDeadState(PlayerStateMachine stateMachine) : base(stateMachine)
         {
+        
         }
 
         public override void Enter()
         {
-            stateMachine.Ragdoll.ToggleRagdoll(true);
+            // stateMachine.Ragdoll.ToggleRagdoll(true);
+            stateMachine.Animator.CrossFadeInFixedTime(DeathHash, 0.1f);
             stateMachine.menuManager.ToggleDeathUI(true);
             stateMachine.InputReader.MenuEvent += stateMachine.Respawn;
         }
@@ -26,7 +30,7 @@ namespace Units.Player
 
         public override void Exit()
         {
-            stateMachine.Ragdoll.ToggleRagdoll(false);
+            //stateMachine.Ragdoll.ToggleRagdoll(false);
             stateMachine.menuManager.ToggleDeathUI(false);
             stateMachine.InputReader.MenuEvent -= stateMachine.Respawn;
         }

@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Stats;
+using TMPro;
 using Units.Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -27,6 +29,11 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject healAbilityUI;
     [SerializeField] GameObject absorbAbilityUI;
     [SerializeField] GameObject menuButtonUI;
+
+    [Header("Lich References")]
+    [SerializeField] private Image healthImage;
+    [SerializeField] private Image manaImage;
+    [SerializeField] private TextMeshProUGUI boneText;
 
     private AbilityUI fireboltSlider;
     private AbilityUI fireballSlider;
@@ -192,5 +199,20 @@ public class PlayerUI : MonoBehaviour
         {
             Destroy(abilityUI.gameObject);
         }
+    }
+
+    public Image GetHealthBar()
+    {
+        return healthImage;
+    }
+
+    public Image GetManaBar()
+    {
+        return manaImage;
+    }
+
+    public TextMeshProUGUI GetBoneText()
+    {
+        return boneText;
     }
 }

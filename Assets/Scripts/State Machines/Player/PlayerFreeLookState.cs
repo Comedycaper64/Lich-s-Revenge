@@ -7,8 +7,8 @@ namespace Units.Player
 {
     public class PlayerFreeLookState : PlayerBaseState
     {
-        private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
-        private readonly int FreeLookBlendTreeHash = Animator.StringToHash("FreeLookBlendTree");
+        //private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
+        private readonly int MovementHash = Animator.StringToHash("Movement");
 
         private const float AnimatorDampTime = 0.05f;
         private const float CrossFadeDuration = 0.1f;
@@ -24,7 +24,7 @@ namespace Units.Player
             stateMachine.InputReader.DodgeEvent += OnDodge;
             stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.InputReader.MenuEvent += OnMenu; 
-            stateMachine.Animator.CrossFadeInFixedTime(FreeLookBlendTreeHash, CrossFadeDuration);
+            stateMachine.Animator.CrossFadeInFixedTime(MovementHash, CrossFadeDuration);
         }
 
         public override void Tick(float deltaTime)
@@ -57,13 +57,13 @@ namespace Units.Player
 
             Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
 
-            if (stateMachine.InputReader.MovementValue == Vector2.zero)
-            {
-                stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
-                return;
-            }
+            // if (stateMachine.InputReader.MovementValue == Vector2.zero)
+            // {
+            //     stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
+            //     return;
+            // }
 
-            stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
+            // stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
             FaceMovementDirection(movement, deltaTime);
         } 
 
@@ -96,6 +96,7 @@ namespace Units.Player
 
         private void FaceMovementDirection(Vector3 movement, float deltaTime)
         {
+            if (movement == Vector3.zero) {return;}
             stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationDamping * deltaTime);
         }
 

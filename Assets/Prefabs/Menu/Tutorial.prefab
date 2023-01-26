@@ -4286,8 +4286,8 @@ MonoBehaviour:
     - Long casting time and cooldown
 
     -
-    ** If the attack button is pressed at the end of the cast (when the Lich''s crown
-    shines) the fireball''s damage is increased and it doesn''t harm you'
+    ** If the attack button is pressed at the end of the cast (when the Lich throws
+    his arms back) the fireball''s damage is increased and it doesn''t harm you'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

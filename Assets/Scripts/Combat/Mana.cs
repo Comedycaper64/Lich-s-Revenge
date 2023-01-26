@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Mana : MonoBehaviour
 {
     private float maxMana;
-    [SerializeField] private Image manaBar;
+    [SerializeField] public Image manaBar;
     private float mana;
     private float manaRegenRate;
 

@@ -6,7 +6,7 @@ namespace Units.Player
 {
     public class PlayerHealingState : PlayerBaseState
     {
-        private readonly int HealingHash = Animator.StringToHash("Healing");
+        private readonly int HealingHash = Animator.StringToHash("Heal");
         private bool hasHealed = false;
         public PlayerHealingState(PlayerStateMachine stateMachine) : base(stateMachine)
         {

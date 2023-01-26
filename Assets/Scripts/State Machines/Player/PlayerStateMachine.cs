@@ -9,7 +9,7 @@ namespace Units.Player
     public class PlayerStateMachine : StateMachine
     {
         [field: SerializeField] public InputReader InputReader{get; private set;}
-        [field: SerializeField] public GameObject PlayerMesh{get; private set;}
+        [field: SerializeField] public GameObject[] PlayerMesh{get; private set;}
         [field: SerializeField] public LichStats LichStats{get; private set;}
         [field: SerializeField] public LichAegis Aegis{get; private set;}
         [field: SerializeField] public FireboltStats FireboltStats {get; private set;}
@@ -33,6 +33,7 @@ namespace Units.Player
 
         public Transform MainCameraTransform {get; private set;}
         public MenuManager menuManager;
+        private PlayerUI playerUI;
         public event EventHandler<State> OnSwitchState;
         public event Action OnRespawn;
 
@@ -41,6 +42,12 @@ namespace Units.Player
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             menuManager = GameObject.FindGameObjectWithTag("Menu").GetComponent<MenuManager>();
+            playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
+            
+            Health.healthBar = playerUI.GetHealthBar();
+            Mana.manaBar = playerUI.GetManaBar();
+            Bones.boneText = playerUI.GetBoneText();
+
             MainCameraTransform = Camera.main.transform;
 
             Health.SetMaxHealth(LichStats.GetLichHealth());
@@ -92,6 +99,7 @@ namespace Units.Player
         {
             if (respawnPoint != null)
             {
+                Debug.Log("ayaya");
                 transform.position = respawnPoint.position;
             }
             Health.Heal(LichStats.GetLichHealth());

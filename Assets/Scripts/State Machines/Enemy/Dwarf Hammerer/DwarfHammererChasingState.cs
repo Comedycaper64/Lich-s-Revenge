@@ -21,7 +21,7 @@ namespace Units.Enemy.Hammerer
 
         public override void Exit()
         {
-            stateMachine.Agent.ResetPath();
+            //stateMachine.Agent.ResetPath();
             stateMachine.Agent.velocity = Vector3.zero;
         }
 
