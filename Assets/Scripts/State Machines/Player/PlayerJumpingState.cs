@@ -20,7 +20,7 @@ namespace Units.Player
             stateMachine.InputReader.DodgeEvent += OnDodge;
             stateMachine.InputReader.MenuEvent += OnMenu;
 
-            momentum = stateMachine.Controller.velocity;
+            momentum = stateMachine.Controller.velocity / 3;
             momentum.y = 0f;
 
             //stateMachine.Animator.CrossFadeInFixedTime(JumpHash, 0.1f);
@@ -28,7 +28,11 @@ namespace Units.Player
 
         public override void Tick(float deltaTime)
         {
-            Move(momentum, deltaTime);
+            Vector3 movement = CalculateMovement();
+
+            Move(momentum + (movement * stateMachine.LichStats.GetLichSpeed()), deltaTime);
+
+            FaceMovementDirection(movement, deltaTime);
 
             if (stateMachine.Controller.velocity.y <= 0f)
             {
@@ -43,6 +47,26 @@ namespace Units.Player
         {
             stateMachine.InputReader.DodgeEvent -= OnDodge;
             stateMachine.InputReader.MenuEvent -= OnMenu;
+        }
+
+        private Vector3 CalculateMovement()
+        {
+            Vector3 forward = stateMachine.MainCameraTransform.forward;
+            forward.y = 0f;
+            forward.Normalize();
+
+            Vector3 right = stateMachine.MainCameraTransform.right;
+            right.y = 0f;
+            right.Normalize();
+
+            return forward * stateMachine.InputReader.MovementValue.y +
+                right * stateMachine.InputReader.MovementValue.x;
+        }
+
+        private void FaceMovementDirection(Vector3 movement, float deltaTime)
+        {
+            if (movement == Vector3.zero) {return;}
+            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationDamping * deltaTime);
         }
 
         private void OnDodge()

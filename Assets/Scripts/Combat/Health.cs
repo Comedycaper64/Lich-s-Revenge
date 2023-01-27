@@ -69,6 +69,7 @@ public class Health : MonoBehaviour
         {
             OnDie?.Invoke();
             isDead = true;
+            SetInvulnerable(true);
         }
     }
 

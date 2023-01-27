@@ -26,4 +26,9 @@ public class HammererSlam : MonoBehaviour
     {
         slamVisual.SetActive(enable);
     }
+
+    private void OnDestroy() 
+    {
+        Destroy(slamVisual);    
+    }
 }

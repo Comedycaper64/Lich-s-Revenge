@@ -12,10 +12,13 @@ public class FireBallProjectile : MonoBehaviour
     private bool damagePlayer;
 
     private float animationTime = 2f;
-    [SerializeField] private float timeToLive;
+    private float timeToLive;
     private float projectileSpeed;
-    [SerializeField] private float fireballExplodeRadius;
     [SerializeField] private GameObject fireballVFX;
+
+    private float fireballExplodeRadius;
+
+    private float detonationTime = 0f;
 
     private void Start() 
     {
@@ -25,6 +28,15 @@ public class FireBallProjectile : MonoBehaviour
     private void Update() 
     {
         transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);    
+        if (detonationTime > 0f)
+        {
+            detonationTime -= Time.deltaTime;
+            if (detonationTime <= 0f)
+            {
+                detonationTime = 0f;
+                ExplodeFireball();
+            }
+        }
     }
 
     public void SetAttack(float damage, float knockback)
@@ -43,9 +55,19 @@ public class FireBallProjectile : MonoBehaviour
         this.projectileSpeed = projectileSpeed;
     }
 
+    public void SetExplodeRadius(float explodeRadius)
+    {
+        fireballExplodeRadius = explodeRadius;
+    }
+
     public void SetPlayerCollider(Collider playerCollider)
     {
         this.playerCollider = playerCollider;
+    }
+
+    public void SetTimeToLive(float timeToLive)
+    {
+        this.timeToLive = timeToLive;
     }
     
     private IEnumerator SeeIfLaunched()
@@ -57,7 +79,7 @@ public class FireBallProjectile : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject, timeToLive);
+            detonationTime = timeToLive;
         }
     }
 
@@ -98,22 +120,21 @@ public class FireBallProjectile : MonoBehaviour
 
         //when collides with health or layer 6 collider, do damage in sphere with radius based on stats
 
-
-        if(other.TryGetComponent<Health>(out Health health) || other.gameObject.layer == 6)
+        if(other.TryGetComponent<Health>(out Health health) || other.gameObject.layer == 6 || other.gameObject.layer == 0)
         {
             ExplodeFireball();
         }
 
-        if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
-        {
-            forceReceiver.AddForce((other.transform.position - playerCollider.transform.position).normalized * knockback);
-            Destroy(gameObject);
-        }
+        // if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
+        // {
+        //     forceReceiver.AddForce((other.transform.position - playerCollider.transform.position).normalized * knockback);
+        //     Destroy(gameObject);
+        // }
     }
 
-    private void OnDestroy() 
-    {
-        GameObject explosion = Instantiate(fireballVFX, transform.position, Quaternion.identity);    
-        Destroy(explosion, 0.3f);
-    }
+    // private void OnDestroy() 
+    // {
+    //     GameObject explosion = Instantiate(fireballVFX, transform.position, Quaternion.identity);    
+    //     Destroy(explosion, 2f);
+    // }
 }

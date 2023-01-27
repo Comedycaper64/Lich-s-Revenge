@@ -34,6 +34,8 @@ namespace Stats
         [SerializeField] private float spellAttackOverride;
 
         [Header("Misc")]
+        [SerializeField] private float explodeRadius;
+        [SerializeField] private float fireballDetonationTime;
         [SerializeField] private float QTEDamageModifier;
         [SerializeField] private float QTEManaModifier;
 
@@ -75,6 +77,16 @@ namespace Stats
                 return (lichStats.GetLichSpellManaCost() * spellManaCostMultiplicativeModifier) + spellManaCostAdditiveModifier;
             else
                 return spellManaCostOverride;
+        }
+
+        public float GetFireballExplodeRadius()
+        {
+            return explodeRadius;
+        }
+
+        public float GetfireballDetonationTime()
+        {
+            return fireballDetonationTime;
         }
 
         public float GetFireballQTEMana()

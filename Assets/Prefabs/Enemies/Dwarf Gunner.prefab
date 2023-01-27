@@ -3123,8 +3123,8 @@ Transform:
   m_GameObject: {fileID: 7610418881678919791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6054641889407364141}
   - {fileID: 3871160306287330797}
@@ -3356,7 +3356,7 @@ MonoBehaviour:
   attackMultiplicativeModifier: 1
   attackAdditiveModifier: 0
   attackOverride: 0
-  Speed: 5
+  Speed: 7
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0

@@ -58,6 +58,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
                     controllerBeingUsed = true;
                     //Debug.Log("Using Playstation Controller");
                 }
+                else
+                {
+                    XboxGamepadInput?.Invoke();
+                    controllerBeingUsed = true;
+                }
             }
     }
 

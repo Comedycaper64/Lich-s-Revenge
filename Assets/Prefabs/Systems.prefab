@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats: {fileID: 1895507799393817368}
-  Health: 100
-  healthMultiplicativeModifier: 1
+  Health: 50
+  healthMultiplicativeModifier: 0.5
   healthAdditiveModifier: 0
   healthOverride: 0
   Attack: 20

@@ -3123,8 +3123,8 @@ Transform:
   m_GameObject: {fileID: 7610418881678919791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6054641889407364141}
   - {fileID: 3871160306287330797}
@@ -3217,7 +3217,7 @@ MonoBehaviour:
   attackMultiplicativeModifier: 1.5
   attackAdditiveModifier: 0
   attackOverride: 0
-  Speed: 5
+  Speed: 7
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
@@ -3239,6 +3239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2316461505739531393}
   agent: {fileID: 5141454991735257434}
+  health: {fileID: 2817701306319895354}
   drag: 0.3
 --- !u!114 &4512957670110549957
 MonoBehaviour:

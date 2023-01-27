@@ -60,11 +60,10 @@ public class RangerWeapon : MonoBehaviour
         if(other.TryGetComponent<Health>(out Health health))
         {
             health.DealDamage(damage);
-        }
-
-        if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
-        {
-            forceReceiver.AddForce((other.transform.position - GetComponent<Collider>().transform.position).normalized * knockback);
+            if (!health.isDead && other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
+            {
+                forceReceiver.AddForce((other.transform.position - GetComponent<Collider>().transform.position).normalized * knockback);     
+            }
             Destroy(gameObject);
         }
 

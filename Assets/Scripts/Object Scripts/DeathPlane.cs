@@ -8,7 +8,7 @@ public class DeathPlane : MonoBehaviour
     {
         if (other.TryGetComponent<Health>(out Health health))
         {
-            health.Die();
+            health.DealDamage(999f);
         }    
     }
 }

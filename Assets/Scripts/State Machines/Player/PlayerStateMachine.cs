@@ -9,6 +9,7 @@ namespace Units.Player
     public class PlayerStateMachine : StateMachine
     {
         [field: SerializeField] public InputReader InputReader{get; private set;}
+        //[field: SerializeField] public Transform RigTransform{get; private set;}
         [field: SerializeField] public GameObject[] PlayerMesh{get; private set;}
         [field: SerializeField] public LichStats LichStats{get; private set;}
         [field: SerializeField] public LichAegis Aegis{get; private set;}
@@ -22,7 +23,6 @@ namespace Units.Player
         [field: SerializeField] public Mana Mana {get; private set;}
         [field: SerializeField] public PlayerWeaponHandler WeaponHandler {get; private set;}
         [field: SerializeField] public LichBones Bones {get; private set;}
-        [field: SerializeField] public Ragdoll Ragdoll {get; private set;}
         [field: SerializeField] public float RotationDamping {get; private set;}
         [field: SerializeField] public float JumpForce {get; private set;}
         [field: SerializeField] public GameObject dashVFX {get; private set;}
@@ -60,8 +60,15 @@ namespace Units.Player
         public override void SwitchState(State newState)
         {
             base.SwitchState(newState);
+            //Debug.Log(newState);
             OnSwitchState?.Invoke(this, newState);
         }
+
+        // public override void Update() 
+        // {
+        //     base.Update();
+        //     Debug.Log(transform.position);
+        // }
 
         public bool CanJumpToPlayer()
         {
@@ -93,17 +100,20 @@ namespace Units.Player
         public void SetRespawnPoint(Transform respawnTransform)
         {
             respawnPoint = respawnTransform;
+            //Debug.Log("respawn point set:" + respawnPoint.position);
         }
 
         public void Respawn()
         {
             if (respawnPoint != null)
             {
-                Debug.Log("ayaya");
+                //Debug.Log("respawn point:" + respawnPoint.position);
                 transform.position = respawnPoint.position;
+                //transform.position = transform.TransformPoint(respawnPoint.position);
             }
             Health.Heal(LichStats.GetLichHealth());
             Health.isDead = false;
+            Health.SetInvulnerable(false);
             SwitchState(new PlayerFreeLookState(this));
             OnRespawn?.Invoke();
         }

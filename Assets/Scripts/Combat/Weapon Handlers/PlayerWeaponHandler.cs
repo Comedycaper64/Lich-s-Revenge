@@ -33,6 +33,8 @@ public class PlayerWeaponHandler : MonoBehaviour
         fireboltStats = gameObject.GetComponent<FireboltStats>();
         fireballStats = gameObject.GetComponent<FireballStats>();
         MainCameraTransform = Camera.main.transform;
+        float explodeRadius = fireballStats.GetFireballExplodeRadius() * 2.6f; //fireball visual is smaller than it should be due to lich parent, so needs 2.6 buff
+        fireballVisual.localScale = new Vector3(explodeRadius, explodeRadius, explodeRadius);
     }
 
     public Vector3 GetDirectionToCameraCentre(Transform emitter)
@@ -97,6 +99,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         //currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform.position, fireballRotation).GetComponent<FireBallProjectile>();
         currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform).GetComponent<FireBallProjectile>();
         currentFireball.SetAttack(fireballStats.GetFireballSpellAttack(), 20f);
+        currentFireball.SetTimeToLive(fireballStats.GetfireballDetonationTime());
         currentFireball.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
         QTESucceeded = false;
         fireballLaunched = false;
@@ -122,6 +125,7 @@ public class PlayerWeaponHandler : MonoBehaviour
             currentFireball.transform.SetParent(null);
             currentFireball.transform.rotation = fireballRotation;
             currentFireball.SetProjectileSpeed(fireballStats.GetFireballSpellProjectileSpeed());
+            currentFireball.SetExplodeRadius(fireballStats.GetFireballExplodeRadius());
             if (!QTESucceeded)
             {   
                 QTEActive = false;

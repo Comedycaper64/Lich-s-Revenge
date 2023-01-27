@@ -17,12 +17,14 @@ namespace Units.Player
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(ImpactHash, 0.1f);
+            stateMachine.Health.SetInvulnerable(true);
             stateMachine.InputReader.MenuEvent += OnMenu; 
         }
 
         public override void Exit()
         {
             stateMachine.InputReader.MenuEvent -= OnMenu; 
+            stateMachine.Health.SetInvulnerable(false);
         }
 
         public override void Tick(float deltaTime)

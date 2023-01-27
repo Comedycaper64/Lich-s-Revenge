@@ -417,7 +417,7 @@ Transform:
   - {fileID: 8081370796485095220}
   - {fileID: 5891507604281186048}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1585517141265844716
 GameObject:
@@ -1304,8 +1304,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6141808893008155009}
-  m_LocalRotation: {x: 0.023377996, y: -0.000000017168148, z: 4.014666e-10, w: 0.9997267}
-  m_LocalPosition: {x: 0, y: 0.5, z: 4}
+  m_LocalRotation: {x: 0.023377994, y: 0.000000017268839, z: -4.0382112e-10, w: 0.9997267}
+  m_LocalPosition: {x: 0, y: 0.50000024, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1384,7 +1384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7937299493227286648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 2.2499998, z: -6}
+  m_LocalPosition: {x: 1, y: 2.25, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1456,7 +1456,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5891507604281186048}
   - component: {fileID: 8425150010534401411}
-  - component: {fileID: 5891507604281186051}
   m_Layer: 8
   m_Name: StateDriven Camera
   m_TagString: StateCamera
@@ -1553,19 +1552,6 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: -1063883918
     m_ParentHash: 756556552
---- !u!114 &5891507604281186051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8200562062647045608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d876b753205d55c48ba0a26c61874143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateCamera: {fileID: 8425150010534401411}
 --- !u!1 &8623393353625170778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,7 +1578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8623393353625170778}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 1.8500001, z: -2}
+  m_LocalPosition: {x: 1.5, y: 1.8499999, z: -1.9999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1813,7 +1799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8631909481698462896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2499998, z: -10}
+  m_LocalPosition: {x: 0, y: 1.25, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2666,7 +2652,6 @@ MonoBehaviour:
   <Mana>k__BackingField: {fileID: 4505539415653186760}
   <WeaponHandler>k__BackingField: {fileID: 859981974532246962}
   <Bones>k__BackingField: {fileID: 6026264229195858147}
-  <Ragdoll>k__BackingField: {fileID: 0}
   <RotationDamping>k__BackingField: 10
   <JumpForce>k__BackingField: 6
   <dashVFX>k__BackingField: {fileID: 2077259520154301884, guid: daa3f42276ebdad4393925c6ccc13fb8,
@@ -2703,6 +2688,8 @@ MonoBehaviour:
   spellAttackMultiplicativeModifier: 3
   spellAttackAdditiveModifier: 0
   spellAttackOverride: 0
+  explodeRadius: 0
+  fireballDetonationTime: 0
   QTEDamageModifier: 2
   QTEManaModifier: 0.5
 --- !u!114 &8538347127222063245
@@ -2719,4 +2706,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1612496269}
   agent: {fileID: 0}
+  health: {fileID: 2258295609884039551}
   drag: 0.1

@@ -17,21 +17,21 @@ namespace Units.Player
 
         public override void Enter()
         {
-            // stateMachine.Ragdoll.ToggleRagdoll(true);
             stateMachine.Animator.CrossFadeInFixedTime(DeathHash, 0.1f);
             stateMachine.menuManager.ToggleDeathUI(true);
+            stateMachine.Controller.enabled = false;
             stateMachine.InputReader.MenuEvent += stateMachine.Respawn;
         }
 
         public override void Tick(float deltaTime)
         {
-            
+
         }
 
         public override void Exit()
         {
-            //stateMachine.Ragdoll.ToggleRagdoll(false);
             stateMachine.menuManager.ToggleDeathUI(false);
+            stateMachine.Controller.enabled = true;
             stateMachine.InputReader.MenuEvent -= stateMachine.Respawn;
         }
     }

@@ -54,7 +54,8 @@ public class FireBoltProjectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.gameObject.layer == 6)
+        int layer = other.gameObject.layer;
+        if ((layer == 6 || layer == 0))
         {
             Destroy(gameObject);
         }
