@@ -35,16 +35,16 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Image manaImage;
     [SerializeField] private TextMeshProUGUI boneText;
 
-    private AbilityUI fireboltSlider;
-    private AbilityUI fireballSlider;
-    private AbilityUI aimSlider;
-    private AbilityUI blockSlider;
-    private AbilityUI dashSlider;
-    private AbilityUI healSlider;
-    private AbilityUI absorbSlider;
-    private AbilityUI menuSlider;
+    private AbilityUI fireboltUI;
+    private AbilityUI fireballUI;
+    private AbilityUI aimUI;
+    private AbilityUI blockUI;
+    private AbilityUI dashUI;
+    private AbilityUI healUI;
+    private AbilityUI absorbUI;
+    private AbilityUI menuUI;
 
-    private List<AbilityUI> sliders = new List<AbilityUI>();
+    private List<AbilityUI> abilityUIs = new List<AbilityUI>();
 
     private string currentInput;
 
@@ -63,14 +63,14 @@ public class PlayerUI : MonoBehaviour
         inputReader = player.GetComponent<InputReader>();
         playerStateMachine.OnSwitchState += UpdateUI;
         ClearAbilityUIs();
-        sliders.Add(fireboltSlider = Instantiate(fireboltAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        sliders.Add(fireballSlider = Instantiate(fireballAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        sliders.Add(aimSlider = Instantiate(aimAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        sliders.Add(dashSlider = Instantiate(dashAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        sliders.Add(healSlider = Instantiate(healAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        sliders.Add(blockSlider = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        sliders.Add(absorbSlider = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        sliders.Add(menuSlider = Instantiate(menuButtonUI, menuUITransform).GetComponent<AbilityUI>());
+        abilityUIs.Add(fireboltUI = Instantiate(fireboltAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        abilityUIs.Add(fireballUI = Instantiate(fireballAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        abilityUIs.Add(aimUI = Instantiate(aimAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        abilityUIs.Add(dashUI = Instantiate(dashAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        abilityUIs.Add(healUI = Instantiate(healAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        abilityUIs.Add(blockUI = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        abilityUIs.Add(absorbUI = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        abilityUIs.Add(menuUI = Instantiate(menuButtonUI, menuUITransform).GetComponent<AbilityUI>());
         currentState = StateEnum.FreeLook;
 
         inputReader.KeyboardAndMouseInput += OnKeyboardInput;
@@ -82,43 +82,63 @@ public class PlayerUI : MonoBehaviour
     {
         if (!playerCooldowns.IsFireboltReady())
         {
-            fireboltSlider.SetCooldownSliderValue(playerCooldowns.GetFireboltCooldownNormalised());
+            fireboltUI.SetCooldownSliderValue(playerCooldowns.GetFireboltCooldownNormalised());
         }
+        else
+        {
+            fireboltUI.SetCooldownSliderValue(0f);
+        }
+
         if (!playerCooldowns.IsFireballReady())
         {
-            fireballSlider.SetCooldownSliderValue(playerCooldowns.GetFireballCooldownNormalised());
+            fireballUI.SetCooldownSliderValue(playerCooldowns.GetFireballCooldownNormalised());
         }
+        else
+        {
+            fireballUI.SetCooldownSliderValue(0f);
+        }
+
         if (!playerCooldowns.IsDodgeReady())
         {
-            dashSlider.SetCooldownSliderValue(playerCooldowns.GetDodgeCooldownNormalised());
+            dashUI.SetCooldownSliderValue(playerCooldowns.GetDodgeCooldownNormalised());
         }
+        else
+        {
+            dashUI.SetCooldownSliderValue(0f);
+        }
+
         if (!playerCooldowns.IsAegisReady())
         {
-            blockSlider.SetCooldownSliderValue(playerCooldowns.GetAegisCooldownNormalised());
+            blockUI.SetCooldownSliderValue(playerCooldowns.GetAegisCooldownNormalised());
         }
+        else
+        {
+            blockUI.SetCooldownSliderValue(0f);
+        }
+
 
         if (!playerMana.HasMana(playerStats.GetLichDodgeManaCost()))
         {
-            dashSlider.SetManaSliderValue(1 - (playerMana.GetMana() / playerStats.GetLichDodgeManaCost()));
+            dashUI.SetManaSliderValue(1 - (playerMana.GetMana() / playerStats.GetLichDodgeManaCost()));
         }
         if (!playerMana.HasMana(fireboltStats.GetFireboltSpellManaCost()))
         {
-            fireboltSlider.SetManaSliderValue(1 - (playerMana.GetMana() / fireboltStats.GetFireboltSpellManaCost()));
+            fireboltUI.SetManaSliderValue(1 - (playerMana.GetMana() / fireboltStats.GetFireboltSpellManaCost()));
         }
         if (!playerMana.HasMana(fireballStats.GetFireballSpellManaCost()))
         {
-            fireballSlider.SetManaSliderValue(1 - (playerMana.GetMana() / fireballStats.GetFireballSpellManaCost()));
+            fireballUI.SetManaSliderValue(1 - (playerMana.GetMana() / fireballStats.GetFireballSpellManaCost()));
         }
 
         if (playerBones.GetBones() < 1)
         {
-            healSlider.SetManaSliderValue(1f);
-            absorbSlider.SetManaSliderValue(1f);
+            healUI.SetCooldownSliderValue(1f);
+            absorbUI.SetCooldownSliderValue(1f);
         }
         else
         {
-            healSlider.SetManaSliderValue(0f);
-            absorbSlider.SetManaSliderValue(0f);
+            healUI.SetCooldownSliderValue(0f);
+            absorbUI.SetCooldownSliderValue(0f);
         }
 
     }
@@ -136,11 +156,11 @@ public class PlayerUI : MonoBehaviour
         }
         crosshairUI.SetActive(!IsFreeLookState());
         
-        fireboltSlider.SetImageActive(!IsFreeLookState());
-        fireballSlider.SetImageActive(!IsFreeLookState());
-        aimSlider.SetImageActive(IsFreeLookState());
-        blockSlider.SetImageActive(IsFreeLookState());
-        menuSlider.SetImageActive(IsFreeLookState());
+        fireboltUI.SetImageActive(!IsFreeLookState());
+        fireballUI.SetImageActive(!IsFreeLookState());
+        aimUI.SetImageActive(IsFreeLookState());
+        blockUI.SetImageActive(IsFreeLookState());
+        menuUI.SetImageActive(IsFreeLookState());
     }
 
     private bool IsFreeLookState()
@@ -159,7 +179,7 @@ public class PlayerUI : MonoBehaviour
     {
         if (currentInput == "Playstation") {return;}
 
-        foreach(AbilityUI slider in sliders)
+        foreach(AbilityUI slider in abilityUIs)
         {
             slider.SetPlaystationUI();
         }
@@ -170,7 +190,7 @@ public class PlayerUI : MonoBehaviour
     {
         if (currentInput == "Xbox") {return;}
 
-        foreach(AbilityUI slider in sliders)
+        foreach(AbilityUI slider in abilityUIs)
         {
             slider.SetXboxUI();
         }
@@ -181,7 +201,7 @@ public class PlayerUI : MonoBehaviour
     {
         if (currentInput == "Keyboard") {return;}
 
-        foreach(AbilityUI slider in sliders)
+        foreach(AbilityUI slider in abilityUIs)
         {
             slider.SetKeyboardUI();
         }

@@ -14,7 +14,7 @@ public class RangerWeaponHandler : MonoBehaviour
     private RangerWeapon projectile;
 
     [SerializeField] private GameObject rangerProjectile;
-    [SerializeField] private Transform projectileEmitter;    
+    [SerializeField] public Transform projectileEmitter;    
     [SerializeField] private Material aimingMaterial;
     [SerializeField] private Material firingMaterial;
 

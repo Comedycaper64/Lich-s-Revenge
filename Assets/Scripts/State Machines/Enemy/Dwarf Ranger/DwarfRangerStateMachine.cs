@@ -16,7 +16,7 @@ namespace Units.Enemy.Ranger
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public GameObject Bone {get; private set;}
         [field: SerializeField] public RangerWeaponHandler RangerWeapon {get; private set;}
-        [field: SerializeField] public int AttackKnockback {get; private set;}
+        // public int playerVisionLayermask;
 
         public Health Player {get; private set;}
 
@@ -28,6 +28,10 @@ namespace Units.Enemy.Ranger
             Agent.updateRotation = false;
 
             Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
+
+            // int layermask1 = 1 << 8;
+            // int layermask2 = 1 << 6;
+            // playerVisionLayermask = layermask1 | layermask2;
 
             SwitchState(new DwarfRangerIdleState(this));    
         }

@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     //[SerializeField] private GameObject levelButton;
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
     private List<EnemySpawn> enemySpawns = new List<EnemySpawn>();
-    private PlayerStateMachine Player;
+    //private PlayerStateMachine Player;
 
     [Header("Enemy Types")]
     [SerializeField] private GameObject minerEnemy;
@@ -21,9 +21,9 @@ public class LevelManager : MonoBehaviour
 
     private void Awake() 
     {   
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
+        //Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
         StateMachine.OnEnemyUnitDead += EnemyDied;
-        Player.OnRespawn += RespawnEnemies;
+        PlayerStateMachine.OnRespawn += RespawnEnemies;
 
         foreach(GameObject enemy in enemies)
         {
@@ -71,7 +71,7 @@ public class LevelManager : MonoBehaviour
 
     private void OnDestroy() 
     {
-        Player.OnRespawn -= RespawnEnemies;
+        PlayerStateMachine.OnRespawn -= RespawnEnemies;
     }
 
     private void EnemyDied(object sender, GameObject enemy)

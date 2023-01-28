@@ -35,7 +35,7 @@ namespace Units.Player
         public MenuManager menuManager;
         private PlayerUI playerUI;
         public event EventHandler<State> OnSwitchState;
-        public event Action OnRespawn;
+        public static event Action OnRespawn;
 
         void Start()
         {
