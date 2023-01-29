@@ -30,9 +30,9 @@ public class GunnerWeaponHandler : MonoBehaviour
             float knockback = gunnerStats.GetAttack() * 2;    
             if(playerTransform.TryGetComponent<PlayerStateMachine>(out PlayerStateMachine stateMachine))
             {
-                if (stateMachine.Aegis.blocking)
+                if (stateMachine.Aegis.absorbing)
                 {
-                    stateMachine.Aegis.DamageAegis(damage, true);
+                    stateMachine.Aegis.DamageAegis();
                 }
                 else
                 {

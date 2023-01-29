@@ -96,7 +96,6 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     public void SpawnFireball()
     {
-        //currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform.position, fireballRotation).GetComponent<FireBallProjectile>();
         currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform).GetComponent<FireBallProjectile>();
         currentFireball.SetAttack(fireballStats.GetFireballSpellAttack(), 20f);
         currentFireball.SetTimeToLive(fireballStats.GetfireballDetonationTime());
@@ -124,6 +123,7 @@ public class PlayerWeaponHandler : MonoBehaviour
             fireballRotation = Quaternion.LookRotation(GetDirectionToCameraCentre(fireballEmitter), Vector3.up);
             currentFireball.transform.SetParent(null);
             currentFireball.transform.rotation = fireballRotation;
+            currentFireball.EnableCollider(true);
             currentFireball.SetProjectileSpeed(fireballStats.GetFireballSpellProjectileSpeed());
             currentFireball.SetExplodeRadius(fireballStats.GetFireballExplodeRadius());
             if (!QTESucceeded)

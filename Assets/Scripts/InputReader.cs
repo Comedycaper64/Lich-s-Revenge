@@ -15,7 +15,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action MenuEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
-    public bool isBlocking {get; private set;}
+    //public bool isBlocking {get; private set;}
     public bool isHealing {get; private set;}
     public bool isFireballing {get; private set;}
 
@@ -155,19 +155,19 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         }
     }
 
-    public void OnBlock(InputAction.CallbackContext context)
-    {
-        if (MenuManager.gameIsPaused) {return;}
+    // public void OnBlock(InputAction.CallbackContext context)
+    // {
+    //     if (MenuManager.gameIsPaused) {return;}
 
-        if (context.performed)
-        {
-            isBlocking = true;
-        }
-        else if (context.canceled)
-        {
-            isBlocking = false;
-        }
-    }
+    //     if (context.performed)
+    //     {
+    //         isBlocking = true;
+    //     }
+    //     else if (context.canceled)
+    //     {
+    //         isBlocking = false;
+    //     }
+    // }
 
     public void OnFireball(InputAction.CallbackContext context)
     {

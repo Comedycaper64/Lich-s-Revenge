@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FireBallProjectile : MonoBehaviour
 {
+    [SerializeField] private Collider fireballCollider;
     private Collider playerCollider;
     private float damage;
     private float knockback;
@@ -22,6 +23,7 @@ public class FireBallProjectile : MonoBehaviour
 
     private void Start() 
     {
+        EnableCollider(false);
         StartCoroutine(SeeIfLaunched());
     }
 
@@ -68,6 +70,11 @@ public class FireBallProjectile : MonoBehaviour
     public void SetTimeToLive(float timeToLive)
     {
         this.timeToLive = timeToLive;
+    }
+
+    public void EnableCollider(bool enable)
+    {
+        fireballCollider.enabled = enable;
     }
     
     private IEnumerator SeeIfLaunched()

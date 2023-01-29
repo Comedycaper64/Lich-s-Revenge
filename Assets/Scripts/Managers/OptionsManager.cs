@@ -12,10 +12,10 @@ public class OptionsManager : MonoBehaviour
     private CinemachinePOV lookPOV;
     private CinemachinePOV aimPOV;
 
-    private float lookXSensitivity = 80f;
-    private float lookYSensitivity = 40f;
-    private float aimXSensitivity = 40f;
-    private float aimYSensitivity = 20f;
+    private float lookXSensitivity = 150f;
+    private float lookYSensitivity = 100f;
+    private float aimXSensitivity = 80f;
+    private float aimYSensitivity = 50f;
 
     private void Awake() 
     {

@@ -53,7 +53,7 @@ public class RangerWeapon : MonoBehaviour
 
         if(other.TryGetComponent<LichAegis>(out LichAegis aegis))
         {
-            aegis.DamageAegis(damage, true);
+            aegis.DamageAegis();
             Destroy(gameObject);
         }
 

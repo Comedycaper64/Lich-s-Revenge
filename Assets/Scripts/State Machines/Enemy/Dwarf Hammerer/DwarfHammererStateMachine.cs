@@ -20,7 +20,8 @@ namespace Units.Enemy.Hammerer
         [field: SerializeField] public GameObject Bone  {get; private set;}
         private float slamCooldown = 5f;
         
-
+        public Transform headLocation;
+        public int playerVisionLayermask;
         public Health Player {get; private set;}
         public PlayerStateMachine PlayerStateMachine;
 
@@ -34,6 +35,9 @@ namespace Units.Enemy.Hammerer
 
             Health.SetMaxHealth(Stats.GetHealth());
             WeaponHandler.SetupSlamVisual(Stats.GetSlamRadius());
+            int layermask1 = 1 << 8;
+            int layermask2 = 1 << 6;
+            playerVisionLayermask = layermask1 | layermask2;
 
             SwitchState(new DwarfHammererIdleState(this));    
         }

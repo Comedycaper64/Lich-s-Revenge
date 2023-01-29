@@ -11,6 +11,7 @@ public class PlayerUI : MonoBehaviour
 {
     private PlayerStateMachine playerStateMachine;
     private PlayerCooldowns playerCooldowns;
+    private Health playerHealth;
     private Mana playerMana;
     private LichBones playerBones;
     private LichStats playerStats;
@@ -25,10 +26,15 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject fireboltAbilityUI;
     [SerializeField] GameObject fireballAbilityUI;
     [SerializeField] GameObject aimAbilityUI;
-    [SerializeField] GameObject blockAbilityUI;
+    //[SerializeField] GameObject blockAbilityUI;
     [SerializeField] GameObject healAbilityUI;
     [SerializeField] GameObject absorbAbilityUI;
     [SerializeField] GameObject menuButtonUI;
+
+    [Header("UI VFX")]
+    [SerializeField] private GameObject uiDamageFlash;
+    [SerializeField] private GameObject uiHealFlash;
+    [SerializeField] private GameObject uiBoneFlash;
 
     [Header("Lich References")]
     [SerializeField] private Image healthImage;
@@ -38,13 +44,13 @@ public class PlayerUI : MonoBehaviour
     private AbilityUI fireboltUI;
     private AbilityUI fireballUI;
     private AbilityUI aimUI;
-    private AbilityUI blockUI;
+    //private AbilityUI blockUI;
     private AbilityUI dashUI;
     private AbilityUI healUI;
     private AbilityUI absorbUI;
     private AbilityUI menuUI;
 
-    private List<AbilityUI> abilityUIs = new List<AbilityUI>();
+    [SerializeField] private List<AbilityUI> abilityUIs = new List<AbilityUI>();
 
     private string currentInput;
 
@@ -55,6 +61,7 @@ public class PlayerUI : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerStateMachine = player.GetComponent<PlayerStateMachine>();
         playerCooldowns = player.GetComponent<PlayerCooldowns>();
+        playerHealth = player.GetComponent<Health>();
         playerMana = player.GetComponent<Mana>();
         playerBones = player.GetComponent<LichBones>();
         playerStats = player.GetComponent<LichStats>();
@@ -68,10 +75,14 @@ public class PlayerUI : MonoBehaviour
         abilityUIs.Add(aimUI = Instantiate(aimAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(dashUI = Instantiate(dashAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(healUI = Instantiate(healAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        abilityUIs.Add(blockUI = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        //abilityUIs.Add(blockUI = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(absorbUI = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(menuUI = Instantiate(menuButtonUI, menuUITransform).GetComponent<AbilityUI>());
         currentState = StateEnum.FreeLook;
+
+        playerHealth.OnTakeDamage += UITakeDamage;
+        playerHealth.OnHeal += UIHeal;
+        playerBones.OnBoneGet += UIBoneGet;
 
         inputReader.KeyboardAndMouseInput += OnKeyboardInput;
         inputReader.XboxGamepadInput += OnXboxInput;
@@ -109,11 +120,11 @@ public class PlayerUI : MonoBehaviour
 
         if (!playerCooldowns.IsAegisReady())
         {
-            blockUI.SetCooldownSliderValue(playerCooldowns.GetAegisCooldownNormalised());
+            absorbUI.SetCooldownSliderValue(playerCooldowns.GetAegisCooldownNormalised());
         }
         else
         {
-            blockUI.SetCooldownSliderValue(0f);
+            absorbUI.SetCooldownSliderValue(0f);
         }
 
 
@@ -129,16 +140,20 @@ public class PlayerUI : MonoBehaviour
         {
             fireballUI.SetManaSliderValue(1 - (playerMana.GetMana() / fireballStats.GetFireballSpellManaCost()));
         }
+        if (!playerMana.HasMana(playerStats.GetLichAbsorbManaCost()))
+        {
+            absorbUI.SetManaSliderValue(1 - (playerMana.GetMana() / playerStats.GetLichAbsorbManaCost()));
+        }
 
         if (playerBones.GetBones() < 1)
         {
             healUI.SetCooldownSliderValue(1f);
-            absorbUI.SetCooldownSliderValue(1f);
+            //absorbUI.SetCooldownSliderValue(1f);
         }
         else
         {
             healUI.SetCooldownSliderValue(0f);
-            absorbUI.SetCooldownSliderValue(0f);
+            //absorbUI.SetCooldownSliderValue(0f);
         }
 
     }
@@ -159,7 +174,7 @@ public class PlayerUI : MonoBehaviour
         fireboltUI.SetImageActive(!IsFreeLookState());
         fireballUI.SetImageActive(!IsFreeLookState());
         aimUI.SetImageActive(IsFreeLookState());
-        blockUI.SetImageActive(IsFreeLookState());
+        //blockUI.SetImageActive(IsFreeLookState());
         menuUI.SetImageActive(IsFreeLookState());
     }
 
@@ -175,13 +190,31 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    private void UIHeal()
+    {
+        GameObject healFlash = Instantiate(uiHealFlash, healthImage.transform);
+        Destroy(healFlash, 3f);
+    }
+
+    private void UITakeDamage()
+    {
+        GameObject damageFlash = Instantiate(uiDamageFlash, healthImage.transform);
+        Destroy(damageFlash, 3f);
+    }
+
+    private void UIBoneGet()
+    {
+        GameObject boneFlash = Instantiate(uiBoneFlash, boneText.transform);
+        Destroy(boneFlash, 3f);
+    }
+
     private void OnPlaystationInput()
     {
         if (currentInput == "Playstation") {return;}
 
-        foreach(AbilityUI slider in abilityUIs)
+        foreach(AbilityUI ui in abilityUIs)
         {
-            slider.SetPlaystationUI();
+            ui.SetPlaystationUI();
         }
         currentInput = "Playstation";
     }
@@ -190,9 +223,9 @@ public class PlayerUI : MonoBehaviour
     {
         if (currentInput == "Xbox") {return;}
 
-        foreach(AbilityUI slider in abilityUIs)
+        foreach(AbilityUI ui in abilityUIs)
         {
-            slider.SetXboxUI();
+            ui.SetXboxUI();
         }
         currentInput = "Xbox";
     }
@@ -201,9 +234,9 @@ public class PlayerUI : MonoBehaviour
     {
         if (currentInput == "Keyboard") {return;}
 
-        foreach(AbilityUI slider in abilityUIs)
+        foreach(AbilityUI ui in abilityUIs)
         {
-            slider.SetKeyboardUI();
+            ui.SetKeyboardUI();
         }
         currentInput = "Keyboard";
     }

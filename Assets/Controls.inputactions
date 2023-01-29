@@ -78,15 +78,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Block",
-                    "type": "Button",
-                    "id": "010e8408-707e-48bb-a408-74d8f197eb7d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Absorb",
                     "type": "Button",
                     "id": "94475c1d-b068-4a3b-86cb-5564f1ea2c12",
@@ -340,7 +331,7 @@
                 {
                     "name": "",
                     "id": "184acd3f-4188-402f-9fdd-55be38e99c13",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -367,28 +358,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Heal",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "015bbe30-cce6-45c6-9a55-07b7f2f9d93a",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse & Keyboard",
-                    "action": "Block",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "916cea58-4df5-4d05-8bb2-4c7d1dfcf88b",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Block",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

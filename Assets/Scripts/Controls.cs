@@ -100,15 +100,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Block"",
-                    ""type"": ""Button"",
-                    ""id"": ""010e8408-707e-48bb-a408-74d8f197eb7d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Absorb"",
                     ""type"": ""Button"",
                     ""id"": ""94475c1d-b068-4a3b-86cb-5564f1ea2c12"",
@@ -362,7 +353,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""184acd3f-4188-402f-9fdd-55be38e99c13"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -389,28 +380,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Heal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""015bbe30-cce6-45c6-9a55-07b7f2f9d93a"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse & Keyboard"",
-                    ""action"": ""Block"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""916cea58-4df5-4d05-8bb2-4c7d1dfcf88b"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -501,7 +470,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Fireball = m_Player.FindAction("Fireball", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
-        m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Absorb = m_Player.FindAction("Absorb", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
     }
@@ -571,7 +539,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Fireball;
     private readonly InputAction m_Player_Heal;
-    private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Absorb;
     private readonly InputAction m_Player_Menu;
     public struct PlayerActions
@@ -586,7 +553,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Fireball => m_Wrapper.m_Player_Fireball;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
-        public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputAction @Absorb => m_Wrapper.m_Player_Absorb;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -622,9 +588,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Heal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
-                @Block.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
-                @Block.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
-                @Block.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                 @Absorb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
                 @Absorb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
                 @Absorb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbsorb;
@@ -659,9 +622,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
-                @Block.started += instance.OnBlock;
-                @Block.performed += instance.OnBlock;
-                @Block.canceled += instance.OnBlock;
                 @Absorb.started += instance.OnAbsorb;
                 @Absorb.performed += instance.OnAbsorb;
                 @Absorb.canceled += instance.OnAbsorb;
@@ -700,7 +660,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnFireball(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
-        void OnBlock(InputAction.CallbackContext context);
         void OnAbsorb(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
     }

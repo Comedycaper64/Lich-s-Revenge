@@ -50,7 +50,7 @@ public class HammererWeapon : MonoBehaviour
             handler.DisableWeapon();
             unitHealth.DealDamage(0);
             unitForceReceiver.AddForce((unitCollider.transform.position - collider.transform.position).normalized * knockback);
-            aegis.DamageAegis(999f, false);
+            aegis.DamageAegis();
         }
 
         if(collider.TryGetComponent<Health>(out Health health))
@@ -68,7 +68,7 @@ public class HammererWeapon : MonoBehaviour
     {
         if(collider.TryGetComponent<LichAegis>(out LichAegis aegis))
         {
-            aegis.DamageAegis(damage, false);
+            aegis.DamageAegis();
         }
         else
         {

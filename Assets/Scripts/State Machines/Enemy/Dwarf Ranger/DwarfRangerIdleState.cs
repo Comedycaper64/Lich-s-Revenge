@@ -34,7 +34,7 @@ namespace Units.Enemy.Ranger
                 return;
             }
 
-            if (IsInAttackRange())
+            if (CanSeePlayer())
             {
                 stateMachine.SwitchState(new DwarfRangerAttackingState(stateMachine));
                 return;
@@ -52,19 +52,19 @@ namespace Units.Enemy.Ranger
             return playerDistanceSqr <= stateMachine.Stats.GetAttackRange() * stateMachine.Stats.GetAttackRange();
         }
 
-        // private bool CanSeePlayer()
-        // {
-        //     RaycastHit hit;
-        //     Vector3 playerDir = (stateMachine.Player.transform.position - (stateMachine.transform.position + new Vector3(0, 0.9f, 0))).normalized; //adding 0.9f to compensate for height
-        //     if(Physics.Raycast(stateMachine.RangerWeapon.projectileEmitter.position, playerDir, out hit, stateMachine.Stats.GetAttackRange(), stateMachine.playerVisionLayermask))
-        //     {
-        //         if (hit.collider.gameObject.layer == 8)
-        //         {
-        //             return true;
-        //         }
-        //     }
+        private bool CanSeePlayer()
+        {
+            RaycastHit hit;
+            Vector3 playerDir = ((stateMachine.Player.transform.position + new Vector3(0, 0.9f, 0)) - stateMachine.headLocation.position).normalized; //adding 0.9f to compensate for height
+            if(Physics.Raycast(stateMachine.headLocation.position, playerDir, out hit, stateMachine.Stats.GetAttackRange(), stateMachine.playerVisionLayermask))
+            {
+                if (hit.collider.gameObject.layer == 8)
+                {
+                    return true;
+                }
+            }
 
-        //     return false;
-        // }
+            return false;
+        }
     }
 }

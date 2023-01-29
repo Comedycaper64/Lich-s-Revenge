@@ -36,8 +36,12 @@ namespace Stats
         [SerializeField] private float spellProjectileSpeed;
         [SerializeField] private float spellManaCost;
         [SerializeField] private int healAmount;
-        [SerializeField] private float aegisBreakCooldown;
+
+        [Header("Absorb")]
+        [SerializeField] private float absorbCooldown;
+        [SerializeField] private float absorbDuration;
         [SerializeField] private float absorbBuffDuration;
+        [SerializeField] private float absorbManaMultiplier;
 
         [Header("Dodging")]
         [SerializeField] private float dodgeDistance;
@@ -120,14 +124,24 @@ namespace Stats
             return healAmount;
         }
 
-        public float GetLichAegisBreakCooldown()
+        public float GetLichAbsorbCooldown()
         {
-            return aegisBreakCooldown;
+            return absorbCooldown;
+        }
+
+        public float GetLichAbsorbDuration()
+        {
+            return absorbDuration;
         }
 
         public float GetLichAbsorbBuffDuration()
         {
             return absorbBuffDuration;
+        }
+
+        public float GetLichAbsorbManaCost()
+        {
+            return GetLichSpellManaCost() * absorbManaMultiplier;
         }
 
         public float GetLichDodgeDistance()

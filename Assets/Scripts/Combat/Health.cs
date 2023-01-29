@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     private bool invulnerable;
 
     public event Action OnTakeDamage;
+    public event Action OnHeal;
     public event Action OnDie;
 
     public void SetMaxHealth(float newHealth)
@@ -77,5 +78,6 @@ public class Health : MonoBehaviour
     {
         health = Mathf.Min(health + healing, maxHealth);
         UpdateHealthbar();
+        OnHeal?.Invoke();
     }
 }

@@ -5896,6 +5896,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1588770563}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &1678006349 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7824764038315113260, guid: 28932953b5f7b58499416fbcbbaf71a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7824764037193020968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1680706179 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7711505066968556524, guid: 55993d8a060d40b4e9e65f103ba0987c,
@@ -11138,6 +11144,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7711505067114836897, guid: 55993d8a060d40b4e9e65f103ba0987c,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1678006349}
     - target: {fileID: 7711505067114836900, guid: 55993d8a060d40b4e9e65f103ba0987c,
         type: 3}
       propertyPath: m_Name
@@ -11552,11 +11563,26 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 805989206}
+    - target: {fileID: 3956473862575299559, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2499998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475371377862784943, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4505539415653186760, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 1680706179}
+    - target: {fileID: 5907609119998453000, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5907609119998453000, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -11586,6 +11612,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623393353625170779, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.8500001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8623393353625170779, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697835422382572078, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2499998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

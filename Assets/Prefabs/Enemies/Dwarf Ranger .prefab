@@ -479,6 +479,37 @@ Transform:
   m_Father: {fileID: 909317462448876730}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1592334324080315652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5329766714342696594}
+  m_Layer: 7
+  m_Name: Head Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5329766714342696594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592334324080315652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.549, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7122006348204970709}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727257914742682549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,6 +3168,7 @@ Transform:
   - {fileID: 3463069550318783704}
   - {fileID: 8941806798036239600}
   - {fileID: 2333490089812963344}
+  - {fileID: 5329766714342696594}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3196,7 +3228,8 @@ MonoBehaviour:
   <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
     type: 3}
   <RangerWeapon>k__BackingField: {fileID: 4512957670110549957}
-  <AttackKnockback>k__BackingField: 5
+  headLocation: {fileID: 5329766714342696594}
+  playerVisionLayermask: 0
 --- !u!114 &6395639980812692723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3209,7 +3242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1ef37e753c3524aac7995079504679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 50
+  Health: 25
   healthMultiplicativeModifier: 0.5
   healthAdditiveModifier: 0
   healthOverride: 0
@@ -3239,7 +3272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2316461505739531393}
   agent: {fileID: 5141454991735257434}
-  health: {fileID: 2817701306319895354}
   drag: 0.3
 --- !u!114 &4512957670110549957
 MonoBehaviour:

@@ -7,8 +7,6 @@ namespace Units.Player
     public class PlayerAbsorbState : PlayerBaseState
     {
         private readonly int AbsorbHash = Animator.StringToHash("Absorb");
-        //private float previousFrameTime;
-        //private float normalisedTime;
         private float remainingAbsorbTime;
 
         public PlayerAbsorbState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -19,7 +17,7 @@ namespace Units.Player
         {
             stateMachine.Animator.CrossFadeInFixedTime(AbsorbHash, 0.1f);
             stateMachine.Aegis.ToggleAbsorb(true);
-            remainingAbsorbTime = 1f;
+            remainingAbsorbTime = stateMachine.LichStats.GetLichAbsorbDuration();
         }
 
         public override void Tick(float deltaTime)
@@ -51,6 +49,7 @@ namespace Units.Player
         public override void Exit()
         {
             stateMachine.Aegis.ToggleAbsorb(false);
+            stateMachine.Cooldowns.SetAegisCooldown();
         }
 
         private Vector3 CalculateMovement()

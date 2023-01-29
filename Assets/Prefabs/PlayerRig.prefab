@@ -505,7 +505,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2353333110425735303}
-  m_LocalRotation: {x: 0.005237649, y: -0.0000000010753841, z: 5.6325626e-12, w: 0.9999863}
+  m_LocalRotation: {x: 0.005237649, y: 0.0000000010753841, z: -5.6325626e-12, w: 0.9999863}
   m_LocalPosition: {x: 0, y: 0.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -791,9 +791,9 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 40
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_MaxSpeed: 100
+    m_AccelTime: 1
+    m_DecelTime: 0.2
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
@@ -815,9 +815,9 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 80
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_MaxSpeed: 150
+    m_AccelTime: 1
+    m_DecelTime: 0.2
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -984,7 +984,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5db295423e69a8c47a9b9a983a4aee5d, type: 2}
+  - {fileID: 2100000, guid: 47a9fc3d1f498be45937eee02e7b86de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1031,17 +1031,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7100f19c9ebdd7d438e4b697af554456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lichMana: {fileID: 4505539415653186760}
-  cooldowns: {fileID: 29418463765143356}
   lichHealth: {fileID: 2258295609884039551}
   lichStats: {fileID: 6999023320671343561}
-  absorbMaterial: {fileID: 2100000, guid: 47a9fc3d1f498be45937eee02e7b86de, type: 2}
-  blockMaterial: {fileID: 2100000, guid: 5db295423e69a8c47a9b9a983a4aee5d, type: 2}
+  lichBones: {fileID: 6026264229195858147}
   aegisRenderer: {fileID: 7887884248582445929}
   aegisCollider: {fileID: 1703912756604064651}
   buffVFX: {fileID: 8215610696996955440, guid: 62db95981e036c2479a809a1819a2c60, type: 3}
-  canEnable: 1
-  blocking: 0
+  absorbing: 0
+  attackBuffed: 0
 --- !u!54 &2362335737787683919
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1304,8 +1301,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6141808893008155009}
-  m_LocalRotation: {x: 0.023377994, y: 0.000000017268839, z: -4.0382112e-10, w: 0.9997267}
-  m_LocalPosition: {x: 0, y: 0.50000024, z: 4}
+  m_LocalRotation: {x: 0.023377996, y: -0.000000017168148, z: 4.014666e-10, w: 0.9997267}
+  m_LocalPosition: {x: 0, y: 0.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1504,10 +1501,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 2794174849281979726}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 8623393353625170776}
-  - {fileID: 1520941595943089645}
-  - {fileID: 6632386991331824573}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: -409901381
     m_VirtualCamera: {fileID: 1520941595943089645}
@@ -1604,8 +1598,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 12
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 8081370796485095220}
+  m_Follow: {fileID: 8081370796485095220}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -1699,10 +1693,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.01, y: 0.01, z: 0.01}
-  ShoulderOffset: {x: 1.5, y: -0.2, z: 0}
+  ShoulderOffset: {x: 1, y: 1.39, z: 0}
   VerticalArmLength: 0.8
   CameraSide: 1
-  CameraDistance: 2
+  CameraDistance: 5
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -1726,8 +1720,8 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 20
-    m_AccelTime: 0.1
+    m_MaxSpeed: 50
+    m_AccelTime: 1.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
@@ -1750,8 +1744,8 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 39
-    m_AccelTime: 0.1
+    m_MaxSpeed: 80
+    m_AccelTime: 1.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
@@ -1862,7 +1856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 64
   m_IgnoreTag: Player
   m_TransparentLayers:
     serializedVersion: 2
@@ -1871,10 +1865,10 @@ MonoBehaviour:
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
-  m_CameraRadius: 0.1
+  m_CameraRadius: 0.01
   m_Strategy: 0
   m_MaximumEffort: 4
-  m_SmoothingTime: 0.18
+  m_SmoothingTime: 0.1
   m_Damping: 1
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
@@ -2458,13 +2452,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.8
-  m_Radius: 0.5
+  m_Height: 4
+  m_Radius: 1.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.025
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 1.7, z: 0}
 --- !u!114 &29418463765143356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2604,7 +2598,7 @@ MonoBehaviour:
   attackMultiplicativeModifier: 1
   attackAdditiveModifier: 0
   attackOverride: 0
-  attackBuffMultiplier: 5
+  attackBuffMultiplier: 2
   Speed: 8.400001
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
@@ -2616,8 +2610,10 @@ MonoBehaviour:
   spellProjectileSpeed: 30
   spellManaCost: 20
   healAmount: 50
-  aegisBreakCooldown: 5
-  absorbBuffDuration: 5
+  absorbCooldown: 5
+  absorbDuration: 2
+  absorbBuffDuration: 10
+  absorbManaMultiplier: 2
   dodgeDistance: 10
   dodgeDuration: 0.5
   dodgeCooldown: 2
@@ -2688,8 +2684,8 @@ MonoBehaviour:
   spellAttackMultiplicativeModifier: 3
   spellAttackAdditiveModifier: 0
   spellAttackOverride: 0
-  explodeRadius: 0
-  fireballDetonationTime: 0
+  explodeRadius: 5
+  fireballDetonationTime: 2
   QTEDamageModifier: 2
   QTEManaModifier: 0.5
 --- !u!114 &8538347127222063245
@@ -2706,5 +2702,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1612496269}
   agent: {fileID: 0}
-  health: {fileID: 2258295609884039551}
   drag: 0.1

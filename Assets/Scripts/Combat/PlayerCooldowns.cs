@@ -105,7 +105,7 @@ public class PlayerCooldowns : MonoBehaviour
 
     public float GetAegisCooldownNormalised()
     {
-        return aegisCooldown / stateMachine.LichStats.GetLichAegisBreakCooldown();
+        return aegisCooldown / stateMachine.LichStats.GetLichAbsorbCooldown();
     }
 
     public void SetDodgeCooldown()
@@ -125,6 +125,6 @@ public class PlayerCooldowns : MonoBehaviour
 
     public void SetAegisCooldown()
     {
-        aegisCooldown = stateMachine.LichStats.GetLichAegisBreakCooldown();
+        aegisCooldown = stateMachine.LichStats.GetLichAbsorbCooldown();
     }
 }

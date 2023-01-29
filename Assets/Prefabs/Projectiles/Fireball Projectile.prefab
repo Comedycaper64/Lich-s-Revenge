@@ -128,8 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be333d2bcb806014eab845084da10b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLive: 2
-  fireballExplodeRadius: 5
+  fireballCollider: {fileID: 4365010490009713643}
   fireballVFX: {fileID: 2313900621488223077, guid: 9be0ec8c833af1a48a659a41ce877ee5,
     type: 3}
 --- !u!1 &7997927646970139772

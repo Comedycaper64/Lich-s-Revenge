@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class LichBones : MonoBehaviour
 {
     [SerializeField] private int maxBones;
     [SerializeField] private int bones;
     [SerializeField] public TextMeshProUGUI boneText;
+
+    public event Action OnBoneGet;
 
     private void Start() 
     {
@@ -41,6 +44,7 @@ public class LichBones : MonoBehaviour
         {
             bones++;
             UpdateBoneText();
+            OnBoneGet?.Invoke();
         }
     }
 }

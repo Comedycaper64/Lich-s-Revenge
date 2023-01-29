@@ -19,22 +19,37 @@ namespace Units.Enemy.Hammerer
             stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
         }
 
-        public override void Exit()
-        {
-
-        }
-
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
-            float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
-            if (IsInChaseRange(playerDistanceSqr))
+            //float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
+            if (CanSeePlayer())
             {
                 stateMachine.SwitchState(new DwarfHammererChasingState(stateMachine));
                 return;
             }
 
             stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
+        }
+
+        public override void Exit()
+        {
+
+        }
+
+        private bool CanSeePlayer()
+        {
+            RaycastHit hit;
+            Vector3 playerDir = ((stateMachine.Player.transform.position + new Vector3(0, 0.9f, 0)) - stateMachine.headLocation.position).normalized; //adding 0.9f to compensate for height
+            if(Physics.Raycast(stateMachine.headLocation.position, playerDir, out hit, stateMachine.Stats.GetChaseRange(), stateMachine.playerVisionLayermask))
+            {
+                if (hit.collider.gameObject.layer == 8)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

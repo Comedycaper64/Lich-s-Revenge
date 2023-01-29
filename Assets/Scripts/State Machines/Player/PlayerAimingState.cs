@@ -108,9 +108,12 @@ namespace Units.Player
         
         private void OnAbsorb()
         {
-            if (stateMachine.Bones.TryUseBones(1))
+            if (stateMachine.Cooldowns.IsAegisReady())
             {
-                stateMachine.SwitchState(new PlayerAbsorbState(stateMachine));
+                if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichAbsorbManaCost()))
+                {
+                    stateMachine.SwitchState(new PlayerAbsorbState(stateMachine));
+                }
             }
         }
     }
