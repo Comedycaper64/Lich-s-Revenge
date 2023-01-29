@@ -17,6 +17,8 @@ namespace Units.Player
         public override void Enter()
         {
             stateMachine.ForceReceiver.Jump(stateMachine.JumpForce);
+            GameObject jumpEffect = GameObject.Instantiate(stateMachine.jumpVFX, stateMachine.transform.position, Quaternion.identity);
+            GameObject.Destroy(jumpEffect, 3f);
             stateMachine.InputReader.DodgeEvent += OnDodge;
             stateMachine.InputReader.MenuEvent += OnMenu;
 

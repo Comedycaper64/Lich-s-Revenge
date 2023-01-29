@@ -27,6 +27,9 @@ namespace Units.Player
         [field: SerializeField] public float JumpForce {get; private set;}
         [field: SerializeField] public GameObject dashVFX {get; private set;}
         [field: SerializeField] public GameObject dashVFX2 {get; private set;}
+        [field: SerializeField] public GameObject floatVFX {get; private set;}
+        [field: SerializeField] public GameObject jumpVFX {get; private set;}
+        [field: SerializeField] public Transform floatPosition {get; private set;}
         private Transform respawnPoint;
         
         public bool isDashing;
@@ -53,6 +56,8 @@ namespace Units.Player
             Health.SetMaxHealth(LichStats.GetLichHealth());
             Mana.SetMaxMana(LichStats.GetLichMaxMana());
             Mana.SetManaRegenRate(LichStats.GetLichManaRegen());
+
+            Instantiate(floatVFX, floatPosition);
 
             SwitchState(new PlayerFreeLookState(this));
         }
