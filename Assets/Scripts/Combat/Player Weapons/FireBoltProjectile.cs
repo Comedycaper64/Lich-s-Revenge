@@ -12,6 +12,7 @@ public class FireBoltProjectile : MonoBehaviour
 
     [SerializeField] private float timeToLive;
     private float projectileSpeed;
+    [SerializeField] private AudioClip fireboltExplosionSFX;
 
     private void Start() 
     {

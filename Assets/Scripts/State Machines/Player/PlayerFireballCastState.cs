@@ -25,15 +25,17 @@ namespace Units.Player
 
         public override void Tick(float deltaTime)
         {
-            if (!stateMachine.InputReader.isFireballing)
+            if (!stateMachine.InputReader.isFireballing && stateMachine.WeaponHandler.QTEActive)
             {
+                stateMachine.WeaponHandler.CompleteQTE();
                 stateMachine.SwitchState(new PlayerAimingState(stateMachine));
                 return;
             }
 
-            if (stateMachine.InputReader.isAttacking && stateMachine.WeaponHandler.QTEActive)
+            if (!stateMachine.InputReader.isFireballing)
             {
-                stateMachine.WeaponHandler.CompleteQTE();
+                stateMachine.SwitchState(new PlayerAimingState(stateMachine));
+                return;
             }
 
             float normalisedTime = GetNormalizedTime(stateMachine.Animator);
@@ -43,7 +45,7 @@ namespace Units.Player
                 return;
             }
 
-            if (normalisedTime <= 0.7f)
+            if (normalisedTime <= 0.8f)
             {
                 DrawAimLine();
             }

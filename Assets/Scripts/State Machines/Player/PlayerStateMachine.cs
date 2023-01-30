@@ -30,6 +30,18 @@ namespace Units.Player
         [field: SerializeField] public GameObject floatVFX {get; private set;}
         [field: SerializeField] public GameObject jumpVFX {get; private set;}
         [field: SerializeField] public Transform floatPosition {get; private set;}
+
+        [Header("Lich Sound Effects")]
+        [SerializeField] public AudioClip jumpSFX;
+        [SerializeField] public AudioClip healSFX;
+        [SerializeField] public AudioClip absorbSFX;
+        [SerializeField] public AudioClip absorbBuffSFX;
+        [SerializeField] public AudioClip boneGetSFX;
+        [SerializeField] public AudioClip dashStartSFX;
+        [SerializeField] public AudioClip dashEndSFX;
+        [SerializeField] public AudioClip deathSFX;
+
+
         private Transform respawnPoint;
         
         public bool isDashing;

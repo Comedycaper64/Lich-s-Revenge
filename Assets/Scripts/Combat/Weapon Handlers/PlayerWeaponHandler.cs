@@ -18,6 +18,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     private FireboltStats fireboltStats;
     [SerializeField] private GameObject fireboltPrefab;
     public Transform fireboltEmitter;
+    [SerializeField] private AudioClip fireboltCastSFX;
     
     [Header("Fireball")]
     private FireballStats fireballStats;
@@ -26,6 +27,10 @@ public class PlayerWeaponHandler : MonoBehaviour
     public Transform fireballVisual;
     private FireBallProjectile currentFireball;
     private Quaternion fireballRotation;
+    [Header("Fireball SFX")]
+    [SerializeField] private AudioClip fireballCastSFX;
+    [SerializeField] private AudioClip fireballLaunchSFX;
+    [SerializeField] private AudioClip fireballLaunchQTESFX;
 
     private void Start() 
     {

@@ -16,6 +16,7 @@ public class FireBallProjectile : MonoBehaviour
     private float timeToLive;
     private float projectileSpeed;
     [SerializeField] private GameObject fireballVFX;
+    [SerializeField] private AudioClip fireballExplodeSFX;
 
     private float fireballExplodeRadius;
 
