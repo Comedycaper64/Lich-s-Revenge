@@ -17,6 +17,7 @@ public class LichAegis : MonoBehaviour
     [SerializeField] private MeshRenderer aegisRenderer;
     [SerializeField] private Collider aegisCollider;
     [SerializeField] public GameObject buffVFX;
+    [SerializeField] public AudioClip absorbBuffSFX;
     private VisualEffect activeBuffVFX;
 
     //public bool canEnable = true;
@@ -95,11 +96,15 @@ public class LichAegis : MonoBehaviour
 
     public void DamageAegis()
     {
-        if (!lichBones.TryUseBones(1)) {return;}
+        if (!attackBuffed && !lichBones.TryUseBones(1)) {return;}
 
         if (!attackBuffed)
         {
             lichStats.BuffAttack();
+        }
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(absorbBuffSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
         }
         remainingBuffTime = lichStats.GetLichAbsorbBuffDuration();
         if (activeBuffVFX)

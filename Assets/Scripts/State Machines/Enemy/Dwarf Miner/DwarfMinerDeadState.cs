@@ -14,6 +14,10 @@ namespace Units.Enemy.Miner
         {
             stateMachine.WeaponHandler.DisableWeapon();
             stateMachine.ForceReceiver.enabled = false;
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.deathSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(stateMachine.gameObject);
         }

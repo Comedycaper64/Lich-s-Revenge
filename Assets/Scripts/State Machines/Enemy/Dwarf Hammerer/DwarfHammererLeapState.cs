@@ -25,6 +25,10 @@ namespace Units.Enemy.Hammerer
             playerPosition = stateMachine.Player.transform.position;
             startYValue = stateMachine.transform.position.y;
             movementDirection = playerPosition - stateMachine.transform.position;
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.leapSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             stateMachine.WeaponHandler.SetSlamVisualLocation(playerPosition);
             stateMachine.WeaponHandler.EnableSlamVisual(true);
         }

@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100;
     [SerializeField] public Image healthBar;
+    [SerializeField] public AudioClip healSFX;
 
     private float health;
     public bool isDead;
@@ -77,6 +78,10 @@ public class Health : MonoBehaviour
     public void Heal(float healing)
     {
         health = Mathf.Min(health + healing, maxHealth);
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(healSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
         UpdateHealthbar();
         OnHeal?.Invoke();
     }

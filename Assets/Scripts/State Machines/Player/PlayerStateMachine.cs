@@ -33,10 +33,7 @@ namespace Units.Player
 
         [Header("Lich Sound Effects")]
         [SerializeField] public AudioClip jumpSFX;
-        [SerializeField] public AudioClip healSFX;
         [SerializeField] public AudioClip absorbSFX;
-        [SerializeField] public AudioClip absorbBuffSFX;
-        [SerializeField] public AudioClip boneGetSFX;
         [SerializeField] public AudioClip dashStartSFX;
         [SerializeField] public AudioClip dashEndSFX;
         [SerializeField] public AudioClip deathSFX;
@@ -131,6 +128,7 @@ namespace Units.Player
             Health.Heal(LichStats.GetLichHealth());
             Health.isDead = false;
             Health.SetInvulnerable(false);
+            Bones.ResetBones();
             SwitchState(new PlayerFreeLookState(this));
             OnRespawn?.Invoke();
         }

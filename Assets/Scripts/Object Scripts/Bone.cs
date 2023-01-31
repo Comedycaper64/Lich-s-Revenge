@@ -14,8 +14,10 @@ public class Bone : MonoBehaviour
     {
         if(other.TryGetComponent<LichBones>(out LichBones lichBones))
         {
-            lichBones.AddBone();
-            Destroy(gameObject);
+            if (lichBones.TryAddBone())
+            {
+                Destroy(gameObject);
+            }
         }    
     }
 

@@ -19,6 +19,10 @@ namespace Units.Player
         {
             stateMachine.Animator.CrossFadeInFixedTime(DeathHash, 0.1f);
             stateMachine.menuManager.ToggleDeathUI(true);
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.deathSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             stateMachine.Controller.enabled = false;
             stateMachine.InputReader.MenuEvent += stateMachine.Respawn;
         }

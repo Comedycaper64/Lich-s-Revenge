@@ -115,6 +115,8 @@ MonoBehaviour:
   fireboltExplosion: {fileID: 637700465124478002, guid: ffc8998147f4aa241ad040ace59e93ca,
     type: 3}
   timeToLive: 1
+  fireboltExplosionSFX: {fileID: 8300000, guid: 34de97058005a934f86de49dd955dc7c,
+    type: 3}
 --- !u!54 &-9121238214783977601
 Rigidbody:
   m_ObjectHideFlags: 0

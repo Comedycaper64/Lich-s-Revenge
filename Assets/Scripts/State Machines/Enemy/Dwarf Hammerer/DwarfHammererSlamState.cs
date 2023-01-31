@@ -17,6 +17,10 @@ namespace Units.Enemy.Hammerer
             stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.Stats.GetAttackKnockback());
             stateMachine.Animator.CrossFadeInFixedTime(SlamHash, 0.1f);
             stateMachine.WeaponHandler.Slam(stateMachine.Stats.GetSlamRadius());
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.slamSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
         }
 
         public override void Tick(float deltaTime)

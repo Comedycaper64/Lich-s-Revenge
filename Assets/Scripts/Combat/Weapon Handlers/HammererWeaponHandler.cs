@@ -6,6 +6,7 @@ public class HammererWeaponHandler : MonoBehaviour
 {
     [SerializeField] private HammererWeapon weaponLogic;
     [SerializeField] private HammererSlam slamLogic;
+    [SerializeField] public AudioClip attackSFX;
     private int playerLayerMask = 1 << 8;
 
     private void Start() 
@@ -16,6 +17,10 @@ public class HammererWeaponHandler : MonoBehaviour
     public void EnableWeapon()
     {
         weaponLogic.gameObject.SetActive(true);
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(attackSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
     }
 
     public void DisableWeapon()

@@ -3138,7 +3138,7 @@ Transform:
   - {fileID: 8941806798036239600}
   - {fileID: 2333490089812963344}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3762299948715493551
 Animator:
@@ -3177,6 +3177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 3011080545580426400}
+  healSFX: {fileID: 0}
   isDead: 0
 --- !u!114 &259272707358335212
 MonoBehaviour:
@@ -3385,6 +3386,12 @@ MonoBehaviour:
   <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
     type: 3}
   <GunnerWeapon>k__BackingField: {fileID: 5157941363716007570}
+  hurtSFXs:
+  - {fileID: 8300000, guid: 0cce1091e0b09964e93758f78e461eed, type: 3}
+  - {fileID: 8300000, guid: 3d7392f5b2532b2489b401534c165bc8, type: 3}
+  - {fileID: 8300000, guid: 2f3901a6705628d48b406c034128f07a, type: 3}
+  - {fileID: 8300000, guid: 228a872ae2261a345b0acc43e694b685, type: 3}
+  deathSFX: {fileID: 8300000, guid: 366556954fa6fff419232c72cbea3dfb, type: 3}
 --- !u!114 &5157941363716007570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3400,6 +3407,7 @@ MonoBehaviour:
   weaponTransform: {fileID: 917582982867377727}
   blastVFX: {fileID: 2432710454942829051, guid: 607cec65655a04a41bf6b57d18e0184a,
     type: 3}
+  blastSFX: {fileID: 8300000, guid: f1152393591b8944b8823b5d35bff8ef, type: 3}
 --- !u!1 &8025853796835028100
 GameObject:
   m_ObjectHideFlags: 0

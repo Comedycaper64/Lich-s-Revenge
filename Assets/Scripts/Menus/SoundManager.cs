@@ -23,9 +23,9 @@ public class SoundManager : MonoBehaviour
         }
         Instance = this;
 
-        masterVolume = 0.5f;
-        musicVolume = 0.25f;
-        sfxVolume = 0.5f;
+        masterVolume = 1f;
+        musicVolume = 1f;
+        sfxVolume = 1f;
         audioSource.volume = GetMusicVolume();
         SoundSlider.OnAnySoundSliderChanged += SoundSlider_OnAnySliderChanged;
     }

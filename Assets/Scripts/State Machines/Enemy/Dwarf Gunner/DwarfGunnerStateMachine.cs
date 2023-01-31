@@ -16,7 +16,8 @@ namespace Units.Enemy.Gunner
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public GameObject Bone {get; private set;}
         [field: SerializeField] public GunnerWeaponHandler GunnerWeapon {get; private set;}
-        //[field: SerializeField] public int AttackKnockback {get; private set;}
+        [SerializeField] public AudioClip[] hurtSFXs;
+        [SerializeField] public AudioClip deathSFX;
 
         public Health Player {get; private set;}
 

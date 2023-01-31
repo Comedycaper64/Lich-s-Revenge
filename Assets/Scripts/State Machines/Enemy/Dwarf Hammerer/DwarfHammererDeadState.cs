@@ -13,6 +13,10 @@ namespace Units.Enemy.Hammerer
         public override void Enter()
         {
             stateMachine.WeaponHandler.DisableWeapon();
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.deathSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             stateMachine.ForceReceiver.enabled = false;
             GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(stateMachine.gameObject);

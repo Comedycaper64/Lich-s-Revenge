@@ -19,6 +19,10 @@ namespace Units.Player
             stateMachine.ForceReceiver.Jump(stateMachine.JumpForce);
             GameObject jumpEffect = GameObject.Instantiate(stateMachine.jumpVFX, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(jumpEffect, 3f);
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.jumpSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             stateMachine.InputReader.DodgeEvent += OnDodge;
             stateMachine.InputReader.MenuEvent += OnMenu;
 

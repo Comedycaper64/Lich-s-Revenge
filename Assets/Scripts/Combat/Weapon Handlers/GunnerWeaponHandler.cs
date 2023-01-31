@@ -12,6 +12,7 @@ public class GunnerWeaponHandler : MonoBehaviour
     private Vector3 playerDirection;
     [SerializeField] private Transform weaponTransform;  
     [SerializeField] private GameObject blastVFX;  
+    [SerializeField] private AudioClip blastSFX;
 
     private void Awake() 
     {
@@ -24,6 +25,10 @@ public class GunnerWeaponHandler : MonoBehaviour
         playerDirection = (GetPlayerPosition() - weaponTransform.position).normalized;
         float playerDistance = (GetPlayerPosition() - weaponTransform.position).magnitude;
         Destroy(Instantiate(blastVFX, weaponTransform.position, gunnerStats.transform.rotation), 2f);
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(blastSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
         if ((playerDistance < gunnerStats.GetAttackRange()) && (Vector3.Dot(playerDirection, transform.forward) > gunnerStats.GetAttackArc()))
         {
             float damage = gunnerStats.GetAttack();

@@ -97,6 +97,10 @@ public class PlayerWeaponHandler : MonoBehaviour
         firebolt.SetAttack(fireboltStats.GetFireboltSpellAttack(), 10f);
         firebolt.SetProjectileSpeed(fireboltStats.GetFireboltSpellProjectileSpeed());
         firebolt.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(fireboltCastSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
     }
 
     public void SpawnFireball()
@@ -107,6 +111,10 @@ public class PlayerWeaponHandler : MonoBehaviour
         currentFireball.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
         QTESucceeded = false;
         fireballLaunched = false;
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(fireballCastSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
     }
 
     public void StartQTE()
@@ -135,11 +143,19 @@ public class PlayerWeaponHandler : MonoBehaviour
             {   
                 QTEActive = false;
                 currentFireball.SetDamagePlayer(true);
+                if (SoundManager.Instance)
+                {
+                    AudioSource.PlayClipAtPoint(fireballLaunchSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+                }
             }
             else
             {
                 currentFireball.SetDamagePlayer(false);
                 currentFireball.SetAttack(fireballStats.GetFireballQTEAttack(), 20f);
+                if (SoundManager.Instance)
+                {
+                    AudioSource.PlayClipAtPoint(fireballLaunchQTESFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+                }
             }
             fireballLaunched = true;
         }

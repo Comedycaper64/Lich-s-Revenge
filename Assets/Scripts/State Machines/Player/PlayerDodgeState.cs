@@ -22,6 +22,10 @@ namespace Units.Player
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
             dodgeVisual = GameObject.Instantiate(stateMachine.dashVFX2, stateMachine.transform);
             GameObject.Destroy(dashVFX, 3f);
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.dashStartSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             foreach(GameObject mesh in stateMachine.PlayerMesh)
             {
                 mesh.SetActive(false);
@@ -67,6 +71,10 @@ namespace Units.Player
             GameObject dashVFX = GameObject.Instantiate(stateMachine.dashVFX, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(dashVFX, 3f);
             GameObject.Destroy(dodgeVisual);
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.dashEndSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             stateMachine.InputReader.MenuEvent -= OnMenu;
         } 
     }

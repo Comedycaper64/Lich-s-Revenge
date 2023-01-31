@@ -17,6 +17,10 @@ namespace Units.Player
         {
             stateMachine.Animator.CrossFadeInFixedTime(AbsorbHash, 0.1f);
             stateMachine.Aegis.ToggleAbsorb(true);
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.absorbSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             remainingAbsorbTime = stateMachine.LichStats.GetLichAbsorbDuration();
         }
 

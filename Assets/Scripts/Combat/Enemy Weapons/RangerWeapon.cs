@@ -11,6 +11,7 @@ public class RangerWeapon : MonoBehaviour
     private float projectileSpeed;
 
     [SerializeField] private float timeToLive;
+    [SerializeField] private AudioClip hitSFX;
 
     private void Awake() 
     {
@@ -71,5 +72,13 @@ public class RangerWeapon : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy() 
+    {
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(hitSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }    
     }
 }

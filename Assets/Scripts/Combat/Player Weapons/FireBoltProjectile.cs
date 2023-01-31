@@ -64,7 +64,11 @@ public class FireBoltProjectile : MonoBehaviour
 
     private void OnDestroy() 
     {
-        GameObject explosion = Instantiate(fireboltExplosion, transform.position, Quaternion.identity);    
+        GameObject explosion = Instantiate(fireboltExplosion, transform.position, Quaternion.identity);  
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(fireboltExplosionSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }  
         Destroy(explosion, 1f);
     }
 }

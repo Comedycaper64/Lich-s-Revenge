@@ -7,6 +7,7 @@ using System;
 public class MinerWeaponHandler : MonoBehaviour
 {
     [SerializeField] private MinerWeapon weaponLogic;
+    [SerializeField] public AudioClip attackSFX;
 
     private void Start() 
     {
@@ -16,6 +17,10 @@ public class MinerWeaponHandler : MonoBehaviour
     public void EnableWeapon()
     {
         weaponLogic.gameObject.SetActive(true);
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(attackSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
     }
 
     public void DisableWeapon()

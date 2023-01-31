@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToLive: 5
+  hitSFX: {fileID: 8300000, guid: 111f2edd61ea39f43a8f2ce5a0b6addd, type: 3}
 --- !u!1001 &5649116141171900944
 PrefabInstance:
   m_ObjectHideFlags: 0

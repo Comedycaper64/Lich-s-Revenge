@@ -3170,7 +3170,7 @@ Transform:
   - {fileID: 2333490089812963344}
   - {fileID: 5329766714342696594}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3762299948715493551
 Animator:
@@ -3206,6 +3206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 3011080545580426400}
+  healSFX: {fileID: 0}
   isDead: 0
 --- !u!114 &6769835269184994689
 MonoBehaviour:
@@ -3228,6 +3229,12 @@ MonoBehaviour:
   <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
     type: 3}
   <RangerWeapon>k__BackingField: {fileID: 4512957670110549957}
+  hurtSFXs:
+  - {fileID: 8300000, guid: 0cce1091e0b09964e93758f78e461eed, type: 3}
+  - {fileID: 8300000, guid: 3d7392f5b2532b2489b401534c165bc8, type: 3}
+  - {fileID: 8300000, guid: 2f3901a6705628d48b406c034128f07a, type: 3}
+  - {fileID: 8300000, guid: 228a872ae2261a345b0acc43e694b685, type: 3}
+  deathSFX: {fileID: 8300000, guid: 366556954fa6fff419232c72cbea3dfb, type: 3}
   headLocation: {fileID: 5329766714342696594}
   playerVisionLayermask: 0
 --- !u!114 &6395639980812692723
@@ -3291,6 +3298,8 @@ MonoBehaviour:
   projectileEmitter: {fileID: 917582982867377727}
   aimingMaterial: {fileID: 2100000, guid: 46295220b8388bb42b10c4918f2f466c, type: 2}
   firingMaterial: {fileID: 2100000, guid: 0f9d7c3487ed987479cc86c634aec579, type: 2}
+  rangerAimSFX: {fileID: 8300000, guid: 8476f961537be284280a47b88ba4be59, type: 3}
+  rangerShootSFX: {fileID: 8300000, guid: a04315b5a92a36742becd5a1943329f2, type: 3}
 --- !u!120 &6970218857226910531
 LineRenderer:
   serializedVersion: 2

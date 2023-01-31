@@ -9,6 +9,7 @@ public class LichBones : MonoBehaviour
     [SerializeField] private int maxBones;
     [SerializeField] private int bones;
     [SerializeField] public TextMeshProUGUI boneText;
+    [SerializeField] public AudioClip boneGetSFX;
 
     public event Action OnBoneGet;
 
@@ -38,13 +39,25 @@ public class LichBones : MonoBehaviour
         boneText.text = "x " + bones;
     }
 
-    public void AddBone()
+    public void ResetBones()
+    {
+        bones = 1;
+        UpdateBoneText();
+    }
+
+    public bool TryAddBone()
     {
         if (bones < maxBones)
         {
             bones++;
             UpdateBoneText();
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(boneGetSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             OnBoneGet?.Invoke();
+            return true;
         }
+        return false;
     }
 }

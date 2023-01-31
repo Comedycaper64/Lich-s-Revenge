@@ -2955,6 +2955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCollider: {fileID: 6918647803517509323}
+  lichHitSFX: {fileID: 8300000, guid: 0cdf55d57feb7164db2189b4f8383ccf, type: 3}
 --- !u!1 &7097039680618807537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,7 +3006,7 @@ Transform:
   - {fileID: 8212623517029613826}
   - {fileID: 2650595830729597080}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4599938307914154033
 Animator:
@@ -3041,6 +3042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 4269836377239582065}
+  healSFX: {fileID: 0}
   isDead: 0
 --- !u!114 &4566857073252125515
 MonoBehaviour:
@@ -3097,6 +3099,14 @@ MonoBehaviour:
   <Health>k__BackingField: {fileID: 6155002725096432689}
   <Bone>k__BackingField: {fileID: 6742090301179519406, guid: bc414ad8a67ad244187b49deab0bb4e7,
     type: 3}
+  hurtSFXs:
+  - {fileID: 8300000, guid: 0cce1091e0b09964e93758f78e461eed, type: 3}
+  - {fileID: 8300000, guid: 3d7392f5b2532b2489b401534c165bc8, type: 3}
+  - {fileID: 8300000, guid: 2f3901a6705628d48b406c034128f07a, type: 3}
+  - {fileID: 8300000, guid: 228a872ae2261a345b0acc43e694b685, type: 3}
+  deathSFX: {fileID: 8300000, guid: 366556954fa6fff419232c72cbea3dfb, type: 3}
+  leapSFX: {fileID: 8300000, guid: 09b9edc20f5a1e449ab2c2214c2ed8c7, type: 3}
+  slamSFX: {fileID: 8300000, guid: ce29ac8dd337f0d488a1d6ddde4c2a53, type: 3}
   headLocation: {fileID: 2650595830729597080}
   playerVisionLayermask: 0
   PlayerStateMachine: {fileID: 0}
@@ -3129,6 +3139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLogic: {fileID: 3216836986645817871}
   slamLogic: {fileID: 1569284238592147058}
+  attackSFX: {fileID: 8300000, guid: 59a1343235ac0b048b681ea05ca30579, type: 3}
 --- !u!143 &6918647803517509323
 CharacterController:
   m_ObjectHideFlags: 0

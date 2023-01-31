@@ -13,6 +13,7 @@ public class MinerWeapon : MonoBehaviour
     private List<Collider> alreadyCollidedWith = new List<Collider>();
     private float damage;
     private float knockback;
+    [SerializeField] private AudioClip lichHitSFX;
 
     public void SetHandler(MinerWeaponHandler handler)
     {
@@ -48,23 +49,19 @@ public class MinerWeapon : MonoBehaviour
             unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
             aegis.DamageAegis();
 
-            //End attack, weapon bounce state, or something similar
-            // if (aegis.IsParrying())
-            // {
-            //     handler.DisableWeapon();
-            //     unitHealth.DealDamage(0);
-            //     unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
-            // }
-            // else
-            // {
-            //     aegis.DamageAegis(damage);
-            //     handler.DisableWeapon();
-            // }
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(lichHitSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
         }
 
         if(other.TryGetComponent<Health>(out Health health) && other.gameObject.layer != 7)
         {
             health.DealDamage(damage);
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(lichHitSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
         }
 
         if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))

@@ -996,7 +996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5219854970669534682
 Transform:
   m_ObjectHideFlags: 0
@@ -1025,6 +1025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCollider: {fileID: 201238152416134687}
+  lichHitSFX: {fileID: 8300000, guid: 0cdf55d57feb7164db2189b4f8383ccf, type: 3}
 --- !u!65 &6537298655001746631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2572,7 +2573,7 @@ Transform:
   - {fileID: 3220835368381764801}
   - {fileID: 6320041611956294546}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7247213764408187038
 Animator:
@@ -2675,6 +2676,12 @@ MonoBehaviour:
   <PlayerChasingRange>k__BackingField: 30
   <AttackRange>k__BackingField: 1.5
   <AttackKnockback>k__BackingField: 10
+  hurtSFXs:
+  - {fileID: 8300000, guid: 0cce1091e0b09964e93758f78e461eed, type: 3}
+  - {fileID: 8300000, guid: 3d7392f5b2532b2489b401534c165bc8, type: 3}
+  - {fileID: 8300000, guid: 2f3901a6705628d48b406c034128f07a, type: 3}
+  - {fileID: 8300000, guid: 228a872ae2261a345b0acc43e694b685, type: 3}
+  deathSFX: {fileID: 8300000, guid: 366556954fa6fff419232c72cbea3dfb, type: 3}
 --- !u!114 &90962608749845695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2689,6 +2696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 6782127806253664034}
+  healSFX: {fileID: 0}
   isDead: 0
 --- !u!114 &3957141782331239926
 MonoBehaviour:
@@ -2703,6 +2711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponLogic: {fileID: 2935061039078632552}
+  attackSFX: {fileID: 8300000, guid: c70efcc3ecf2e8a419fbba3c8cb24022, type: 3}
 --- !u!195 &3082549917707199944
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -17,6 +17,11 @@ namespace Units.Enemy.Ranger
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(ImpactHash, 0.1f);
+            if (SoundManager.Instance)
+            {
+                int randomHurtSound = Random.Range(0, stateMachine.hurtSFXs.Length);
+                AudioSource.PlayClipAtPoint(stateMachine.hurtSFXs[randomHurtSound], stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
         }
 
         public override void Exit()

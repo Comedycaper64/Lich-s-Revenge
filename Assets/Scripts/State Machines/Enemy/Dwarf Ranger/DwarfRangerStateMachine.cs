@@ -16,6 +16,9 @@ namespace Units.Enemy.Ranger
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public GameObject Bone {get; private set;}
         [field: SerializeField] public RangerWeaponHandler RangerWeapon {get; private set;}
+
+        [SerializeField] public AudioClip[] hurtSFXs;
+        [SerializeField] public AudioClip deathSFX;
         
         public Transform headLocation;
         public int playerVisionLayermask;

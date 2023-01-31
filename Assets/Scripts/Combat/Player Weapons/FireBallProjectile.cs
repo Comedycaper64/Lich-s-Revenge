@@ -118,7 +118,10 @@ public class FireBallProjectile : MonoBehaviour
                 forceReceiver.AddForce((collider.transform.position - playerCollider.transform.position).normalized * knockback);
             }
         }
-
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(fireballExplodeSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
         Destroy(gameObject);
     }
 

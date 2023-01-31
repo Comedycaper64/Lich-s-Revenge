@@ -12,6 +12,7 @@ public class HammererWeapon : MonoBehaviour
     private List<Collider> alreadyCollidedWith = new List<Collider>();
     private float damage;
     private float knockback;
+    [SerializeField] private AudioClip lichHitSFX;
 
     public void SetHandler(HammererWeaponHandler handler)
     {
@@ -51,11 +52,19 @@ public class HammererWeapon : MonoBehaviour
             unitHealth.DealDamage(0);
             unitForceReceiver.AddForce((unitCollider.transform.position - collider.transform.position).normalized * knockback);
             aegis.DamageAegis();
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(lichHitSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
         }
 
         if(collider.TryGetComponent<Health>(out Health health))
         {
             health.DealDamage(damage);
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(lichHitSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
         }
 
         if (collider.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))

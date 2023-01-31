@@ -21,6 +21,9 @@ namespace Units.Enemy.Miner
         [field: SerializeField] public float AttackRange {get; private set;}
         [field: SerializeField] public int AttackKnockback {get; private set;}
 
+        [SerializeField] public AudioClip[] hurtSFXs;
+        [SerializeField] public AudioClip deathSFX;
+
         public Health Player {get; private set;}
 
         private void Start() 

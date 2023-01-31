@@ -18,6 +18,9 @@ public class RangerWeaponHandler : MonoBehaviour
     [SerializeField] private Material aimingMaterial;
     [SerializeField] private Material firingMaterial;
 
+    [SerializeField] public AudioClip rangerAimSFX;
+    [SerializeField] public AudioClip rangerShootSFX;
+
     private void Awake() 
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; 
@@ -30,6 +33,10 @@ public class RangerWeaponHandler : MonoBehaviour
         aimRenderer.enabled = true;
         aimRenderer.material = aimingMaterial;
         weaponFired = false;
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(rangerAimSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
     }
 
     public void SetAimVisual()
@@ -67,6 +74,10 @@ public class RangerWeaponHandler : MonoBehaviour
         projectile.SetSpeed(rangerStats.GetProjectileSpeed());
         playerDirection = (GetPlayerPosition() - projectile.transform.position);
         aimRenderer.material = firingMaterial;
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(rangerShootSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
     }
 
     private Vector3 GetPlayerPosition()

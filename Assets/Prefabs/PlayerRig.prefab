@@ -1037,6 +1037,7 @@ MonoBehaviour:
   aegisRenderer: {fileID: 7887884248582445929}
   aegisCollider: {fileID: 1703912756604064651}
   buffVFX: {fileID: 8215610696996955440, guid: 62db95981e036c2479a809a1819a2c60, type: 3}
+  absorbBuffSFX: {fileID: 8300000, guid: ed039a0b9e323814a8865c31819cf3e0, type: 3}
   absorbing: 0
   attackBuffed: 0
 --- !u!54 &2362335737787683919
@@ -1629,10 +1630,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 2794174849281979726}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 8623393353625170776}
-  - {fileID: 1520941595943089645}
-  - {fileID: 6632386991331824573}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: -409901381
     m_VirtualCamera: {fileID: 1520941595943089645}
@@ -2626,10 +2624,15 @@ MonoBehaviour:
   fireboltPrefab: {fileID: 4365010490009713644, guid: 98ce7023204b1054c8ed6e8f3600b4e6,
     type: 3}
   fireboltEmitter: {fileID: 1430069764926492180}
+  fireboltCastSFX: {fileID: 8300000, guid: cf578823e7f50664c8ab19178baacf4b, type: 3}
   fireballPrefab: {fileID: 4365010490009713644, guid: a6f8aed96150b544b81563681f72ca1c,
     type: 3}
   fireballEmitter: {fileID: 3190449571253330825}
   fireballVisual: {fileID: 514854219743509470}
+  fireballCastSFX: {fileID: 8300000, guid: e86b7bc14dc1f4844962d490a283d3e0, type: 3}
+  fireballLaunchSFX: {fileID: 8300000, guid: f0b379cf0e7a5e24a99264f8786518b0, type: 3}
+  fireballLaunchQTESFX: {fileID: 8300000, guid: 69c58b9d865d54742a3aef39911416f8,
+    type: 3}
 --- !u!114 &1198929325692157822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2672,6 +2675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 0}
+  healSFX: {fileID: 8300000, guid: 1907fe9312f06ee4a8813053c1e51974, type: 3}
   isDead: 0
 --- !u!114 &3367207378920126333
 MonoBehaviour:
@@ -2711,8 +2715,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBones: 5
-  bones: 3
+  bones: 1
   boneText: {fileID: 0}
+  boneGetSFX: {fileID: 8300000, guid: 9573646d8bc02bd4f87957eca68d2224, type: 3}
 --- !u!114 &6999023320671343561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2799,11 @@ MonoBehaviour:
   <jumpVFX>k__BackingField: {fileID: 1781103257216724758, guid: e1a8fa650b9aae546aec6c1dd16b3357,
     type: 3}
   <floatPosition>k__BackingField: {fileID: 5691160769102243221}
+  jumpSFX: {fileID: 8300000, guid: b7a8a976447b7304abfb2be182b74130, type: 3}
+  absorbSFX: {fileID: 8300000, guid: 928d4b44500c01e4887a8e61afc08430, type: 3}
+  dashStartSFX: {fileID: 8300000, guid: 9ebbbe89f7c63da428aebddb673b49fe, type: 3}
+  dashEndSFX: {fileID: 8300000, guid: 75510f2a8483f7b46b6c1e5d505d78b5, type: 3}
+  deathSFX: {fileID: 8300000, guid: fd8ec96ecdaf21544b9e66feecc9f41b, type: 3}
   isDashing: 0
   menuManager: {fileID: 0}
 --- !u!114 &8454521272148279093
