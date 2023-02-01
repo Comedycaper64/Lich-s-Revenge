@@ -18,7 +18,10 @@ namespace Units.Enemy.Gunner
                 AudioSource.PlayClipAtPoint(stateMachine.deathSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
             }
             GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
-            GameObject.Destroy(stateMachine.gameObject);
+            //GameObject.Destroy(stateMachine.gameObject);
+            stateMachine.Ragdoll.ToggleRagdoll(true);
+            stateMachine.EnemyWeapon.SetActive(false);
+            stateMachine.EnemyUI.SetActive(false);
         }
 
         public override void Exit()

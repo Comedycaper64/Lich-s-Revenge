@@ -41,6 +41,8 @@ namespace Units.Player
                 return;
             }
 
+                //if mine button press instatiate mine if have bone
+
             // if (stateMachine.InputReader.isBlocking)
             // {
             //     stateMachine.SwitchState(new PlayerBlockingState(stateMachine));

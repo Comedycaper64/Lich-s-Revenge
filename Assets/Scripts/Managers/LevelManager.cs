@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     private void Awake() 
     {   
         //Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
-        StateMachine.OnEnemyUnitDead += EnemyDied;
+        //StateMachine.OnEnemyUnitDead += EnemyDied;
         PlayerStateMachine.OnRespawn += RespawnEnemies;
 
         foreach(GameObject enemy in enemies)
@@ -74,13 +74,13 @@ public class LevelManager : MonoBehaviour
         PlayerStateMachine.OnRespawn -= RespawnEnemies;
     }
 
-    private void EnemyDied(object sender, GameObject enemy)
-    {
-        if (enemies.Contains(enemy))
-        {
-            enemies.Remove(enemy);
-        }
-    }
+    // private void EnemyDied(object sender, GameObject enemy)
+    // {
+    //     if (enemies.Contains(enemy))
+    //     {
+    //         enemies.Remove(enemy);
+    //     }
+    // }
 
     private void RespawnEnemies()
     {

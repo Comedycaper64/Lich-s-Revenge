@@ -17,6 +17,9 @@ namespace Units.Enemy.Miner
         [field: SerializeField] public MinerWeaponHandler WeaponHandler {get; private set;}
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public GameObject Bone  {get; private set;}
+        [field: SerializeField] public Ragdoll Ragdoll  {get; private set;}
+        [field: SerializeField] public GameObject EnemyUI  {get; private set;}
+        [field: SerializeField] public GameObject EnemyWeapon  {get; private set;}
         [field: SerializeField] public float PlayerChasingRange {get; private set;}
         [field: SerializeField] public float AttackRange {get; private set;}
         [field: SerializeField] public int AttackKnockback {get; private set;}

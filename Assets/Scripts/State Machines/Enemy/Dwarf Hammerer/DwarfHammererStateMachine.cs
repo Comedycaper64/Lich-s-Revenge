@@ -18,6 +18,9 @@ namespace Units.Enemy.Hammerer
         [field: SerializeField] public HammererWeaponHandler WeaponHandler {get; private set;}
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public GameObject Bone  {get; private set;}
+        [field: SerializeField] public GameObject EnemyUI  {get; private set;}
+        [field: SerializeField] public GameObject EnemyWeapon  {get; private set;}
+        [field: SerializeField] public Ragdoll Ragdoll  {get; private set;}
         [SerializeField] public AudioClip[] hurtSFXs;
         [SerializeField] public AudioClip deathSFX;
         [SerializeField] public AudioClip leapSFX;

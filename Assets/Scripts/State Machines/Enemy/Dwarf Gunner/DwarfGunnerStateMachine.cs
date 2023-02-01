@@ -15,6 +15,9 @@ namespace Units.Enemy.Gunner
         [field: SerializeField] public NavMeshAgent Agent {get; private set;}
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public GameObject Bone {get; private set;}
+        [field: SerializeField] public Ragdoll Ragdoll {get; private set;}
+        [field: SerializeField] public GameObject EnemyUI  {get; private set;}
+        [field: SerializeField] public GameObject EnemyWeapon  {get; private set;}
         [field: SerializeField] public GunnerWeaponHandler GunnerWeapon {get; private set;}
         [SerializeField] public AudioClip[] hurtSFXs;
         [SerializeField] public AudioClip deathSFX;
