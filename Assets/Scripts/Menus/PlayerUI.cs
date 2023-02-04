@@ -22,11 +22,12 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Transform abilityUIContainer;
     [SerializeField] private Transform menuUITransform;
     [SerializeField] private GameObject crosshairUI;
+    [SerializeField] GameObject jumpAbilityUI;
     [SerializeField] GameObject dashAbilityUI;
     [SerializeField] GameObject fireboltAbilityUI;
     [SerializeField] GameObject fireballAbilityUI;
     [SerializeField] GameObject aimAbilityUI;
-    //[SerializeField] GameObject blockAbilityUI;
+    [SerializeField] GameObject mineAbilityUI;
     [SerializeField] GameObject healAbilityUI;
     [SerializeField] GameObject absorbAbilityUI;
     [SerializeField] GameObject menuButtonUI;
@@ -41,10 +42,11 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Image manaImage;
     [SerializeField] private TextMeshProUGUI boneText;
 
+    private AbilityUI jumpUI;
     private AbilityUI fireboltUI;
     private AbilityUI fireballUI;
     private AbilityUI aimUI;
-    //private AbilityUI blockUI;
+    private AbilityUI mineUI;
     private AbilityUI dashUI;
     private AbilityUI healUI;
     private AbilityUI absorbUI;
@@ -70,9 +72,11 @@ public class PlayerUI : MonoBehaviour
         inputReader = player.GetComponent<InputReader>();
         playerStateMachine.OnSwitchState += UpdateUI;
         ClearAbilityUIs();
+        abilityUIs.Add(jumpUI = Instantiate(jumpAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(fireboltUI = Instantiate(fireboltAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(fireballUI = Instantiate(fireballAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(aimUI = Instantiate(aimAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
+        abilityUIs.Add(mineUI = Instantiate(mineAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(dashUI = Instantiate(dashAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(healUI = Instantiate(healAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         //abilityUIs.Add(blockUI = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
@@ -107,6 +111,15 @@ public class PlayerUI : MonoBehaviour
         else
         {
             fireballUI.SetCooldownSliderValue(0f);
+        }
+
+        if (!playerCooldowns.IsMineReady())
+        {
+            mineUI.SetCooldownSliderValue(playerCooldowns.GetMineCooldownNormalised());
+        }
+        else
+        {
+            mineUI.SetCooldownSliderValue(0f);
         }
 
         if (!playerCooldowns.IsDodgeReady())
@@ -147,13 +160,13 @@ public class PlayerUI : MonoBehaviour
 
         if (playerBones.GetBones() < 1)
         {
-            healUI.SetCooldownSliderValue(1f);
-            //absorbUI.SetCooldownSliderValue(1f);
+            healUI.SetManaSliderValue(1f);
+            mineUI.SetManaSliderValue(1f);
         }
         else
         {
-            healUI.SetCooldownSliderValue(0f);
-            //absorbUI.SetCooldownSliderValue(0f);
+            healUI.SetManaSliderValue(0f);
+            mineUI.SetManaSliderValue(0f);
         }
 
     }
@@ -174,7 +187,7 @@ public class PlayerUI : MonoBehaviour
         fireboltUI.SetImageActive(!IsFreeLookState());
         fireballUI.SetImageActive(!IsFreeLookState());
         aimUI.SetImageActive(IsFreeLookState());
-        //blockUI.SetImageActive(IsFreeLookState());
+        mineUI.SetImageActive(IsFreeLookState());
         menuUI.SetImageActive(IsFreeLookState());
     }
 

@@ -10,10 +10,15 @@ public class BoneMine : MonoBehaviour
     [SerializeField] private GameObject fireballVFX;
     private float damage;
     [SerializeField] private AudioClip fireballExplodeSFX;
+    [SerializeField] private AudioClip boneSetSFX;
 
     private void Start() 
     {
         PlayerStateMachine.OnRespawn += DestroyMine;    
+        if (SoundManager.Instance)
+        {
+            AudioSource.PlayClipAtPoint(boneSetSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+        }
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -75,5 +80,10 @@ public class BoneMine : MonoBehaviour
     private void DestroyMine()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy() 
+    {
+        PlayerStateMachine.OnRespawn -= DestroyMine; 
     }
 }

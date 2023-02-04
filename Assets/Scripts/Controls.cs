@@ -116,6 +116,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Set Mine"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd26034d-bb34-4e8c-9105-5359df66afad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -426,6 +435,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46c5e064-f070-4ee9-914f-f9d6c8b6d47c"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Set Mine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62e48273-19b2-418b-b079-8bccd8868e54"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Set Mine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -472,6 +503,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
         m_Player_Absorb = m_Player.FindAction("Absorb", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
+        m_Player_SetMine = m_Player.FindAction("Set Mine", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -541,6 +573,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Heal;
     private readonly InputAction m_Player_Absorb;
     private readonly InputAction m_Player_Menu;
+    private readonly InputAction m_Player_SetMine;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -555,6 +588,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
         public InputAction @Absorb => m_Wrapper.m_Player_Absorb;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
+        public InputAction @SetMine => m_Wrapper.m_Player_SetMine;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -594,6 +628,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @SetMine.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetMine;
+                @SetMine.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetMine;
+                @SetMine.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetMine;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -628,6 +665,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @SetMine.started += instance.OnSetMine;
+                @SetMine.performed += instance.OnSetMine;
+                @SetMine.canceled += instance.OnSetMine;
             }
         }
     }
@@ -662,5 +702,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnHeal(InputAction.CallbackContext context);
         void OnAbsorb(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnSetMine(InputAction.CallbackContext context);
     }
 }

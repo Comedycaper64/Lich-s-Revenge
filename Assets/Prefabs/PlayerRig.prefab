@@ -505,7 +505,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2353333110425735303}
-  m_LocalRotation: {x: 0.005237649, y: -0.0000000010753841, z: 5.6325626e-12, w: 0.9999863}
+  m_LocalRotation: {x: 0.0052376455, y: 1.8315138e-10, z: -9.592954e-13, w: 0.99998635}
   m_LocalPosition: {x: 0, y: 0.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -793,7 +793,7 @@ MonoBehaviour:
     m_SpeedMode: 0
     m_MaxSpeed: 100
     m_AccelTime: 1
-    m_DecelTime: 0.2
+    m_DecelTime: 0.05
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
@@ -817,7 +817,7 @@ MonoBehaviour:
     m_SpeedMode: 0
     m_MaxSpeed: 150
     m_AccelTime: 1
-    m_DecelTime: 0.2
+    m_DecelTime: 0.05
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -1080,7 +1080,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5331561003587061438}
-  m_LocalRotation: {x: 0.041558646, y: -1e-45, z: -0, w: 0.9991361}
+  m_LocalRotation: {x: 0.041558646, y: -0, z: -0, w: 0.9991361}
   m_LocalPosition: {x: 0, y: 0.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1430,7 +1430,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6141808893008155009}
-  m_LocalRotation: {x: 0.023377996, y: -0.000000017168148, z: 4.014666e-10, w: 0.9997267}
+  m_LocalRotation: {x: 0.023377992, y: -0.000000011716158, z: 2.739751e-10, w: 0.9997267}
   m_LocalPosition: {x: 0, y: 0.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1630,7 +1630,10 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 2794174849281979726}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 8623393353625170776}
+  - {fileID: 1520941595943089645}
+  - {fileID: 6632386991331824573}
   m_Instructions:
   - m_FullHash: -409901381
     m_VirtualCamera: {fileID: 1520941595943089645}
@@ -1851,7 +1854,7 @@ MonoBehaviour:
     m_SpeedMode: 0
     m_MaxSpeed: 50
     m_AccelTime: 1.2
-    m_DecelTime: 0.1
+    m_DecelTime: 0.05
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
@@ -1875,7 +1878,7 @@ MonoBehaviour:
     m_SpeedMode: 0
     m_MaxSpeed: 80
     m_AccelTime: 1.2
-    m_DecelTime: 0.1
+    m_DecelTime: 0.05
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -2758,6 +2761,8 @@ MonoBehaviour:
   dodgeDuration: 0.5
   dodgeCooldown: 2
   dodgeManaCost: 30
+  mineCooldown: 5
+  mineDamageMultiplier: 2
 --- !u!114 &8082391239661709500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2790,6 +2795,8 @@ MonoBehaviour:
   <Bones>k__BackingField: {fileID: 6026264229195858147}
   <RotationDamping>k__BackingField: 10
   <JumpForce>k__BackingField: 6
+  <lichMine>k__BackingField: {fileID: 6874684498876878785, guid: 2e524bd848bd51d458346eb044958465,
+    type: 3}
   <dashVFX>k__BackingField: {fileID: 2077259520154301884, guid: daa3f42276ebdad4393925c6ccc13fb8,
     type: 3}
   <dashVFX2>k__BackingField: {fileID: 729651334358243720, guid: eb0052beb720871439bf30dbf0ec5559,

@@ -409,6 +409,8 @@ MonoBehaviour:
   abilityUIContainer: {fileID: 8795224244995041085}
   menuUITransform: {fileID: 0}
   crosshairUI: {fileID: 8795224246956666275}
+  jumpAbilityUI: {fileID: 3500231993576217928, guid: a6620b99797eddd4f95cec8969c52e67,
+    type: 3}
   dashAbilityUI: {fileID: 3500231993576217928, guid: db84f58673b178940bc3650e698fd39f,
     type: 3}
   fireboltAbilityUI: {fileID: 3500231993576217928, guid: 02729864a46499a41a63b698238f3070,
@@ -417,7 +419,7 @@ MonoBehaviour:
     type: 3}
   aimAbilityUI: {fileID: 3500231993576217928, guid: d66d16143a249b04d97b865b275c8574,
     type: 3}
-  blockAbilityUI: {fileID: 3500231993576217928, guid: cf681cc2378f3894d8ea411a3e17db26,
+  mineAbilityUI: {fileID: 3500231993576217928, guid: bcf51578ac88f1e4f9a3c0b43539d31c,
     type: 3}
   healAbilityUI: {fileID: 3500231993576217928, guid: b098200a3b3ecff48bdd9c8c37a0e2d7,
     type: 3}
@@ -434,6 +436,7 @@ MonoBehaviour:
   healthImage: {fileID: 8795224246461128787}
   manaImage: {fileID: 8795224245720318342}
   boneText: {fileID: 8795224246870790406}
+  abilityUIs: []
 --- !u!1 &8795224245534866886
 GameObject:
   m_ObjectHideFlags: 0

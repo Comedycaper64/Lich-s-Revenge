@@ -71,14 +71,18 @@ public class SoundManager : MonoBehaviour
     {
         this.masterVolume = masterVolume;
         if (audioSource)
+        {
             audioSource.volume = GetMusicVolume();
+        }
     }
 
     public void SetMusicVolume(float musicVolume)
     {
         this.musicVolume = musicVolume;
         if (audioSource)
+        {
             audioSource.volume = GetMusicVolume();
+        }
     }
 
     public void SetSoundEffectVolume(float sfxVolume)

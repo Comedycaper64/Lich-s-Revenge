@@ -29,8 +29,6 @@ namespace Units.Player
             Vector3 movement = CalculateMovement();
             Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
             FaceLookDirection(movement, deltaTime);
-            
-            //if (normalisedTime > 1f && normalisedTime >= previousFrameTime)
             remainingAbsorbTime -= deltaTime;
 
             if (remainingAbsorbTime <= 0f)
@@ -46,8 +44,6 @@ namespace Units.Player
                     return;
                 }
             }
-            //previousFrameTime = normalisedTime;
-            //normalisedTime = GetNormalizedTime(stateMachine.Animator);
         }
 
         public override void Exit()

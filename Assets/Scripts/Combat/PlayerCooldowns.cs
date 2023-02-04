@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Units.Player;
@@ -11,6 +12,7 @@ public class PlayerCooldowns : MonoBehaviour
     private float fireboltCooldown;
     private float fireballCooldown;
     private float aegisCooldown;
+    private float mineCooldown;
 
     private void Awake() 
     {
@@ -18,6 +20,7 @@ public class PlayerCooldowns : MonoBehaviour
         fireballCooldown = 0;
         fireboltCooldown = 0;
         aegisCooldown = 0;
+        mineCooldown = 0;
     }
 
     void Update()
@@ -37,6 +40,10 @@ public class PlayerCooldowns : MonoBehaviour
         if (aegisCooldown > 0f)
         {
             aegisCooldown -= Time.deltaTime;
+        }
+        if (mineCooldown > 0f)
+        {
+            mineCooldown -= Time.deltaTime;
         }
     }
 
@@ -88,6 +95,17 @@ public class PlayerCooldowns : MonoBehaviour
         }
     }
 
+    public bool IsMineReady()
+    {
+        if (mineCooldown > 0f)
+        {
+            return false;
+        }
+        {
+            return true;
+        }
+    }
+
     public float GetDodgeCooldownNormalised()
     {
         return dodgeCooldown / stateMachine.LichStats.GetLichDodgeCooldown();
@@ -108,6 +126,11 @@ public class PlayerCooldowns : MonoBehaviour
         return aegisCooldown / stateMachine.LichStats.GetLichAbsorbCooldown();
     }
 
+    public float GetMineCooldownNormalised()
+    {
+        return mineCooldown / stateMachine.LichStats.GetMineCooldown();
+    }
+
     public void SetDodgeCooldown()
     {
         dodgeCooldown = stateMachine.LichStats.GetLichDodgeCooldown();
@@ -126,5 +149,10 @@ public class PlayerCooldowns : MonoBehaviour
     public void SetAegisCooldown()
     {
         aegisCooldown = stateMachine.LichStats.GetLichAbsorbCooldown();
+    }
+    
+    public void SetMineCooldown()
+    {
+        mineCooldown = stateMachine.LichStats.GetMineCooldown();
     }
 }

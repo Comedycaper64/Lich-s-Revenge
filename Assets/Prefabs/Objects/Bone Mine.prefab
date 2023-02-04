@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 6407901392449798053}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6874684498876878797
 MonoBehaviour:
@@ -50,6 +50,7 @@ MonoBehaviour:
   fireballVFX: {fileID: 2313900621488223077, guid: 9be0ec8c833af1a48a659a41ce877ee5,
     type: 3}
   fireballExplodeSFX: {fileID: 8300000, guid: 4226866fa2dd08d498de957423469643, type: 3}
+  boneSetSFX: {fileID: 8300000, guid: 9573646d8bc02bd4f87957eca68d2224, type: 3}
 --- !u!136 &6874684498876878796
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.86
+  m_Radius: 1.2
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

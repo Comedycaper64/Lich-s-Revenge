@@ -13,9 +13,9 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action DodgeEvent;
     public event Action AbsorbEvent;
     public event Action MenuEvent;
+    public event Action MineEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
-    //public bool isBlocking {get; private set;}
     public bool isHealing {get; private set;}
     public bool isFireballing {get; private set;}
 
@@ -112,6 +112,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         MenuEvent?.Invoke();
     }
 
+    public void OnSetMine(InputAction.CallbackContext context)
+    {
+        if (!context.performed) {return;}
+
+        MineEvent?.Invoke();
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         MovementValue = context.ReadValue<Vector2>();
@@ -154,20 +161,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             isAiming = true;
         }
     }
-
-    // public void OnBlock(InputAction.CallbackContext context)
-    // {
-    //     if (MenuManager.gameIsPaused) {return;}
-
-    //     if (context.performed)
-    //     {
-    //         isBlocking = true;
-    //     }
-    //     else if (context.canceled)
-    //     {
-    //         isBlocking = false;
-    //     }
-    // }
 
     public void OnFireball(InputAction.CallbackContext context)
     {

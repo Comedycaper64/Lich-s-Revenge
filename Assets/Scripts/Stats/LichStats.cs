@@ -48,6 +48,11 @@ namespace Stats
         [SerializeField] private float dodgeDuration;
         [SerializeField] private float dodgeCooldown;
         [SerializeField] private float dodgeManaCost;
+        
+        [Header("Mine")]
+        [SerializeField] private float mineCooldown;
+        [SerializeField] private float mineDamageMultiplier;
+
 
         public event Action OnStatsChanged;
 
@@ -160,6 +165,14 @@ namespace Stats
         {
             return dodgeManaCost;
         }
+        public float GetMineCooldown()
+        {
+            return mineCooldown;
+        }
+        public float GetMineDamage()
+        {
+            return GetLichAttack() * mineDamageMultiplier;
+        }
 
         private void OnPlayerStatsChanged()
         {
@@ -191,5 +204,6 @@ namespace Stats
         {
             attackOverride = 0;
         }
+
     }
 }

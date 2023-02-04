@@ -12,7 +12,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c7e6603728db91d4698a072e7e68cef3,
+      objectReference: {fileID: 21300000, guid: 5a1c34f729dfebf4ea1caf228e526ce3,
         type: 3}
     - target: {fileID: 1974923247683484116, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
@@ -48,19 +48,19 @@ PrefabInstance:
         type: 3}
       propertyPath: xboxSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6b0cad37859c19240b47384bb6210aef,
+      objectReference: {fileID: 21300000, guid: ca239c636e0afcc4a8969538af930b72,
         type: 3}
     - target: {fileID: 2530099552376318512, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
       propertyPath: keyboardSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8af3288ba56d90147824499307ed6a65,
+      objectReference: {fileID: 21300000, guid: 3d1265e0f8083384eb5fa1b511fe988d,
         type: 3}
     - target: {fileID: 2530099552376318512, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
       propertyPath: playstationSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 059bf0fb2c74f614ca9b47f116dc7326,
+      objectReference: {fileID: 21300000, guid: 641c55bf28d4e554d90b5ee7d0a07689,
         type: 3}
     - target: {fileID: 2612072537073803222, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 8597810412878039397, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
       propertyPath: m_Name
-      value: Absorb UI
+      value: Jump UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

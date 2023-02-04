@@ -100,25 +100,37 @@ public class OptionsManager : MonoBehaviour
 
     public void SetLookSensitivityX(float speed)
     {
-        lookPOV.m_HorizontalAxis.m_MaxSpeed = speed;
+        if (lookPOV)
+        {
+            lookPOV.m_HorizontalAxis.m_MaxSpeed = speed;
+        }
         lookXSensitivity = speed;
     }
 
     public void SetLookSensitivityY(float speed)
     {
-        lookPOV.m_VerticalAxis.m_MaxSpeed = speed;
+        if (lookPOV)
+        {
+            lookPOV.m_VerticalAxis.m_MaxSpeed = speed;
+        }
         lookYSensitivity = speed;
     }
 
     public void SetAimSensitivityX(float speed)
     {
-        aimPOV.m_HorizontalAxis.m_MaxSpeed = speed; 
+        if (aimPOV)
+        {
+            aimPOV.m_HorizontalAxis.m_MaxSpeed = speed; 
+        }
         aimXSensitivity = speed;
     }
 
     public void SetAimSensitivityY(float speed)
     {
-        aimPOV.m_VerticalAxis.m_MaxSpeed = speed;
+        if (aimPOV)
+        {
+            aimPOV.m_VerticalAxis.m_MaxSpeed = speed;
+        }
         aimYSensitivity = speed;
     }
 

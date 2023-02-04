@@ -24,6 +24,7 @@ namespace Units.Player
             stateMachine.InputReader.DodgeEvent += OnDodge;
             stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.InputReader.MenuEvent += OnMenu; 
+            stateMachine.InputReader.MineEvent += OnMine; 
             stateMachine.Animator.CrossFadeInFixedTime(MovementHash, CrossFadeDuration);
         }
 
@@ -41,14 +42,6 @@ namespace Units.Player
                 return;
             }
 
-                //if mine button press instatiate mine if have bone
-
-            // if (stateMachine.InputReader.isBlocking)
-            // {
-            //     stateMachine.SwitchState(new PlayerBlockingState(stateMachine));
-            //     return;
-            // }
-
             if (stateMachine.InputReader.isAiming)
             {
                 stateMachine.SwitchState(new PlayerAimingState(stateMachine));
@@ -59,14 +52,14 @@ namespace Units.Player
 
             Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
 
-            // if (stateMachine.InputReader.MovementValue == Vector2.zero)
-            // {
-            //     stateMachine.Animator.SetFloat(FreeLookSpeedHash, 0, AnimatorDampTime, deltaTime);
-            //     return;
-            // }
-
-            // stateMachine.Animator.SetFloat(FreeLookSpeedHash, 1, AnimatorDampTime, deltaTime);
-            FaceMovementDirection(movement, deltaTime);
+            if (stateMachine.InputReader.MovementValue.y < 0)
+            {
+                FaceMovementDirection(-movement, deltaTime);
+            }   
+            else
+            {
+                FaceMovementDirection(movement, deltaTime);
+            }
         } 
 
         public override void Exit()
@@ -75,6 +68,7 @@ namespace Units.Player
             stateMachine.InputReader.DodgeEvent -= OnDodge;
             stateMachine.InputReader.AbsorbEvent -= OnAbsorb;
             stateMachine.InputReader.MenuEvent -= OnMenu;  
+            stateMachine.InputReader.MineEvent -= OnMine;
         }
 
         public override string GetStateName()
@@ -105,6 +99,17 @@ namespace Units.Player
         private void OnJump()
         {
             stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+        }
+
+        private void OnMine()
+        {
+            if (stateMachine.Controller.isGrounded && stateMachine.Cooldowns.IsMineReady())
+            {
+                if (stateMachine.Bones.TryUseBones(1))
+                {
+                    stateMachine.SwitchState(new PlayerSetMineState(stateMachine));
+                }
+            }
         }
 
         private void OnDodge()
