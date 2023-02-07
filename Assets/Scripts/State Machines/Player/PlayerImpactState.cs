@@ -24,7 +24,8 @@ namespace Units.Player
         public override void Exit()
         {
             stateMachine.InputReader.MenuEvent -= OnMenu; 
-            stateMachine.Health.SetInvulnerable(false);
+            stateMachine.Cooldowns.SetLichInvincibility();
+            //stateMachine.Health.SetInvulnerable(false);
         }
 
         public override void Tick(float deltaTime)

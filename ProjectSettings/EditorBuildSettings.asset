@@ -12,14 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Test Scene 1.unity
-    guid: deb41dea365fa5741b85e089df4aefad
-  - enabled: 1
-    path: Assets/Scenes/Test Scene 2.unity
-    guid: 6524b9c84ab0fc24d99089c159b60b4f
-  - enabled: 1
-    path: Assets/Scenes/Test Scene 3.unity
-    guid: 739b0ba4812658d4b872de3df66cf68f
+    path: Assets/Scenes/Level1_LichDungeon.unity
+    guid: 4eb10313740172a44816cfea4ee10bc6
   - enabled: 1
     path: Assets/Scenes/MountainPass.unity
     guid: 0d5c0f9c3f9b9924184ea1e5f0d4da4d

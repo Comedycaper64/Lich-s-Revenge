@@ -53,6 +53,9 @@ namespace Stats
         [SerializeField] private float mineCooldown;
         [SerializeField] private float mineDamageMultiplier;
 
+        [Header("Misc")]
+        [SerializeField] private float lichIFrames;
+
 
         public event Action OnStatsChanged;
 
@@ -174,6 +177,11 @@ namespace Stats
             return GetLichAttack() * mineDamageMultiplier;
         }
 
+        public float GetLichIframes()
+        {
+            return lichIFrames;
+        }
+
         private void OnPlayerStatsChanged()
         {
             RefreshStatDisplays();
@@ -204,6 +212,5 @@ namespace Stats
         {
             attackOverride = 0;
         }
-
     }
 }

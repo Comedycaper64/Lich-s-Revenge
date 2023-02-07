@@ -928,8 +928,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.19532211
-  m_Center: {x: 0, y: 0.19532211, z: 0}
+  m_Radius: 0.002
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1101759945262360306
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2912,7 +2912,7 @@ MonoBehaviour:
   <Ragdoll>k__BackingField: {fileID: 8364998364423859004}
   <EnemyUI>k__BackingField: {fileID: 282164719443139602}
   <EnemyWeapon>k__BackingField: {fileID: 6921134605361010864}
-  <PlayerChasingRange>k__BackingField: 30
+  <PlayerChasingRange>k__BackingField: 20
   <AttackRange>k__BackingField: 1.5
   <AttackKnockback>k__BackingField: 10
   hurtSFXs:

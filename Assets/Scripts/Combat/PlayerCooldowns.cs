@@ -13,6 +13,7 @@ public class PlayerCooldowns : MonoBehaviour
     private float fireballCooldown;
     private float aegisCooldown;
     private float mineCooldown;
+    private Coroutine lichIframes;
 
     private void Awake() 
     {
@@ -154,5 +155,20 @@ public class PlayerCooldowns : MonoBehaviour
     public void SetMineCooldown()
     {
         mineCooldown = stateMachine.LichStats.GetMineCooldown();
+    }
+
+    public void SetLichInvincibility()
+    {
+        if (lichIframes != null)
+        {
+            StopCoroutine(lichIframes);
+        }
+        lichIframes = StartCoroutine(LichIFrames());
+    }
+
+    public IEnumerator LichIFrames()
+    {
+        yield return new WaitForSeconds(stateMachine.LichStats.GetLichIframes());
+        stateMachine.Health.SetInvulnerable(false);
     }
 }

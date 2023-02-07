@@ -1891,8 +1891,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.19532211
-  m_Center: {x: 0, y: 0.19532211, z: 0}
+  m_Radius: 0.002
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6954467244724122408
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3911,7 +3911,7 @@ Transform:
   - {fileID: 2333490089812963344}
   - {fileID: 5329766714342696594}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3762299948715493551
 Animator:
