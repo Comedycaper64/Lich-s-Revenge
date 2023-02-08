@@ -125,6 +125,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""475eae77-e20d-4b45-9dc9-1f786f676192"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -457,6 +466,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Set Mine"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c7e42e3-644e-4154-a050-0b90266aa5da"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2f37e0c-6d3f-43d0-bb1b-8acedb10683c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6d72101-0ff2-4178-a548-5e8f44b8d70b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -504,6 +546,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Absorb = m_Player.FindAction("Absorb", throwIfNotFound: true);
         m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         m_Player_SetMine = m_Player.FindAction("Set Mine", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -574,6 +617,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Absorb;
     private readonly InputAction m_Player_Menu;
     private readonly InputAction m_Player_SetMine;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -589,6 +633,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Absorb => m_Wrapper.m_Player_Absorb;
         public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputAction @SetMine => m_Wrapper.m_Player_SetMine;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -631,6 +676,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @SetMine.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetMine;
                 @SetMine.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetMine;
                 @SetMine.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetMine;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -668,6 +716,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @SetMine.started += instance.OnSetMine;
                 @SetMine.performed += instance.OnSetMine;
                 @SetMine.canceled += instance.OnSetMine;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -703,5 +754,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnAbsorb(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnSetMine(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

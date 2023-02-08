@@ -10,6 +10,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public Vector2 MovementValue {get; private set;}
     public event Action JumpEvent;
+    public event Action InteractEvent;
     public event Action DodgeEvent;
     public event Action AbsorbEvent;
     public event Action MenuEvent;
@@ -80,16 +81,23 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
 
         if (!context.performed) {return;}
 
         JumpEvent?.Invoke();
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (!context.performed) {return;}
+
+        InteractEvent?.Invoke();
+    }
+
     public void OnDodge(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
 
         if (!context.performed) {return;}
 
@@ -98,7 +106,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAbsorb(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
 
         if (!context.performed) {return;}
 
@@ -114,6 +122,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnSetMine(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
+
         if (!context.performed) {return;}
 
         MineEvent?.Invoke();
@@ -121,6 +131,12 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) 
+        {
+            MovementValue = Vector2.zero;
+            return;
+        }
+
         MovementValue = context.ReadValue<Vector2>();
     }
 
@@ -136,7 +152,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
 
         if (context.performed)
         {
@@ -150,7 +166,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAim(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
 
         if (context.canceled)
         {
@@ -164,7 +180,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnFireball(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
 
         if (context.performed) 
         {
@@ -179,7 +195,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnHeal(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
 
         if (context.performed)
         {
