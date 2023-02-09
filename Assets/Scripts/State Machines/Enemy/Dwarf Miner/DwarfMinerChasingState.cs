@@ -27,7 +27,7 @@ namespace Units.Enemy.Miner
 
         public override void Tick(float deltaTime)
         {
-            if (!IsInChaseRange())
+            if (!IsInChaseRange() || DialogueManager.Instance.inConversation)
             {
                 stateMachine.SwitchState(new DwarfMinerIdleState(stateMachine));
                 return;

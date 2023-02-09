@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
-  m_Name: Test Dialogue 1
+  m_Name: Conversation 4 Dialogue 1
   m_EditorClassIdentifier: 
-  characterName: Defender
+  characterName: Skeletal Hound
   characterImages:
-  - {fileID: 21300000, guid: 9bf5f102add2c5c49b62d1b481530ab3, type: 3}
+  - {fileID: 21300000, guid: 8736761b4717b2e4f9c70e3886b062ab, type: 3}
+  - {fileID: 21300000, guid: 8736761b4717b2e4f9c70e3886b062ab, type: 3}
+  - {fileID: 21300000, guid: a17958f388c974c44a542269bf9c7655, type: 3}
+  - {fileID: 21300000, guid: 8736761b4717b2e4f9c70e3886b062ab, type: 3}
   characterTalkSound: {fileID: 0}
   leftSideCharacterImage: 0
   rightSideCharacterImage: 1
   sentences:
-  - yup
-  - you sure are big man
+  - '*borf*'
+  - I mean, greetings master!
+  - Have you had the chance to Dash about yet?
+  - It's awfully fun, you should try it out!

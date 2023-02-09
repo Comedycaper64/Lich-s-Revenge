@@ -36,7 +36,7 @@ public class LichBones : MonoBehaviour
 
     private void UpdateBoneText()
     {
-        boneText.text = "x " + bones;
+        boneText.text = bones + " / " + maxBones;
     }
 
     public void ResetBones()

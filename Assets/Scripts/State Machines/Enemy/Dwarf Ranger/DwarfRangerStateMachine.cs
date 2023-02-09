@@ -39,7 +39,8 @@ namespace Units.Enemy.Ranger
 
             int layermask1 = 1 << 8;
             int layermask2 = 1 << 6;
-            playerVisionLayermask = layermask1 | layermask2;
+            int layermask3 = 1 << 0;
+            playerVisionLayermask = layermask1 | layermask2 | layermask3;
 
             SwitchState(new DwarfRangerIdleState(this));    
         }

@@ -28,6 +28,8 @@ namespace Units.Enemy.Ranger
         {
             Move(deltaTime);
 
+            if (DialogueManager.Instance.inConversation) {return;}
+
             if (IsInFleeRange())
             {
                 stateMachine.SwitchState(new DwarfRangerRunningState(stateMachine));

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: Conversation 3 Dialogue 1
+  m_EditorClassIdentifier: 
+  characterName: Marrow
+  characterImages:
+  - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
+  - {fileID: 21300000, guid: 88dce4f7e8ba0734e89f2340baa35320, type: 3}
+  - {fileID: 21300000, guid: 41f11b88b637548498e531de1ebb5c22, type: 3}
+  - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
+  characterTalkSound: {fileID: 0}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 1
+  sentences:
+  - I see you're scavenging the duergar's bodies for all they're worth...
+  - Those bones can certainly come in handy, especially if you're taken a hit or
+    two.
+  - Don't forget to HEAL, dying again isn't too pleasant.
+  - Though maybe now isn't the best time, there's a Mana Fountain just on the right.
+  - A quick drink from them should revitalise you immediately...
+  - ...they even let you rise again, should you fall.
+  - That's all from me... your other minions have been dying to see you!

@@ -27,6 +27,9 @@ namespace Units.Enemy.Miner
         [SerializeField] public AudioClip[] hurtSFXs;
         [SerializeField] public AudioClip deathSFX;
 
+        public Transform headLocation;
+        public int playerVisionLayermask;
+
         public Health Player {get; private set;}
 
         private void Start() 
@@ -35,6 +38,11 @@ namespace Units.Enemy.Miner
 
             Agent.updatePosition = false;
             Agent.updateRotation = false;
+
+            int layermask1 = 1 << 8;
+            int layermask2 = 1 << 6;
+            int layermask3 = 1 << 0;
+            playerVisionLayermask = layermask1 | layermask2 | layermask3;
 
             Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
 

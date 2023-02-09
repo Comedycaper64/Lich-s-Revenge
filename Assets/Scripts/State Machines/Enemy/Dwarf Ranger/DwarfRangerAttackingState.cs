@@ -29,9 +29,10 @@ namespace Units.Enemy.Ranger
             Move(deltaTime);
             FacePlayer();
 
-            if (GetNormalizedTime(stateMachine.Animator) >= 1)
+
+            if ((GetNormalizedTime(stateMachine.Animator) >= 1) || DialogueManager.Instance.inConversation)
             {
-                stateMachine.SwitchState(new DwarfRangerRunningState(stateMachine));
+                stateMachine.SwitchState(new DwarfRangerIdleState(stateMachine));
                 return;
             }
 

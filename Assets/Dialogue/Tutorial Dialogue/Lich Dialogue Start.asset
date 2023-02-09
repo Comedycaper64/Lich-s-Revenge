@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
-  m_Name: Test Dialogue
+  m_Name: Lich Dialogue Start
   m_EditorClassIdentifier: 
   characterName: Lich
   characterImages:
@@ -19,5 +19,4 @@ MonoBehaviour:
   leftSideCharacterImage: 1
   rightSideCharacterImage: 0
   sentences:
-  - Ello
-  - I'm lich
+  - ...
