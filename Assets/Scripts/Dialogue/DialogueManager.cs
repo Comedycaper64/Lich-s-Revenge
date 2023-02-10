@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
 	private Queue<string> sentences;
 	private Queue<Sprite> characterImages;
 	private InputReader input;
+	private PlayerUI playerUI;
 
 	//MISC
 	private float inactiveTalkerAlpha = 0.2f;
@@ -55,6 +56,7 @@ public class DialogueManager : MonoBehaviour
 	void Start()
 	{ 
 		input = GameObject.FindGameObjectWithTag("Player").GetComponent<InputReader>();
+		playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
 		input.InteractEvent += OnInteract;
 		currentCharacterImage = null;
 	}
@@ -123,8 +125,8 @@ public class DialogueManager : MonoBehaviour
 
 		switch(nodeType)
 		{
-			case "DialogueAddItem":
-				currentDialogue = ScriptableObject.CreateInstance<Dialogue>();
+			case "DialogueAddSkill":
+				//currentDialogue = ScriptableObject.CreateInstance<Dialogue>();
 				AddSkill((DialogueAddSkill)conversationNode);
 				break;
 
@@ -152,7 +154,8 @@ public class DialogueManager : MonoBehaviour
 
 	private void AddSkill(DialogueAddSkill dialogueAddSkill)
 	{
-		//Add skill to lich's repetoire
+		playerUI.ActivateAbility(dialogueAddSkill.lichSkill);
+		EndDialogue();
 	}
 
 	/*

@@ -6,6 +6,7 @@ using TMPro;
 using Units.Player;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class PlayerUI : MonoBehaviour
         inputReader = player.GetComponent<InputReader>();
         playerStateMachine.OnSwitchState += UpdateUI;
         ClearAbilityUIs();
+
         abilityUIs.Add(jumpUI = Instantiate(jumpAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(fireboltUI = Instantiate(fireboltAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(fireballUI = Instantiate(fireballAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
@@ -79,9 +81,18 @@ public class PlayerUI : MonoBehaviour
         abilityUIs.Add(mineUI = Instantiate(mineAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(dashUI = Instantiate(dashAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(healUI = Instantiate(healAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
-        //abilityUIs.Add(blockUI = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(absorbUI = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(menuUI = Instantiate(menuButtonUI, menuUITransform).GetComponent<AbilityUI>());
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            foreach (AbilityUI abilityUI in abilityUIs)
+            {
+                abilityUI.gameObject.SetActive(false);
+            }
+            menuUI.gameObject.SetActive(true);
+        }
+        
         currentState = StateEnum.FreeLook;
 
         playerHealth.OnTakeDamage += UITakeDamage;
@@ -169,6 +180,37 @@ public class PlayerUI : MonoBehaviour
             mineUI.SetManaSliderValue(0f);
         }
 
+    }
+
+    public void ActivateAbility(LichSkill skill)
+    {
+        switch(skill)
+        {
+            case LichSkill.aim:
+                aimUI.gameObject.SetActive(true);
+                break;
+            case LichSkill.firebolt:
+                fireboltUI.gameObject.SetActive(true);
+                break;
+            case LichSkill.fireball:
+                fireballUI.gameObject.SetActive(true);
+                break;
+            case LichSkill.jump:
+                jumpUI.gameObject.SetActive(true);
+                break;
+            case LichSkill.dash:
+                dashUI.gameObject.SetActive(true);
+                break;
+            case LichSkill.heal:
+                healUI.gameObject.SetActive(true);
+                break;
+            case LichSkill.mine:
+                mineUI.gameObject.SetActive(true);
+                break;
+            case LichSkill.absorb:
+                absorbUI.gameObject.SetActive(true);
+                break;
+        }
     }
 
     public void UpdateUI(object sender, State state)

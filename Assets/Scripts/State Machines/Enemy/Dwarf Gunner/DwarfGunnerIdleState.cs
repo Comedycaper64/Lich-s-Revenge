@@ -28,13 +28,13 @@ namespace Units.Enemy.Gunner
         {
             Move(deltaTime);
 
-            if (IsInAttackRange())
+            if (CanSeePlayer() && IsInAttackRange())
             {
                 stateMachine.SwitchState(new DwarfGunnerAttackingState(stateMachine));
                 return;
             }
 
-            if (IsInChaseRange())
+            if (CanSeePlayer())
             {
                 stateMachine.SwitchState(new DwarfGunnerChasingState(stateMachine));
                 return;
@@ -47,6 +47,21 @@ namespace Units.Enemy.Gunner
             }
 
             stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
+        }
+
+        private bool CanSeePlayer()
+        {
+            RaycastHit hit;
+            Vector3 playerDir = ((stateMachine.Player.transform.position + new Vector3(0, 0.9f, 0)) - stateMachine.headLocation.position).normalized; //adding 0.9f to compensate for height
+            if(Physics.Raycast(stateMachine.headLocation.position, playerDir, out hit, stateMachine.Stats.GetChaseRange(), stateMachine.playerVisionLayermask))
+            {
+                if (hit.collider.gameObject.layer == 8)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

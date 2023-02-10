@@ -15,3 +15,4 @@ MonoBehaviour:
   conversationNodes:
   - {fileID: 11400000, guid: 74008e96be2585e4fb3f2e3d37501d35, type: 2}
   - {fileID: 11400000, guid: 77a5b0fe1db125d4799db0aab15aa11c, type: 2}
+  - {fileID: 11400000, guid: b4659f496b7a7c546986ea4fafd0ed73, type: 2}
