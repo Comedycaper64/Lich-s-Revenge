@@ -3747,7 +3747,7 @@ Transform:
   - {fileID: 8212623517029613826}
   - {fileID: 2650595830729597080}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4599938307914154033
 Animator:
@@ -3810,7 +3810,7 @@ MonoBehaviour:
   speedAdditiveModifier: 0
   speedOverride: 0
   slamRadius: 7
-  leapSpeedModifier: 1.5
+  leapSpeedModifier: 2.5
   slamCooldownMin: 3
   slamCooldownMax: 5
   playerChasingRange: 30
