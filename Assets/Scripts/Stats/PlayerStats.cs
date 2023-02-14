@@ -42,6 +42,7 @@ namespace Stats
             Instance = this;
 
             baseStats.OnStatsChanged += OnBaseStatsChanged;
+            DifficultySlider.OnAnyDifficultySliderChanged += OnDifficultyChanged;
 
             RefreshStatDisplays();
         }
@@ -88,6 +89,22 @@ namespace Stats
         {
             RefreshStatDisplays();
             OnStatsChanged?.Invoke();
+        }
+
+        private void OnDifficultyChanged(object sender, SliderStruct e)
+        {
+            switch (e.GetDifficultySlider())
+            {
+                case SliderStruct.DifficultyType.PlayerAttack:
+                    attackMultiplicativeModifier = e.GetValue();
+                    break;
+                case SliderStruct.DifficultyType.PlayerHealth:
+                    healthMultiplicativeModifier = e.GetValue();
+                    break;
+                case SliderStruct.DifficultyType.PlayerSpeed:
+                    speedMultiplicativeModifier = e.GetValue();
+                    break;
+            }
         }
 
         private void OnValidate() 

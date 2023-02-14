@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Units.Enemy.Miner
+namespace Units.Enemy.Sentinel
 {
-    public class DwarfMinerChasingState : DwarfMinerBaseState
+    public class DwarfSentinelChasingState : DwarfSentinelBaseState
     {
         private readonly int LocomotionBlendTreeHash = Animator.StringToHash("Locomotion");
         private readonly int SpeedParameterHash = Animator.StringToHash("Speed");
 
-        public DwarfMinerChasingState(DwarfMinerStateMachine stateMachine) : base(stateMachine)
+        public DwarfSentinelChasingState(DwarfSentinelStateMachine stateMachine) : base(stateMachine)
         {
         }
 
@@ -23,12 +23,12 @@ namespace Units.Enemy.Miner
         {
             if (!IsInChaseRange() || DialogueManager.Instance.inConversation)
             {
-                stateMachine.SwitchState(new DwarfMinerIdleState(stateMachine));
+                stateMachine.SwitchState(new DwarfSentinelIdleState(stateMachine));
                 return;
             }
             else if (IsInAttackRange())
             {
-                stateMachine.SwitchState(new DwarfMinerAttackingState(stateMachine));
+                stateMachine.SwitchState(new DwarfSentinelAttackingState(stateMachine));
                 return;
             }
 

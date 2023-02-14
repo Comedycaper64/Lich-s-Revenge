@@ -49,7 +49,8 @@ public class PlayerWeaponHandler : MonoBehaviour
         Vector3 relativePos;
         int layermask1 = 1 << 7;
         int layermask2 = 1 << 6;
-        int layermask = layermask1 | layermask2;
+        int layermask3 = 1 << 0;
+        int layermask = layermask1 | layermask2 | layermask3;
         if (Physics.Raycast(MainCameraTransform.position, MainCameraTransform.forward, out hit, 100f, layermask))
         {
             relativePos = hit.point - emitter.position;

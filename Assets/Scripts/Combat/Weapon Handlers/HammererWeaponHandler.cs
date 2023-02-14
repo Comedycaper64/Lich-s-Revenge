@@ -7,6 +7,7 @@ public class HammererWeaponHandler : MonoBehaviour
     [SerializeField] private HammererWeapon weaponLogic;
     [SerializeField] private HammererSlam slamLogic;
     [SerializeField] public AudioClip attackSFX;
+    private float slamRadius;
     private int playerLayerMask = 1 << 8;
 
     private void Start() 
@@ -28,7 +29,7 @@ public class HammererWeaponHandler : MonoBehaviour
         weaponLogic.gameObject.SetActive(false);
     }
 
-    public void Slam(float slamRadius)
+    public void Slam()
     {
         if (Physics.CheckBox(transform.position, new Vector3(slamRadius, 1f, slamRadius), Quaternion.identity, playerLayerMask))
         {
@@ -38,6 +39,11 @@ public class HammererWeaponHandler : MonoBehaviour
                 weaponLogic.TrySlamAttack(collider);
             }
         }
+    }
+
+    public void SetSlamRadius(float slamRadius)
+    {
+        this.slamRadius = slamRadius;
     }
 
     public void SetAttack(float attack, float attackKnockback) => weaponLogic.SetAttack(attack, attackKnockback);

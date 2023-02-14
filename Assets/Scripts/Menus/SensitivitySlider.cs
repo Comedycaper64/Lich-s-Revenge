@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SensitivitySlider : MonoBehaviour
 {
-    [SerializeField] private SliderStruct.SliderType sliderType;
+    [SerializeField] private SliderStruct.OptionType sliderType;
     public static event EventHandler<SliderStruct> OnAnySensitivitySliderChanged;
 
     private void Start() 
@@ -15,16 +15,16 @@ public class SensitivitySlider : MonoBehaviour
 
         switch (sliderType)
         {
-            case SliderStruct.SliderType.LookX:
+            case SliderStruct.OptionType.LookX:
                 GetComponent<Slider>().value = OptionsManager.Instance.GetLookXSensitivity();
                 break;
-            case SliderStruct.SliderType.LookY:
+            case SliderStruct.OptionType.LookY:
                 GetComponent<Slider>().value = OptionsManager.Instance.GetLookYSensitivity();
                 break;
-            case SliderStruct.SliderType.AimX:
+            case SliderStruct.OptionType.AimX:
                 GetComponent<Slider>().value = OptionsManager.Instance.GetAimXSensitivity();
                 break;    
-            case SliderStruct.SliderType.AimY:
+            case SliderStruct.OptionType.AimY:
                 GetComponent<Slider>().value = OptionsManager.Instance.GetAimYSensitivity();
                 break;
         }

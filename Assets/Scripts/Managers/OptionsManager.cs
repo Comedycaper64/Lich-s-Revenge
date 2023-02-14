@@ -81,18 +81,18 @@ public class OptionsManager : MonoBehaviour
     
     private void ChangeSensitivity(object sender, SliderStruct slider)
     {
-        switch(slider.GetSlider())
+        switch(slider.GetOptionSlider())
         {
-            case(SliderStruct.SliderType.LookY):
+            case(SliderStruct.OptionType.LookY):
                 SetLookSensitivityY(slider.GetValue());
                 break;
-            case(SliderStruct.SliderType.LookX):
+            case(SliderStruct.OptionType.LookX):
                 SetLookSensitivityX(slider.GetValue());
                 break;
-            case(SliderStruct.SliderType.AimX):
+            case(SliderStruct.OptionType.AimX):
                 SetAimSensitivityX(slider.GetValue());
                 break;
-            case(SliderStruct.SliderType.AimY):
+            case(SliderStruct.OptionType.AimY):
                 SetAimSensitivityY(slider.GetValue());
                 break;  
         }

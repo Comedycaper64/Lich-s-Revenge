@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SoundSlider : MonoBehaviour
 {
-    [SerializeField] private SliderStruct.SliderType sliderType;
+    [SerializeField] private SliderStruct.SoundType sliderType;
 
     public static event EventHandler<SliderStruct> OnAnySoundSliderChanged;
 
@@ -16,13 +16,13 @@ public class SoundSlider : MonoBehaviour
 
         switch (sliderType)
         {
-            case SliderStruct.SliderType.Master:
+            case SliderStruct.SoundType.Master:
                 GetComponent<Slider>().value = SoundManager.Instance.GetMasterVolume();
                 break;
-            case SliderStruct.SliderType.Music:
+            case SliderStruct.SoundType.Music:
                 GetComponent<Slider>().value = SoundManager.Instance.GetJustMusicValue();
                 break;
-            case SliderStruct.SliderType.SFX:
+            case SliderStruct.SoundType.SFX:
                 GetComponent<Slider>().value = SoundManager.Instance.GetJustSFXValue();
                 break;    
         }

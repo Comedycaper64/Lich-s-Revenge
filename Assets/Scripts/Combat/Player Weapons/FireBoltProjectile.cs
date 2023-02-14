@@ -10,6 +10,8 @@ public class FireBoltProjectile : MonoBehaviour
     private float damage;
     private float knockback;
 
+    private bool reflected = false;
+
     [SerializeField] private float timeToLive;
     private float projectileSpeed;
     [SerializeField] private AudioClip fireboltExplosionSFX;
@@ -42,7 +44,13 @@ public class FireBoltProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other ==  playerCollider) {return;}
+        if ((other == playerCollider) && !reflected) {return;}
+
+        if (other.GetComponent<SentinelShield>())
+        {
+            reflected = true;
+            return;
+        }
 
         if(other.TryGetComponent<Health>(out Health health))
         {

@@ -92,15 +92,15 @@ public class SoundManager : MonoBehaviour
 
     private void SoundSlider_OnAnySliderChanged(object sender, SliderStruct e)
     {
-        switch (e.GetSlider())
+        switch (e.GetSoundSlider())
         {
-            case SliderStruct.SliderType.Master:
+            case SliderStruct.SoundType.Master:
                 SetMasterVolume(e.GetValue());
                 break;
-            case SliderStruct.SliderType.Music:
+            case SliderStruct.SoundType.Music:
                 SetMusicVolume(e.GetValue());
                 break;
-            case SliderStruct.SliderType.SFX:
+            case SliderStruct.SoundType.SFX:
                 SetSoundEffectVolume(e.GetValue());
                 break;    
         }

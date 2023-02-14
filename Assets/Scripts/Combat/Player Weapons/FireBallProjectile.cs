@@ -11,6 +11,7 @@ public class FireBallProjectile : MonoBehaviour
     private float knockback;
 
     private bool damagePlayer;
+    private bool reflected = false;
 
     private float animationTime = 2f;
     private float timeToLive;
@@ -127,8 +128,13 @@ public class FireBallProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (other ==  playerCollider) {return;}
+        if ((other == playerCollider) && !reflected) {return;}
 
+        if (other.GetComponent<SentinelShield>())
+        {
+            reflected = true;
+            return;
+        }
         //when collides with health or layer 6 collider, do damage in sphere with radius based on stats
 
         if(other.TryGetComponent<Health>(out Health health) || other.gameObject.layer == 6 || other.gameObject.layer == 0)

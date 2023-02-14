@@ -16,6 +16,7 @@ MonoBehaviour:
   characterImages:
   - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
   - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
+  - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
   - {fileID: 21300000, guid: 4ccac490407e48543b6d1fa6674d08e4, type: 3}
   - {fileID: 21300000, guid: 957779443fd679b42ac4c3135d6fab66, type: 3}
   characterTalkSound: {fileID: 0}
@@ -24,5 +25,6 @@ MonoBehaviour:
   sentences:
   - I see you're up and about.
   - You seem like you could use some target practice to warm up the ol' bones...
+  - Captured duergar have been placed throughout your dungeon...
   - Remember, all you need to do is aim...
   - And FIRE!

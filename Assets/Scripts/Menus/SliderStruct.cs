@@ -4,29 +4,65 @@ using UnityEngine;
 
 public class SliderStruct
 {
-    public enum SliderType
+    public enum SoundType
     {
         Master,
         Music,
         SFX,
+    }
+
+    public enum OptionType
+    {
         LookX,
         LookY,
         AimX,
         AimY,
     } 
+
+    public enum DifficultyType
+    {
+        PlayerAttack,
+        PlayerHealth,
+        PlayerSpeed,
+        EnemyAttack,
+        EnemyHealth,
+        EnemySpeed,
+    }
    
-    private SliderType slider;
+    private SoundType soundSlider;
+    private OptionType optionSlider;
+    private DifficultyType difficultySlider;
     private float value;
 
-    public SliderStruct(SliderType slider, float value)
+    public SliderStruct(SoundType slider, float value)
     {
-        this.slider = slider;
+        this.soundSlider = slider;
+        this.value = value;
+    }
+    public SliderStruct(OptionType slider, float value)
+    {
+        this.optionSlider = slider;
+        this.value = value;
+    }
+    public SliderStruct(DifficultyType slider, float value)
+    {
+        this.difficultySlider = slider;
         this.value = value;
     }
 
-    public SliderType GetSlider()
+    public SoundType GetSoundSlider()
     {
-        return slider;
+        return soundSlider;
+    }
+
+    public OptionType GetOptionSlider()
+    {
+        return optionSlider;
+    }
+
+    public DifficultyType GetDifficultySlider()
+    {
+        return difficultySlider;
     }
 
     public float GetValue()
