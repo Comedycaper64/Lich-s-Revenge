@@ -2944,7 +2944,7 @@ MonoBehaviour:
   <Ragdoll>k__BackingField: {fileID: 8364998364423859004}
   <EnemyUI>k__BackingField: {fileID: 282164719443139602}
   <EnemyWeapon>k__BackingField: {fileID: 6921134605361010864}
-  <PlayerChasingRange>k__BackingField: 20
+  <PlayerChasingRange>k__BackingField: 25
   <AttackRange>k__BackingField: 1.5
   <AttackKnockback>k__BackingField: 10
   hurtSFXs:

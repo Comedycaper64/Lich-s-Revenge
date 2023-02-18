@@ -4007,7 +4007,7 @@ MonoBehaviour:
   speedOverride: 0
   projectileSpeed: 70
   projectileTimeToLive: 5
-  attackRange: 50
+  attackRange: 40
   fleeRange: 5
 --- !u!114 &259272707358335212
 MonoBehaviour:

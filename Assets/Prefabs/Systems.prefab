@@ -31,7 +31,7 @@ Transform:
   - {fileID: 1895507799393817369}
   - {fileID: 7259346163238220037}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895507799393817374
 GameObject:
@@ -184,4 +184,6 @@ MonoBehaviour:
   gunnerEnemy: {fileID: 7610418881678919791, guid: 20ac85517400f404e8fd34f60a62a7f7,
     type: 3}
   hammererEnemy: {fileID: 7097039680618807537, guid: ecd8645c34eddc64cadcc029d136218e,
+    type: 3}
+  sentinelEnemy: {fileID: 7097039680618807537, guid: 00af82e0fbf750045b5af6b15efeb4ee,
     type: 3}

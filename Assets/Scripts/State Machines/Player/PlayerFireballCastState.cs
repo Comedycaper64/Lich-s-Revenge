@@ -83,8 +83,11 @@ namespace Units.Player
         private void DrawAimLine()
         {
             RaycastHit hit;
-            int layermask = 1 << 6;
-            if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(weaponHandler.fireballEmitter), out hit, 50f, layermask))
+            int layermask1 = 1 << 6;
+            int layermask2 = 1 << 0;
+            int layermask3 = 1 << 7;
+            int aimLayerMask = layermask1 | layermask2 | layermask3;
+            if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(weaponHandler.fireballEmitter), out hit, 50f, aimLayerMask))
             {
                 weaponHandler.UpdateFireballVisual(hit.point);
                 Vector3[] positionArray = new Vector3[2] {weaponHandler.fireballEmitter.position, hit.point};

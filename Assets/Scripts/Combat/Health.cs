@@ -75,6 +75,15 @@ public class Health : MonoBehaviour
         }
     }
 
+    //Method to update all healths depending on new value from DifficultySlider
+    public void AdjustHealth(float newHealth)
+    {
+        float currentNormalisedHealth = GetHealthNormalised();
+        maxHealth = newHealth;
+        health = maxHealth * currentNormalisedHealth;
+        UpdateHealthbar();
+    }
+
     public void Heal(float healing)
     {
         health = Mathf.Min(health + healing, maxHealth);

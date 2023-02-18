@@ -69,6 +69,8 @@ namespace Units.Player
 
             Instantiate(floatVFX, floatPosition);
 
+            PlayerStats.Instance.OnHealthChanged += AdjustHealth;
+
             SwitchState(new PlayerFreeLookState(this));
         }
 
@@ -100,6 +102,7 @@ namespace Units.Player
         {
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
+            PlayerStats.Instance.OnHealthChanged -= AdjustHealth;
         }
 
         private void HandleTakeDamage()
@@ -110,6 +113,11 @@ namespace Units.Player
         private void HandleDeath()
         {
             SwitchState(new PlayerDeadState(this));
+        }
+
+        private void AdjustHealth()
+        {
+            Health.AdjustHealth(LichStats.GetLichHealth());
         }
 
         public void SetRespawnPoint(Transform respawnTransform)

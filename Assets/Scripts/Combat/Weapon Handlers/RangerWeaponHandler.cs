@@ -45,7 +45,8 @@ public class RangerWeaponHandler : MonoBehaviour
         RaycastHit hit;
         int layermask1 = 1 << 8;
         int layermask2 = 1 << 6;
-        int layermask = layermask1 | layermask2;
+        int layermask3 = 1 << 0;
+        int layermask = layermask1 | layermask2 | layermask3;
         if (!weaponFired)
         {        
             Physics.Raycast(projectileEmitter.position, GetPlayerPosition() - projectileEmitter.position, out hit, 500f, layermask);

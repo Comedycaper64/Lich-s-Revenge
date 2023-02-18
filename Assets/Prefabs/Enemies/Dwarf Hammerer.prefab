@@ -3815,7 +3815,7 @@ MonoBehaviour:
   slamCooldownMax: 5
   playerChasingRange: 30
   attackRange: 1.5
-  leapMinRange: 10
+  leapMinRange: 18
   leapMaxRange: 30
   attackKnockback: 30
   slamJumpHeight: 5

@@ -1925,7 +1925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8631909481698462896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: -10}
+  m_LocalPosition: {x: 0, y: 1.25, z: -9.999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2838,13 +2838,13 @@ MonoBehaviour:
   spellManaCostMultiplicativeModifier: 3
   spellManaCostAdditiveModifier: 0
   spellManaCostOverride: 0
-  SpellAttack: 60
-  spellAttackMultiplicativeModifier: 3
+  SpellAttack: 40
+  spellAttackMultiplicativeModifier: 2
   spellAttackAdditiveModifier: 0
   spellAttackOverride: 0
   explodeRadius: 5
   fireballDetonationTime: 2
-  QTEDamageModifier: 2
+  QTEDamageModifier: 1.5
   QTEManaModifier: 0.5
 --- !u!114 &8538347127222063245
 MonoBehaviour:

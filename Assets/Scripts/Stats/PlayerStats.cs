@@ -10,6 +10,7 @@ namespace Stats
     {
         public static PlayerStats Instance {get; private set;}
         public event Action OnStatsChanged;
+        public event Action OnHealthChanged;
 
         [SerializeField] private BaseStats baseStats;
 
@@ -100,6 +101,7 @@ namespace Stats
                     break;
                 case SliderStruct.DifficultyType.PlayerHealth:
                     healthMultiplicativeModifier = e.GetValue();
+                    OnHealthChanged?.Invoke();
                     break;
                 case SliderStruct.DifficultyType.PlayerSpeed:
                     speedMultiplicativeModifier = e.GetValue();

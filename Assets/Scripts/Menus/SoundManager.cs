@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
 
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] sceneMusic;
 
     private float masterVolume;
     private float musicVolume;
@@ -42,6 +44,22 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        audioSource.clip = sceneMusic[scene.buildIndex];
+        audioSource.Play();
+    }
+
+    private void OnEnable() 
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;    
+    }
+
+    private void OnDisable() 
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     public float GetMasterVolume()
     {
         return masterVolume;
@@ -59,7 +77,7 @@ public class SoundManager : MonoBehaviour
 
     public float GetMusicVolume()
     {
-        return masterVolume * musicVolume;
+        return masterVolume * musicVolume * 0.3f;
     }
 
     public float GetSoundEffectVolume()

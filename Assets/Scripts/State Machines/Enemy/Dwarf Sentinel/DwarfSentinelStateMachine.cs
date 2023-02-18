@@ -46,6 +46,8 @@ namespace Units.Enemy.Sentinel
 
             Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
 
+            EnemyStats.Instance.OnHealthChanged += AdjustHealth;
+
             SwitchState(new DwarfSentinelIdleState(this));    
         }
 
@@ -55,8 +57,14 @@ namespace Units.Enemy.Sentinel
             Health.OnDie += HandleDeath;
         }
 
+        private void AdjustHealth()
+        {
+            Health.AdjustHealth(Stats.GetHealth());
+        }
+
         private void OnDisable() 
         {
+            EnemyStats.Instance.OnHealthChanged -= AdjustHealth;
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
         }

@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject rangerEnemy;
     [SerializeField] private GameObject gunnerEnemy;
     [SerializeField] private GameObject hammererEnemy;
+    [SerializeField] private GameObject sentinelEnemy;
 
     private void Awake() 
     {   
@@ -44,6 +45,10 @@ public class LevelManager : MonoBehaviour
             else if (enemy.GetComponent<DwarfHammererStats>())
             {
                 newEnemy = hammererEnemy;
+            }
+            else if (enemy.GetComponent<DwarfSentinelStats>())
+            {
+                newEnemy = sentinelEnemy;
             }
             else
             {
