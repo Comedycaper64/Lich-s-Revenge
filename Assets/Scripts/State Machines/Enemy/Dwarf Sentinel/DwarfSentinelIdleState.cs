@@ -17,7 +17,7 @@ namespace Units.Enemy.Sentinel
 
         public override void Enter()
         {
-            stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
+            stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);   
         }
 
         public override void Exit()
