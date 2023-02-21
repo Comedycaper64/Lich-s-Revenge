@@ -90,6 +90,7 @@ public class PlayerUI : MonoBehaviour
             {
                 abilityUI.gameObject.SetActive(false);
             }
+            abilityUIs[0].gameObject.SetActive(true);
             menuUI.gameObject.SetActive(true);
         }
         

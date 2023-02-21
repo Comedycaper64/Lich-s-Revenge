@@ -70,6 +70,7 @@ namespace Units.Player
             Instantiate(floatVFX, floatPosition);
 
             PlayerStats.Instance.OnHealthChanged += AdjustHealth;
+            DialogueManager.Instance.OnConversationStart += SwitchToIdle;
 
             SwitchState(new PlayerFreeLookState(this));
         }
@@ -84,7 +85,7 @@ namespace Units.Player
         // public override void Update() 
         // {
         //     base.Update();
-        //     Debug.Log(transform.position);
+        //     Debug.Log();
         // }
 
         public bool CanJumpToPlayer()
@@ -103,6 +104,7 @@ namespace Units.Player
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
             PlayerStats.Instance.OnHealthChanged -= AdjustHealth;
+            DialogueManager.Instance.OnConversationStart -= SwitchToIdle;
         }
 
         private void HandleTakeDamage()
@@ -118,6 +120,15 @@ namespace Units.Player
         private void AdjustHealth()
         {
             Health.AdjustHealth(LichStats.GetLichHealth());
+        }
+
+        private void SwitchToIdle()
+        {
+            InputReader.OnAim(new UnityEngine.InputSystem.InputAction.CallbackContext());
+            InputReader.OnAttack(new UnityEngine.InputSystem.InputAction.CallbackContext());
+            InputReader.OnFireball(new UnityEngine.InputSystem.InputAction.CallbackContext());
+            InputReader.OnHeal(new UnityEngine.InputSystem.InputAction.CallbackContext());
+            SwitchState(new PlayerFreeLookState(this));
         }
 
         public void SetRespawnPoint(Transform respawnTransform)

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3_MountainPass.unity
     guid: 0d5c0f9c3f9b9924184ea1e5f0d4da4d
+  - enabled: 1
+    path: Assets/Scenes/Level4_DuergarFortress.unity
+    guid: 039c95885dd371b499d8b49d329a2424
   m_configObjects: {}

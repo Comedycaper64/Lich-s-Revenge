@@ -152,7 +152,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) 
+        {
+            isAttacking = false;
+            return;
+        }
 
         if (context.performed)
         {
@@ -166,7 +170,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnAim(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) 
+        {
+            isAiming = false;
+            return;
+        }
 
         if (context.canceled)
         {
@@ -180,7 +188,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnFireball(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) 
+        {
+            isFireballing = false;
+            return;
+        }
 
         if (context.performed) 
         {
@@ -195,7 +207,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 
     public void OnHeal(InputAction.CallbackContext context)
     {
-        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) 
+        {
+            isHealing = false;
+            return;
+        }
 
         if (context.performed)
         {

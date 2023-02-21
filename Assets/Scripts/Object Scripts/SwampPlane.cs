@@ -24,9 +24,13 @@ public class SwampPlane : MonoBehaviour
 
     private void Update() 
     {
-        foreach(Health health in submergedEntities)
+        for(int i = submergedEntities.Count - 1; i >= 0; i--)
         {
-            health.DealDamage(10f);
+            submergedEntities[i].DealDamage(30f);
+            if (submergedEntities[i].isDead)
+            {
+                submergedEntities.Remove(submergedEntities[i]);
+            }
         }    
     }
 }

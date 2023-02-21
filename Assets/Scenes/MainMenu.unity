@@ -411,7 +411,7 @@ PrefabInstance:
     - target: {fileID: 5929453905307532404, guid: c3e11dcf44e70f64ca160597d4606f2a,
         type: 3}
       propertyPath: sceneMusic.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5929453905307532404, guid: c3e11dcf44e70f64ca160597d4606f2a,
         type: 3}
@@ -433,6 +433,11 @@ PrefabInstance:
       propertyPath: sceneMusic.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 7493708182a935b42ae183f9d06b510a, type: 3}
+    - target: {fileID: 5929453905307532404, guid: c3e11dcf44e70f64ca160597d4606f2a,
+        type: 3}
+      propertyPath: sceneMusic.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8a04ccc797b8dbc4ab5d1be224b94716, type: 3}
     - target: {fileID: 5929453905307532405, guid: c3e11dcf44e70f64ca160597d4606f2a,
         type: 3}
       propertyPath: Loop
@@ -579,6 +584,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7946897167462130175, guid: a44425bca1b93f349b68d58161bf79d6,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e8fd6c78e2a44349bf94f3b5e5b897f,
+        type: 2}
+    - target: {fileID: 7946897167462130175, guid: a44425bca1b93f349b68d58161bf79d6,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3462789805155502643, guid: 0e8fd6c78e2a44349bf94f3b5e5b897f,
+        type: 2}
     - target: {fileID: 7946897168116946989, guid: a44425bca1b93f349b68d58161bf79d6,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -607,6 +624,11 @@ PrefabInstance:
     - target: {fileID: 7946897169212389710, guid: a44425bca1b93f349b68d58161bf79d6,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946897169212389710, guid: a44425bca1b93f349b68d58161bf79d6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7946897169374024848, guid: a44425bca1b93f349b68d58161bf79d6,
@@ -717,6 +739,11 @@ PrefabInstance:
     - target: {fileID: 7946897169374024852, guid: a44425bca1b93f349b68d58161bf79d6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195607432339312468, guid: a44425bca1b93f349b68d58161bf79d6,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -37,6 +37,7 @@ public class DialogueManager : MonoBehaviour
 
 	//MISC
 	private float inactiveTalkerAlpha = 0.2f;
+	public event Action OnConversationStart;
 
 	private void Awake()
     {
@@ -102,6 +103,7 @@ public class DialogueManager : MonoBehaviour
 	public void StartConversation(Conversation conversation)
 	{
 		inConversation = true;
+		OnConversationStart?.Invoke();
 		dialogueAnimator.SetTrigger("startConversation"); //Start Conversationb in Animator
 		darkBackground.enabled = true;
 		currentConversation = conversation;
