@@ -24,6 +24,16 @@ namespace Stats
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
 
+        [Header("Cooldowns")]
+        [SerializeField] private float actionCooldown;
+        [SerializeField] private float fireballCooldown;
+        [SerializeField] private float flamePillarCooldown;
+        [SerializeField] private float summonCooldown;
+        [SerializeField] private float waveCooldown;
+
+        [Header("Misc")]
+        [SerializeField] private float combatStartRange;
+
         [ExecuteInEditMode]
         private void Awake() 
         {
@@ -64,6 +74,36 @@ namespace Stats
                 return speedOverride;
         }
 
+        public float GetActionCooldown()
+        {
+            return actionCooldown;
+        }
+
+        public float GetFireballCooldown()
+        {
+            return fireballCooldown;
+        }
+
+        public float GetFlamePillarCooldown()
+        {
+            return flamePillarCooldown;
+        }
+
+        public float GetSummonCooldown()
+        {
+            return summonCooldown;
+        }
+
+        public float GetWaveCooldown()
+        {
+            return waveCooldown;
+        }
+
+        public float GetCombatStartRange()
+        {
+            return combatStartRange;
+        }
+        
         private void RefreshStatDisplays()
         {
             Health = GetHealth();

@@ -2360,7 +2360,7 @@ MonoBehaviour:
   characterImageRight: {fileID: 6521581131725758124}
   dialogueAnimator: {fileID: 9007360204221006305}
   dialogueAudioSource: {fileID: 64060678142877385}
-  timeBetweenLetterTyping: 0.05
+  timeBetweenLetterTyping: 0.03
   inConversation: 0
 --- !u!222 &5639967407041671773
 CanvasRenderer:

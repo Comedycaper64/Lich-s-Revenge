@@ -49,6 +49,7 @@ public class FireBoltProjectile : MonoBehaviour
         if (other.GetComponent<SentinelShield>())
         {
             reflected = true;
+            transform.LookAt((playerCollider.transform.position) + new Vector3(0, 0.9f, 0));
             return;
         }
 

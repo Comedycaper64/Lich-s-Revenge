@@ -6,7 +6,7 @@ namespace Units.Enemy.Marrow
 {
     public class MarrowFlamePillarState : MarrowBaseState
     {
-        private readonly int MovementHash = Animator.StringToHash("");
+        private readonly int PillarCastHash = Animator.StringToHash("");
 
         public MarrowFlamePillarState(MarrowStateMachine stateMachine) : base(stateMachine)
         {
@@ -14,17 +14,25 @@ namespace Units.Enemy.Marrow
 
         public override void Enter()
         {
-            stateMachine.Animator.CrossFadeInFixedTime(MovementHash, 0.1f);
+            //stateMachine.Animator.CrossFadeInFixedTime(HeavyCastHash, 0.1f);
         }
 
         public override void Tick(float deltaTime)
         {
-            throw new System.NotImplementedException();
+            FacePlayer();
+
+            float normalisedTime = GetNormalizedTime(stateMachine.Animator);
+            if (normalisedTime >= 1f)
+            {
+                stateMachine.SwitchState(new MarrowIdleState(stateMachine));
+                return;
+            }
         }
 
         public override void Exit()
         {
-            throw new System.NotImplementedException();
+            //Have longer cooldown time after this
+            //stateMachine.Cooldowns.SetFlamePillarCooldown();
         }
     }
 }

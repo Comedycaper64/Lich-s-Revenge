@@ -14,17 +14,21 @@ namespace Units.Enemy.Marrow
 
         public override void Enter()
         {
-            stateMachine.Animator.CrossFadeInFixedTime(MovementHash, 0.1f);
+            //stateMachine.Animator.CrossFadeInFixedTime(MovementHash, 0.1f);
+            stateMachine.Cooldowns.SetActionCooldown();
         }
 
         public override void Tick(float deltaTime)
         {
-            throw new System.NotImplementedException();
+            if (!stateMachine.Cooldowns.IsActionReady()) {return;}
+
+            // Moves around random patrol points in map (point chosing logic in Base state so that all states can use it)
+            //Big if-else section about various actions that he can do
         }
 
         public override void Exit()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

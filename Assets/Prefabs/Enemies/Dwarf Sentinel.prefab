@@ -3747,7 +3747,7 @@ Transform:
   - {fileID: 8212623517029613826}
   - {fileID: 2650595830729597080}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4599938307914154033
 Animator:
@@ -5354,31 +5354,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5179842189252500405}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8565338202885919869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5414196290088543972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6ab49964912334f8d67ef7f1644bb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &7512592382227766083
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5414196290088543972}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.8, y: 6.5, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2650778500380352118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5394,4 +5369,29 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
+--- !u!65 &7512592382227766083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414196290088543972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 7, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8565338202885919869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414196290088543972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6ab49964912334f8d67ef7f1644bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -19,7 +19,6 @@ namespace Units.Player
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(FireballHash, 0.1f);
-            stateMachine.InputReader.ToggleCameraMovement(false);
             stateMachine.InputReader.DodgeEvent += OnDodge;
         }
 
@@ -73,7 +72,7 @@ namespace Units.Player
                 }
             }
             
-            stateMachine.InputReader.ToggleCameraMovement(true);
+            //stateMachine.InputReader.ToggleCameraMovement(true);
             stateMachine.Cooldowns.SetFireballCooldown();
             stateMachine.InputReader.DodgeEvent -= OnDodge;
             weaponHandler.UpdateFireballVisual(Vector3.zero);

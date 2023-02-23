@@ -67,17 +67,17 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             }
     }
 
-    public void ToggleCameraMovement(bool enable)
-    {
-        if (enable)
-        {
-            controls.Player.Look.Enable();
-        }
-        else
-        {
-            controls.Player.Look.Disable();
-        }
-    }
+    // public void ToggleCameraMovement(bool enable)
+    // {
+    //     if (enable)
+    //     {
+    //         controls.Player.Look.Enable();
+    //     }
+    //     else
+    //     {
+    //         controls.Player.Look.Disable();
+    //     }
+    // }
 
     public void OnJump(InputAction.CallbackContext context)
     {

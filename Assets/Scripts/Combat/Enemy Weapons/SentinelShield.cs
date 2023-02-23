@@ -8,7 +8,7 @@ public class SentinelShield : MonoBehaviour
     {
         if (other.GetComponent<FireBoltProjectile>() || other.GetComponent<FireBallProjectile>())
         {
-            other.transform.Rotate(new Vector3(0, 180, 0));
+            //other.transform.Rotate(new Vector3(0, 180, 0));
         }    
     }
 }

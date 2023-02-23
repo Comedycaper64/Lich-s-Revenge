@@ -17,6 +17,7 @@ namespace Units.Enemy.Marrow
         protected void Move(float deltaTime)
         {
             Move(Vector3.zero, deltaTime);
+            //Move towards waypoint
         }
 
         protected void Move(Vector3 motion, float deltaTime)
@@ -34,12 +35,6 @@ namespace Units.Enemy.Marrow
             }
         }
 
-        // protected bool IsInChaseRange()
-        // {
-        //     if (stateMachine.Player.isDead) {return false;}
-
-        //     Vector3 toPlayer = stateMachine.Player.transform.position - stateMachine.transform.position;
-        //     return toPlayer.magnitude <= stateMachine.PlayerChasingRange;
-        // }
+        //Method for enumerating between patrols positions from state machine
     }
 }
