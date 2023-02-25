@@ -16,11 +16,19 @@ namespace Units.Enemy.Marrow
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public Ragdoll Ragdoll  {get; private set;}
         [field: SerializeField] public GameObject EnemyUI  {get; private set;}
+        [SerializeField] private Transform waypointObject;
+        public Transform[] movementWaypoints;
+        public Vector3 currentWaypoint;
 
         [SerializeField] public AudioClip[] hurtSFXs;
         [SerializeField] public AudioClip deathSFX;
 
         public Health Player {get; private set;}
+
+        private void Awake() 
+        {
+            movementWaypoints = waypointObject.GetComponentsInChildren<Transform>();    
+        }
 
         private void Start() 
         {

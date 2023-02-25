@@ -15,6 +15,7 @@ namespace Units.Enemy.Marrow
         public override void Enter()
         {
             //stateMachine.Animator.CrossFadeInFixedTime(MovementHash, 0.1f);
+            SetWaypoint(stateMachine.movementWaypoints[0]);
         }
 
         public override void Tick(float deltaTime)

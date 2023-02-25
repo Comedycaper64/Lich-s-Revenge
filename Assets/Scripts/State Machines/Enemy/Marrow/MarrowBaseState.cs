@@ -14,15 +14,21 @@ namespace Units.Enemy.Marrow
             this.stateMachine = stateMachine;
         }
 
-        protected void Move(float deltaTime)
+        protected void SetWaypoint(Transform waypoint)
         {
-            Move(Vector3.zero, deltaTime);
-            //Move towards waypoint
+            stateMachine.currentWaypoint = waypoint.position;
+            Debug.Log("Waypoint Set: " + waypoint.position);
         }
 
-        protected void Move(Vector3 motion, float deltaTime)
+        protected void Move(float deltaTime)
         {
-            stateMachine.Controller.Move(motion  * deltaTime);
+            if (Mathf.Abs((stateMachine.currentWaypoint - stateMachine.transform.position).magnitude) < 1f)
+            {
+                SetWaypoint(stateMachine.movementWaypoints[Random.Range(0, stateMachine.movementWaypoints.Length)]);
+            }
+            Vector3 moveDirection = (stateMachine.currentWaypoint - stateMachine.transform.position).normalized;
+            Debug.Log("Moving:" + moveDirection + ". Current Waypoint: " + stateMachine.currentWaypoint + ". Current Position: " + stateMachine.transform.position);
+            stateMachine.Controller.Move(moveDirection * stateMachine.Stats.GetSpeed() * deltaTime);
         }
 
         protected void FacePlayer()
@@ -34,7 +40,5 @@ namespace Units.Enemy.Marrow
                 stateMachine.transform.rotation = Quaternion.LookRotation(lookPos);
             }
         }
-
-        //Method for enumerating between patrols positions from state machine
     }
 }

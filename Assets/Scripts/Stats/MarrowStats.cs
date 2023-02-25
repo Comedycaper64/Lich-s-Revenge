@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,12 @@ namespace Stats
         [SerializeField] private float attackMultiplicativeModifier; 
         [SerializeField] private float attackAdditiveModifier;
         [SerializeField] private float attackOverride = 0;
+
+        [Header("Spells")]
+        [SerializeField] private float fireballAttackModifier;
+        [SerializeField] private float fireballExplodeRadius;
+        [SerializeField] private float fireballTimeToLive;
+        [SerializeField] private float fireballSpeed;
 
         [Header("Movement Speed")]
         [ShowOnly] [SerializeField] private float Speed;
@@ -122,6 +129,26 @@ namespace Stats
             {
                 RefreshStatDisplays();
             }
+        }
+
+        internal float GetFireballExplodeRadius()
+        {
+            return fireballExplodeRadius;
+        }
+
+        internal float GetFireballAttack()
+        {
+            return GetAttack() * fireballAttackModifier;
+        }
+
+        internal float GetFireballDetonationTime()
+        {
+            return fireballTimeToLive;
+        }
+
+        internal float GetFireballSpellProjectileSpeed()
+        {
+            return fireballSpeed;
         }
     }
 }

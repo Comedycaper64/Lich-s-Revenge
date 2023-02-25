@@ -20,6 +20,8 @@ namespace Units.Enemy.Marrow
 
         public override void Tick(float deltaTime)
         {
+            Move(deltaTime);
+            
             if (!stateMachine.Cooldowns.IsActionReady()) {return;}
 
             // Moves around random patrol points in map (point chosing logic in Base state so that all states can use it)
