@@ -24,6 +24,7 @@ namespace Stats
         [SerializeField] private float fireballExplodeRadius;
         [SerializeField] private float fireballTimeToLive;
         [SerializeField] private float fireballSpeed;
+        [SerializeField] private int enemySpawnNumber;
 
         [Header("Movement Speed")]
         [ShowOnly] [SerializeField] private float Speed;
@@ -131,24 +132,29 @@ namespace Stats
             }
         }
 
-        internal float GetFireballExplodeRadius()
+        public float GetFireballExplodeRadius()
         {
             return fireballExplodeRadius;
         }
 
-        internal float GetFireballAttack()
+        public float GetFireballAttack()
         {
             return GetAttack() * fireballAttackModifier;
         }
 
-        internal float GetFireballDetonationTime()
+        public float GetFireballDetonationTime()
         {
             return fireballTimeToLive;
         }
 
-        internal float GetFireballSpellProjectileSpeed()
+        public float GetFireballSpellProjectileSpeed()
         {
             return fireballSpeed;
+        }
+
+        public int GetEnemySpawnNumber()
+        {
+            return enemySpawnNumber;
         }
     }
 }

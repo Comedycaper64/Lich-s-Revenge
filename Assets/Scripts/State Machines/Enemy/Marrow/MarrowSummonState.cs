@@ -6,7 +6,7 @@ namespace Units.Enemy.Marrow
 {
     public class MarrowSummonState : MarrowBaseState
     {
-        private readonly int MovementHash = Animator.StringToHash("");
+        private readonly int SummonHash = Animator.StringToHash("MarrowHeavyCast");
 
         public MarrowSummonState(MarrowStateMachine stateMachine) : base(stateMachine)
         {
@@ -14,17 +14,27 @@ namespace Units.Enemy.Marrow
 
         public override void Enter()
         {
-            stateMachine.Animator.CrossFadeInFixedTime(MovementHash, 0.1f);
+            stateMachine.Animator.CrossFadeInFixedTime(SummonHash, 0.1f);
         }
 
         public override void Tick(float deltaTime)
         {
-            throw new System.NotImplementedException();
+            Move(deltaTime);
+            FacePlayer();
+
+            float normalisedTime = GetNormalizedTime(stateMachine.Animator);
+
+            if (normalisedTime >= 1f)
+            {
+                stateMachine.Cooldowns.SetActionCooldown();
+                stateMachine.SwitchState(new MarrowIdleState(stateMachine));
+                return;
+            }
         }
 
         public override void Exit()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

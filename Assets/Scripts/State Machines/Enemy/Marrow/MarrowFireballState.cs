@@ -6,7 +6,7 @@ namespace Units.Enemy.Marrow
 {
     public class MarrowFireballState : MarrowBaseState
     {
-        private readonly int FireballCastHash = Animator.StringToHash("");
+        private readonly int FireballCastHash = Animator.StringToHash("MarrowWideCast");
 
         public MarrowFireballState(MarrowStateMachine stateMachine) : base(stateMachine)
         {
@@ -16,7 +16,7 @@ namespace Units.Enemy.Marrow
 
         public override void Enter()
         {
-            //stateMachine.Animator.CrossFadeInFixedTime(LightCastHash, 0.1f);
+            stateMachine.Animator.CrossFadeInFixedTime(FireballCastHash, 0.1f);
         }
 
         public override void Tick(float deltaTime)
@@ -25,8 +25,15 @@ namespace Units.Enemy.Marrow
             FacePlayer();
 
             float normalisedTime = GetNormalizedTime(stateMachine.Animator);
+
+            if (normalisedTime <= 0.5f)
+            {
+                stateMachine.WeaponHandler.UpdateFireballVisual(stateMachine.Player.transform.position);
+            }
+
             if (normalisedTime >= 1f)
             {
+                stateMachine.Cooldowns.SetActionCooldown();
                 stateMachine.SwitchState(new MarrowIdleState(stateMachine));
                 return;
             }
@@ -34,7 +41,7 @@ namespace Units.Enemy.Marrow
 
         public override void Exit()
         {
-            //stateMachine.Cooldowns.SetFireballCooldown();
+            stateMachine.WeaponHandler.UpdateFireballVisual(Vector3.zero);
         }
     }
 }

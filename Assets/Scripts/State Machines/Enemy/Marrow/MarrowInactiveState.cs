@@ -6,7 +6,7 @@ namespace Units.Enemy.Marrow
 {
     public class MarrowInactiveState : MarrowBaseState
     {
-        private readonly int MovementHash = Animator.StringToHash("");
+        //private readonly int MovementHash = Animator.StringToHash("");
 
         public MarrowInactiveState(MarrowStateMachine stateMachine) : base(stateMachine)
         {

@@ -6,7 +6,7 @@ namespace Units.Enemy.Marrow
 {
     public class MarrowImpactState : MarrowBaseState
     {
-        private readonly int ImpactHash = Animator.StringToHash("Impact");
+        private readonly int ImpactHash = Animator.StringToHash("MarrowImpact");
 
         private float duration = 0.5f;
 
@@ -16,7 +16,7 @@ namespace Units.Enemy.Marrow
 
         public override void Enter()
         {
-            //stateMachine.Animator.CrossFadeInFixedTime(ImpactHash, 0.1f);
+            stateMachine.Animator.CrossFadeInFixedTime(ImpactHash, 0.1f);
             if (SoundManager.Instance)
             {
                 AudioSource.PlayClipAtPoint(stateMachine.hurtSFXs[0], stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());

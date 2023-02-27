@@ -24,6 +24,8 @@ namespace Units.Enemy.Marrow
             float normalisedTime = GetNormalizedTime(stateMachine.Animator);
             if (normalisedTime >= 1f)
             {
+                stateMachine.Cooldowns.SetActionCooldown();
+                stateMachine.Cooldowns.SetFlamePillarCooldown();
                 stateMachine.SwitchState(new MarrowIdleState(stateMachine));
                 return;
             }
@@ -32,7 +34,7 @@ namespace Units.Enemy.Marrow
         public override void Exit()
         {
             //Have longer cooldown time after this
-            //stateMachine.Cooldowns.SetFlamePillarCooldown();
+            
         }
     }
 }

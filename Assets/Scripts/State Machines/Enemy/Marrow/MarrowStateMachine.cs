@@ -18,6 +18,7 @@ namespace Units.Enemy.Marrow
         [field: SerializeField] public GameObject EnemyUI  {get; private set;}
         [SerializeField] private Transform waypointObject;
         public Transform[] movementWaypoints;
+        public GameObject[] summonableEnemies;
         public Vector3 currentWaypoint;
 
         [SerializeField] public AudioClip[] hurtSFXs;

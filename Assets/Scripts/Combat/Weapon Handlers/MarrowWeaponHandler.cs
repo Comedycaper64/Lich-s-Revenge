@@ -18,12 +18,48 @@ public class MarrowWeaponHandler : MonoBehaviour
     [SerializeField] private AudioClip fireballCastSFX;
     [SerializeField] private AudioClip fireballLaunchSFX;
 
+    private bool[] usedSpawnLocation;
+
     private void Awake() 
     {
         stats = GetComponent<MarrowStats>(); 
         stateMachine = GetComponent<MarrowStateMachine>();   
-        float explodeRadius = stats.GetFireballExplodeRadius() * 2.6f; //fireball visual is smaller than it should be due to lich parent, so needs 2.6 buff
+        float explodeRadius = stats.GetFireballExplodeRadius() * 1.6f; //fireball visual is smaller than it should be due to lich parent, so needs 2.6 buff
         fireballVisual.localScale = new Vector3(explodeRadius, explodeRadius, explodeRadius);
+        fireballVisual.SetParent(null);
+    }
+
+    public void SummonEnemies()
+    {
+        usedSpawnLocation = new bool[stateMachine.movementWaypoints.Length];
+        for (int i = 0; i < stats.GetEnemySpawnNumber(); i++)
+        {
+            Vector3 spawnLocation = Vector3.zero;
+            while(spawnLocation == Vector3.zero)
+            {
+                TryGetSpawnLocation(out spawnLocation);
+            }   
+            GameObject enemySpawn = stateMachine.summonableEnemies[Random.Range(0, stateMachine.summonableEnemies.Length)];
+
+            Instantiate(enemySpawn, spawnLocation, Quaternion.identity);
+        }
+        stateMachine.Cooldowns.SetSummonCooldown();
+    }
+
+    private bool TryGetSpawnLocation(out Vector3 spawnLocation)
+    {
+        int spawnIndex = Random.Range(0, stateMachine.movementWaypoints.Length);
+        spawnLocation = Vector3.zero;
+        if (usedSpawnLocation[spawnIndex])
+        {
+            return false;
+        }
+        else
+        {
+            spawnLocation = stateMachine.movementWaypoints[spawnIndex].position;
+            usedSpawnLocation[spawnIndex] = true;
+            return true;
+        }
     }
 
     public void SpawnFireball()
@@ -50,6 +86,7 @@ public class MarrowWeaponHandler : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(fireballLaunchSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
         }
+        stateMachine.Cooldowns.SetFireballCooldown();
     }
 
     public void UpdateFireballVisual(Vector3 newLocation)

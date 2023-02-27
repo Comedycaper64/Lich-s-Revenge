@@ -24,7 +24,7 @@ namespace Units.Enemy.Marrow
 
         public override void Exit()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }
