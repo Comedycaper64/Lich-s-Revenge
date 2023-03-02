@@ -9,10 +9,18 @@ public class MarrowWeaponHandler : MonoBehaviour
     private MarrowStats stats;
     private MarrowStateMachine stateMachine;
 
+    [Header("Fireball")]
     [SerializeField] private GameObject fireballPrefab;
     public Transform fireballEmitter;
     public Transform fireballVisual;
     private FireBallProjectile currentFireball;
+
+    [Header("Flame Pillar")]
+    [SerializeField] private GameObject flamePillarPrefab;
+    public GameObject flamePillarVisual;
+    private List<Vector3> flamePillarLocations = new List<Vector3>();
+    private List<GameObject> currentFlamePillarVisuals = new List<GameObject>();
+    //private List<FlamePillar> currentFlamePillars = new List<FlamePillar>();
 
     [Header("SFX")]
     [SerializeField] private AudioClip fireballCastSFX;
@@ -37,7 +45,7 @@ public class MarrowWeaponHandler : MonoBehaviour
             Vector3 spawnLocation = Vector3.zero;
             while(spawnLocation == Vector3.zero)
             {
-                TryGetSpawnLocation(out spawnLocation);
+                TryGetEnemySpawnLocation(out spawnLocation);
             }   
             GameObject enemySpawn = stateMachine.summonableEnemies[Random.Range(0, stateMachine.summonableEnemies.Length)];
 
@@ -46,7 +54,7 @@ public class MarrowWeaponHandler : MonoBehaviour
         stateMachine.Cooldowns.SetSummonCooldown();
     }
 
-    private bool TryGetSpawnLocation(out Vector3 spawnLocation)
+    private bool TryGetEnemySpawnLocation(out Vector3 spawnLocation)
     {
         int spawnIndex = Random.Range(0, stateMachine.movementWaypoints.Length);
         spawnLocation = Vector3.zero;
@@ -102,8 +110,43 @@ public class MarrowWeaponHandler : MonoBehaviour
         }
     }
 
+    public void SetFlamePillarVisuals()
+    {
+        flamePillarLocations.Clear();
+        Vector3 arenaCentreLocation = new Vector3(0, 0, 50);
+        for (int i = 0; i < stats.GetFlamePillarNumber(); i++)
+        {
+            flamePillarLocations.Add(new Vector3(
+                arenaCentreLocation.x + Random.Range(-stats.GetFlamePillarSpawnArea(), stats.GetFlamePillarSpawnArea()), 
+                arenaCentreLocation.y, 
+                arenaCentreLocation.z + Random.Range(-stats.GetFlamePillarSpawnArea(), stats.GetFlamePillarSpawnArea())));
+            currentFlamePillarVisuals.Add(Instantiate(flamePillarVisual, flamePillarLocations[i], Quaternion.identity));
+            currentFlamePillarVisuals[i].transform.localScale = new Vector3(stats.GetFlamePillarRadius(), 10, stats.GetFlamePillarRadius());
+        }
+    }
+
     public void SpawnFlamePillars()
     {
-        //Instantiate a few pillars around the map (not super close to lich) that move around slightly
+        ClearFlamePillarVisuals();
+        foreach(Vector3 pillarPosition in flamePillarLocations)
+        {
+            FlamePillar newPillar = Instantiate(flamePillarPrefab, pillarPosition, Quaternion.identity).GetComponent<FlamePillar>();
+            newPillar.transform.LookAt(stateMachine.Player.transform);
+            newPillar.SetCasterCollider(stateMachine.Controller);
+            newPillar.SetDamage(stats.GetFlamePillarAttack());
+            newPillar.SetMovementSpeed(stats.GetFlamePillarMovement());
+            //newPillar.SetPillarRadius(stats.GetFlamePillarRadius());
+            newPillar.SetTimeToLive(stats.GetFlamePillarTimeToLive());
+        }
+        stateMachine.Cooldowns.SetFlamePillarCooldown();
+    }
+
+    public void ClearFlamePillarVisuals()
+    {
+        foreach(GameObject visual in currentFlamePillarVisuals)
+        {
+            Destroy(visual);
+        }
+        currentFlamePillarVisuals.Clear();
     }
 }

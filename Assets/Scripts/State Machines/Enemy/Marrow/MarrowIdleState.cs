@@ -24,9 +24,16 @@ namespace Units.Enemy.Marrow
             
             if (!stateMachine.Cooldowns.IsActionReady()) {return;}
 
-            if (stateMachine.Cooldowns.IsSummonReady())
+            // if (stateMachine.Cooldowns.IsSummonReady())
+            // {
+            //     stateMachine.SwitchState(new MarrowSummonState(stateMachine));
+            //     return;
+            // }
+
+            if (stateMachine.Cooldowns.IsFlamePillarReady())
             {
-                stateMachine.SwitchState(new MarrowSummonState(stateMachine));
+                stateMachine.SwitchState(new MarrowFlamePillarState(stateMachine));
+                return;
             }
 
             if (stateMachine.Cooldowns.IsFireballReady())
@@ -34,9 +41,6 @@ namespace Units.Enemy.Marrow
                 stateMachine.SwitchState(new MarrowFireballState(stateMachine));
                 return;
             }
-
-            // Moves around random patrol points in map (point chosing logic in Base state so that all states can use it)
-            //Big if-else section about various actions that he can do
         }
 
         public override void Exit()

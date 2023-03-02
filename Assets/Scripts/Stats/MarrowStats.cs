@@ -20,11 +20,27 @@ namespace Stats
         [SerializeField] private float attackOverride = 0;
 
         [Header("Spells")]
+
+        [Header("Fireball")]
         [SerializeField] private float fireballAttackModifier;
         [SerializeField] private float fireballExplodeRadius;
         [SerializeField] private float fireballTimeToLive;
         [SerializeField] private float fireballSpeed;
+        [SerializeField] private float fireballCooldown;
+
+        [Header("Enemy Summon")]
         [SerializeField] private int enemySpawnNumber;
+        [SerializeField] private float summonCooldown;
+
+        [Header("Flame Pillars")]
+        [SerializeField] private float flamePillarAttack;
+        [SerializeField] private int flamePillarNumber;
+        [SerializeField] private float flamePillarRadius;
+        [SerializeField] private float flamePillarMovement;
+        [SerializeField] private float flamePillarSpawnArea;
+        [SerializeField] private float flamePillarCooldown;
+        [SerializeField] private float flamePillarTimeToLive;
+
 
         [Header("Movement Speed")]
         [ShowOnly] [SerializeField] private float Speed;
@@ -32,14 +48,11 @@ namespace Stats
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
 
-        [Header("Cooldowns")]
-        [SerializeField] private float actionCooldown;
-        [SerializeField] private float fireballCooldown;
-        [SerializeField] private float flamePillarCooldown;
-        [SerializeField] private float summonCooldown;
+        [Header("Wave")]
         [SerializeField] private float waveCooldown;
 
         [Header("Misc")]
+        [SerializeField] private float actionCooldown;
         [SerializeField] private float combatStartRange;
 
         [ExecuteInEditMode]
@@ -92,9 +105,39 @@ namespace Stats
             return fireballCooldown;
         }
 
+        public float GetFlamePillarAttack()
+        {
+            return flamePillarAttack * GetAttack();
+        }
+
+        public int GetFlamePillarNumber()
+        {
+            return flamePillarNumber;
+        }
+
+        public float GetFlamePillarRadius()
+        {
+            return flamePillarRadius;
+        }
+
+        public float GetFlamePillarMovement()
+        {
+            return flamePillarMovement;
+        }
+
+        public float GetFlamePillarSpawnArea()
+        {
+            return flamePillarSpawnArea;
+        }
+
         public float GetFlamePillarCooldown()
         {
             return flamePillarCooldown;
+        }
+
+        public float GetFlamePillarTimeToLive()
+        {
+            return flamePillarTimeToLive;
         }
 
         public float GetSummonCooldown()

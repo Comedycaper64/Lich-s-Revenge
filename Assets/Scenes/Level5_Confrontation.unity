@@ -3148,6 +3148,82 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 81080711}
   m_SourcePrefab: {fileID: 100100000, guid: 55993d8a060d40b4e9e65f103ba0987c, type: 3}
+--- !u!1001 &292676792
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5934652160055176822, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_Name
+      value: Flame Pillar 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176822, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934652160055176827, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 946a42b25276d2741a819651f01280e8, type: 3}
 --- !u!1001 &373168378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7046,8 +7122,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
         type: 3}
+      propertyPath: flamePillarAttack
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarNumber
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
       propertyPath: fireballTimeToLive
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarCooldown
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarMovement
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarSpawnArea
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarTimeToLive
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2816361453891137251, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarPlayerDistance
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2834654788227287144, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
         type: 3}
@@ -7265,6 +7381,18 @@ PrefabInstance:
       propertyPath: fireballLaunchSFX
       value: 
       objectReference: {fileID: 8300000, guid: f0b379cf0e7a5e24a99264f8786518b0, type: 3}
+    - target: {fileID: 6760500520206110088, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarPrefab
+      value: 
+      objectReference: {fileID: 5934652160055176822, guid: 946a42b25276d2741a819651f01280e8,
+        type: 3}
+    - target: {fileID: 6760500520206110088, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
+        type: 3}
+      propertyPath: flamePillarVisual
+      value: 
+      objectReference: {fileID: 3490171742407432865, guid: 4ca977c08b59126478555da6757a21ae,
+        type: 3}
     - target: {fileID: 6981455222269473928, guid: 798cfba364c0ded45bd7bbb7ef25d47b,
         type: 3}
       propertyPath: m_Layer
