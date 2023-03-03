@@ -24,6 +24,12 @@ namespace Units.Enemy.Marrow
             
             if (!stateMachine.Cooldowns.IsActionReady()) {return;}
 
+            if ((stateMachine.Health.GetHealthNormalised() < 0.5f) && stateMachine.Cooldowns.IsWaveReady())
+            {
+                stateMachine.SwitchState(new MarrowWaveState(stateMachine));
+                return;
+            }
+
             // if (stateMachine.Cooldowns.IsSummonReady())
             // {
             //     stateMachine.SwitchState(new MarrowSummonState(stateMachine));

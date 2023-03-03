@@ -19,6 +19,7 @@ namespace Units.Enemy.Marrow
                 AudioSource.PlayClipAtPoint(stateMachine.deathSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
             }
             stateMachine.Ragdoll.ToggleRagdoll(true);
+            //Trigger dialogue for end of game
         }
 
         public override void Tick(float deltaTime)
