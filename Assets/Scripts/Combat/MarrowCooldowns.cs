@@ -94,6 +94,6 @@ public class MarrowCooldowns : MonoBehaviour
 
     public void SetWaveCooldown()
     {
-        waveCooldown = stats.GetWaveCooldown();
+        waveCooldown = stats.GetFlameWaveCooldown();
     }
 }

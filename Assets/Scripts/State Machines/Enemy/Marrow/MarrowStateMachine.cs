@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Stats;
+using Units.Player;
 using UnityEngine;
 
 namespace Units.Enemy.Marrow
@@ -20,9 +22,13 @@ namespace Units.Enemy.Marrow
         public Transform[] movementWaypoints;
         public GameObject[] summonableEnemies;
         public Vector3 currentWaypoint;
+        public bool castingWave = false;
 
-        [SerializeField] public AudioClip[] hurtSFXs;
-        [SerializeField] public AudioClip deathSFX;
+        public AudioClip[] hurtSFXs;
+        public AudioClip deathSFX;
+        public AudioClip teleportSFX;
+        public GameObject teleportVFX;
+        public Vector3 arenaCentre;
 
         public Health Player {get; private set;}
 
@@ -38,6 +44,8 @@ namespace Units.Enemy.Marrow
             Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
 
             EnemyStats.Instance.OnHealthChanged += AdjustHealth;
+
+            PlayerStateMachine.OnRespawn += HealToFull;
 
             SwitchState(new MarrowInactiveState(this));    
         }
@@ -58,10 +66,12 @@ namespace Units.Enemy.Marrow
             EnemyStats.Instance.OnHealthChanged -= AdjustHealth;
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
+            PlayerStateMachine.OnRespawn -= HealToFull;
         }
 
         private void HandleTakeDamage()
         {
+            if (castingWave) {return;}
             SwitchState(new MarrowImpactState(this));
         }
 
@@ -69,6 +79,11 @@ namespace Units.Enemy.Marrow
         {
             EnemyUnitDied(gameObject);
             SwitchState(new MarrowDeadState(this));
+        }
+
+        private void HealToFull()
+        {
+            Health.Heal(999f);
         }
 
         private void OnDrawGizmosSelected() 

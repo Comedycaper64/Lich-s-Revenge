@@ -41,15 +41,19 @@ namespace Stats
         [SerializeField] private float flamePillarCooldown;
         [SerializeField] private float flamePillarTimeToLive;
 
+        [Header("Flame Waves")]
+        [SerializeField] private float flameWaveAttack;
+        [SerializeField] private int flameWaveNumber;
+        [SerializeField] private float flameWaveInterval;
+        [SerializeField] private float flameWaveCooldown;
+
 
         [Header("Movement Speed")]
         [ShowOnly] [SerializeField] private float Speed;
         [SerializeField] private float speedMultiplicativeModifier; 
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
-
-        [Header("Wave")]
-        [SerializeField] private float waveCooldown;
+        
 
         [Header("Misc")]
         [SerializeField] private float actionCooldown;
@@ -140,14 +144,29 @@ namespace Stats
             return flamePillarTimeToLive;
         }
 
+        public float GetFlameWaveAttack()
+        {
+            return flameWaveAttack * GetAttack();
+        }
+
+        public int GetFlameWaveNumber()
+        {
+            return flameWaveNumber;
+        }
+
+        public float GetFlameWaveInterval()
+        {
+            return flameWaveInterval;
+        }
+
         public float GetSummonCooldown()
         {
             return summonCooldown;
         }
 
-        public float GetWaveCooldown()
+        public float GetFlameWaveCooldown()
         {
-            return waveCooldown;
+            return flameWaveCooldown;
         }
 
         public float GetCombatStartRange()

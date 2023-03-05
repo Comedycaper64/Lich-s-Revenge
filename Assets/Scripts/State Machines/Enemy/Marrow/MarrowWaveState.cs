@@ -14,23 +14,34 @@ namespace Units.Enemy.Marrow
 
         public override void Enter()
         {
-            //Flame poof at location
-            //Turn off character controller
-            //Teleport to arena centre
+            GameObject dashVFX = GameObject.Instantiate(stateMachine.teleportVFX, stateMachine.transform.position, Quaternion.identity);
+            GameObject.Destroy(dashVFX, 3f);
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(stateMachine.teleportSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
+
+            stateMachine.Controller.enabled = false;
+            stateMachine.transform.position = stateMachine.arenaCentre;
+            stateMachine.castingWave = true;
             stateMachine.Animator.CrossFadeInFixedTime(WaveCastHash, 0.1f);
-            //Turn on Character controller
+            stateMachine.Controller.enabled = true;
         }
 
         public override void Tick(float deltaTime)
         {
-            //Not moving, not looking at player
-            //Every second or so a wave should spawn, originating from Marrow
-            //Back to idle state when animation finishes (animation should be slowed wayyy down)
+            float normalisedTime = GetNormalizedTime(stateMachine.Animator);
+            if (normalisedTime >= 1f)
+            {
+                stateMachine.Cooldowns.SetActionCooldown();
+                stateMachine.SwitchState(new MarrowIdleState(stateMachine));
+                return;
+            }
         }
 
         public override void Exit()
         {
-            
+            stateMachine.castingWave = false;
         }
     }
 }

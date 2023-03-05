@@ -1728,7 +1728,7 @@ Transform:
   - {fileID: 490854709}
   - {fileID: 1202391634}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1700535839941232838
 Animator:
@@ -1787,7 +1787,7 @@ MonoBehaviour:
   <Cooldowns>k__BackingField: {fileID: 8828863271914902058}
   <WeaponHandler>k__BackingField: {fileID: 6760500520206110088}
   <Health>k__BackingField: {fileID: 9190103165276126777}
-  <Ragdoll>k__BackingField: {fileID: 0}
+  <Ragdoll>k__BackingField: {fileID: 5112449792426755974}
   <EnemyUI>k__BackingField: {fileID: 0}
   waypointObject: {fileID: 0}
   movementWaypoints: []
@@ -1795,9 +1795,14 @@ MonoBehaviour:
   - {fileID: 4123251056410007646, guid: 5f6e5d0a54ee5a14fb72e98056978f18, type: 3}
   - {fileID: 7610418881678919791, guid: 5219fe0287f6176408364f7fe9f5639d, type: 3}
   currentWaypoint: {x: 0, y: 0, z: 0}
+  castingWave: 0
   hurtSFXs:
   - {fileID: 8300000, guid: b7a8a976447b7304abfb2be182b74130, type: 3}
   deathSFX: {fileID: 8300000, guid: fd8ec96ecdaf21544b9e66feecc9f41b, type: 3}
+  teleportSFX: {fileID: 8300000, guid: 9ebbbe89f7c63da428aebddb673b49fe, type: 3}
+  teleportVFX: {fileID: 2077259520154301884, guid: daa3f42276ebdad4393925c6ccc13fb8,
+    type: 3}
+  arenaCentre: {x: 0, y: 0, z: 55}
 --- !u!114 &8828863271914902058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,11 +1849,14 @@ MonoBehaviour:
   flamePillarSpawnArea: 50
   flamePillarCooldown: 15
   flamePillarTimeToLive: 10
+  flameWaveAttack: 1
+  flameWaveNumber: 5
+  flameWaveInterval: 2
+  flameWaveCooldown: 30
   Speed: 7
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
-  waveCooldown: 30
   actionCooldown: 2
   combatStartRange: 40
 --- !u!114 &6585903574709167980
@@ -1885,6 +1893,8 @@ MonoBehaviour:
   flamePillarPrefab: {fileID: 5934652160055176822, guid: 946a42b25276d2741a819651f01280e8,
     type: 3}
   flamePillarVisual: {fileID: 3490171742407432865, guid: 4ca977c08b59126478555da6757a21ae,
+    type: 3}
+  flameWavePrefab: {fileID: 8206644963944061561, guid: 4cc887af8ecba5844b7ce30ccb436c1f,
     type: 3}
   fireballCastSFX: {fileID: 8300000, guid: e86b7bc14dc1f4844962d490a283d3e0, type: 3}
   fireballLaunchSFX: {fileID: 8300000, guid: f0b379cf0e7a5e24a99264f8786518b0, type: 3}
@@ -2601,8 +2611,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.19696021
-  m_Center: {x: 0, y: 0.19696021, z: 0}
+  m_Radius: 0.005
+  m_Center: {x: 0, y: 0.005, z: 0}
 --- !u!54 &3752867081415766211
 Rigidbody:
   m_ObjectHideFlags: 0

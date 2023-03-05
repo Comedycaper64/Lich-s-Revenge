@@ -22,6 +22,10 @@ public class MarrowWeaponHandler : MonoBehaviour
     private List<GameObject> currentFlamePillarVisuals = new List<GameObject>();
     //private List<FlamePillar> currentFlamePillars = new List<FlamePillar>();
 
+    [Header("Flame Wave")]
+    [SerializeField] private GameObject flameWavePrefab;
+    private int wavesSpawned;
+
     [Header("SFX")]
     [SerializeField] private AudioClip fireballCastSFX;
     [SerializeField] private AudioClip fireballLaunchSFX;
@@ -139,6 +143,26 @@ public class MarrowWeaponHandler : MonoBehaviour
             newPillar.SetTimeToLive(stats.GetFlamePillarTimeToLive());
         }
         stateMachine.Cooldowns.SetFlamePillarCooldown();
+    }
+
+    public void SpawnFlameWaves()
+    {
+        wavesSpawned = 0;
+        stateMachine.Cooldowns.SetWaveCooldown();
+        StartCoroutine(SpawnFlameWave());
+    }
+
+    private IEnumerator SpawnFlameWave()
+    {
+        FlameWave wave = Instantiate(flameWavePrefab, transform.position, Quaternion.identity).GetComponent<FlameWave>();
+        wave.SetCasterCollider(stateMachine.Controller);
+        wave.SetDamage(stats.GetFlameWaveAttack());
+        yield return new WaitForSeconds(stats.GetFlameWaveInterval());
+        wavesSpawned++;
+        if (wavesSpawned < stats.GetFlameWaveNumber())
+        {
+            StartCoroutine(SpawnFlameWave());
+        }
     }
 
     public void ClearFlamePillarVisuals()
