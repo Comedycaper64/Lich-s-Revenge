@@ -1728,7 +1728,7 @@ Transform:
   - {fileID: 490854709}
   - {fileID: 1202391634}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1700535839941232838
 Animator:
@@ -1859,6 +1859,7 @@ MonoBehaviour:
   speedOverride: 0
   actionCooldown: 2
   combatStartRange: 40
+  stunDuration: 0.5
 --- !u!114 &6585903574709167980
 MonoBehaviour:
   m_ObjectHideFlags: 0

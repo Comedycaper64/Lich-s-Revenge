@@ -59,6 +59,8 @@ namespace Stats
         [SerializeField] private float actionCooldown;
         [SerializeField] private float combatStartRange;
 
+        [SerializeField] private float stunDuration;
+
         [ExecuteInEditMode]
         private void Awake() 
         {
@@ -72,6 +74,11 @@ namespace Stats
             {
                 RefreshStatDisplays();
             }  
+        }
+
+        public float GetStunDuration()
+        {
+            return stunDuration;
         }
 
         public float GetHealth()

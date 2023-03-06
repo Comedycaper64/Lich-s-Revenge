@@ -90,7 +90,7 @@ PrefabInstance:
         type: 3}
       propertyPath: xboxSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 8ed05e4607c5bdf40a7b9599c74d4342,
+      objectReference: {fileID: 21300000, guid: 5a93bd96c20e2bd41b4b6cbdd47d4255,
         type: 3}
     - target: {fileID: 2530099552376318512, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}
@@ -102,7 +102,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playstationSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 15db0d7f160d6714aab08c33582341cd,
+      objectReference: {fileID: 21300000, guid: 0a92e05bc6052ed4cb99875826e12543,
         type: 3}
     - target: {fileID: 2612072537073803222, guid: 55d6e265c3e78cf4d9dbf296c6c3b25c,
         type: 3}

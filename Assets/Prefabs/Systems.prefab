@@ -31,7 +31,7 @@ Transform:
   - {fileID: 1895507799393817369}
   - {fileID: 7259346163238220037}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895507799393817374
 GameObject:
@@ -103,8 +103,8 @@ MonoBehaviour:
   attackMultiplicativeModifier: 0.5
   attackAdditiveModifier: 0
   attackOverride: 0
-  Speed: 7
-  speedMultiplicativeModifier: 1
+  Speed: 10.5
+  speedMultiplicativeModifier: 1.5
   speedAdditiveModifier: 0
   speedOverride: 0
 --- !u!114 &1895507799393817370

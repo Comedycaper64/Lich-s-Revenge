@@ -43,6 +43,24 @@ namespace Units.Enemy.Ranger
             }
         }
 
+        protected bool IsInChaseRange()
+        {
+            if (stateMachine.Player.isDead) {return false;}
+
+            float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
+
+            return playerDistanceSqr <= stateMachine.Stats.GetChaseRange() * stateMachine.Stats.GetChaseRange();
+        }
+
+        protected bool IsInAttackRange()
+        {
+            if (stateMachine.Player.isDead) {return false;}
+
+            float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
+
+            return playerDistanceSqr <= stateMachine.Stats.GetAttackRange() * stateMachine.Stats.GetAttackRange();
+        }
+
         protected bool IsInFleeRange()
         {
             if (stateMachine.Player.isDead) {return false;}

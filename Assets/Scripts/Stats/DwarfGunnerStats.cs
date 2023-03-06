@@ -31,6 +31,7 @@ namespace Stats
         [SerializeField] private float attackRange;
         [SerializeField] private float chaseRange;
         [SerializeField] private float fleeRange;
+        [SerializeField] private float stunDuration;
         [Range(0, 1)] [SerializeField] private float attackarc;
 
 
@@ -50,6 +51,11 @@ namespace Stats
             {
                 RefreshStatDisplays();
             }  
+        }
+
+        public float GetStunDuration()
+        {
+            return stunDuration;
         }
 
         public float GetHealth()

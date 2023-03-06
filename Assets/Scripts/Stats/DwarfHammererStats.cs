@@ -35,6 +35,7 @@ namespace Stats
         [SerializeField] private float leapMaxRange; 
         [SerializeField] private int attackKnockback; 
         [SerializeField] private int slamJumpHeight;
+        [SerializeField] private float stunDuration;
 
         [ExecuteInEditMode]
         private void Awake() 
@@ -52,6 +53,11 @@ namespace Stats
             {
                 RefreshStatDisplays();
             }  
+        }
+
+        public float GetStunDuration()
+        {
+            return stunDuration;
         }
 
         public float GetHealth()

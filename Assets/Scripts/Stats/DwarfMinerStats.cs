@@ -25,6 +25,8 @@ namespace Stats
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
 
+        [SerializeField] private float stunDuration;
+
         [ExecuteInEditMode]
         private void Awake() 
         {
@@ -38,6 +40,11 @@ namespace Stats
             {
                 RefreshStatDisplays();
             }  
+        }
+
+        public float GetStunDuration()
+        {
+            return stunDuration;
         }
 
         public float GetHealth()

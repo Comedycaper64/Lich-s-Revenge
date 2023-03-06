@@ -36,23 +36,21 @@ namespace Units.Enemy.Ranger
                 return;
             }
 
-            if (CanSeePlayer())
+            if (IsInAttackRange() && CanSeePlayer())
             {
                 stateMachine.SwitchState(new DwarfRangerAttackingState(stateMachine));
+                return;
+            }
+
+            if (IsInChaseRange() && CanSeePlayer())
+            {
+                stateMachine.SwitchState(new DwarfRangerChaseState(stateMachine));
                 return;
             }
 
             stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
         }
 
-        private bool IsInAttackRange()
-        {
-            if (stateMachine.Player.isDead) {return false;}
-
-            float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
-
-            return playerDistanceSqr <= stateMachine.Stats.GetAttackRange() * stateMachine.Stats.GetAttackRange();
-        }
 
         private bool CanSeePlayer()
         {

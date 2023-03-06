@@ -8,7 +8,7 @@ namespace Units.Enemy.Marrow
     {
         private readonly int ImpactHash = Animator.StringToHash("MarrowImpact");
 
-        private float duration = 0.5f;
+        private float duration;
 
         public MarrowImpactState(MarrowStateMachine stateMachine) : base(stateMachine)
         {
@@ -21,6 +21,7 @@ namespace Units.Enemy.Marrow
             {
                 AudioSource.PlayClipAtPoint(stateMachine.hurtSFXs[0], stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
             }
+            duration = stateMachine.Stats.GetStunDuration();
         }
 
         public override void Tick(float deltaTime)

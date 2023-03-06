@@ -411,7 +411,7 @@ PrefabInstance:
     - target: {fileID: 5929453905307532404, guid: c3e11dcf44e70f64ca160597d4606f2a,
         type: 3}
       propertyPath: sceneMusic.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5929453905307532404, guid: c3e11dcf44e70f64ca160597d4606f2a,
         type: 3}
@@ -438,6 +438,11 @@ PrefabInstance:
       propertyPath: sceneMusic.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 8a04ccc797b8dbc4ab5d1be224b94716, type: 3}
+    - target: {fileID: 5929453905307532404, guid: c3e11dcf44e70f64ca160597d4606f2a,
+        type: 3}
+      propertyPath: sceneMusic.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 43f7006ff739ad84d94a61577b3a93b3, type: 3}
     - target: {fileID: 5929453905307532405, guid: c3e11dcf44e70f64ca160597d4606f2a,
         type: 3}
       propertyPath: Loop

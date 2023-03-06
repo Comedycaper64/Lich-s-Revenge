@@ -8,7 +8,7 @@ namespace Units.Enemy.Hammerer
     {
         private readonly int ImpactHash = Animator.StringToHash("Impact");
 
-        private float duration = 1f;
+        private float duration;
 
         public DwarfHammererImpactState(DwarfHammererStateMachine stateMachine) : base(stateMachine)
         {
@@ -22,6 +22,7 @@ namespace Units.Enemy.Hammerer
                 int randomHurtSound = Random.Range(0, stateMachine.hurtSFXs.Length);
                 AudioSource.PlayClipAtPoint(stateMachine.hurtSFXs[randomHurtSound], stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
             }
+            duration = stateMachine.Stats.GetStunDuration();
         }
 
         public override void Exit()

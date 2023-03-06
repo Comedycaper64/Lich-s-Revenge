@@ -3747,7 +3747,7 @@ Transform:
   - {fileID: 8212623517029613826}
   - {fileID: 2650595830729597080}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4599938307914154033
 Animator:
@@ -3806,19 +3806,20 @@ MonoBehaviour:
   attackAdditiveModifier: 0
   attackOverride: 0
   Speed: 7
-  speedMultiplicativeModifier: 1
+  speedMultiplicativeModifier: 0.6
   speedAdditiveModifier: 0
   speedOverride: 0
   slamRadius: 7
-  leapSpeedModifier: 2.5
+  leapSpeedModifier: 1.5
   slamCooldownMin: 3
   slamCooldownMax: 5
   playerChasingRange: 30
   attackRange: 1.5
-  leapMinRange: 18
+  leapMinRange: 15
   leapMaxRange: 30
   attackKnockback: 30
   slamJumpHeight: 5
+  stunDuration: 0.5
 --- !u!114 &554039831816192945
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2841,7 +2841,7 @@ Transform:
   - {fileID: 4171981498118543972}
   - {fileID: 6320041611956294546}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7247213764408187038
 Animator:
@@ -2917,9 +2917,10 @@ MonoBehaviour:
   attackAdditiveModifier: 0
   attackOverride: 0
   Speed: 5.25
-  speedMultiplicativeModifier: 0.75
+  speedMultiplicativeModifier: 0.9
   speedAdditiveModifier: 0
   speedOverride: 0
+  stunDuration: 0.5
 --- !u!114 &2065365817872714215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2944,7 +2945,7 @@ MonoBehaviour:
   <Ragdoll>k__BackingField: {fileID: 8364998364423859004}
   <EnemyUI>k__BackingField: {fileID: 282164719443139602}
   <EnemyWeapon>k__BackingField: {fileID: 6921134605361010864}
-  <PlayerChasingRange>k__BackingField: 25
+  <PlayerChasingRange>k__BackingField: 30
   <AttackRange>k__BackingField: 1.5
   <AttackKnockback>k__BackingField: 10
   hurtSFXs:

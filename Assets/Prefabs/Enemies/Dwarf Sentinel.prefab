@@ -3793,8 +3793,8 @@ MonoBehaviour:
   <Ragdoll>k__BackingField: {fileID: 5041099302362706253}
   <EnemyUI>k__BackingField: {fileID: 7400829874587643457}
   <EnemyWeapon>k__BackingField: {fileID: 7714183049397948935}
-  <PlayerChasingRange>k__BackingField: 25
-  <AttackRange>k__BackingField: 5
+  <PlayerChasingRange>k__BackingField: 30
+  <AttackRange>k__BackingField: 4
   <AttackKnockback>k__BackingField: 10
   hurtSFXs:
   - {fileID: 8300000, guid: 0cce1091e0b09964e93758f78e461eed, type: 3}
@@ -3817,18 +3817,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  healthMultiplicativeModifier: 2
+  healthMultiplicativeModifier: 2.5
   healthAdditiveModifier: 0
   healthOverride: 0
   Attack: 20
-  attackMultiplicativeModifier: 1
+  attackMultiplicativeModifier: 1.5
   attackAdditiveModifier: 0
   attackOverride: 0
   attackSlamRadius: 5
   Speed: 5.6
-  speedMultiplicativeModifier: 0.8
+  speedMultiplicativeModifier: 0.6
   speedAdditiveModifier: 0
   speedOverride: 0
+  stunDuration: 0.5
 --- !u!114 &6155002725096432689
 MonoBehaviour:
   m_ObjectHideFlags: 0
