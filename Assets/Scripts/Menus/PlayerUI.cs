@@ -43,15 +43,15 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Image manaImage;
     [SerializeField] private TextMeshProUGUI boneText;
 
-    private AbilityUI jumpUI;
-    private AbilityUI fireboltUI;
-    private AbilityUI fireballUI;
-    private AbilityUI aimUI;
-    private AbilityUI mineUI;
-    private AbilityUI dashUI;
-    private AbilityUI healUI;
-    private AbilityUI absorbUI;
-    private AbilityUI menuUI;
+    public AbilityUI jumpUI;
+    public AbilityUI fireboltUI;
+    public AbilityUI fireballUI;
+    public AbilityUI aimUI;
+    public AbilityUI mineUI;
+    public AbilityUI dashUI;
+    public AbilityUI healUI;
+    public AbilityUI absorbUI;
+    public AbilityUI menuUI;
 
     [SerializeField] private List<AbilityUI> abilityUIs = new List<AbilityUI>();
 

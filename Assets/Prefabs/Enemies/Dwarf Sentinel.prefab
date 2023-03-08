@@ -3747,7 +3747,7 @@ Transform:
   - {fileID: 8212623517029613826}
   - {fileID: 2650595830729597080}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4599938307914154033
 Animator:
@@ -3816,16 +3816,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732e58f9a651d5f4dbde9df3ad4a3f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 125
   healthMultiplicativeModifier: 2.5
   healthAdditiveModifier: 0
   healthOverride: 0
-  Attack: 20
+  Attack: 30
   attackMultiplicativeModifier: 1.5
   attackAdditiveModifier: 0
   attackOverride: 0
   attackSlamRadius: 5
-  Speed: 5.6
+  Speed: 6.3
   speedMultiplicativeModifier: 0.6
   speedAdditiveModifier: 0
   speedOverride: 0
@@ -3888,7 +3888,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

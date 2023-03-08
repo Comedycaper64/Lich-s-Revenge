@@ -27,6 +27,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     public Transform fireballVisual;
     private FireBallProjectile currentFireball;
     private Quaternion fireballRotation;
+    [SerializeField] private GameObject fireballQTEVFX;
     [Header("Fireball SFX")]
     [SerializeField] private AudioClip fireballCastSFX;
     [SerializeField] private AudioClip fireballLaunchSFX;
@@ -153,6 +154,8 @@ public class PlayerWeaponHandler : MonoBehaviour
             {
                 currentFireball.SetDamagePlayer(false);
                 currentFireball.SetAttack(fireballStats.GetFireballQTEAttack(), 20f);
+                GameObject qteVFX = Instantiate(fireballQTEVFX, fireballEmitter);
+                Destroy(qteVFX, 3f);
                 if (SoundManager.Instance)
                 {
                     AudioSource.PlayClipAtPoint(fireballLaunchQTESFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());

@@ -16,7 +16,9 @@ public class FireBallProjectile : MonoBehaviour
     private float animationTime = 2f;
     private float timeToLive;
     private float projectileSpeed;
+    private bool exploded = false;
     [SerializeField] private GameObject fireballVFX;
+    [SerializeField] private GameObject fireballFizzleVFX;
     [SerializeField] private AudioClip fireballExplodeSFX;
 
     private float fireballExplodeRadius;
@@ -38,7 +40,7 @@ public class FireBallProjectile : MonoBehaviour
             if (detonationTime <= 0f)
             {
                 detonationTime = 0f;
-                ExplodeFireball();
+                Destroy(gameObject);
             }
         }
     }
@@ -96,7 +98,7 @@ public class FireBallProjectile : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, fireballExplodeRadius);
 
-        //Explode SFX
+        exploded = true;
         GameObject explosion = Instantiate(fireballVFX, transform.position, Quaternion.identity);
         Destroy(explosion, 3f);
 
@@ -149,9 +151,12 @@ public class FireBallProjectile : MonoBehaviour
         // }
     }
 
-    // private void OnDestroy() 
-    // {
-    //     GameObject explosion = Instantiate(fireballVFX, transform.position, Quaternion.identity);    
-    //     Destroy(explosion, 2f);
-    // }
+    private void OnDestroy() 
+    {
+        if (!exploded)
+        {
+            GameObject fizzle = Instantiate(fireballFizzleVFX, transform.position, Quaternion.identity);    
+            Destroy(fizzle, 3f);
+        }
+    }
 }

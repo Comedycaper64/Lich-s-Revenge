@@ -17,11 +17,12 @@ namespace Units.Enemy.Hammerer
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
+            stateMachine.Agent.ResetPath();
         }
 
         public override void Exit()
         {
-            //stateMachine.Agent.ResetPath();
+            stateMachine.Agent.ResetPath();
             stateMachine.Agent.velocity = Vector3.zero;
         }
 

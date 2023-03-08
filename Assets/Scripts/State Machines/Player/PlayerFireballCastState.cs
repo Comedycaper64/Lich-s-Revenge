@@ -20,6 +20,7 @@ namespace Units.Player
         {
             stateMachine.Animator.CrossFadeInFixedTime(FireballHash, 0.1f);
             stateMachine.InputReader.DodgeEvent += OnDodge;
+            stateMachine.WeaponHandler.QTEActive = false;
         }
 
         public override void Tick(float deltaTime)

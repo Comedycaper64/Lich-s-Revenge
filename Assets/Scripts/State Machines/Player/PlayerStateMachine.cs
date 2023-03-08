@@ -46,7 +46,7 @@ namespace Units.Player
 
         public Transform MainCameraTransform {get; private set;}
         public MenuManager menuManager;
-        private PlayerUI playerUI;
+        public PlayerUI playerUI;
         public event EventHandler<State> OnSwitchState;
         public static event Action OnRespawn;
 

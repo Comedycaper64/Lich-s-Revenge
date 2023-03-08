@@ -20,6 +20,8 @@ namespace Units.Enemy.Hammerer
 
         public override void Enter()
         {
+            stateMachine.Controller.enabled = false;
+            stateMachine.ForceReceiver.enabled = false;
             FacePlayer();
             stateMachine.Animator.CrossFadeInFixedTime(LeapHash, 0.1f);
             playerPosition = stateMachine.Player.transform.position;
@@ -35,12 +37,12 @@ namespace Units.Enemy.Hammerer
 
         public override void Tick(float deltaTime)
         {
-            LeapMove((movementDirection.normalized * stateMachine.Stats.GetLeapSpeed()), deltaTime);
+            stateMachine.transform.position += (movementDirection.normalized * stateMachine.Stats.GetLeapSpeed() * deltaTime);
             Vector3 groundedPosition = stateMachine.transform.position;
             groundedPosition.y = startYValue;
             Vector3 targetDirection = playerPosition - groundedPosition;
             float distanceFromTarget = targetDirection.magnitude;
-            float leapYValue = startYValue + (stateMachine.Stats.GetSlamJumpHeight() * Mathf.Sin(Mathf.PI * (leapStartDistance - distanceFromTarget) / (leapStartDistance)));
+            float leapYValue = startYValue + (stateMachine.Stats.GetSlamJumpHeight() * Mathf.Sin(Mathf.PI * Mathf.Abs((leapStartDistance - distanceFromTarget) / leapStartDistance)));
             //float leapYValue = (stateMachine.Stats.GetSlamJumpHeight() * Mathf.Sin(Mathf.PI * (leapStartDistance - distanceFromTarget) / (leapStartDistance)));
             stateMachine.transform.position = new Vector3(
                 stateMachine.transform.position.x,
@@ -49,8 +51,9 @@ namespace Units.Enemy.Hammerer
             //Vector3 leapAdd = new Vector3(0, leapYValue, 0);
  
             //Once reached ground do big slam attack (Slam State)
-            float dotProduct = Vector3.Dot(movementDirection, targetDirection);
-            if ((0.1f > distanceFromTarget) || (stateMachine.Controller.isGrounded && distanceFromTarget < (leapStartDistance / 2)) || (dotProduct < 0f))
+            float dotProduct = Vector3.Dot(movementDirection.normalized, targetDirection.normalized);
+            Debug.Log(dotProduct);
+            if ((0.1f > distanceFromTarget) || (dotProduct < 0f))
             {
                 stateMachine.SwitchState(new DwarfHammererSlamState(stateMachine));
                 return;
@@ -60,9 +63,11 @@ namespace Units.Enemy.Hammerer
         public override void Exit()
         {
             //Manages to reset the navmesh somehow
-            stateMachine.ForceReceiver.AddForce(Vector3.up);
+            //stateMachine.ForceReceiver.AddForce(Vector3.up);
             stateMachine.WeaponHandler.EnableSlamVisual(false);
             stateMachine.SetSlamCooldown();
+            stateMachine.Controller.enabled = true;
+            stateMachine.ForceReceiver.enabled = true;
         }
     }
 }

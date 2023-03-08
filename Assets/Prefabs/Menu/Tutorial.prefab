@@ -1031,7 +1031,8 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de0179ac2472d94aadaff323354f6ad, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -8405664081062679002, guid: 4de0179ac2472d94aadaff323354f6ad,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4987,7 +4988,8 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de0179ac2472d94aadaff323354f6ad, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -8405664081062679002, guid: 4de0179ac2472d94aadaff323354f6ad,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7189,7 +7191,8 @@ MonoBehaviour:
   m_text: Ravenous Consumption (6 / 6)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de0179ac2472d94aadaff323354f6ad, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -8405664081062679002, guid: 4de0179ac2472d94aadaff323354f6ad,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7829,10 +7832,14 @@ MonoBehaviour:
     a decent cooldown
 
     - If you have a bone and an attack is absorbed then you
-    gain a damage boost for a duration. This consumes a bone'
+    gain a damage boost for a duration. This consumes a bone
+
+    - Motes of flame
+    will orbit you if you have the damage boost'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4de0179ac2472d94aadaff323354f6ad, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -8405664081062679002, guid: 4de0179ac2472d94aadaff323354f6ad,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -62,7 +62,7 @@ MonoBehaviour:
   ShoulderOffset: {x: 1, y: 0.5, z: 0}
   VerticalArmLength: 0.5
   CameraSide: 1
-  CameraDistance: 6
+  CameraDistance: 8
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -86,14 +86,14 @@ MonoBehaviour:
   m_VerticalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 15
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_MaxSpeed: 50
+    m_AccelTime: 1.5
+    m_DecelTime: 0.05
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
-    m_MinValue: -20
-    m_MaxValue: 20
+    m_MinValue: -45
+    m_MaxValue: 45
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
@@ -110,9 +110,9 @@ MonoBehaviour:
   m_HorizontalAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 39
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_MaxSpeed: 80
+    m_AccelTime: 1.5
+    m_DecelTime: 0.05
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -505,7 +505,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2353333110425735303}
-  m_LocalRotation: {x: 0.0052376455, y: 1.8315138e-10, z: -9.592954e-13, w: 0.99998635}
+  m_LocalRotation: {x: 0.0052376455, y: -2.6956862e-10, z: 1.4119241e-12, w: 0.9999863}
   m_LocalPosition: {x: 0, y: 0.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1430,7 +1430,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6141808893008155009}
-  m_LocalRotation: {x: 0.023377992, y: -0.000000011716158, z: 2.739751e-10, w: 0.9997267}
+  m_LocalRotation: {x: 0.023377994, y: 0.000000017314125, z: -4.0488013e-10, w: 0.9997267}
   m_LocalPosition: {x: 0, y: 0.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1510,7 +1510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7937299493227286648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 2.25, z: -6}
+  m_LocalPosition: {x: 1, y: 2.25, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2632,6 +2632,8 @@ MonoBehaviour:
     type: 3}
   fireballEmitter: {fileID: 3190449571253330825}
   fireballVisual: {fileID: 514854219743509470}
+  fireballQTEVFX: {fileID: 3014771184383910170, guid: e46107ea502ccf444ba4ea869730e036,
+    type: 3}
   fireballCastSFX: {fileID: 8300000, guid: e86b7bc14dc1f4844962d490a283d3e0, type: 3}
   fireballLaunchSFX: {fileID: 8300000, guid: f0b379cf0e7a5e24a99264f8786518b0, type: 3}
   fireballLaunchQTESFX: {fileID: 8300000, guid: 69c58b9d865d54742a3aef39911416f8,
@@ -2814,6 +2816,7 @@ MonoBehaviour:
   deathSFX: {fileID: 8300000, guid: fd8ec96ecdaf21544b9e66feecc9f41b, type: 3}
   isDashing: 0
   menuManager: {fileID: 0}
+  playerUI: {fileID: 0}
 --- !u!114 &8454521272148279093
 MonoBehaviour:
   m_ObjectHideFlags: 0

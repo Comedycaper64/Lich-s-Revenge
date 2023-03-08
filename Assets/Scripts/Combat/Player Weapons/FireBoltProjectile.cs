@@ -50,6 +50,11 @@ public class FireBoltProjectile : MonoBehaviour
         {
             reflected = true;
             transform.LookAt((playerCollider.transform.position) + new Vector3(0, 0.9f, 0));
+            //GameObject explosion = Instantiate(fireboltExplosion, transform.position, Quaternion.identity);  
+            if (SoundManager.Instance)
+            {
+                AudioSource.PlayClipAtPoint(fireboltExplosionSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
+            }
             return;
         }
 

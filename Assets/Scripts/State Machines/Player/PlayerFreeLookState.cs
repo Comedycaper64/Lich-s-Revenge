@@ -36,13 +36,13 @@ namespace Units.Player
                 return;
             }
 
-            if (stateMachine.InputReader.isHealing && stateMachine.Bones.GetBones() > 0)
+            if (stateMachine.InputReader.isHealing && (stateMachine.Bones.GetBones() > 0) && stateMachine.playerUI.healUI.isActiveAndEnabled)
             {
                 stateMachine.SwitchState(new PlayerHealingState(stateMachine));
                 return;
             }
 
-            if (stateMachine.InputReader.isAiming)
+            if (stateMachine.InputReader.isAiming && stateMachine.playerUI.aimUI.isActiveAndEnabled)
             {
                 stateMachine.SwitchState(new PlayerAimingState(stateMachine));
                 return;
@@ -98,12 +98,15 @@ namespace Units.Player
 
         private void OnJump()
         {
-            stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+            if (stateMachine.playerUI.jumpUI.isActiveAndEnabled)
+            {
+                stateMachine.SwitchState(new PlayerJumpingState(stateMachine));
+            }
         }
 
         private void OnMine()
         {
-            if (stateMachine.Controller.isGrounded && stateMachine.Cooldowns.IsMineReady())
+            if (stateMachine.Controller.isGrounded && stateMachine.Cooldowns.IsMineReady() && stateMachine.playerUI.mineUI.isActiveAndEnabled)
             {
                 if (stateMachine.Bones.TryUseBones(1))
                 {
@@ -114,7 +117,7 @@ namespace Units.Player
 
         private void OnDodge()
         {
-            if (stateMachine.Cooldowns.IsDodgeReady())
+            if (stateMachine.Cooldowns.IsDodgeReady() && stateMachine.playerUI.dashUI.isActiveAndEnabled)
             {
                 if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichDodgeManaCost()))
                 {
@@ -125,7 +128,7 @@ namespace Units.Player
 
         private void OnAbsorb()
         {
-            if (stateMachine.Cooldowns.IsAegisReady())
+            if (stateMachine.Cooldowns.IsAegisReady() && stateMachine.playerUI.absorbUI.isActiveAndEnabled)
             {
                 if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichAbsorbManaCost()))
                 {

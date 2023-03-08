@@ -29,7 +29,7 @@ namespace Units.Player
                 return;
             }
 
-            if (stateMachine.InputReader.isAttacking && stateMachine.Cooldowns.IsFireboltReady())
+            if (stateMachine.InputReader.isAttacking && stateMachine.Cooldowns.IsFireboltReady() && stateMachine.playerUI.fireboltUI.isActiveAndEnabled)
             {
                 if (stateMachine.Mana.TryUseMana(stateMachine.FireboltStats.GetFireboltSpellManaCost()))
                 {
@@ -38,7 +38,7 @@ namespace Units.Player
                 }
             }
 
-            if (stateMachine.InputReader.isFireballing && stateMachine.Cooldowns.IsFireballReady())
+            if (stateMachine.InputReader.isFireballing && stateMachine.Cooldowns.IsFireballReady() && stateMachine.playerUI.fireballUI.isActiveAndEnabled)
             {
                 if (stateMachine.Mana.HasMana(stateMachine.FireballStats.GetFireballSpellManaCost())) 
                 {
@@ -97,7 +97,7 @@ namespace Units.Player
 
         private void OnDodge()
         {
-            if (stateMachine.Cooldowns.IsDodgeReady())
+            if (stateMachine.Cooldowns.IsDodgeReady() && stateMachine.playerUI.dashUI.isActiveAndEnabled)
             {
                 if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichDodgeManaCost()))
                 {
@@ -108,7 +108,7 @@ namespace Units.Player
         
         private void OnAbsorb()
         {
-            if (stateMachine.Cooldowns.IsAegisReady())
+            if (stateMachine.Cooldowns.IsAegisReady() && stateMachine.playerUI.absorbUI.isActiveAndEnabled)
             {
                 if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichAbsorbManaCost()))
                 {
