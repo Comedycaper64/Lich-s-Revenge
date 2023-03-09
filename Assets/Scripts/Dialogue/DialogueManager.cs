@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -57,13 +58,18 @@ public class DialogueManager : MonoBehaviour
 	void Start()
 	{ 
 		input = GameObject.FindGameObjectWithTag("Player").GetComponent<InputReader>();
-		playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
+		if (SceneManager.GetActiveScene().buildIndex != 0)
+		{
+			playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
+		}
 		input.InteractEvent += OnInteract;
 		currentCharacterImage = null;
 	}
 
 	private void OnInteract()
 	{
+		if (MenuManager.gameIsPaused) {return;}
+		
 		if (inConversation && currentDialogue != null)
 		{
 			if (!currentTextTyping)
@@ -111,7 +117,7 @@ public class DialogueManager : MonoBehaviour
 		conversationNodes.Clear();
 		if (SoundManager.Instance)
 		{
-			dialogueAudioSource.volume = SoundManager.Instance.GetSoundEffectVolume() / 2;
+			dialogueAudioSource.volume = SoundManager.Instance.GetSoundEffectVolume() / 4;
 		}
 		ClearCharacterImages();
 		foreach (ConversationNode conversationNode in currentConversation.conversationNodes)
@@ -131,7 +137,10 @@ public class DialogueManager : MonoBehaviour
 				//currentDialogue = ScriptableObject.CreateInstance<Dialogue>();
 				AddSkill((DialogueAddSkill)conversationNode);
 				break;
-
+			case "DialogueChangeScene":
+				currentDialogue = null;
+				ChangeScene((DialogueChangeScene)conversationNode);
+				break;
 			default:
 			case "Dialogue":
 				currentDialogue = (Dialogue)conversationNode;
@@ -160,22 +169,17 @@ public class DialogueManager : MonoBehaviour
 		EndDialogue();
 	}
 
-	/*
-	public void InterruptDialogue(Dialogue dialogue, int distance, bool isQuestioning)
+	private void ChangeScene(DialogueChangeScene changeScene)
 	{
-		sentences.Clear();
-		foreach (string sentence in dialogue.sentences)
+		if (changeScene.changeToScene != -1)
 		{
-			sentences.Enqueue(sentence);
+			SceneManager.LoadScene(changeScene.changeToScene);
 		}
-
-		for (int i = 0; i < dialogueCounter; i++)
-		{
-			sentences.Dequeue();
-		}
-		DisplayNextSentence(dialogue, distance, isQuestioning, false);
+		// if (changeScene.musicTrack)
+		// 	SoundManager.Instance.SetMusicTrack(changeScene.musicTrack);
+		EndDialogue();
 	}
-	*/
+
 
 	public void DisplayNextSentence()
 	{

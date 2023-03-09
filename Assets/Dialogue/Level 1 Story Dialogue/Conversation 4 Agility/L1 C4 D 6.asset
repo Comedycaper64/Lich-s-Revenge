@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: L1 C4 D 6
+  m_EditorClassIdentifier: 
+  characterName: Fracture, Bone Reaver
+  characterImages:
+  - {fileID: 21300000, guid: ab7072bfd6c555d489383d5daca5d570, type: 3}
+  characterTalkSound: {fileID: 8300000, guid: 5444c05d87abb1847ba981accc6b9920, type: 3}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 1
+  sentences:
+  - Fracture is happy Master like Rex.

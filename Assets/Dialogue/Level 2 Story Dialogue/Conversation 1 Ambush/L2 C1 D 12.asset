@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: L2 C1 D 12
+  m_EditorClassIdentifier: 
+  characterName: Marrow, Esq.
+  characterImages:
+  - {fileID: 21300000, guid: 301e21877f52e2a44a6094b726b14af1, type: 3}
+  characterTalkSound: {fileID: 8300000, guid: f31bc6cf9e73cb940a906ddbee6fb82a, type: 3}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 1
+  sentences:
+  - I have been giving it some thought, and I have decided that-

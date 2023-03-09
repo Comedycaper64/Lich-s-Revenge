@@ -3810,7 +3810,7 @@ MonoBehaviour:
   speedAdditiveModifier: 0
   speedOverride: 0
   slamRadius: 7
-  leapSpeedModifier: 1.5
+  leapSpeedModifier: 2.5
   slamCooldownMin: 3
   slamCooldownMax: 5
   playerChasingRange: 30

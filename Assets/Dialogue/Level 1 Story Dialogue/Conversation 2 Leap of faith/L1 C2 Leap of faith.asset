@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6fd3ac372c8854a8c9d4b1296f9953, type: 3}
+  m_Name: L1 C2 Leap of faith
+  m_EditorClassIdentifier: 
+  conversationNodes:
+  - {fileID: 11400000, guid: 86e5af54441de33408e42615e15eb8af, type: 2}
+  - {fileID: 11400000, guid: 3ffc22fce931bb944a279a5ebe35d13e, type: 2}
+  - {fileID: 11400000, guid: 0e15105a703b9d94284a398b1b073ce1, type: 2}
+  - {fileID: 11400000, guid: dac1a79eb2aad0641ad37c9fcf82913c, type: 2}
+  - {fileID: 11400000, guid: b7d5ebcbba652c944a3f0953c5835eb3, type: 2}
+  - {fileID: 11400000, guid: c170b66a20d430046838a3f5c4dcd73f, type: 2}
+  - {fileID: 11400000, guid: edbcdf6cd38bdd84baeb2364e078a4bd, type: 2}
+  - {fileID: 11400000, guid: 3aef606e2fd1c944b9e1ccb8915779dd, type: 2}
+  - {fileID: 11400000, guid: 7f64ec96262b6b145ad5afc167b8bd4c, type: 2}
+  - {fileID: 11400000, guid: aa1fb0983646d734bbbcf600cd9a9735, type: 2}
+  - {fileID: 11400000, guid: bd593d2f56583d64987520f7513f1e76, type: 2}
+  - {fileID: 11400000, guid: 36b171bede507074fa0187f336cc42fd, type: 2}
+  - {fileID: 11400000, guid: 341c04a686e88924085d048628019a47, type: 2}
+  - {fileID: 11400000, guid: e464ed5ad335075419e3ac5281a816ed, type: 2}

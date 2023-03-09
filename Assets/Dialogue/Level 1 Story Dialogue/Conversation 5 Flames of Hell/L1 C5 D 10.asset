@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: L1 C5 D 10
+  m_EditorClassIdentifier: 
+  characterName: Cranium, Skeletal Mage
+  characterImages:
+  - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
+  characterTalkSound: {fileID: 8300000, guid: a59729757aea0e84d9bfd82750d7989c, type: 3}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 1
+  sentences:
+  - Oh boy, Professor Scrivenmort is going to be so impressed!

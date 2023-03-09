@@ -9,6 +9,8 @@ public class OptionsManager : MonoBehaviour
 {
     public static OptionsManager Instance {get; private set;}
 
+    private bool isStoryMode;
+
     private CinemachinePOV lookPOV;
     private CinemachinePOV aimPOV;
 
@@ -76,6 +78,16 @@ public class OptionsManager : MonoBehaviour
             SetAimSensitivityX(aimXSensitivity);
             SetAimSensitivityY(aimYSensitivity);
         }
+    }
+
+    public void SetStoryMode(bool enable)
+    {
+        isStoryMode = enable;
+    }
+
+    public bool IsStoryMode()
+    {
+        return isStoryMode;
     }
 
     

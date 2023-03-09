@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6fd3ac372c8854a8c9d4b1296f9953, type: 3}
+  m_Name: L1 C3 Rejuvenation
+  m_EditorClassIdentifier: 
+  conversationNodes:
+  - {fileID: 11400000, guid: d1bc402e01d46684ca19b2f8485fe0a0, type: 2}
+  - {fileID: 11400000, guid: 0d367ed1d0eafbf4eb05cbff46ace253, type: 2}
+  - {fileID: 11400000, guid: f5c782042b08d944496879b8a7c46e2a, type: 2}

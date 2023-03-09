@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6fd3ac372c8854a8c9d4b1296f9953, type: 3}
+  m_Name: L2 C1 Ambush
+  m_EditorClassIdentifier: 
+  conversationNodes:
+  - {fileID: 11400000, guid: 70b2a18830897c64fbc5be9afc9feb93, type: 2}
+  - {fileID: 11400000, guid: 79ea2e5074deb5640b183cfde02b0360, type: 2}
+  - {fileID: 11400000, guid: dc5c50d9252295c4c904ae7e7010539c, type: 2}
+  - {fileID: 11400000, guid: f2ef9823bbbed234f8a19d8e89854300, type: 2}
+  - {fileID: 11400000, guid: daa76e5b2119a814aa94310736dd9905, type: 2}
+  - {fileID: 11400000, guid: 60e5362cea36f6140bb1cbdace33669f, type: 2}
+  - {fileID: 11400000, guid: e9f1a53bd3effb14a9e4bf7d6a9aa555, type: 2}
+  - {fileID: 11400000, guid: 66eb901f5b32be04688f2057bb286669, type: 2}
+  - {fileID: 11400000, guid: 2a1e13e8528a9ef46a89df9ab524e2d1, type: 2}
+  - {fileID: 11400000, guid: 3f112839493c4894888046141c19191e, type: 2}
+  - {fileID: 11400000, guid: ad34cc709dd9d8f4a9062851a7081c90, type: 2}
+  - {fileID: 11400000, guid: ef726cd030dcd5a458e3d563b05552cc, type: 2}
+  - {fileID: 11400000, guid: 8787a5d9b3dc1254eabe4ff1b1dac84e, type: 2}
+  - {fileID: 11400000, guid: bb239432cf5d99e4384c699869e8dbaf, type: 2}

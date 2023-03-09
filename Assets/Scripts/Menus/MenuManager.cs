@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject menuScreen;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private TutorialManager tutorialManager;
+    [SerializeField] private Conversation introExposition;
 
     private int currentSceneIndex;
 
@@ -89,6 +90,21 @@ public class MenuManager : MonoBehaviour
     public void ToggleDeathUI(bool enable)
     {
         deathScreen.SetActive(enable);
+    }
+
+    public void StartGame(bool inStoryMode)
+    {
+        OptionsManager.Instance.SetStoryMode(inStoryMode);
+        if (inStoryMode)
+        {
+            currentOpenScreen.SetActive(false);
+            currentOpenScreen = null;
+            DialogueManager.Instance.StartConversation(introExposition);
+        }
+        else
+        {
+            LoadLevel(1);
+        }
     }
 
     public void LoadLevel(int levelNumber)

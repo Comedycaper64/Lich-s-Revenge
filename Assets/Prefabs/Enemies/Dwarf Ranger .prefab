@@ -4007,8 +4007,8 @@ MonoBehaviour:
   speedOverride: 0
   projectileSpeed: 70
   projectileTimeToLive: 5
-  attackRange: 30
-  chaseRange: 40
+  attackRange: 45
+  chaseRange: 50
   fleeRange: 5
   stunDuration: 0.5
 --- !u!114 &259272707358335212

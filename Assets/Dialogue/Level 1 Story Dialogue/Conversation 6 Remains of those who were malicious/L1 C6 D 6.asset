@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: L1 C6 D 6
+  m_EditorClassIdentifier: 
+  characterName: Ribcage, Shield Bearer
+  characterImages:
+  - {fileID: 21300000, guid: 0db5024e5561ebb409f17a9c67649c12, type: 3}
+  - {fileID: 21300000, guid: 9bf5f102add2c5c49b62d1b481530ab3, type: 3}
+  characterTalkSound: {fileID: 8300000, guid: df708f55e6c8e0e47a5df55915531ee1, type: 3}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 1
+  sentences:
+  - Sir! They are also known as bone mines, Sir! They can be planted at your current
+    position and will explode on contact with an enemy, Sir!
+  - You may then wish to lure pursuing enemies into them, Sir!
+  - "Practice makes perfect, so please try it out when you\u2019re ready, Sir!"

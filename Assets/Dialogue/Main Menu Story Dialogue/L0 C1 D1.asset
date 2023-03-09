@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: L0 C1 D1
+  m_EditorClassIdentifier: 
+  characterName: ???
+  characterImages: []
+  characterTalkSound: {fileID: 8300000, guid: be30d48ef05d4604384f8caf0ef57a16, type: 3}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 0
+  sentences:
+  - Many years ago, a terrible calamity struck the Kingdom of the Dead. A destructive
+    earthquake, likely summoned by powerful dwarven sorcerers, tore through the land
+    and marked the start of an onslaught of attacks.
+  - The Lich, with the aid of his trusty esquire, Marrow, guided his armies through
+    many fierce battles with the dwarves of Col Vexirn, ultimately leading the Kingdom
+    to victory.
+  - "As his loyal subjects rejoiced, however, the Lich was distracted by other matters.
+    As Marrow watched his master\u2019s prowess on the battlefield, he soon became
+    enraptured by him, and, at the end of the final battle, finally confessed his
+    feelings."
+  - As the embers of love began to burn in cold, undead hearts, the Lich and his
+    squire soon fell madly in love with one another, and hoped to cherish a long,
+    happy undeath together.
+  - Alas, their days of courtship were cut short by a troubling development. A mere
+    month after their first date, the Lich received a message from Marrow, summoning
+    him to the dungeons.

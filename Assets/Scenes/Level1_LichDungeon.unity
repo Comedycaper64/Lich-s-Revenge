@@ -3784,7 +3784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e3e598a4f1dec40ab8cb2456ccda70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversation: {fileID: 11400000, guid: 33910fa5b0277394eb22427bc36e471c, type: 2}
+  standardConversation: {fileID: 11400000, guid: 33910fa5b0277394eb22427bc36e471c,
+    type: 2}
+  storyConversation: {fileID: 11400000, guid: 706dbd5a5c7b1a944b8e049e50e74bb2, type: 2}
   triggerCollider: {fileID: 38180939}
 --- !u!4 &38180941
 Transform:
@@ -13929,7 +13931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e3e598a4f1dec40ab8cb2456ccda70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversation: {fileID: 11400000, guid: 53c9dc6ffc7301f488397e938b596d04, type: 2}
+  standardConversation: {fileID: 11400000, guid: 53c9dc6ffc7301f488397e938b596d04,
+    type: 2}
+  storyConversation: {fileID: 11400000, guid: 79d91b6ccb8f9024496577af2d540c71, type: 2}
   triggerCollider: {fileID: 244595245}
 --- !u!1001 &247989781
 PrefabInstance:
@@ -17718,7 +17722,7 @@ PrefabInstance:
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 289.8
+      value: 301.28802
       objectReference: {fileID: 0}
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -21983,6 +21987,84 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e52fa0ab130d63b42bcdd15456a87141, type: 3}
+--- !u!1 &447159803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 447159804}
+  - component: {fileID: 447159807}
+  - component: {fileID: 447159806}
+  - component: {fileID: 447159805}
+  m_Layer: 2
+  m_Name: Conversation 8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &447159804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447159803}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 44, y: 0, z: 367}
+  m_LocalScale: {x: 25, y: 10, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 710041976}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &447159805
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447159803}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &447159806
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447159803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &447159807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447159803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e3e598a4f1dec40ab8cb2456ccda70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardConversation: {fileID: 0}
+  storyConversation: {fileID: 11400000, guid: aceb42cd048921042b5a55d5986897de, type: 2}
+  triggerCollider: {fileID: 447159806}
 --- !u!1001 &447722225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29860,7 +29942,7 @@ PrefabInstance:
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27
+      value: 28.970427
       objectReference: {fileID: 0}
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -29870,7 +29952,7 @@ PrefabInstance:
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 283.3
+      value: 297.03802
       objectReference: {fileID: 0}
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -34094,7 +34176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e3e598a4f1dec40ab8cb2456ccda70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversation: {fileID: 11400000, guid: 96465b6e8210a934c99f2628e5bf21bb, type: 2}
+  standardConversation: {fileID: 11400000, guid: 96465b6e8210a934c99f2628e5bf21bb,
+    type: 2}
+  storyConversation: {fileID: 11400000, guid: 3316b846989a8d042b600130058f74a0, type: 2}
   triggerCollider: {fileID: 699394382}
 --- !u!1001 &699946195
 PrefabInstance:
@@ -34472,6 +34556,7 @@ Transform:
   - {fileID: 244595243}
   - {fileID: 757786124}
   - {fileID: 1925199319}
+  - {fileID: 447159804}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36685,12 +36770,12 @@ PrefabInstance:
     - target: {fileID: 1589138258145303085, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000010753841
+      value: 0.0000000010753841
       objectReference: {fileID: 0}
     - target: {fileID: 1589138258145303085, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.63256e-12
+      value: -5.63256e-12
       objectReference: {fileID: 0}
     - target: {fileID: 1826464702132378198, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
@@ -37215,7 +37300,7 @@ PrefabInstance:
     - target: {fileID: 3956473862575299559, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 4031110735582459514, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
@@ -37670,17 +37755,17 @@ PrefabInstance:
     - target: {fileID: 5907609119998453000, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.023377994
+      value: 0.023377996
       objectReference: {fileID: 0}
     - target: {fileID: 5907609119998453000, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017268839
+      value: -0.000000017168148
       objectReference: {fileID: 0}
     - target: {fileID: 5907609119998453000, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.0382112e-10
+      value: 4.014666e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6116909528229326732, guid: 4119dd675ac670b4cbd9359c2efdb6c8,
         type: 3}
@@ -38612,7 +38697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e3e598a4f1dec40ab8cb2456ccda70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversation: {fileID: 11400000, guid: d7cc347ec96ba854ca7171624446ce00, type: 2}
+  standardConversation: {fileID: 11400000, guid: d7cc347ec96ba854ca7171624446ce00,
+    type: 2}
+  storyConversation: {fileID: 11400000, guid: 0d22be8a7f37c0c4cbed522d63d3411f, type: 2}
   triggerCollider: {fileID: 757786126}
 --- !u!1001 &759806791
 PrefabInstance:
@@ -44443,7 +44530,7 @@ PrefabInstance:
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 287
+      value: 298.48804
       objectReference: {fileID: 0}
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -53175,7 +53262,7 @@ PrefabInstance:
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 247
+      value: 246.03801
       objectReference: {fileID: 0}
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -56204,7 +56291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e3e598a4f1dec40ab8cb2456ccda70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversation: {fileID: 11400000, guid: bf97790bf9557c94290ffcc220c90a85, type: 2}
+  standardConversation: {fileID: 11400000, guid: bf97790bf9557c94290ffcc220c90a85,
+    type: 2}
+  storyConversation: {fileID: 11400000, guid: 4d443f9f68696004a99e2a360112a0e6, type: 2}
   triggerCollider: {fileID: 1071184060}
 --- !u!1001 &1072108592
 PrefabInstance:
@@ -57136,7 +57225,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e3e598a4f1dec40ab8cb2456ccda70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversation: {fileID: 11400000, guid: 0d9aaafb75c8c9c4d95bf3056ba8c975, type: 2}
+  standardConversation: {fileID: 11400000, guid: 0d9aaafb75c8c9c4d95bf3056ba8c975,
+    type: 2}
+  storyConversation: {fileID: 11400000, guid: 6409662eb99e7c44abbff2e9faa42fb9, type: 2}
   triggerCollider: {fileID: 1086220506}
 --- !u!1001 &1088452082
 PrefabInstance:
@@ -90363,7 +90454,7 @@ PrefabInstance:
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 246
+      value: 244.03801
       objectReference: {fileID: 0}
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -94270,7 +94361,7 @@ PrefabInstance:
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 246
+      value: 244.03801
       objectReference: {fileID: 0}
     - target: {fileID: 3635366224430547684, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -96126,7 +96217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e3e598a4f1dec40ab8cb2456ccda70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversation: {fileID: 11400000, guid: 3ca933a80310f6b429e7f9e7fa1fbd8e, type: 2}
+  standardConversation: {fileID: 11400000, guid: 3ca933a80310f6b429e7f9e7fa1fbd8e,
+    type: 2}
+  storyConversation: {fileID: 11400000, guid: 0bda7316ae951004898bfb55909183d0, type: 2}
   triggerCollider: {fileID: 1925199321}
 --- !u!114 &1927217076
 MonoBehaviour:

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: L1 C7 D 2
+  m_EditorClassIdentifier: 
+  characterName: Ribcage, Shield Bearer
+  characterImages:
+  - {fileID: 21300000, guid: 9bf5f102add2c5c49b62d1b481530ab3, type: 3}
+  - {fileID: 21300000, guid: c7e6603728db91d4698a072e7e68cef3, type: 3}
+  - {fileID: 21300000, guid: 9bf5f102add2c5c49b62d1b481530ab3, type: 3}
+  characterTalkSound: {fileID: 8300000, guid: df708f55e6c8e0e47a5df55915531ee1, type: 3}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 1
+  sentences:
+  - Excellent form, Commander!
+  - Another strategy we use is Ravenous Consumption, also known as absorbing elements,
+    Sir!
+  - This will create a shield around yourself, Sir!
+  - If this shield blocks an attack, it consumes one of your gathered bones and your
+    attacks will be empowered for a while, Sir!
+  - Try it out, along with all the other techniques you have learned, on this set
+    of dwarves, Sir!

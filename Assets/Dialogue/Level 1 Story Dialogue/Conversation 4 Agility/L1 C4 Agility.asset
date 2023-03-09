@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6fd3ac372c8854a8c9d4b1296f9953, type: 3}
+  m_Name: L1 C4 Agility
+  m_EditorClassIdentifier: 
+  conversationNodes:
+  - {fileID: 11400000, guid: 0a8ef38b8958e6141851ddb81e0ed640, type: 2}
+  - {fileID: 11400000, guid: 3f3eac266a524094a960173b58757fe9, type: 2}
+  - {fileID: 11400000, guid: 234aaf4b89454794e99d58c6c6a28b05, type: 2}
+  - {fileID: 11400000, guid: f7e42c6af0cca204ca58e7a6281c6f70, type: 2}
+  - {fileID: 11400000, guid: dad334bca456d544bbf972ae1239527a, type: 2}
+  - {fileID: 11400000, guid: d87051b743e634f48a27cdf792b7f758, type: 2}
+  - {fileID: 11400000, guid: 4216ecea741e49a47a520cbc5c47d317, type: 2}
+  - {fileID: 11400000, guid: 776e3b48eb98b324db5bba8cc78347d7, type: 2}
+  - {fileID: 11400000, guid: 655c7765e7dad514294b05c716460bd8, type: 2}
+  - {fileID: 11400000, guid: 6a3a94426210cc4479ebcaa3aa80aefd, type: 2}
+  - {fileID: 11400000, guid: ba3f70b4ec0d4e44ea79c0ba9f777c46, type: 2}
+  - {fileID: 11400000, guid: 695d19b588470fe4eb54ad79420c8d09, type: 2}
+  - {fileID: 11400000, guid: aabb2e2cc99922c40b4ee904c8d40c3e, type: 2}
