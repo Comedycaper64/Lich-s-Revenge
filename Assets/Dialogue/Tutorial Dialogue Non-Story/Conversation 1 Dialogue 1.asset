@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Lich
   characterImages:
   - {fileID: 21300000, guid: 60a7d073a3327024aa5253cd0909c3ee, type: 3}
-  characterTalkSound: {fileID: 0}
+  characterTalkSound: {fileID: 8300000, guid: ef5d7f45236f5fb498fccc3ff65192eb, type: 3}
   leftSideCharacterImage: 1
   rightSideCharacterImage: 0
   sentences:

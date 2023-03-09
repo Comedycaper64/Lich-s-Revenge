@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8736761b4717b2e4f9c70e3886b062ab, type: 3}
   - {fileID: 21300000, guid: a17958f388c974c44a542269bf9c7655, type: 3}
   - {fileID: 21300000, guid: 8736761b4717b2e4f9c70e3886b062ab, type: 3}
-  characterTalkSound: {fileID: 0}
+  characterTalkSound: {fileID: 8300000, guid: eb88928ee22040240a45d3a353d7d2fe, type: 3}
   leftSideCharacterImage: 0
   rightSideCharacterImage: 1
   sentences:

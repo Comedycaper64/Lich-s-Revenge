@@ -17,13 +17,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
   - {fileID: 21300000, guid: b43de8c66e6769944a90848e49a7da2d, type: 3}
   - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
-  characterTalkSound: {fileID: 0}
+  characterTalkSound: {fileID: 8300000, guid: a59729757aea0e84d9bfd82750d7989c, type: 3}
   leftSideCharacterImage: 0
   rightSideCharacterImage: 1
   sentences:
   - Greetings, sire...
   - Please, experience the joys of FIREBALL!
-  - A violent wave of flamesss will submerge the duergar!
+  - A violent wave of flamesss will submerge the dwarves!
   - Fireball casting is a tricky thing...
   - A fully cast fireball is unstable, and liable to harm you...
   - Or you could RELEASE it as soon as the fireball forms...

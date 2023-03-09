@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Marrow
   characterImages:
-  - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
-  - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
-  - {fileID: 21300000, guid: 828ba2e8ccb5d9d47ae7c052b84fa3ec, type: 3}
+  - {fileID: 21300000, guid: 301e21877f52e2a44a6094b726b14af1, type: 3}
+  - {fileID: 21300000, guid: 301e21877f52e2a44a6094b726b14af1, type: 3}
+  - {fileID: 21300000, guid: 301e21877f52e2a44a6094b726b14af1, type: 3}
   - {fileID: 21300000, guid: 4ccac490407e48543b6d1fa6674d08e4, type: 3}
   - {fileID: 21300000, guid: 957779443fd679b42ac4c3135d6fab66, type: 3}
-  characterTalkSound: {fileID: 0}
+  characterTalkSound: {fileID: 8300000, guid: f31bc6cf9e73cb940a906ddbee6fb82a, type: 3}
   leftSideCharacterImage: 0
   rightSideCharacterImage: 1
   sentences:
   - I see you're up and about.
   - You seem like you could use some target practice to warm up the ol' bones...
-  - Captured duergar have been placed throughout your dungeon...
+  - Captured dwarves have been placed throughout your dungeon...
   - Remember, all you need to do is aim...
   - And FIRE!
