@@ -42,7 +42,7 @@ namespace Units.Enemy.Ranger
             int layermask3 = 1 << 0;
             playerVisionLayermask = layermask1 | layermask2 | layermask3;
 
-            EnemyStats.Instance.OnHealthChanged += AdjustHealth;
+            OptionsManager.Instance.OnEnemyHealthChanged += AdjustHealth;
 
             SwitchState(new DwarfRangerIdleState(this));    
         }
@@ -60,7 +60,7 @@ namespace Units.Enemy.Ranger
 
         private void OnDisable() 
         {
-            EnemyStats.Instance.OnHealthChanged -= AdjustHealth;
+            OptionsManager.Instance.OnEnemyHealthChanged -= AdjustHealth;
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
         }

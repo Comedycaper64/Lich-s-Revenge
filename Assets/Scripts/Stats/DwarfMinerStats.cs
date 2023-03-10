@@ -44,7 +44,7 @@ namespace Stats
 
         public float GetStunDuration()
         {
-            return stunDuration;
+            return stunDuration * OptionsManager.Instance.GetEnemyStunTime();
         }
 
         public float GetHealth()

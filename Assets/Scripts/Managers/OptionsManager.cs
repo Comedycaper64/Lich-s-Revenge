@@ -19,6 +19,18 @@ public class OptionsManager : MonoBehaviour
     private float aimXSensitivity = 80f;
     private float aimYSensitivity = 50f;
 
+    private float playerAttack = 1f;
+    private float playerHealth = 1f;
+    private float playerSpeed = 1f;
+    private float enemyAttack = 1f;
+    private float enemyHealth = 1f;
+    private float enemySpeed = 1f;
+    private float enemyAttackSpeed = 1f;
+    private float enemyStunTime = 1f;
+
+    public event Action OnPlayerHealthChanged;
+    public event Action OnEnemyHealthChanged;
+
     private void Awake() 
     {
         SetUpSingleton();
@@ -31,6 +43,40 @@ public class OptionsManager : MonoBehaviour
         Instance = this;
 
         SensitivitySlider.OnAnySensitivitySliderChanged += ChangeSensitivity;
+        DifficultySlider.OnAnyDifficultySliderChanged += ChangeDifficulty;
+    }
+
+    private void ChangeDifficulty(object sender, SliderStruct e)
+    {
+        switch (e.GetDifficultySlider())
+            {
+                case SliderStruct.DifficultyType.EnemyAttack:
+                    enemyAttack = e.GetValue();
+                    break;
+                case SliderStruct.DifficultyType.EnemyHealth:
+                    enemyHealth = e.GetValue();
+                    OnEnemyHealthChanged?.Invoke();
+                    break;
+                case SliderStruct.DifficultyType.EnemySpeed:
+                    enemySpeed = e.GetValue();
+                    break;
+                case SliderStruct.DifficultyType.EnemyAttackSpeed:
+                    enemyAttackSpeed = e.GetValue();
+                    break;
+                case SliderStruct.DifficultyType.EnemyStunTime:
+                    enemyStunTime = e.GetValue();
+                    break;
+                case SliderStruct.DifficultyType.PlayerAttack:
+                    playerAttack = e.GetValue();
+                    break;
+                case SliderStruct.DifficultyType.PlayerHealth:
+                    playerHealth = e.GetValue();
+                    OnPlayerHealthChanged?.Invoke();
+                    break;
+                case SliderStruct.DifficultyType.PlayerSpeed:
+                    playerSpeed = e.GetValue();
+                    break;
+            }
     }
 
     private void SetUpSingleton()
@@ -161,5 +207,45 @@ public class OptionsManager : MonoBehaviour
     public float GetAimYSensitivity()
     {
         return aimYSensitivity;
+    }
+
+    public float GetEnemyAttack()
+    {
+        return enemyAttack;
+    }
+
+    public float GetEnemyHealth()
+    {
+        return enemyHealth;
+    }
+
+    public float GetEnemySpeed()
+    {
+        return enemySpeed;   
+    }
+
+    public float GetEnemyAttackSpeed()
+    {
+        return enemyAttackSpeed;
+    }
+
+    public float GetEnemyStunTime()
+    {
+        return enemyStunTime;
+    }
+
+    public float GetPlayerAttack()
+    {
+        return playerAttack;
+    }
+
+    public float GetPlayerHealth()
+    {
+        return playerHealth;
+    }
+
+    public float GetPlayerSpeed()
+    {
+        return playerSpeed;
     }
 }

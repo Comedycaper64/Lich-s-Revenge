@@ -47,7 +47,7 @@ namespace Units.Enemy.Hammerer
             int layermask3 = 1 << 0;
             playerVisionLayermask = layermask1 | layermask2 | layermask3;
 
-            EnemyStats.Instance.OnHealthChanged += AdjustHealth;
+            OptionsManager.Instance.OnEnemyHealthChanged += AdjustHealth;
 
             SwitchState(new DwarfHammererIdleState(this));    
         }
@@ -91,7 +91,7 @@ namespace Units.Enemy.Hammerer
 
         private void OnDisable() 
         {
-            EnemyStats.Instance.OnHealthChanged -= AdjustHealth;
+            OptionsManager.Instance.OnEnemyHealthChanged -= AdjustHealth;
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
         }

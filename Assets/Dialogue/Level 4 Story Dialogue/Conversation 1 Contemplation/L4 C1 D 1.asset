@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: L4 C1 D 1
+  m_EditorClassIdentifier: 
+  characterName: ???
+  characterImages: []
+  characterTalkSound: {fileID: 8300000, guid: be30d48ef05d4604384f8caf0ef57a16, type: 3}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 0
+  sentences:
+  - A dwarf speaking the tongue of the undead is a most unusual sight indeed, but
+    it was what she said that was truly alarming.
+  - The Lich was only able to hear but a few words before the dwarf was incinerated
+    by powerful magic of an unknown origin.
+  - Perhaps the gods were angry at her for daring to surrender to an evil as great
+    as an undead overlord, or perhaps there was something more sinister pulling the
+    strings behind the scenes.
+  - Only time would tell as Marrow and the Lich set off on the final part of their
+    journey towards Col Vexirn.

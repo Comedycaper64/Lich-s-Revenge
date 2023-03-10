@@ -10,7 +10,6 @@ namespace Stats
     {
         public static EnemyStats Instance {get; private set;}
         public event Action OnStatsChanged;
-        public event Action OnHealthChanged;
 
         [SerializeField] private BaseStats baseStats;
 
@@ -32,6 +31,12 @@ namespace Stats
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
 
+        [Header("Other")]
+        [SerializeField] private float attackSpeedMultiplier;
+        [SerializeField] private float stunTimeMultiplier;
+
+        private OptionsManager options;
+
         private void Awake() 
         {
             if (Instance != null)
@@ -43,7 +48,8 @@ namespace Stats
             Instance = this;
 
             baseStats.OnStatsChanged += OnBaseStatsChanged;
-            DifficultySlider.OnAnyDifficultySliderChanged += OnDifficultyChanged;
+
+            options = OptionsManager.Instance;
 
             RefreshStatDisplays();
         }
@@ -58,14 +64,18 @@ namespace Stats
 
         public float GetEnemyHealth()
         {
-            if (healthOverride == 0)
+            if ((healthOverride == 0) && options)
+                return (baseStats.baseHealth * healthMultiplicativeModifier * options.GetEnemyHealth()) + healthAdditiveModifier;
+            else if (healthOverride == 0)
                 return (baseStats.baseHealth * healthMultiplicativeModifier) + healthAdditiveModifier;
             else
                 return healthOverride;
         }
         public float GetEnemyAttack()
         {
-            if (attackOverride == 0)
+            if ((attackOverride == 0) && options)
+                return (baseStats.baseAttack * attackMultiplicativeModifier * options.GetEnemyAttack()) + attackAdditiveModifier;
+            else if (attackOverride == 0)
                 return (baseStats.baseAttack * attackMultiplicativeModifier) + attackAdditiveModifier;
             else
                 return attackOverride;
@@ -73,10 +83,36 @@ namespace Stats
 
         public float GetEnemySpeed()
         {
-            if (speedOverride == 0)
+            if ((speedOverride == 0) && options)
+                return (baseStats.baseMovementSpeed * speedMultiplicativeModifier * options.GetEnemySpeed()) + speedAdditiveModifier;
+            else if (speedOverride == 0)
                 return (baseStats.baseMovementSpeed * speedMultiplicativeModifier) + speedAdditiveModifier;
             else
                 return speedOverride;
+        }
+
+        public float GetEnemyAttackSpeed()
+        {
+            if (options)
+            {
+                return attackSpeedMultiplier * options.GetEnemyAttackSpeed();
+            }
+            else
+            {
+                return attackSpeedMultiplier;
+            }
+        }
+
+        public float GetEnemyStunTime()
+        {
+            if (options)
+            {
+                return stunTimeMultiplier * options.GetEnemyStunTime();
+            }
+            else
+            {
+                return stunTimeMultiplier;
+            }
         }
 
         private void RefreshStatDisplays()
@@ -90,23 +126,6 @@ namespace Stats
         {
             RefreshStatDisplays();
             OnStatsChanged?.Invoke();
-        }
-
-        private void OnDifficultyChanged(object sender, SliderStruct e)
-        {
-            switch (e.GetDifficultySlider())
-            {
-                case SliderStruct.DifficultyType.EnemyAttack:
-                    attackMultiplicativeModifier = e.GetValue();
-                    break;
-                case SliderStruct.DifficultyType.EnemyHealth:
-                    healthMultiplicativeModifier = e.GetValue();
-                    OnHealthChanged?.Invoke();
-                    break;
-                case SliderStruct.DifficultyType.EnemySpeed:
-                    speedMultiplicativeModifier = e.GetValue();
-                    break;
-            }
         }
 
         private void OnValidate() 

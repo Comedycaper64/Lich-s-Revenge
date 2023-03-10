@@ -27,6 +27,8 @@ public class SliderStruct
         EnemyAttack,
         EnemyHealth,
         EnemySpeed,
+        EnemyAttackSpeed,
+        EnemyStunTime,
     }
    
     private SoundType soundSlider;

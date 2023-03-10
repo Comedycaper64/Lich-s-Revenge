@@ -12,27 +12,33 @@ public class DifficultySlider : MonoBehaviour
 
     private void Start() 
     {
-        if (!PlayerStats.Instance || EnemyStats.Instance) {return;}
+        if (!OptionsManager.Instance) {return;}
 
         switch (sliderType)
         {
             case SliderStruct.DifficultyType.EnemyAttack:
-                GetComponent<Slider>().value = EnemyStats.Instance.GetEnemyAttack();
+                GetComponent<Slider>().value = OptionsManager.Instance.GetEnemyAttack();
                 break;
             case SliderStruct.DifficultyType.EnemyHealth:
-                GetComponent<Slider>().value = EnemyStats.Instance.GetEnemyHealth();
+                GetComponent<Slider>().value = OptionsManager.Instance.GetEnemyHealth();
                 break;
             case SliderStruct.DifficultyType.EnemySpeed:
-                GetComponent<Slider>().value = EnemyStats.Instance.GetEnemySpeed();
+                GetComponent<Slider>().value = OptionsManager.Instance.GetEnemySpeed();
+                break;
+            case SliderStruct.DifficultyType.EnemyAttackSpeed:
+                GetComponent<Slider>().value = OptionsManager.Instance.GetEnemyAttackSpeed();
+                break;
+            case SliderStruct.DifficultyType.EnemyStunTime:
+                GetComponent<Slider>().value = OptionsManager.Instance.GetEnemyStunTime();
                 break;
             case SliderStruct.DifficultyType.PlayerAttack:
-                GetComponent<Slider>().value = PlayerStats.Instance.GetPlayerSpeed();
+                GetComponent<Slider>().value = OptionsManager.Instance.GetPlayerSpeed();
                 break;
             case SliderStruct.DifficultyType.PlayerHealth:
-                GetComponent<Slider>().value = PlayerStats.Instance.GetPlayerHealth();
+                GetComponent<Slider>().value = OptionsManager.Instance.GetPlayerHealth();
                 break;
             case SliderStruct.DifficultyType.PlayerSpeed:
-                GetComponent<Slider>().value = PlayerStats.Instance.GetPlayerSpeed();
+                GetComponent<Slider>().value = OptionsManager.Instance.GetPlayerSpeed();
                 break;
         }
 

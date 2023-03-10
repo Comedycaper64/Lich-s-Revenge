@@ -46,7 +46,7 @@ namespace Units.Enemy.Miner
 
             Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
 
-            EnemyStats.Instance.OnHealthChanged += AdjustHealth;
+            OptionsManager.Instance.OnEnemyHealthChanged += AdjustHealth;
 
             SwitchState(new DwarfMinerIdleState(this));    
         }
@@ -64,7 +64,7 @@ namespace Units.Enemy.Miner
 
         private void OnDisable() 
         {
-            EnemyStats.Instance.OnHealthChanged -= AdjustHealth;
+            OptionsManager.Instance.OnEnemyHealthChanged -= AdjustHealth;
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
         }

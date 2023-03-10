@@ -10,7 +10,6 @@ namespace Stats
     {
         public static PlayerStats Instance {get; private set;}
         public event Action OnStatsChanged;
-        public event Action OnHealthChanged;
 
         [SerializeField] private BaseStats baseStats;
 
@@ -32,6 +31,8 @@ namespace Stats
         [SerializeField] private float speedAdditiveModifier;
         [SerializeField] private float speedOverride = 0;
 
+        private OptionsManager options;
+
         private void Awake() 
         {
             if (Instance != null)
@@ -43,7 +44,8 @@ namespace Stats
             Instance = this;
 
             baseStats.OnStatsChanged += OnBaseStatsChanged;
-            DifficultySlider.OnAnyDifficultySliderChanged += OnDifficultyChanged;
+
+            options = OptionsManager.Instance;
 
             RefreshStatDisplays();
         }
@@ -58,14 +60,18 @@ namespace Stats
 
         public float GetPlayerHealth()
         {
-            if (healthOverride == 0)
+            if ((healthOverride == 0) && options)
+                return (baseStats.baseHealth * healthMultiplicativeModifier * options.GetPlayerHealth()) + healthAdditiveModifier;
+            else if ((healthOverride == 0))
                 return (baseStats.baseHealth * healthMultiplicativeModifier) + healthAdditiveModifier;
             else
                 return healthOverride;
         }
         public float GetPlayerAttack()
         {
-            if (attackOverride == 0)
+            if ((attackOverride == 0) && options)
+                return (baseStats.baseAttack * attackMultiplicativeModifier * options.GetPlayerAttack()) + attackAdditiveModifier;
+            else if (attackOverride == 0)
                 return (baseStats.baseAttack * attackMultiplicativeModifier) + attackAdditiveModifier;
             else
                 return attackOverride;
@@ -73,7 +79,9 @@ namespace Stats
 
         public float GetPlayerSpeed()
         {
-            if (speedOverride == 0)
+            if ((speedOverride == 0) && options)
+                return (baseStats.baseMovementSpeed * speedMultiplicativeModifier * options.GetPlayerSpeed()) + speedAdditiveModifier;
+            else if (speedOverride == 0)
                 return (baseStats.baseMovementSpeed * speedMultiplicativeModifier) + speedAdditiveModifier;
             else
                 return speedOverride;
@@ -90,23 +98,6 @@ namespace Stats
         {
             RefreshStatDisplays();
             OnStatsChanged?.Invoke();
-        }
-
-        private void OnDifficultyChanged(object sender, SliderStruct e)
-        {
-            switch (e.GetDifficultySlider())
-            {
-                case SliderStruct.DifficultyType.PlayerAttack:
-                    attackMultiplicativeModifier = e.GetValue();
-                    break;
-                case SliderStruct.DifficultyType.PlayerHealth:
-                    healthMultiplicativeModifier = e.GetValue();
-                    OnHealthChanged?.Invoke();
-                    break;
-                case SliderStruct.DifficultyType.PlayerSpeed:
-                    speedMultiplicativeModifier = e.GetValue();
-                    break;
-            }
         }
 
         private void OnValidate() 

@@ -69,7 +69,7 @@ namespace Units.Player
 
             Instantiate(floatVFX, floatPosition);
 
-            PlayerStats.Instance.OnHealthChanged += AdjustHealth;
+            OptionsManager.Instance.OnPlayerHealthChanged += AdjustHealth;
             DialogueManager.Instance.OnConversationStart += SwitchToIdle;
 
             SwitchState(new PlayerFreeLookState(this));
@@ -103,7 +103,7 @@ namespace Units.Player
         {
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
-            PlayerStats.Instance.OnHealthChanged -= AdjustHealth;
+            OptionsManager.Instance.OnPlayerHealthChanged -= AdjustHealth;
             DialogueManager.Instance.OnConversationStart -= SwitchToIdle;
         }
 

@@ -43,7 +43,7 @@ namespace Units.Enemy.Marrow
 
             Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
 
-            EnemyStats.Instance.OnHealthChanged += AdjustHealth;
+            OptionsManager.Instance.OnEnemyHealthChanged += AdjustHealth;
 
             PlayerStateMachine.OnRespawn += HealToFull;
 
@@ -63,7 +63,7 @@ namespace Units.Enemy.Marrow
 
         private void OnDisable() 
         {
-            EnemyStats.Instance.OnHealthChanged -= AdjustHealth;
+            OptionsManager.Instance.OnEnemyHealthChanged -= AdjustHealth;
             Health.OnTakeDamage -= HandleTakeDamage;
             Health.OnDie -= HandleDeath;
             PlayerStateMachine.OnRespawn -= HealToFull;
