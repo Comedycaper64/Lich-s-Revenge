@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlamePillar : MonoBehaviour
 {
     private Collider casterCollider;
+    private Collider pillarCollider;
     private float flameDamage;
     private float movementSpeed;
     private float pillarRadius;
@@ -13,6 +14,7 @@ public class FlamePillar : MonoBehaviour
 
     private void Start() 
     {
+        pillarCollider = GetComponent<Collider>();
         ChooseMovementDirection();
     }
 
@@ -22,6 +24,11 @@ public class FlamePillar : MonoBehaviour
         if (timeToLive > 0f)
         {
             timeToLive -= Time.deltaTime;
+            if ((timeToLive <= 2f) && pillarCollider.enabled)
+            {
+                pillarCollider.enabled = false;
+            }
+
             if (timeToLive <= 0f)
             {
                 timeToLive = 0f;

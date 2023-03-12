@@ -107,6 +107,8 @@ MonoBehaviour:
   speedMultiplicativeModifier: 1.5
   speedAdditiveModifier: 0
   speedOverride: 0
+  attackSpeedMultiplier: 0
+  stunTimeMultiplier: 0
 --- !u!114 &1895507799393817370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,4 +188,6 @@ MonoBehaviour:
   hammererEnemy: {fileID: 7097039680618807537, guid: ecd8645c34eddc64cadcc029d136218e,
     type: 3}
   sentinelEnemy: {fileID: 7097039680618807537, guid: 00af82e0fbf750045b5af6b15efeb4ee,
+    type: 3}
+  kingAlaric: {fileID: 5526744034659730162, guid: 3819de88d34931944954507dc6966f94,
     type: 3}

@@ -26,6 +26,10 @@ namespace Units.Enemy.Miner
                 stateMachine.SwitchState(new DwarfMinerIdleState(stateMachine));
                 return;
             }
+            else if (IsInAttackRange() && stateMachine.debugAttack)
+            {
+                stateMachine.SwitchState(new DwarfMinerDebugAttackingState(stateMachine));
+            }
             else if (IsInAttackRange())
             {
                 stateMachine.SwitchState(new DwarfMinerAttackingState(stateMachine));
@@ -42,10 +46,10 @@ namespace Units.Enemy.Miner
 
         public override void Exit()
         {
-            //if (stateMachine.Agent.hasPath)
-            //{
-            stateMachine.Agent.ResetPath();
-            //}
+            if (stateMachine.Agent.hasPath)
+            {
+                stateMachine.Agent.ResetPath();
+            }
             stateMachine.Agent.velocity = Vector3.zero;
             stateMachine.Controller.Move(Vector3.zero);
         }

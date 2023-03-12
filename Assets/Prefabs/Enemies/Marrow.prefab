@@ -1728,7 +1728,7 @@ Transform:
   - {fileID: 490854709}
   - {fileID: 1202391634}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1700535839941232838
 Animator:
@@ -1790,6 +1790,10 @@ MonoBehaviour:
   <Ragdoll>k__BackingField: {fileID: 5112449792426755974}
   <EnemyUI>k__BackingField: {fileID: 0}
   waypointObject: {fileID: 0}
+  epilogueConversation: {fileID: 11400000, guid: dab403424dbae8944990d81a6b1e102c,
+    type: 2}
+  endGameConversation: {fileID: 11400000, guid: 5687b662a71fc9747842bf8fd77f6c4e,
+    type: 2}
   movementWaypoints: []
   summonableEnemies:
   - {fileID: 4123251056410007646, guid: 5f6e5d0a54ee5a14fb72e98056978f18, type: 3}
@@ -1840,7 +1844,7 @@ MonoBehaviour:
   fireballTimeToLive: 3
   fireballSpeed: 18
   fireballCooldown: 4
-  enemySpawnNumber: 3
+  enemySpawnNumber: 2
   summonCooldown: 40
   flamePillarAttack: 1.5
   flamePillarNumber: 32
@@ -1853,7 +1857,7 @@ MonoBehaviour:
   flameWaveNumber: 5
   flameWaveInterval: 2
   flameWaveCooldown: 30
-  Speed: 7
+  Speed: 10.5
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
@@ -1913,7 +1917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 0}
-  healSFX: {fileID: 0}
+  healSFX: {fileID: 8300000, guid: 1907fe9312f06ee4a8813053c1e51974, type: 3}
   isDead: 0
 --- !u!114 &5112449792426755974
 MonoBehaviour:

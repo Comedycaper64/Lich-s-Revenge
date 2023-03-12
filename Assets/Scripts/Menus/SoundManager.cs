@@ -46,8 +46,25 @@ public class SoundManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.buildIndex > sceneMusic.Length - 1) {return;}
+
         audioSource.clip = sceneMusic[scene.buildIndex];
         audioSource.Play();
+        if ((scene.buildIndex == 5))
+        {
+            audioSource.Stop();
+        }
+    }
+
+    public void PlayAudioSource()
+    {
+        audioSource.Play();
+    }
+
+    public void SetMusicTrack(AudioClip audioTrack)
+    {
+        audioSource.clip = audioTrack;
+        PlayAudioSource();
     }
 
     private void OnEnable() 

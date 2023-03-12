@@ -55,6 +55,7 @@ namespace Stats
 
         [Header("Misc")]
         [SerializeField] private float lichIFrames;
+        public bool debugBadAttackSpread = false;
 
 
         public event Action OnStatsChanged;

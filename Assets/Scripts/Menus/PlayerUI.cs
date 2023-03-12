@@ -84,7 +84,7 @@ public class PlayerUI : MonoBehaviour
         abilityUIs.Add(absorbUI = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(menuUI = Instantiate(menuButtonUI, menuUITransform).GetComponent<AbilityUI>());
 
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if ((SceneManager.GetActiveScene().buildIndex == 1) || SceneManager.GetActiveScene().buildIndex > 5)
         {
             foreach (AbilityUI abilityUI in abilityUIs)
             {

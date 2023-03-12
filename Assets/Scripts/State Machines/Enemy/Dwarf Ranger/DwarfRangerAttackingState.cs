@@ -17,11 +17,13 @@ namespace Units.Enemy.Ranger
             FacePlayer();
 
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
+            stateMachine.Animator.speed = stateMachine.Stats.GetAttackSpeed();
         }
 
         public override void Exit()
         {
             stateMachine.RangerWeapon.StowWeapon();
+            stateMachine.Animator.speed = 1;
         }
 
         public override void Tick(float deltaTime)

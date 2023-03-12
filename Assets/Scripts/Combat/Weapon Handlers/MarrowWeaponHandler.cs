@@ -20,10 +20,11 @@ public class MarrowWeaponHandler : MonoBehaviour
     public GameObject flamePillarVisual;
     private List<Vector3> flamePillarLocations = new List<Vector3>();
     private List<GameObject> currentFlamePillarVisuals = new List<GameObject>();
-    //private List<FlamePillar> currentFlamePillars = new List<FlamePillar>();
+    private List<FlamePillar> currentFlamePillars = new List<FlamePillar>();
 
     [Header("Flame Wave")]
     [SerializeField] private GameObject flameWavePrefab;
+    public Coroutine flameWaveCoroutine;
     private int wavesSpawned;
 
     [Header("SFX")]
@@ -43,7 +44,7 @@ public class MarrowWeaponHandler : MonoBehaviour
 
     public void SummonEnemies()
     {
-        usedSpawnLocation = new bool[stateMachine.movementWaypoints.Length];
+        usedSpawnLocation = new bool[stateMachine.enemySpawnWaypoints.Length];
         for (int i = 0; i < stats.GetEnemySpawnNumber(); i++)
         {
             Vector3 spawnLocation = Vector3.zero;
@@ -60,7 +61,7 @@ public class MarrowWeaponHandler : MonoBehaviour
 
     private bool TryGetEnemySpawnLocation(out Vector3 spawnLocation)
     {
-        int spawnIndex = Random.Range(0, stateMachine.movementWaypoints.Length);
+        int spawnIndex = Random.Range(0, stateMachine.enemySpawnWaypoints.Length);
         spawnLocation = Vector3.zero;
         if (usedSpawnLocation[spawnIndex])
         {
@@ -68,7 +69,7 @@ public class MarrowWeaponHandler : MonoBehaviour
         }
         else
         {
-            spawnLocation = stateMachine.movementWaypoints[spawnIndex].position;
+            spawnLocation = stateMachine.enemySpawnWaypoints[spawnIndex].position;
             usedSpawnLocation[spawnIndex] = true;
             return true;
         }
@@ -80,7 +81,7 @@ public class MarrowWeaponHandler : MonoBehaviour
         currentFireball.SetAttack(stats.GetFireballAttack(), 20f);
         currentFireball.SetTimeToLive(stats.GetFireballDetonationTime());
         currentFireball.SetPlayerCollider(gameObject.GetComponent<CharacterController>());
-        currentFireball.SetDamagePlayer(true);
+        currentFireball.SetDamagePlayer(false);
         if (SoundManager.Instance)
         {
             AudioSource.PlayClipAtPoint(fireballCastSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
@@ -132,10 +133,13 @@ public class MarrowWeaponHandler : MonoBehaviour
     public void SpawnFlamePillars()
     {
         ClearFlamePillarVisuals();
+        ClearFlamePillars();
         foreach(Vector3 pillarPosition in flamePillarLocations)
         {
             FlamePillar newPillar = Instantiate(flamePillarPrefab, pillarPosition, Quaternion.identity).GetComponent<FlamePillar>();
+            currentFlamePillars.Add(newPillar);
             newPillar.transform.LookAt(stateMachine.Player.transform);
+            newPillar.transform.rotation = Quaternion.Euler(0, newPillar.transform.eulerAngles.y, 0);
             newPillar.SetCasterCollider(stateMachine.Controller);
             newPillar.SetDamage(stats.GetFlamePillarAttack());
             newPillar.SetMovementSpeed(stats.GetFlamePillarMovement());
@@ -149,7 +153,7 @@ public class MarrowWeaponHandler : MonoBehaviour
     {
         wavesSpawned = 0;
         stateMachine.Cooldowns.SetWaveCooldown();
-        StartCoroutine(SpawnFlameWave());
+        flameWaveCoroutine = StartCoroutine(SpawnFlameWave());
     }
 
     private IEnumerator SpawnFlameWave()
@@ -161,7 +165,11 @@ public class MarrowWeaponHandler : MonoBehaviour
         wavesSpawned++;
         if (wavesSpawned < stats.GetFlameWaveNumber())
         {
-            StartCoroutine(SpawnFlameWave());
+            flameWaveCoroutine = StartCoroutine(SpawnFlameWave());
+        }
+        else
+        {
+            flameWaveCoroutine = null;
         }
     }
 
@@ -172,5 +180,28 @@ public class MarrowWeaponHandler : MonoBehaviour
             Destroy(visual);
         }
         currentFlamePillarVisuals.Clear();
+    }
+
+    public void ClearFlamePillars()
+    {
+        if (currentFlamePillars.Count > 0)
+        {
+            foreach(FlamePillar pillar in currentFlamePillars)
+            {
+                if (pillar)
+                {
+                    Destroy(pillar.gameObject);
+                }
+            }
+        }
+        currentFlamePillars.Clear();
+    }
+
+    public void StopFlameWaveCoroutine()
+    {
+        if(flameWaveCoroutine != null)
+        {
+            StopCoroutine(flameWaveCoroutine);
+        }
     }
 }

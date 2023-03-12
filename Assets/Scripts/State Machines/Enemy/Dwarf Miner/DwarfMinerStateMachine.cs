@@ -30,6 +30,8 @@ namespace Units.Enemy.Miner
         public Transform headLocation;
         public int playerVisionLayermask;
 
+        public bool debugAttack = false;
+
         public Health Player {get; private set;}
 
         private void Start() 

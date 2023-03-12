@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6fd3ac372c8854a8c9d4b1296f9953, type: 3}
+  m_Name: L4 C2 The King
+  m_EditorClassIdentifier: 
+  conversationNodes:
+  - {fileID: 11400000, guid: d13a3dcaaae867a43bfdd2b1b1136792, type: 2}
+  - {fileID: 11400000, guid: d50bed07764769c4db453457290a83b0, type: 2}
+  - {fileID: 11400000, guid: fe1557382db4a6c488ed97d5e1e6b816, type: 2}
+  - {fileID: 11400000, guid: 3e8026eaeaa4b434fac4314074250f0e, type: 2}
+  - {fileID: 11400000, guid: efa0cb7c19146704fa382abe628fb0fb, type: 2}
+  - {fileID: 11400000, guid: dbca20183cca11345bae806741e7baa7, type: 2}
+  - {fileID: 11400000, guid: 1520d499350ce7145a262962d4f2b1e2, type: 2}

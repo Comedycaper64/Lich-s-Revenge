@@ -4011,6 +4011,7 @@ MonoBehaviour:
   chaseRange: 50
   fleeRange: 5
   stunDuration: 0.5
+  attackSpeed: 1
 --- !u!114 &259272707358335212
 MonoBehaviour:
   m_ObjectHideFlags: 0

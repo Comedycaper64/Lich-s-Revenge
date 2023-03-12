@@ -23,6 +23,15 @@ public class MinerWeaponHandler : MonoBehaviour
         }
     }
 
+    public void DebugAttack()
+    {
+        DwarfMinerStateMachine stateMachine = GetComponent<DwarfMinerStateMachine>();
+        if ((stateMachine.Player.transform.position - stateMachine.transform.position).magnitude < stateMachine.AttackRange)
+        {
+            stateMachine.Player.DealDamage(stateMachine.Stats.GetAttack());
+        }
+    }
+
     public void DisableWeapon()
     {
         weaponLogic.gameObject.SetActive(false);

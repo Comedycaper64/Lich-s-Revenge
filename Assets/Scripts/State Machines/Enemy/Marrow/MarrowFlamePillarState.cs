@@ -15,6 +15,7 @@ namespace Units.Enemy.Marrow
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(PillarCastHash, 0.1f);
+            stateMachine.Animator.speed = stateMachine.Stats.GetAttackSpeed();
         }
 
         public override void Tick(float deltaTime)
@@ -34,6 +35,7 @@ namespace Units.Enemy.Marrow
         public override void Exit()
         {
             stateMachine.WeaponHandler.ClearFlamePillarVisuals();
+            stateMachine.Animator.speed = 1;
         }
     }
 }

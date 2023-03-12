@@ -19,6 +19,7 @@ namespace Units.Enemy.Miner
             stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.AttackKnockback);
 
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
+            stateMachine.Animator.speed = stateMachine.Stats.GetAttackSpeed();
         }
 
         public override void Tick(float deltaTime)
@@ -32,6 +33,7 @@ namespace Units.Enemy.Miner
         
         public override void Exit()
         {
+            stateMachine.Animator.speed = 1;
         }
     }
 }

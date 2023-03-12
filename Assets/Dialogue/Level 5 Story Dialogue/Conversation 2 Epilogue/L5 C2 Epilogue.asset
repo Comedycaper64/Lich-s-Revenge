@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6fd3ac372c8854a8c9d4b1296f9953, type: 3}
+  m_Name: L5 C2 Epilogue
+  m_EditorClassIdentifier: 
+  conversationNodes:
+  - {fileID: 11400000, guid: 40b299f1ddaf61a45996ff7fc8152a9d, type: 2}
+  - {fileID: 11400000, guid: 8246babe0c3b61044b85495232d1dcc3, type: 2}
+  - {fileID: 11400000, guid: 2a2e26d444047e542b3e5ce82f47aa8c, type: 2}
+  - {fileID: 11400000, guid: ef45ca064c40e1148ba4f01f1d473a67, type: 2}
+  - {fileID: 11400000, guid: 07afd7536b137244ba8a085bdb87d983, type: 2}
+  - {fileID: 11400000, guid: e071acbb40732e141906c0d86e8d6a88, type: 2}
+  - {fileID: 11400000, guid: db320114c0f4a964db921e6a50722d65, type: 2}
+  - {fileID: 11400000, guid: e6b2920b00c2d214593517d2b7d58486, type: 2}
+  - {fileID: 11400000, guid: cff228c1c9b240f46b8767b76329b272, type: 2}

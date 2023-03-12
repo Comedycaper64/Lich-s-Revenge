@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a64bceacac0ac4d8cd34f46f777598, type: 3}
+  m_Name: L5 C1 D 9
+  m_EditorClassIdentifier: 
+  characterName: Marrow, Esq.
+  characterImages:
+  - {fileID: 21300000, guid: 301e21877f52e2a44a6094b726b14af1, type: 3}
+  characterTalkSound: {fileID: 8300000, guid: f31bc6cf9e73cb940a906ddbee6fb82a, type: 3}
+  leftSideCharacterImage: 0
+  rightSideCharacterImage: 1
+  sentences:
+  - Yes, it was I who summoned that earthquake.
+  - 'It was I who lied to the dwarves about our mines being abandoned. '
+  - It was I who informed the Dwarf King you would be coming to attack him.
+  - Why?
+  - "You are weak, my \u201CKing\u201D. Your armies were stagnating, and so too was
+    our Kingdom."
+  - If you had your way, you would be happy for us to spend the next millennium hiding
+    in the shadows underground.
+  - I will not abide by that.
+  - Under my rule, our Kingdom shall prosper, and all the living creatures in the
+    realm will cower and grovel before us, their rightful masters!
+  - I will rule over all.
+  - Now, relinquish your title and bow before your new King!

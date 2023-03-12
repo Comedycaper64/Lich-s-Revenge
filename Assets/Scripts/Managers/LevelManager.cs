@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject gunnerEnemy;
     [SerializeField] private GameObject hammererEnemy;
     [SerializeField] private GameObject sentinelEnemy;
+    [SerializeField] private GameObject kingAlaric;
 
     private void Awake() 
     {   
@@ -46,6 +47,10 @@ public class LevelManager : MonoBehaviour
             {
                 newEnemy = hammererEnemy;
             }
+            else if (enemy.GetComponent<AlaricDeathTrigger>())
+            {
+                newEnemy = kingAlaric;
+            }
             else if (enemy.GetComponent<DwarfSentinelStats>())
             {
                 newEnemy = sentinelEnemy;
@@ -55,12 +60,13 @@ public class LevelManager : MonoBehaviour
                 newEnemy = null;
             }
 
-            enemySpawns.Add(new EnemySpawn(newEnemy, Vector3.zero));
+            enemySpawns.Add(new EnemySpawn(newEnemy, Vector3.zero, Quaternion.identity));
         }
 
         for(int i = 0; i < enemies.Count; i++)
         {
             enemySpawns[i].SetSpawnPoint(enemies[i].transform.position);
+            enemySpawns[i].SetSpawnRotation(enemies[i].transform.rotation);
         }
     }
 
@@ -96,7 +102,7 @@ public class LevelManager : MonoBehaviour
         enemies.Clear();
         foreach (EnemySpawn enemy in enemySpawns)
         {
-            enemies.Add(Instantiate(enemy.GetUnit(), enemy.GetSpawnPoint(), Quaternion.identity));
+            enemies.Add(Instantiate(enemy.GetUnit(), enemy.GetSpawnPoint(), enemy.GetSpawnRotation()));
         }
     }
 }

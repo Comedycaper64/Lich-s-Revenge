@@ -41,8 +41,7 @@ namespace Units.Enemy.Sentinel
 
             int layermask1 = 1 << 8;
             int layermask2 = 1 << 6;
-            int layermask3 = 1 << 0;
-            playerVisionLayermask = layermask1 | layermask2 | layermask3;
+            playerVisionLayermask = layermask1 | layermask2;
 
             Health.SetMaxHealth(Mathf.RoundToInt(Stats.GetHealth()));
 

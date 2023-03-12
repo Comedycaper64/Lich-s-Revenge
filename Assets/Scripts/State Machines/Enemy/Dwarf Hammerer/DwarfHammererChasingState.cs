@@ -17,19 +17,21 @@ namespace Units.Enemy.Hammerer
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
-            stateMachine.Agent.ResetPath();
         }
 
         public override void Exit()
         {
-            stateMachine.Agent.ResetPath();
+            if (stateMachine.Agent.hasPath)
+            {
+                stateMachine.Agent.ResetPath();
+            }
             stateMachine.Agent.velocity = Vector3.zero;
         }
 
         public override void Tick(float deltaTime)
         {
             float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
-            if (!IsInChaseRange(playerDistanceSqr))
+            if (!IsInChaseRange(playerDistanceSqr) || DialogueManager.Instance.inConversation)
             {
                 stateMachine.SwitchState(new DwarfHammererIdleState(stateMachine));
                 return;

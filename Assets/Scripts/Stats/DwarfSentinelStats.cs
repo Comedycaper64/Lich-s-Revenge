@@ -48,6 +48,11 @@ namespace Stats
             return stunDuration * OptionsManager.Instance.GetEnemyStunTime();
         }
 
+        public float GetAttackSpeed()
+        {
+            return OptionsManager.Instance.GetEnemyAttackSpeed();
+        }
+
         public float GetHealth()
         {
             if (healthOverride == 0)

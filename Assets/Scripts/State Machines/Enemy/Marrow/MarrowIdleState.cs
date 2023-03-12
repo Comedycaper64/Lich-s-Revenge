@@ -30,11 +30,11 @@ namespace Units.Enemy.Marrow
                 return;
             }
 
-            // if (stateMachine.Cooldowns.IsSummonReady())
-            // {
-            //     stateMachine.SwitchState(new MarrowSummonState(stateMachine));
-            //     return;
-            // }
+            if (stateMachine.Cooldowns.IsSummonReady())
+            {
+                stateMachine.SwitchState(new MarrowSummonState(stateMachine));
+                return;
+            }
 
             if (stateMachine.Cooldowns.IsFlamePillarReady())
             {

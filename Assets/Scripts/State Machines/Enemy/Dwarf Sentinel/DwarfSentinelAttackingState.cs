@@ -22,6 +22,7 @@ namespace Units.Enemy.Sentinel
             stateMachine.WeaponHandler.SetSlamVisualLocation(stateMachine.transform.position);
             stateMachine.WeaponHandler.SetSlamRadius(stateMachine.Stats.GetSlamRadius());
             stateMachine.WeaponHandler.EnableSlamVisual(true);
+            stateMachine.Animator.speed = stateMachine.Stats.GetAttackSpeed();
         }
 
         public override void Tick(float deltaTime)
@@ -40,6 +41,7 @@ namespace Units.Enemy.Sentinel
         public override void Exit()
         {
             stateMachine.WeaponHandler.EnableSlamVisual(false);
+            stateMachine.Animator.speed = 1;
         }
     }
 }

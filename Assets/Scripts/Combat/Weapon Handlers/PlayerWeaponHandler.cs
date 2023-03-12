@@ -103,6 +103,10 @@ public class PlayerWeaponHandler : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(fireboltCastSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
         }
+        if (lichStats.debugBadAttackSpread)
+        {
+            firebolt.transform.eulerAngles += (new Vector3(Random.Range(-60, 60),Random.Range(-60, 60),Random.Range(-60, 60)));
+        }
     }
 
     public void SpawnFireball()

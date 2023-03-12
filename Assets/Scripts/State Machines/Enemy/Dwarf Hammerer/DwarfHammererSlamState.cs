@@ -14,13 +14,16 @@ namespace Units.Enemy.Hammerer
 
         public override void Enter()
         {
-            stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.Stats.GetAttackKnockback());
-            stateMachine.Animator.CrossFadeInFixedTime(SlamHash, 0.1f);
-            stateMachine.WeaponHandler.SetSlamRadius(stateMachine.Stats.GetSlamRadius());
-            stateMachine.WeaponHandler.Slam();
-            if (SoundManager.Instance)
+            if (!DialogueManager.Instance.inConversation)
             {
-                AudioSource.PlayClipAtPoint(stateMachine.slamSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+                stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.Stats.GetAttackKnockback());
+                stateMachine.Animator.CrossFadeInFixedTime(SlamHash, 0.1f);
+                stateMachine.WeaponHandler.SetSlamRadius(stateMachine.Stats.GetSlamRadius());
+                stateMachine.WeaponHandler.Slam();
+                if (SoundManager.Instance)
+                {
+                    AudioSource.PlayClipAtPoint(stateMachine.slamSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
+                }
             }
         }
 

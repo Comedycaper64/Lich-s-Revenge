@@ -30,6 +30,7 @@ namespace Units.Enemy.Marrow
         public override void Exit()
         {
             stateMachine.EnemyUI.SetActive(true);
+            SoundManager.Instance.PlayAudioSource();
         }
 
         private bool IsInFightRange()

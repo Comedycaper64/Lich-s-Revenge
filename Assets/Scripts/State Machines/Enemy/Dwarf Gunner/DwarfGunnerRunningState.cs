@@ -20,7 +20,10 @@ namespace Units.Enemy.Gunner
 
         public override void Exit()
         {
-            stateMachine.Agent.ResetPath();
+            if (stateMachine.Agent.hasPath)
+            {
+                stateMachine.Agent.ResetPath();
+            }
             stateMachine.Agent.velocity = Vector3.zero;
         }
 

@@ -19,7 +19,11 @@ namespace Units.Enemy.Marrow
         [field: SerializeField] public Ragdoll Ragdoll  {get; private set;}
         [field: SerializeField] public GameObject EnemyUI  {get; private set;}
         [SerializeField] private Transform waypointObject;
+        [SerializeField] private Transform enemySpawnObject;
+        public Conversation epilogueConversation;
+        public Conversation endGameConversation;
         public Transform[] movementWaypoints;
+        public Transform[] enemySpawnWaypoints;
         public GameObject[] summonableEnemies;
         public Vector3 currentWaypoint;
         public bool castingWave = false;
@@ -35,6 +39,7 @@ namespace Units.Enemy.Marrow
         private void Awake() 
         {
             movementWaypoints = waypointObject.GetComponentsInChildren<Transform>();    
+            enemySpawnWaypoints = enemySpawnObject.GetComponentsInChildren<Transform>();
         }
 
         private void Start() 

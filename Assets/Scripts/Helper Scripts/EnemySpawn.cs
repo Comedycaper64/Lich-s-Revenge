@@ -8,11 +8,13 @@ public class EnemySpawn
 {
     [SerializeField] private GameObject enemyUnit;
     private Vector3 spawnPosition;
+    private Quaternion spawnRotation;
 
-    public EnemySpawn(GameObject enemyUnit, Vector3 spawnPosition)
+    public EnemySpawn(GameObject enemyUnit, Vector3 spawnPosition, Quaternion spawnRotation)
     {
         this.enemyUnit = enemyUnit;
         this.spawnPosition = spawnPosition;
+        this.spawnRotation = spawnRotation;
     }
 
     public GameObject GetUnit()
@@ -24,8 +26,18 @@ public class EnemySpawn
         return spawnPosition;
     }
 
+    public Quaternion GetSpawnRotation()
+    {
+        return spawnRotation;
+    }
+
     public void SetSpawnPoint(Vector3 newSpawnPoint)
     {
         spawnPosition = newSpawnPoint;
+    }
+
+    public void SetSpawnRotation(Quaternion newSpawnRotation)
+    {
+        spawnRotation = newSpawnRotation;
     }
 }

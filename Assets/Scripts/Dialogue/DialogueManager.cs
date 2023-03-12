@@ -175,8 +175,10 @@ public class DialogueManager : MonoBehaviour
 		{
 			SceneManager.LoadScene(changeScene.changeToScene);
 		}
-		// if (changeScene.musicTrack)
-		// 	SoundManager.Instance.SetMusicTrack(changeScene.musicTrack);
+		if (changeScene.musicTrack)
+		{
+			SoundManager.Instance.SetMusicTrack(changeScene.musicTrack);
+		}
 		EndDialogue();
 	}
 

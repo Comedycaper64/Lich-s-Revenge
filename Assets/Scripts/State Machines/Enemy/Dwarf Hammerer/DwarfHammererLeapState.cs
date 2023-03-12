@@ -62,7 +62,7 @@ namespace Units.Enemy.Hammerer
         public override void Exit()
         {
             //Manages to reset the navmesh somehow
-            //stateMachine.ForceReceiver.AddForce(Vector3.up);
+            stateMachine.ForceReceiver.AddForce(Vector3.up);
             stateMachine.WeaponHandler.EnableSlamVisual(false);
             stateMachine.SetSlamCooldown();
             stateMachine.Controller.enabled = true;

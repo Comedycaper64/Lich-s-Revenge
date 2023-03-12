@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6fd3ac372c8854a8c9d4b1296f9953, type: 3}
+  m_Name: L4 C3 Royal Defeat
+  m_EditorClassIdentifier: 
+  conversationNodes:
+  - {fileID: 11400000, guid: ad0ec7167e3efd344adfc7222beba48e, type: 2}
+  - {fileID: 11400000, guid: 9f7a437f12a0af84eb5997e2f215ae5a, type: 2}
+  - {fileID: 11400000, guid: 1ab0df1d2348fbe489252330b695f58c, type: 2}
+  - {fileID: 11400000, guid: b9462d610da206d4e95ae7473b4f536b, type: 2}
+  - {fileID: 11400000, guid: 5bb5ff80eacff3448b2e77d1630ba91d, type: 2}

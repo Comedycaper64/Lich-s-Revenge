@@ -40,7 +40,7 @@ namespace Units.Player
         [SerializeField] public AudioClip deathSFX;
 
 
-        private Transform respawnPoint;
+        [SerializeField] private Transform respawnPoint;
         
         public bool isDashing;
 

@@ -35,6 +35,7 @@ namespace Stats
         [SerializeField] private float fleeRange;
 
         [SerializeField] private float stunDuration;
+        [SerializeField] private float attackSpeed;
 
 
         [ExecuteInEditMode]
@@ -97,7 +98,7 @@ namespace Stats
 
         public float GetAttackRange()
         {
-            return attackRange;
+            return attackRange * OptionsManager.Instance.GetEnemyAttackSpeed();
         }
 
         public float GetChaseRange()
@@ -108,6 +109,11 @@ namespace Stats
         public float GetFleeRange()
         {
             return fleeRange;
+        }
+
+        public float GetAttackSpeed()
+        {
+            return attackSpeed;
         }
 
         private void RefreshStatDisplays()

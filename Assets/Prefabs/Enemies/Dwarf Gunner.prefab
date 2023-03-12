@@ -4134,7 +4134,7 @@ MonoBehaviour:
   speedMultiplicativeModifier: 1
   speedAdditiveModifier: 0
   speedOverride: 0
-  attackRange: 20
+  attackRange: 15
   chaseRange: 30
   fleeRange: 4
   stunDuration: 0.5
