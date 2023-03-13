@@ -44,11 +44,19 @@ public class MinerWeapon : MonoBehaviour
 
         if(other.TryGetComponent<LichAegis>(out LichAegis aegis))
         {
-            handler.DisableWeapon();
-            unitHealth.DealDamage(0);
-            unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
-            aegis.DamageAegis();
-
+            if (aegis.blocking)
+            {
+                handler.DisableWeapon();
+                unitHealth.DealDamage(30f);
+                unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback * 3);
+            }
+            else
+            {
+                handler.DisableWeapon();
+                unitHealth.DealDamage(0);
+                unitForceReceiver.AddForce((unitCollider.transform.position - other.transform.position).normalized * knockback);
+                aegis.DamageAegis();                
+            }
             if (SoundManager.Instance)
             {
                 AudioSource.PlayClipAtPoint(lichHitSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());

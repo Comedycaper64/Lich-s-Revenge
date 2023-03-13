@@ -12,4 +12,5 @@ public enum LichSkill
         heal,
         absorb,
         mine,
+        block,
     }

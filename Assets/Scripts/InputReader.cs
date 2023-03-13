@@ -15,6 +15,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public event Action AbsorbEvent;
     public event Action MenuEvent;
     public event Action MineEvent;
+    public event Action AegisEvent;
     public bool isAttacking {get; private set;}
     public bool isAiming {get; private set;}
     public bool isHealing {get; private set;}
@@ -221,5 +222,14 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             isHealing = false;
         }
+    }
+
+    public void OnAegis(InputAction.CallbackContext context)
+    {
+        if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
+
+        if (!context.performed) {return;}
+
+        AegisEvent?.Invoke();
     }
 }

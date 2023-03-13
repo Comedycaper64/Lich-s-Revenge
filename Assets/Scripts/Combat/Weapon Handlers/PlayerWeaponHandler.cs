@@ -105,7 +105,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
         if (lichStats.debugBadAttackSpread)
         {
-            firebolt.transform.eulerAngles += (new Vector3(Random.Range(-60, 60),Random.Range(-60, 60),Random.Range(-60, 60)));
+            firebolt.transform.eulerAngles += (new Vector3(Random.Range(-40, 40),Random.Range(-40, 40),Random.Range(-40, 40)));
         }
     }
 

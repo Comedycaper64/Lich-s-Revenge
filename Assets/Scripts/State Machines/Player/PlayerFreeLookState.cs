@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Units.Player
 {
@@ -25,6 +26,10 @@ namespace Units.Player
             stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.InputReader.MenuEvent += OnMenu; 
             stateMachine.InputReader.MineEvent += OnMine; 
+            if (SceneManager.GetActiveScene().buildIndex == 10)
+            {
+                stateMachine.InputReader.AegisEvent += OnAegis; 
+            }
             stateMachine.Animator.CrossFadeInFixedTime(MovementHash, CrossFadeDuration);
         }
 
@@ -69,6 +74,7 @@ namespace Units.Player
             stateMachine.InputReader.AbsorbEvent -= OnAbsorb;
             stateMachine.InputReader.MenuEvent -= OnMenu;  
             stateMachine.InputReader.MineEvent -= OnMine;
+            stateMachine.InputReader.AegisEvent -= OnAegis; 
         }
 
         public override string GetStateName()
@@ -94,6 +100,17 @@ namespace Units.Player
         {
             if (movement == Vector3.zero) {return;}
             stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationDamping * deltaTime);
+        }
+
+        private void OnAegis()
+        {
+            if (stateMachine.Cooldowns.IsAegisReady() && stateMachine.playerUI.blockUI.isActiveAndEnabled)
+            {
+                if (stateMachine.Mana.TryUseMana(stateMachine.LichStats.GetLichAbsorbManaCost()))
+                {
+                    stateMachine.SwitchState(new PlayerAegisState(stateMachine));
+                }
+            }
         }
 
         private void OnJump()

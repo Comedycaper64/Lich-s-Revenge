@@ -31,6 +31,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject mineAbilityUI;
     [SerializeField] GameObject healAbilityUI;
     [SerializeField] GameObject absorbAbilityUI;
+    [SerializeField] GameObject blockAbilityUI;
     [SerializeField] GameObject menuButtonUI;
 
     [Header("UI VFX")]
@@ -51,6 +52,7 @@ public class PlayerUI : MonoBehaviour
     public AbilityUI dashUI;
     public AbilityUI healUI;
     public AbilityUI absorbUI;
+    public AbilityUI blockUI;
     public AbilityUI menuUI;
 
     [SerializeField] private List<AbilityUI> abilityUIs = new List<AbilityUI>();
@@ -210,6 +212,9 @@ public class PlayerUI : MonoBehaviour
                 break;
             case LichSkill.absorb:
                 absorbUI.gameObject.SetActive(true);
+                break;
+            case LichSkill.block:
+                abilityUIs.Add(blockUI = Instantiate(blockAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
                 break;
         }
     }

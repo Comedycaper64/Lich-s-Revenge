@@ -23,6 +23,7 @@ public class LichAegis : MonoBehaviour
     //public bool canEnable = true;
     //public bool blocking = false;
     public bool absorbing = false;
+    public bool blocking = false;
     public bool attackBuffed = false;
 
     private float remainingBuffTime = 0;
@@ -54,17 +55,13 @@ public class LichAegis : MonoBehaviour
     //     this.canEnable = canEnable;
     // }
 
-    // public void ToggleAegis(bool enable)
-    // {
-    //     if (canEnable)
-    //     {
-    //         blocking = enable;
-    //         aegisRenderer.material = blockMaterial;
-    //         aegisCollider.enabled = enable;
-    //         aegisRenderer.enabled = enable;
-    //         lichHealth.SetInvulnerable(enable);
-    //     }
-    // }
+    public void ToggleAegis(bool enable)
+    {
+        blocking = enable;
+        aegisCollider.enabled = enable;
+        aegisRenderer.enabled = enable;
+        lichHealth.SetInvulnerable(enable);
+    }
 
     public void ToggleAbsorb(bool enable)
     {
