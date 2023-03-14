@@ -42,10 +42,10 @@ namespace Units.Enemy.Sentinel
 
         public override void Exit()
         {
-            //if (stateMachine.Agent.hasPath)
-            //{
-            stateMachine.Agent.ResetPath();
-            //}
+            if (stateMachine.Agent.hasPath)
+            {
+                stateMachine.Agent.ResetPath();
+            }
             stateMachine.Agent.velocity = Vector3.zero;
             stateMachine.Controller.Move(Vector3.zero);
         }

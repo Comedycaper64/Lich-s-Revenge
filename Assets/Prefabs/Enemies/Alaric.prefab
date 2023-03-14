@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: <AttackRange>k__BackingField
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5074679209384375195, guid: 00af82e0fbf750045b5af6b15efeb4ee,
+        type: 3}
+      propertyPath: <PlayerChasingRange>k__BackingField
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 7097039680618807537, guid: 00af82e0fbf750045b5af6b15efeb4ee,
         type: 3}
       propertyPath: m_Name
