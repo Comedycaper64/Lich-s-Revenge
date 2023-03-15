@@ -19,10 +19,8 @@ MonoBehaviour:
   leftSideCharacterImage: 0
   rightSideCharacterImage: 1
   sentences:
-  - Oh, my love, that is wonderful news! You have made me the happiest squire in
-    the realm!
-  - Once this is all over, I will arrange for us to have a ceremony. The whole Kingdom
-    shall rejoice at this news!
+  - Oh, I am so excited! I have so many ideas. What about matching sweaters, or knitted
+    undeath-like dolls, or-
   - "Hold on\u2026 I hear footsteps nearby."
   - 'I will take care of the stragglers. You press on ahead. '
   - Be safe my love. I wish you the best of luck.

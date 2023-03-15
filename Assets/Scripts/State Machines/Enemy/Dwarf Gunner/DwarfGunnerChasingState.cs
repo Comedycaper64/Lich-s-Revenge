@@ -30,7 +30,7 @@ namespace Units.Enemy.Gunner
 
         public override void Tick(float deltaTime)
         {
-            if (!IsInChaseRange())
+            if (!IsInChaseRange() || DialogueManager.Instance.inConversation)
             {
                 stateMachine.SwitchState(new DwarfGunnerIdleState(stateMachine));
                 return;

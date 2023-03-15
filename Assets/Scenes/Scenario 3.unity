@@ -2441,12 +2441,17 @@ PrefabInstance:
     - target: {fileID: 7513784243233948749, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: Speed
-      value: 9.45
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 7513784243233948749, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
       propertyPath: Health
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513784243233948749, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
+        type: 3}
+      propertyPath: speedMultiplicativeModifier
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7513784243233948749, guid: 5f6e5d0a54ee5a14fb72e98056978f18,
         type: 3}
@@ -4363,7 +4368,7 @@ PrefabInstance:
     - target: {fileID: 7824764038315113261, guid: 28932953b5f7b58499416fbcbbaf71a0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3872957e-12
+      value: -1.3890768e-12
       objectReference: {fileID: 0}
     - target: {fileID: 7824764038315113261, guid: 28932953b5f7b58499416fbcbbaf71a0,
         type: 3}
@@ -4373,7 +4378,7 @@ PrefabInstance:
     - target: {fileID: 7824764038315113261, guid: 28932953b5f7b58499416fbcbbaf71a0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.788999
+      value: -7.7889996
       objectReference: {fileID: 0}
     - target: {fileID: 7824764038315113261, guid: 28932953b5f7b58499416fbcbbaf71a0,
         type: 3}
