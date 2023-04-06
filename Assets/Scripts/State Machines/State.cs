@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//The base class inherited by all other States
 public abstract class State 
 {
+    //Defines the structure that each state should have
     public abstract void Enter();
 
     public abstract void Tick(float deltaTime);
@@ -15,6 +17,7 @@ public abstract class State
         return "State";
     }
 
+    //An animation is sometimes triggered when a state is entered. This returns how much of the animation has been played at the moment of asking in normalised time
     protected float GetNormalizedTime(Animator animator)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);

@@ -5,14 +5,18 @@ using UnityEngine;
 
 namespace Stats
 {
+    //Stats used for player units. Originally intended to be used by more than just the Lich, but that did not come to fruition.
+    //This script features a number of techniques to allow seeing variables marked by [ShowOnly] automatically recalculate when a stat is changed.
     [ExecuteAlways]
     public class PlayerStats : MonoBehaviour
     {
+        //Static instance of the script is created for ease of getting values from it
         public static PlayerStats Instance {get; private set;}
         public event Action OnStatsChanged;
 
         [SerializeField] private BaseStats baseStats;
 
+        //[ShowOnly] refers the the ShowOnlyDrawer script, which facilitates having a readonly value in the inspector
         [Header("Health")]
         [ShowOnly] [SerializeField] private float Health;
         [SerializeField] private float healthMultiplicativeModifier;
@@ -58,6 +62,8 @@ namespace Stats
             }  
         }
 
+        //A stat is calculated by getting the stat from BaseStats, then multiplying it by the exposed Multiplicative Modifier, 
+        //then multiplying it by the difficulty setting option, then adding the additive modifier. This can be overriden to be a particular value using the override.
         public float GetPlayerHealth()
         {
             if ((healthOverride == 0) && options)
@@ -100,6 +106,7 @@ namespace Stats
             OnStatsChanged?.Invoke();
         }
 
+        //OnValidate is a unity method that is run whenever anything in the inspector is altered
         private void OnValidate() 
         {
             RefreshStatDisplays();

@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace Stats
 {
+    //This method is very similar to the "PlayerStats script". Refer to that for explanations regarding parts of the code
+    //This script does not create a static instance, as it's attached to the player
     public class LichStats : MonoBehaviour
     {
         [Header("Health")]
@@ -204,6 +206,7 @@ namespace Stats
             }
         }
 
+        //These methods are to facilitate a "damage buff" mechanic provided by the LichAegis script
         public void BuffAttack()
         {
             attackOverride = GetLichAttack() * attackBuffMultiplier;

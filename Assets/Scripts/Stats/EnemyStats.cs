@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Stats
 {
+    //This method is very similar to the "PlayerStats script". Refer to that for explanations regarding parts of the code
     [ExecuteAlways]
     public class EnemyStats : MonoBehaviour
     {

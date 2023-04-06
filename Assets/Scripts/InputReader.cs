@@ -4,9 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Script for dealing with player input. Unity InputManager runs methods depending on what the player has pressed. 
+//Information about these inputs is accessed using InputAction.CallbackContext
 public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
     public static bool controllerBeingUsed;
+
+    //Various variables that other scripts use to figure out what the player's input is. 
+    //Bools are used for actions that can be held, while events are for the instance of the player pressing the button
 
     public Vector2 MovementValue {get; private set;}
     public event Action JumpEvent;
@@ -20,6 +25,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public bool isAiming {get; private set;}
     public bool isHealing {get; private set;}
     public bool isFireballing {get; private set;}
+
+    //Events for changing what button prompts the UI uses
 
     public event Action KeyboardAndMouseInput;
     public event Action XboxGamepadInput;
@@ -35,6 +42,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         InputSystem.onActionChange += InputActionChangeCallback; 
     }
 
+    //On each input, test what device is causing it. Invoke an event accordingly.
     private void InputActionChangeCallback(object obj, InputActionChange change)
     {
         if (change == InputActionChange.ActionPerformed)
@@ -46,19 +54,16 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
                 {
                     KeyboardAndMouseInput?.Invoke();
                     controllerBeingUsed = false;
-                    //Debug.Log("Using Keyboard / Mouse");
                 }
                 else if (lastDevice.name.Equals("XInputControllerWindows"))
                 {
                     XboxGamepadInput?.Invoke();
                     controllerBeingUsed = true;
-                    //Debug.Log("Using Xbox Controller");
                 }
                 else if (lastDevice.name.Equals("DualShock4GamepadHID"))
                 {
                     PlaystationGamepadInput?.Invoke();
                     controllerBeingUsed = true;
-                    //Debug.Log("Using Playstation Controller");
                 }
                 else
                 {
@@ -68,18 +73,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             }
     }
 
-    // public void ToggleCameraMovement(bool enable)
-    // {
-    //     if (enable)
-    //     {
-    //         controls.Player.Look.Enable();
-    //     }
-    //     else
-    //     {
-    //         controls.Player.Look.Disable();
-    //     }
-    // }
-
+    //After ensuring that the action is valid (actions are invalid if the game is paused / the player is in dialogue), trigger the relevant event or toggle a bool.
     public void OnJump(InputAction.CallbackContext context)
     {
         if (MenuManager.gameIsPaused || DialogueManager.Instance.inConversation) {return;}
@@ -203,7 +197,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             isFireballing = false;
         }
-        //FireballEvent?.Invoke();
     }
 
     public void OnHeal(InputAction.CallbackContext context)

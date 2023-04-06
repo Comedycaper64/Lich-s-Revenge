@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Stats
 {
+    //This method is very similar to the "PlayerStats script". Refer to that for explanations regarding parts of the code
+    //This script does not create a static instance, as it's attached to the enemy that uses it
     public class DwarfHammererStats : MonoBehaviour
     {
         [Header("Health")]
