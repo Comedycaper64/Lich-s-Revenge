@@ -45,6 +45,7 @@ namespace Units.Player
                 return;
             }
 
+            //When the fireball is being cast, a visual is made to show its predicted travel path
             if (normalisedTime <= 0.8f)
             {
                 DrawAimLine();
@@ -73,13 +74,15 @@ namespace Units.Player
                 }
             }
             
-            //stateMachine.InputReader.ToggleCameraMovement(true);
             stateMachine.Cooldowns.SetFireballCooldown();
             stateMachine.InputReader.DodgeEvent -= OnDodge;
             weaponHandler.UpdateFireballVisual(Vector3.zero);
             weaponHandler.UpdateFireballAimLine(null);
         }
 
+
+        //A red sphere that shows the player the damage radius of the fireball is place where the fireball is likely to land
+        //A raycast is used to determine where the fireball will travel. The layermask for  the raycast includes only layers that the fireball can collide with
         private void DrawAimLine()
         {
             RaycastHit hit;
@@ -87,6 +90,7 @@ namespace Units.Player
             int layermask2 = 1 << 0;
             int layermask3 = 1 << 7;
             int aimLayerMask = layermask1 | layermask2 | layermask3;
+            //If the raycast doesn't intersect with an object on the designated layers, then there is no visual
             if (Physics.Raycast(weaponHandler.fireballEmitter.transform.position, weaponHandler.GetDirectionToCameraCentre(weaponHandler.fireballEmitter), out hit, 50f, aimLayerMask))
             {
                 weaponHandler.UpdateFireballVisual(hit.point);
@@ -98,30 +102,6 @@ namespace Units.Player
                 weaponHandler.UpdateFireballVisual(Vector3.zero);
                 weaponHandler.UpdateFireballAimLine(null);
             }
-        }
-
-        private Vector3 CalculateMovement()
-        {
-            Vector3 forward = stateMachine.MainCameraTransform.forward;
-            forward.y = 0f;
-            forward.Normalize();
-
-            Vector3 right = stateMachine.MainCameraTransform.right;
-            right.y = 0f;
-            right.Normalize();
-
-            return forward * stateMachine.InputReader.MovementValue.y +
-                right * stateMachine.InputReader.MovementValue.x;
-        }
-
-        private void FaceLookDirection(Vector3 movement, float deltaTime)
-        {
-            //Rotates player on Y axis to face where camera is looking
-            //Doesn't rotate on X and Z because it looks bad with current model, might work with lich
-
-            Quaternion lookDirection = stateMachine.MainCameraTransform.rotation;
-            lookDirection.eulerAngles = new Vector3(0, lookDirection.eulerAngles.y, 0);
-            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
         }
 
         private void OnDodge()

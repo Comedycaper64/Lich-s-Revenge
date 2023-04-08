@@ -19,20 +19,20 @@ namespace Units.Enemy.Hammerer
             }
             stateMachine.ForceReceiver.enabled = false;
             GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
-            //GameObject.Destroy(stateMachine.gameObject);
             stateMachine.Ragdoll.ToggleRagdoll(true);
             stateMachine.EnemyWeapon.SetActive(false);
             stateMachine.EnemyUI.SetActive(false);
-        }
-
-        public override void Exit()
-        {
-
         }
 
         public override void Tick(float deltaTime)
         {
 
         }
+
+        public override void Exit()
+        {
+
+        }
+        
     }
 }

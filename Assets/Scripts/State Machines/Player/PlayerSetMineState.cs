@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerSetMineState : PlayerBaseState
 {
+    //Animations and sound effects from other abilities are re-used here, due to it being a quick action
     private readonly int SetMineHash = Animator.StringToHash("Absorb");
     private float remainingStateTime;
     public PlayerSetMineState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -50,26 +51,4 @@ public class PlayerSetMineState : PlayerBaseState
         boneMine.SetExplodeRadius(stateMachine.FireballStats.GetFireballExplodeRadius());
         stateMachine.Cooldowns.SetMineCooldown();
     }
-    
-    private Vector3 CalculateMovement()
-    {
-        Vector3 forward = stateMachine.MainCameraTransform.forward;
-        forward.y = 0f;
-        forward.Normalize();
-
-        Vector3 right = stateMachine.MainCameraTransform.right;
-        right.y = 0f;
-        right.Normalize();
-
-        return forward * stateMachine.InputReader.MovementValue.y +
-            right * stateMachine.InputReader.MovementValue.x;
-    }
-
-    private void FaceLookDirection(Vector3 movement, float deltaTime)
-    {
-        Quaternion lookDirection = stateMachine.MainCameraTransform.rotation;
-        lookDirection.eulerAngles = new Vector3(0, lookDirection.eulerAngles.y, 0);
-        stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
-    }
-
 }

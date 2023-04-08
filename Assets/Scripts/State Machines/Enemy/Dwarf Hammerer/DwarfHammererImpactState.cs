@@ -25,11 +25,6 @@ namespace Units.Enemy.Hammerer
             duration = stateMachine.Stats.GetStunDuration();
         }
 
-        public override void Exit()
-        {
-            
-        }
-
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
@@ -41,6 +36,11 @@ namespace Units.Enemy.Hammerer
                 stateMachine.SwitchState(new DwarfHammererIdleState(stateMachine));
                 return;
             }
+        }
+
+        public override void Exit()
+        {
+            
         }
     }
 }

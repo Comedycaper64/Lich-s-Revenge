@@ -19,7 +19,6 @@ namespace Units.Enemy.Miner
                 AudioSource.PlayClipAtPoint(stateMachine.deathSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
             }
             GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
-            //GameObject.Destroy(stateMachine.gameObject);
             stateMachine.EnemyUI.SetActive(false);
             stateMachine.EnemyWeapon.SetActive(false);
             stateMachine.Ragdoll.ToggleRagdoll(true);

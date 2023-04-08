@@ -51,28 +51,5 @@ namespace Units.Player
             stateMachine.Aegis.ToggleAbsorb(false);
             stateMachine.Cooldowns.SetAegisCooldown();
         }
-
-        private Vector3 CalculateMovement()
-        {
-            Vector3 forward = stateMachine.MainCameraTransform.forward;
-            forward.y = 0f;
-            forward.Normalize();
-
-            Vector3 right = stateMachine.MainCameraTransform.right;
-            right.y = 0f;
-            right.Normalize();
-
-            return forward * stateMachine.InputReader.MovementValue.y +
-                right * stateMachine.InputReader.MovementValue.x;
-        }
-
-        private void FaceLookDirection(Vector3 movement, float deltaTime)
-        {
-            Quaternion lookDirection = stateMachine.MainCameraTransform.rotation;
-            lookDirection.eulerAngles = new Vector3(0, lookDirection.eulerAngles.y, 0);
-            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
-        }
-
-    
     }
 }

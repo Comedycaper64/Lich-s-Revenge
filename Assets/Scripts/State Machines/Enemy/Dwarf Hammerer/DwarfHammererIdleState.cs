@@ -22,7 +22,6 @@ namespace Units.Enemy.Hammerer
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
-            //float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
             if (CanSeePlayer())
             {
                 stateMachine.SwitchState(new DwarfHammererChasingState(stateMachine));

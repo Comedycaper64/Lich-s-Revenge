@@ -8,12 +8,12 @@ namespace Units.Player
 {
     public class PlayerFreeLookState : PlayerBaseState
     {
-        //private readonly int FreeLookSpeedHash = Animator.StringToHash("FreeLookSpeed");
+        //Hashes are used to reference specific animations. They are more performant than strings in this context
         private readonly int MovementHash = Animator.StringToHash("Movement");
-
-        private const float AnimatorDampTime = 0.05f;
+        //How long it takes to blend between the current animation and the being faded into
         private const float CrossFadeDuration = 0.1f;
 
+        //This constructor is used across all states as a way of having a reference to the statemachine in the new state by storing it in the Base State
         public PlayerFreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
         {
 
@@ -26,10 +26,12 @@ namespace Units.Player
             stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.InputReader.MenuEvent += OnMenu; 
             stateMachine.InputReader.MineEvent += OnMine; 
+            //Scene with build index 10 is the 5th scenario. It includes a mechanic that isn't used in the base game, so is usually not subscribed to
             if (SceneManager.GetActiveScene().buildIndex == 10)
             {
                 stateMachine.InputReader.AegisEvent += OnAegis; 
             }
+            //Switches to animation specified in the hash over the crossfadeduration
             stateMachine.Animator.CrossFadeInFixedTime(MovementHash, CrossFadeDuration);
         }
 
@@ -40,7 +42,9 @@ namespace Units.Player
                 stateMachine.SwitchState(new PlayerFallingState(stateMachine));
                 return;
             }
-
+            // While most of the code in these if statements is obvious, the use of checking that a specific UI element is enabled is due to
+            // a mechanic of the tutorial where you gradually gain your abilities. Basically if the player hasn't been told what an ability does, they should
+            // not be able to perform it
             if (stateMachine.InputReader.isHealing && (stateMachine.Bones.GetBones() > 0) && stateMachine.playerUI.healUI.isActiveAndEnabled)
             {
                 stateMachine.SwitchState(new PlayerHealingState(stateMachine));
@@ -57,6 +61,8 @@ namespace Units.Player
 
             Move(movement * stateMachine.LichStats.GetLichSpeed(), deltaTime);
 
+            //The camera exhibits jarring behaviour if the player character is looking towards the camera when the statemachine switches to the AimingState
+            //This makes is so that the character always looks forwards, even when moving backwards
             if (stateMachine.InputReader.MovementValue.y < 0)
             {
                 FaceMovementDirection(-movement, deltaTime);
@@ -77,29 +83,17 @@ namespace Units.Player
             stateMachine.InputReader.AegisEvent -= OnAegis; 
         }
 
+        //A UI script uses this method to see what state the PlayerStateMachine is in.
         public override string GetStateName()
         {
             return "FreeLookState";
         }
 
-        private Vector3 CalculateMovement()
-        {
-            Vector3 forward = stateMachine.MainCameraTransform.forward;
-            forward.y = 0f;
-            forward.Normalize();
-
-            Vector3 right = stateMachine.MainCameraTransform.right;
-            right.y = 0f;
-            right.Normalize();
-
-            return forward * stateMachine.InputReader.MovementValue.y +
-                right * stateMachine.InputReader.MovementValue.x;
-        }
-
         private void FaceMovementDirection(Vector3 movement, float deltaTime)
-        {
+        {   
             if (movement == Vector3.zero) {return;}
-            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationDamping * deltaTime);
+            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationSpeed * deltaTime);
+            
         }
 
         private void OnAegis()

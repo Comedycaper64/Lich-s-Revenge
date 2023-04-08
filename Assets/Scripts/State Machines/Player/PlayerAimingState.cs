@@ -18,7 +18,6 @@ namespace Units.Player
             stateMachine.Animator.CrossFadeInFixedTime(AimHash, 0.5f);
             stateMachine.InputReader.AbsorbEvent += OnAbsorb; 
             stateMachine.InputReader.DodgeEvent += OnDodge;
-            //stateMachine.transform.rotation = stateMachine.MainCameraTransform.rotation;
         }
 
         public override void Tick(float deltaTime)
@@ -69,30 +68,6 @@ namespace Units.Player
         public override string GetStateName()
         {
             return "AimingState";
-        }
-
-        private Vector3 CalculateMovement()
-        {
-            Vector3 forward = stateMachine.MainCameraTransform.forward;
-            forward.y = 0f;
-            forward.Normalize();
-
-            Vector3 right = stateMachine.MainCameraTransform.right;
-            right.y = 0f;
-            right.Normalize();
-
-            return forward * stateMachine.InputReader.MovementValue.y +
-                right * stateMachine.InputReader.MovementValue.x;
-        }
-
-        private void FaceLookDirection(Vector3 movement, float deltaTime)
-        {
-            //Rotates player on Y axis to face where camera is looking
-            //Doesn't rotate on X and Z because it looks bad with current model, might work with lich
-
-            Quaternion lookDirection = stateMachine.MainCameraTransform.rotation;
-            lookDirection.eulerAngles = new Vector3(0, lookDirection.eulerAngles.y, 0);
-            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, lookDirection, stateMachine.RotationDamping * deltaTime);
         }
 
         private void OnDodge()

@@ -16,6 +16,7 @@ namespace Units.Enemy.Hammerer
         {
             if (!DialogueManager.Instance.inConversation)
             {
+                //Does damage in a radius aroung the enemy
                 stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.Stats.GetAttackKnockback());
                 stateMachine.Animator.CrossFadeInFixedTime(SlamHash, 0.1f);
                 stateMachine.WeaponHandler.SetSlamRadius(stateMachine.Stats.GetSlamRadius());

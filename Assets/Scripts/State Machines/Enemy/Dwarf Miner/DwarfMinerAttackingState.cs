@@ -19,6 +19,7 @@ namespace Units.Enemy.Miner
             stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.AttackKnockback);
 
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
+            //There is a difficulty option that influences enemy attack speed. This is achieved by playing the animation at a faster or slower rate
             stateMachine.Animator.speed = stateMachine.Stats.GetAttackSpeed();
         }
 

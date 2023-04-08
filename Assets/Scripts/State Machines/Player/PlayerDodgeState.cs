@@ -46,10 +46,6 @@ namespace Units.Player
 
             if (remainingDodgeTime <= 0f)
             {
-                // if (stateMachine.InputReader.Is)
-                // {
-                        //Maybe change JumpEvent to OnJumping so that can jump straight out of dash?
-                // }
                 if (stateMachine.InputReader.isAiming)
                 {
                     stateMachine.SwitchState(new PlayerAimingState(stateMachine));

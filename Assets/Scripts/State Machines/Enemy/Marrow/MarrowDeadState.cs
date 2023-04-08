@@ -21,6 +21,7 @@ namespace Units.Enemy.Marrow
                 AudioSource.PlayClipAtPoint(stateMachine.deathSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
             }
             stateMachine.Ragdoll.ToggleRagdoll(true);
+            //Triggers dialogue upon death
             if (OptionsManager.Instance.IsStoryMode())
 			{
 				DialogueManager.Instance.StartConversation(stateMachine.epilogueConversation);

@@ -19,11 +19,6 @@ namespace Units.Enemy.Ranger
             stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
         }
 
-        public override void Exit()
-        {
-
-        }
-
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
@@ -51,6 +46,10 @@ namespace Units.Enemy.Ranger
             stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
         }
 
+        public override void Exit()
+        {
+
+        }
 
         private bool CanSeePlayer()
         {

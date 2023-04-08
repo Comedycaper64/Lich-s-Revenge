@@ -22,6 +22,7 @@ namespace Units.Enemy.Marrow
             Move(deltaTime);
             FacePlayer();
             
+            //Boss has cooldown between all actions taken, to allow the player a chance to counter-attack
             if (!stateMachine.Cooldowns.IsActionReady()) {return;}
 
             if ((stateMachine.Health.GetHealthNormalised() < 0.5f) && stateMachine.Cooldowns.IsWaveReady())

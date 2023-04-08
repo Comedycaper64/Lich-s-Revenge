@@ -1039,6 +1039,7 @@ MonoBehaviour:
   buffVFX: {fileID: 8215610696996955440, guid: 62db95981e036c2479a809a1819a2c60, type: 3}
   absorbBuffSFX: {fileID: 8300000, guid: ed039a0b9e323814a8865c31819cf3e0, type: 3}
   absorbing: 0
+  blocking: 0
   attackBuffed: 0
 --- !u!54 &2362335737787683919
 Rigidbody:
@@ -1661,10 +1662,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 2794174849281979726}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 8623393353625170776}
-  - {fileID: 1520941595943089645}
-  - {fileID: 6632386991331824573}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: -409901381
     m_VirtualCamera: {fileID: 1520941595943089645}
@@ -2828,6 +2826,7 @@ MonoBehaviour:
   mineCooldown: 5
   mineDamageMultiplier: 2
   lichIFrames: 1
+  debugBadAttackSpread: 0
 --- !u!114 &8082391239661709500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2841,6 +2840,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InputReader>k__BackingField: {fileID: 3367207378920126333}
+  <Controller>k__BackingField: {fileID: 1612496269}
+  <Animator>k__BackingField: {fileID: 2794174849281979726}
   <PlayerMesh>k__BackingField:
   - {fileID: 1959696195360889849}
   - {fileID: 5310387394249955254}
@@ -2851,14 +2852,12 @@ MonoBehaviour:
   <FireboltStats>k__BackingField: {fileID: 1198929325692157822}
   <FireballStats>k__BackingField: {fileID: 8454521272148279093}
   <Cooldowns>k__BackingField: {fileID: 29418463765143356}
-  <Controller>k__BackingField: {fileID: 1612496269}
-  <Animator>k__BackingField: {fileID: 2794174849281979726}
   <ForceReceiver>k__BackingField: {fileID: 8538347127222063245}
   <Health>k__BackingField: {fileID: 2258295609884039551}
   <Mana>k__BackingField: {fileID: 4505539415653186760}
   <WeaponHandler>k__BackingField: {fileID: 859981974532246962}
   <Bones>k__BackingField: {fileID: 6026264229195858147}
-  <RotationDamping>k__BackingField: 10
+  <RotationSpeed>k__BackingField: 10
   <JumpForce>k__BackingField: 6
   <lichMine>k__BackingField: {fileID: 6874684498876878785, guid: 2e524bd848bd51d458346eb044958465,
     type: 3}
@@ -2876,6 +2875,7 @@ MonoBehaviour:
   dashStartSFX: {fileID: 8300000, guid: 9ebbbe89f7c63da428aebddb673b49fe, type: 3}
   dashEndSFX: {fileID: 8300000, guid: 75510f2a8483f7b46b6c1e5d505d78b5, type: 3}
   deathSFX: {fileID: 8300000, guid: fd8ec96ecdaf21544b9e66feecc9f41b, type: 3}
+  respawnPoint: {fileID: 0}
   isDashing: 0
   menuManager: {fileID: 0}
   playerUI: {fileID: 0}

@@ -19,19 +19,18 @@ namespace Units.Enemy.Sentinel
                 AudioSource.PlayClipAtPoint(stateMachine.deathSFX, stateMachine.transform.position, SoundManager.Instance.GetSoundEffectVolume());
             }
             GameObject.Instantiate(stateMachine.Bone, stateMachine.transform.position, Quaternion.identity);
-            //GameObject.Destroy(stateMachine.gameObject);
             stateMachine.EnemyUI.SetActive(false);
             stateMachine.WeaponHandler.EnableSlamVisual(false);
             stateMachine.EnemyWeapon.SetActive(false);
             stateMachine.Ragdoll.ToggleRagdoll(true);
         }
 
-        public override void Exit()
+        public override void Tick(float deltaTime)
         {
 
         }
 
-        public override void Tick(float deltaTime)
+        public override void Exit()
         {
 
         }

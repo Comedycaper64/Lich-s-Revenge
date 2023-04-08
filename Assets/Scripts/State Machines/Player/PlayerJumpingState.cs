@@ -6,8 +6,6 @@ namespace Units.Player
 {
     public class PlayerJumpingState : PlayerBaseState
     {
-        //private readonly int JumpHash = Animator.StringToHash("jump");
-
         private Vector3 momentum;
 
         public PlayerJumpingState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -18,6 +16,7 @@ namespace Units.Player
         {
             stateMachine.ForceReceiver.Jump(stateMachine.JumpForce);
             GameObject jumpEffect = GameObject.Instantiate(stateMachine.jumpVFX, stateMachine.transform.position, Quaternion.identity);
+            //Removes the Jump VFX from the scene after three seconds
             GameObject.Destroy(jumpEffect, 3f);
             if (SoundManager.Instance)
             {
@@ -26,16 +25,16 @@ namespace Units.Player
             stateMachine.InputReader.DodgeEvent += OnDodge;
             stateMachine.InputReader.MenuEvent += OnMenu;
 
+            //When jumping in a certain direction, a portion of the player's momentum in stored
             momentum = stateMachine.Controller.velocity / 3;
             momentum.y = 0f;
-
-            //stateMachine.Animator.CrossFadeInFixedTime(JumpHash, 0.1f);
         }
 
         public override void Tick(float deltaTime)
         {
             Vector3 movement = CalculateMovement();
 
+            //This momentum is added to the player's movement in the air, allowing for slightly faster speeds
             Move(momentum + (movement * stateMachine.LichStats.GetLichSpeed()), deltaTime);
 
             FaceMovementDirection(movement, deltaTime);
@@ -45,8 +44,6 @@ namespace Units.Player
                 stateMachine.SwitchState(new PlayerFallingState(stateMachine));
                 return;
             }
-
-            //FaceTarget();
         }
 
         public override void Exit()
@@ -55,24 +52,10 @@ namespace Units.Player
             stateMachine.InputReader.MenuEvent -= OnMenu;
         }
 
-        private Vector3 CalculateMovement()
-        {
-            Vector3 forward = stateMachine.MainCameraTransform.forward;
-            forward.y = 0f;
-            forward.Normalize();
-
-            Vector3 right = stateMachine.MainCameraTransform.right;
-            right.y = 0f;
-            right.Normalize();
-
-            return forward * stateMachine.InputReader.MovementValue.y +
-                right * stateMachine.InputReader.MovementValue.x;
-        }
-
         private void FaceMovementDirection(Vector3 movement, float deltaTime)
         {
             if (movement == Vector3.zero) {return;}
-            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationDamping * deltaTime);
+            stateMachine.transform.rotation = Quaternion.Lerp(stateMachine.transform.rotation, Quaternion.LookRotation(movement), stateMachine.RotationSpeed * deltaTime);
         }
 
         private void OnDodge()

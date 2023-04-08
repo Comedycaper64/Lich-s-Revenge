@@ -18,12 +18,7 @@ namespace Units.Enemy.Sentinel
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);   
-        }
-
-        public override void Exit()
-        {
-
-        }
+        }    
 
         public override void Tick(float deltaTime)
         {
@@ -38,6 +33,11 @@ namespace Units.Enemy.Sentinel
             }
 
             stateMachine.Animator.SetFloat(SpeedParameterHash, 0, 0.1f, deltaTime);
+        }
+
+        public override void Exit()
+        {
+
         }
 
         private bool CanSeePlayer()

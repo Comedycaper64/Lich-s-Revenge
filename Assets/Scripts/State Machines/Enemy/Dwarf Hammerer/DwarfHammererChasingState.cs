@@ -19,15 +19,6 @@ namespace Units.Enemy.Hammerer
             stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
         }
 
-        public override void Exit()
-        {
-            if (stateMachine.Agent.hasPath)
-            {
-                stateMachine.Agent.ResetPath();
-            }
-            stateMachine.Agent.velocity = Vector3.zero;
-        }
-
         public override void Tick(float deltaTime)
         {
             float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
@@ -47,12 +38,20 @@ namespace Units.Enemy.Hammerer
                 return;
             }
 
-
             MoveToPlayer(deltaTime);
 
             FacePlayer();
 
             stateMachine.Animator.SetFloat(SpeedParameterHash, 1f, 0.1f, deltaTime);
+        }
+
+        public override void Exit()
+        {
+            if (stateMachine.Agent.hasPath)
+            {
+                stateMachine.Agent.ResetPath();
+            }
+            stateMachine.Agent.velocity = Vector3.zero;
         }
 
         private bool IsInAttackRange(float playerDistanceSqr)
@@ -73,14 +72,8 @@ namespace Units.Enemy.Hammerer
         {
             if(stateMachine.Agent.isOnNavMesh)
             {
-                //Debug.Log("On Nav Mesh");
                 stateMachine.Agent.destination = stateMachine.Player.transform.position;
                 Move(stateMachine.Agent.desiredVelocity.normalized * stateMachine.Stats.GetSpeed(), deltaTime);
-                //Debug.Log("Movement Velocity: " + stateMachine.Agent.desiredVelocity.normalized);
-            }
-            else
-            {
-                //Debug.Log("Not On Nav Mesh");
             }
             stateMachine.Agent.velocity = stateMachine.Controller.velocity;
         }

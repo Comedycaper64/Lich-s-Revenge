@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Units.Enemy.Marrow
 {
+    //Statemachine for the boss in level 5
     public class MarrowStateMachine : StateMachine
     {
         [field: SerializeField] public Animator Animator {get; private set;}
@@ -18,8 +19,11 @@ namespace Units.Enemy.Marrow
         [field: SerializeField] public Health Health {get; private set;}
         [field: SerializeField] public Ragdoll Ragdoll  {get; private set;}
         [field: SerializeField] public GameObject EnemyUI  {get; private set;}
+        //Object containing waypoints that the boss moves between
         [SerializeField] private Transform waypointObject;
+        //Object containing locations where enemies can be spawned
         [SerializeField] private Transform enemySpawnObject;
+        //Dialogue triggered at the start of the fight (in story mode)
         public Conversation epilogueConversation;
         public Conversation endGameConversation;
         public Transform[] movementWaypoints;
@@ -38,6 +42,7 @@ namespace Units.Enemy.Marrow
 
         private void Awake() 
         {
+            //Populates waypoint lists using objects that contain them
             movementWaypoints = waypointObject.GetComponentsInChildren<Transform>();    
             enemySpawnWaypoints = enemySpawnObject.GetComponentsInChildren<Transform>();
         }

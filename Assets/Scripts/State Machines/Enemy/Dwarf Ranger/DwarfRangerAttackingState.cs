@@ -20,17 +20,11 @@ namespace Units.Enemy.Ranger
             stateMachine.Animator.speed = stateMachine.Stats.GetAttackSpeed();
         }
 
-        public override void Exit()
-        {
-            stateMachine.RangerWeapon.StowWeapon();
-            stateMachine.Animator.speed = 1;
-        }
-
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
-            FacePlayer();
 
+            FacePlayer();
 
             if ((GetNormalizedTime(stateMachine.Animator) >= 1) || DialogueManager.Instance.inConversation)
             {
@@ -39,11 +33,14 @@ namespace Units.Enemy.Ranger
             }
 
             stateMachine.RangerWeapon.SetAimVisual();
-
-            // if (!stateMachine.RangerWeapon.weaponFired)
-            // {
-                
-            // }
         }
+
+        public override void Exit()
+        {
+            stateMachine.RangerWeapon.StowWeapon();
+            stateMachine.Animator.speed = 1;
+        }
+
+        
     }
 }

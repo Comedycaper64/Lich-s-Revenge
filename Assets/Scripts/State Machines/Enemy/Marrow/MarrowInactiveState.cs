@@ -6,20 +6,18 @@ namespace Units.Enemy.Marrow
 {
     public class MarrowInactiveState : MarrowBaseState
     {
-        //private readonly int MovementHash = Animator.StringToHash("");
-
         public MarrowInactiveState(MarrowStateMachine stateMachine) : base(stateMachine)
         {
         }
 
         public override void Enter()
         {
-            //stateMachine.Animator.CrossFadeInFixedTime(MovementHash, 0.1f);
             SetWaypoint(stateMachine.movementWaypoints[0]);
         }
 
         public override void Tick(float deltaTime)
         {
+            //Boss does nothing until the player enters the boss's fight range
             if (IsInFightRange())
             {
                 stateMachine.SwitchState(new MarrowIdleState(stateMachine));
@@ -29,6 +27,7 @@ namespace Units.Enemy.Marrow
 
         public override void Exit()
         {
+            //Boss UI is activated as fight starts, as does the boss music
             stateMachine.EnemyUI.SetActive(true);
             SoundManager.Instance.PlayAudioSource();
         }

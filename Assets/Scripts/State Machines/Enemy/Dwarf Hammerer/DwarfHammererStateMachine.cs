@@ -25,6 +25,7 @@ namespace Units.Enemy.Hammerer
         [SerializeField] public AudioClip deathSFX;
         [SerializeField] public AudioClip leapSFX;
         [SerializeField] public AudioClip slamSFX;
+        //The hammerer's "slam" ability has a cooldown, so that it's not don continuously
         private float slamCooldown = 5f;
         
         public Transform headLocation;
@@ -61,13 +62,6 @@ namespace Units.Enemy.Hammerer
             }
         }
 
-        // public override void SwitchState(State newState)
-        // {
-        //     base.SwitchState(newState);
-        //     Debug.Log(newState);
-        // }
-
-        //Have a randomised cooldown running for slam attack
         public bool IsSlamReady()
         {
             return slamCooldown <= 0f;
@@ -111,7 +105,6 @@ namespace Units.Enemy.Hammerer
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, Stats.GetChaseRange());    
-            //Gizmos.DrawCube(transform.position, new Vector3(Stats.GetSlamRadius() * 2, 1f, Stats.GetSlamRadius() * 2));
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, Stats.GetSlamRadius());
         }

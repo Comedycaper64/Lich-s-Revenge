@@ -12,8 +12,6 @@ namespace Units.Enemy.Marrow
         {
         }
 
-        //SHOULD BE ABLE TO SHOOT FIREBALL OUT OF HIS HANDS, CAUSING IT TO EXPLODE
-
         public override void Enter()
         {
             stateMachine.Animator.CrossFadeInFixedTime(FireballCastHash, 0.1f);
@@ -27,6 +25,7 @@ namespace Units.Enemy.Marrow
 
             float normalisedTime = GetNormalizedTime(stateMachine.Animator);
 
+            //Spawns a visual to show where the fireball will explode
             if (normalisedTime <= 0.5f)
             {
                 stateMachine.WeaponHandler.UpdateFireballVisual(stateMachine.Player.transform.position);

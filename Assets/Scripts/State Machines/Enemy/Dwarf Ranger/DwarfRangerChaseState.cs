@@ -18,12 +18,6 @@ namespace Units.Enemy.Ranger
             stateMachine.Animator.CrossFadeInFixedTime(LocomotionBlendTreeHash, 0.1f);
         }
 
-        public override void Exit()
-        {
-            stateMachine.Agent.ResetPath();
-            stateMachine.Agent.velocity = Vector3.zero;
-        }
-
         public override void Tick(float deltaTime)
         {
             if (!IsInChaseRange())
@@ -43,6 +37,12 @@ namespace Units.Enemy.Ranger
             FacePlayer();
 
             stateMachine.Animator.SetFloat(SpeedParameterHash, 1f, 0.1f, deltaTime);
+        }
+
+        public override void Exit()
+        {
+            stateMachine.Agent.ResetPath();
+            stateMachine.Agent.velocity = Vector3.zero;
         }
 
         private void MoveTowardsPlayer(float deltaTime)

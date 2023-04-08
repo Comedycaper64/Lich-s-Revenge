@@ -6,6 +6,7 @@ namespace Units.Enemy.Miner
 {
     public class DwarfMinerDebugAttackingState : DwarfMinerBaseState
     {
+        //A different animation is played to facilitate a different attack
         private readonly int AttackHash = Animator.StringToHash("DebugAttack");
 
         public DwarfMinerDebugAttackingState(DwarfMinerStateMachine stateMachine) : base(stateMachine)

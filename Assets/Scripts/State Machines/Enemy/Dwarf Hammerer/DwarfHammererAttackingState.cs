@@ -22,11 +22,6 @@ namespace Units.Enemy.Hammerer
             stateMachine.Animator.speed = stateMachine.Stats.GetAttackSpeed();
         }
 
-        public override void Exit()
-        {
-            stateMachine.Animator.speed = 1;
-        }
-
         public override void Tick(float deltaTime)
         {
             if (GetNormalizedTime(stateMachine.Animator) >= 1)
@@ -34,6 +29,11 @@ namespace Units.Enemy.Hammerer
                 stateMachine.SwitchState(new DwarfHammererChasingState(stateMachine));
                 return;
             }
+        }
+
+        public override void Exit()
+        {
+            stateMachine.Animator.speed = 1;
         }
     }
 }

@@ -46,6 +46,7 @@ namespace Units.Enemy.Miner
 
         public override void Exit()
         {
+            //Cleans up the NavMesh pathfinding
             if (stateMachine.Agent.hasPath)
             {
                 stateMachine.Agent.ResetPath();
@@ -57,7 +58,7 @@ namespace Units.Enemy.Miner
         private bool IsInAttackRange()
         {
             if (stateMachine.Player.isDead) {return false;}
-
+            //SqrMagnitude is stored due to being more performant than calculating magnitude
             float playerDistanceSqr = (stateMachine.Player.transform.position - stateMachine.transform.position).sqrMagnitude;
 
             return playerDistanceSqr <= stateMachine.AttackRange * stateMachine.AttackRange;

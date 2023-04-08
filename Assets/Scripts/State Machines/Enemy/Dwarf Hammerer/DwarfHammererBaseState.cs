@@ -23,11 +23,6 @@ namespace Units.Enemy.Hammerer
             stateMachine.Controller.Move((motion + stateMachine.ForceReceiver.Movement) * deltaTime);
         }
 
-        protected void LeapMove(Vector3 motion, float deltaTime)
-        {
-            stateMachine.Controller.Move(motion * deltaTime);
-        }
-
         protected void FacePlayer()
         {
             if (stateMachine.Player != null)

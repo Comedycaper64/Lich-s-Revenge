@@ -12,12 +12,14 @@ namespace Units.Enemy.Sentinel
         {
         }
 
+        //This unit's melee attack is more complex than a regular enemy's, due to affecting a wide area
         public override void Enter()
         {
             FacePlayer();
             stateMachine.WeaponHandler.SetAttack(stateMachine.Stats.GetAttack(), stateMachine.AttackKnockback);
             stateMachine.Animator.CrossFadeInFixedTime(AttackHash, 0.1f);
 
+            //The slam visual shows the area where the player will take damage
             stateMachine.WeaponHandler.SetupSlamVisual(stateMachine.Stats.GetSlamRadius());
             stateMachine.WeaponHandler.SetSlamVisualLocation(stateMachine.transform.position);
             stateMachine.WeaponHandler.SetSlamRadius(stateMachine.Stats.GetSlamRadius());
@@ -28,8 +30,6 @@ namespace Units.Enemy.Sentinel
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
-
-            //Add event for slam in anim
 
             if (GetNormalizedTime(stateMachine.Animator) >= 1)
             {

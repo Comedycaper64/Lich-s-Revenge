@@ -17,9 +17,9 @@ namespace Units.Enemy.Marrow
         protected void SetWaypoint(Transform waypoint)
         {
             stateMachine.currentWaypoint = waypoint.position;
-            //Debug.Log("Waypoint Set: " + waypoint.position);
         }
 
+        //Moves between waypoints, chooses a new random waypoint when destination is reached
         protected void Move(float deltaTime)
         {
             if (Mathf.Abs((stateMachine.currentWaypoint - stateMachine.transform.position).magnitude) < 1f)
@@ -27,7 +27,6 @@ namespace Units.Enemy.Marrow
                 SetWaypoint(stateMachine.movementWaypoints[Random.Range(0, stateMachine.movementWaypoints.Length)]);
             }
             Vector3 moveDirection = (stateMachine.currentWaypoint - stateMachine.transform.position).normalized;
-            //Debug.Log("Moving:" + moveDirection + ". Current Waypoint: " + stateMachine.currentWaypoint + ". Current Position: " + stateMachine.transform.position);
             stateMachine.Controller.Move(moveDirection * stateMachine.Stats.GetSpeed() * deltaTime);
         }
 

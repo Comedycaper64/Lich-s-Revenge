@@ -23,7 +23,6 @@ namespace Units.Enemy.Gunner
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
-            //FacePlayer();
             if (GetNormalizedTime(stateMachine.Animator) <= 0.1f)
             {
                 FacePlayer();

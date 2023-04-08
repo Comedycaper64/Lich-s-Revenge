@@ -29,6 +29,7 @@ namespace Units.Player
                 return;
             }
 
+            //If the player stops holding the "Heal" button before the animation is finished, then it cancels and the player is not healed
             if (!stateMachine.InputReader.isHealing && normalisedTime <= 0.7f)
             {
                 stateMachine.SwitchState(new PlayerFreeLookState(stateMachine));

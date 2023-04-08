@@ -8,6 +8,7 @@ namespace Units.Player
     {
         private readonly int ImpactHash = Animator.StringToHash("Impact");
 
+        //Duration of the player's impact state
         private float duration = 0.5f;
 
         public PlayerImpactState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -25,7 +26,6 @@ namespace Units.Player
         {
             stateMachine.InputReader.MenuEvent -= OnMenu; 
             stateMachine.Cooldowns.SetLichInvincibility();
-            //stateMachine.Health.SetInvulnerable(false);
         }
 
         public override void Tick(float deltaTime)

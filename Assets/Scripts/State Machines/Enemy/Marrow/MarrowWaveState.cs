@@ -14,6 +14,7 @@ namespace Units.Enemy.Marrow
 
         public override void Enter()
         {
+            //On entering this state, the boss teleports to the centre of the arena to begin his "Wave" attack
             GameObject dashVFX = GameObject.Instantiate(stateMachine.teleportVFX, stateMachine.transform.position, Quaternion.identity);
             GameObject.Destroy(dashVFX, 3f);
             if (SoundManager.Instance)

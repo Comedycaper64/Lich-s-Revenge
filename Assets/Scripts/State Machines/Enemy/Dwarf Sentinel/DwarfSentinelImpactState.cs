@@ -25,11 +25,6 @@ namespace Units.Enemy.Sentinel
             duration = stateMachine.Stats.GetStunDuration();
         }
 
-        public override void Exit()
-        {
-            
-        }
-
         public override void Tick(float deltaTime)
         {
             Move(deltaTime);
@@ -41,6 +36,11 @@ namespace Units.Enemy.Sentinel
                 stateMachine.SwitchState(new DwarfSentinelIdleState(stateMachine));
                 return;
             }
+        }
+
+        public override void Exit()
+        {
+            
         }
     }
 }
