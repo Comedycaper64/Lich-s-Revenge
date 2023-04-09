@@ -5,6 +5,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Stores all non-sound settings.
 public class OptionsManager : MonoBehaviour
 {
     public static OptionsManager Instance {get; private set;}
@@ -36,7 +37,6 @@ public class OptionsManager : MonoBehaviour
         SetUpSingleton();
         if (Instance != null)
         {
-            //Debug.LogError("There's more than one OptionsManager! " + transform + " - " + Instance);
             Destroy(gameObject);
             return;
         }
@@ -102,6 +102,7 @@ public class OptionsManager : MonoBehaviour
         SensitivitySlider.OnAnySensitivitySliderChanged -= ChangeSensitivity;
     }
 
+    //When a new scene is loaded, applies camera settings to the player's cameras
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         GameObject stateCamera = GameObject.FindGameObjectWithTag("StateCamera");

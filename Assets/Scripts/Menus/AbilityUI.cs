@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Class used by the abilities in the UI. Controls transparency of the UI element, along with what button prompt is displayed.
+//Two sliders are used to mask a colour over the ability UI if the ability is on cooldown or the player doesn't have sufficient mana
 public class AbilityUI : MonoBehaviour
 {
-    
-
     [SerializeField] private Slider cooldownSlider;
     [SerializeField] private Slider manaSlider;
     [SerializeField] private Image uiImage;

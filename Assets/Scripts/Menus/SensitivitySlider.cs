@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Similar to the SoundSlider, but for the sensitivity settings
 public class SensitivitySlider : MonoBehaviour
 {
     [SerializeField] private SliderStruct.OptionType sliderType;

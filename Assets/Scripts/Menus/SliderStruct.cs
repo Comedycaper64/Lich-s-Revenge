@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//A class used by various sliders in the UI. Stores information based on what slider is using it
 public class SliderStruct
 {
     public enum SoundType

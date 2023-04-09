@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using UnityEngine.SceneManagement;
 
+//Script that controls the dialogue system
 public class DialogueManager : MonoBehaviour
 {
 	public static DialogueManager Instance {get; private set;}
@@ -44,7 +45,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("There's more than one DialogueManager! " + transform + " - " + Instance);
             Destroy(gameObject);
             return;
         }
@@ -57,7 +57,9 @@ public class DialogueManager : MonoBehaviour
 
 	void Start()
 	{ 
+		//The manager uses player input to advance the text, so it needs the InputReader from the player
 		input = GameObject.FindGameObjectWithTag("Player").GetComponent<InputReader>();
+		//The main menu does not have the playerUI, so it cannot find it there. The manager does not require the PlayerUI for anything in the main menu
 		if (SceneManager.GetActiveScene().buildIndex != 0)
 		{
 			playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
@@ -68,10 +70,12 @@ public class DialogueManager : MonoBehaviour
 
 	private void OnInteract()
 	{
+		//Used to advance the conversation when the interact button is pressed
 		if (MenuManager.gameIsPaused) {return;}
 		
 		if (inConversation && currentDialogue != null)
 		{
+			//If the text is in the process of appearing, causes it to appear fully. Otherwise the next sentence begins to display
 			if (!currentTextTyping)
 			{
 				DisplayNextSentence();
@@ -102,15 +106,14 @@ public class DialogueManager : MonoBehaviour
 	private void ClearCharacterImage(Image characterImage)
 	{
 		characterImage.enabled = false;
-		//characterImage.sprite = null;
-		//characterImage.color = new Color(255, 255, 255, 0f);
 	}
 
 	public void StartConversation(Conversation conversation)
 	{
+		//Performs setup, as Dialogue mode is entered
 		inConversation = true;
 		OnConversationStart?.Invoke();
-		dialogueAnimator.SetTrigger("startConversation"); //Start Conversationb in Animator
+		dialogueAnimator.SetTrigger("startConversation"); //Starts Conversation in Animator, causes dialogue UI elements to appear
 		darkBackground.enabled = true;
 		currentConversation = conversation;
 		input.OnMove(new UnityEngine.InputSystem.InputAction.CallbackContext()); //Stops lich from moving by refreshing the OnMove with a blank callback
@@ -120,6 +123,7 @@ public class DialogueManager : MonoBehaviour
 			dialogueAudioSource.volume = SoundManager.Instance.GetSoundEffectVolume() / 4;
 		}
 		ClearCharacterImages();
+		//Enqueues all conversation nodes to go through them in the specified order
 		foreach (ConversationNode conversationNode in currentConversation.conversationNodes)
 		{
 			conversationNodes.Enqueue(conversationNode);
@@ -129,12 +133,12 @@ public class DialogueManager : MonoBehaviour
 
 	public void StartDialogue(ConversationNode conversationNode)
 	{
+		//Acts differently depending on what type of conversation node it is
 		string nodeType = conversationNode.GetType().ToString();
 
 		switch(nodeType)
 		{
 			case "DialogueAddSkill":
-				//currentDialogue = ScriptableObject.CreateInstance<Dialogue>();
 				AddSkill((DialogueAddSkill)conversationNode);
 				break;
 			case "DialogueChangeScene":
@@ -143,6 +147,7 @@ public class DialogueManager : MonoBehaviour
 				break;
 			default:
 			case "Dialogue":
+				//If default dialogue, then enqueues all sentences and begins displaying them
 				currentDialogue = (Dialogue)conversationNode;
 				sentences.Clear();
 				foreach (string sentence in currentDialogue.sentences)
@@ -152,7 +157,6 @@ public class DialogueManager : MonoBehaviour
 				foreach (Sprite image in currentDialogue.characterImages)
 				{
 					characterImages.Enqueue(image);
-					//Debug.Log(image);
 				}
 				currentCharacterTalkSound = currentDialogue.characterTalkSound;
 				if (currentCharacterTalkSound)
@@ -193,8 +197,7 @@ public class DialogueManager : MonoBehaviour
 		}
 		string sentence = sentences.Dequeue();
 
-		//characterImageLeft.color
-
+		//Changes sprite opacity to match whoever is currently speaking 
 		if (currentDialogue.rightSideCharacterImage)
 		{
 			characterImageLeft.color = new Color(255, 255, 255, inactiveTalkerAlpha);
@@ -232,6 +235,7 @@ public class DialogueManager : MonoBehaviour
 		typingCoroutine = StartCoroutine(TypeSentence(sentence));
 	}
 
+	//Incrementally causes the dialogue to appear in the dialogue box
 	IEnumerator TypeSentence(string sentence)
 	{
 		currentSentence = sentence;
@@ -246,6 +250,7 @@ public class DialogueManager : MonoBehaviour
 		currentTextTyping = false;
 	}
 
+	//Foregoes the dialogue typing to show the entire dialogue sentence
 	private void FinishTypingSentence()
     {
         if (typingCoroutine != null)
@@ -254,6 +259,7 @@ public class DialogueManager : MonoBehaviour
 		currentTextTyping = false;
     }
 
+	//Performs cleanup from displaying dialogue and tries to dequeue the next conversation node
 	public void EndDialogue()
 	{
 		if (currentCharacterImage != null)
@@ -279,6 +285,7 @@ public class DialogueManager : MonoBehaviour
 		StartCoroutine(DialogueCooldown());
 	}
 
+	//Necessary grace period so that the input the ends the conversation does not immediately start it again
 	private IEnumerator DialogueCooldown()
 	{
 		yield return new WaitForEndOfFrame();

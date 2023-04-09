@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//The script that controls the tutorial menu. Cycles between different tutorial pages using UI buttons
 public class TutorialManager : MonoBehaviour
 {
     private int tutorialScreenIndex = 0;

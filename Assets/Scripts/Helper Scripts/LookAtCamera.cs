@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Attached to some objects to make them face the camera.
 public class LookAtCamera : MonoBehaviour
 {
     [SerializeField] private bool invert;

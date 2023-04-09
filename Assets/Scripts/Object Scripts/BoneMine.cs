@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class BoneMine : MonoBehaviour
 {
+    // An object instantiated when the player sets a mine. Explodes upon contact with an enemy
     private float mineExplodeRadius;
     [SerializeField] private GameObject fireballVFX;
     private float damage;
@@ -43,16 +44,17 @@ public class BoneMine : MonoBehaviour
         mineExplodeRadius = explodeRadius;
     }
 
+    //Similar method for dealing damage as with the Fireball Projectile
     private void ExplodeFireball()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, mineExplodeRadius);
 
-        //Explode SFX
         GameObject explosion = Instantiate(fireballVFX, transform.position, Quaternion.identity);
         Destroy(explosion, 3f);
 
         foreach(Collider collider in colliders)
         {
+            //Damages enemies, not player
             if (collider.TryGetComponent<Health>(out Health health))
             {
                 if (collider.TryGetComponent<PlayerStateMachine>(out PlayerStateMachine playerStateMachine))
@@ -65,6 +67,7 @@ public class BoneMine : MonoBehaviour
                 }
             }
 
+            //Knocks enemies back
             if (collider.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
             {
                 forceReceiver.AddForce((collider.transform.position - transform.position).normalized * damage);

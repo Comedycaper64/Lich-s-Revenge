@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ManaFountain : MonoBehaviour
 {
+    //Heals the player when they get close to this object. Also sets a respawn point for if the player dies
     [SerializeField] private Transform respawnTransform;
 
     private void OnTriggerEnter(Collider other) 

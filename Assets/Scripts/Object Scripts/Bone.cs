@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bone : MonoBehaviour
 {
+    //Object dropped when an enemy dies. If the player walks over it, their bone resource is incremented.
     private void Awake() 
     {
         PlayerStateMachine.OnRespawn += PlayerRespawned;    
@@ -21,6 +22,7 @@ public class Bone : MonoBehaviour
         }    
     }
 
+    //If the player respawns, any bones in the level are destroyed
     private void PlayerRespawned()
     {
         Destroy(gameObject);

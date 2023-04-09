@@ -6,12 +6,11 @@ using Stats;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Tracks what enemies are in a level and respawns them if the player respawns
 public class LevelManager : MonoBehaviour
 {
-    //[SerializeField] private GameObject levelButton;
     [SerializeField] private List<GameObject> enemies = new List<GameObject>();
     private List<EnemySpawn> enemySpawns = new List<EnemySpawn>();
-    //private PlayerStateMachine Player;
 
     [Header("Enemy Types")]
     [SerializeField] private GameObject minerEnemy;
@@ -23,10 +22,8 @@ public class LevelManager : MonoBehaviour
 
     private void Awake() 
     {   
-        //Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStateMachine>();
-        //StateMachine.OnEnemyUnitDead += EnemyDied;
         PlayerStateMachine.OnRespawn += RespawnEnemies;
-
+        //A list of enemyspawns is generated when the scene starts
         foreach(GameObject enemy in enemies)
         {
             GameObject newEnemy;
@@ -84,14 +81,6 @@ public class LevelManager : MonoBehaviour
     {
         PlayerStateMachine.OnRespawn -= RespawnEnemies;
     }
-
-    // private void EnemyDied(object sender, GameObject enemy)
-    // {
-    //     if (enemies.Contains(enemy))
-    //     {
-    //         enemies.Remove(enemy);
-    //     }
-    // }
 
     private void RespawnEnemies()
     {

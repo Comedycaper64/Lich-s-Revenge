@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Script attached to sliders in the UI that represent Sound options.
 public class SoundSlider : MonoBehaviour
 {
     [SerializeField] private SliderStruct.SoundType sliderType;
@@ -29,6 +30,7 @@ public class SoundSlider : MonoBehaviour
 
     }
 
+    //Invokes an event when a slider is moved that the Sound Manager is subscribed to. Causes sound settings to be updated
     public void OnSliderChanged()
     {
         OnAnySoundSliderChanged?.Invoke(this, new SliderStruct(sliderType, GetComponent<Slider>().value));

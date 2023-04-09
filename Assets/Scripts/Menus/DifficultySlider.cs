@@ -5,6 +5,7 @@ using Stats;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Similar to the sound slider, but for the difficulty settings
 public class DifficultySlider : MonoBehaviour
 {
     [SerializeField] private SliderStruct.DifficultyType sliderType;

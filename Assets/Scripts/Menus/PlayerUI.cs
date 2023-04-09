@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//An important script that controls the UI elements visible during gameplay
 public class PlayerUI : MonoBehaviour
 {
     private PlayerStateMachine playerStateMachine;
@@ -63,6 +64,7 @@ public class PlayerUI : MonoBehaviour
 
     private void Awake() 
     {
+        //Many components are required
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerStateMachine = player.GetComponent<PlayerStateMachine>();
         playerCooldowns = player.GetComponent<PlayerCooldowns>();
@@ -76,6 +78,7 @@ public class PlayerUI : MonoBehaviour
         playerStateMachine.OnSwitchState += UpdateUI;
         ClearAbilityUIs();
 
+        //At the start of the scene, creates all of the ability UIs in the bottom right of the screen.
         abilityUIs.Add(jumpUI = Instantiate(jumpAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(fireboltUI = Instantiate(fireboltAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(fireballUI = Instantiate(fireballAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
@@ -86,12 +89,14 @@ public class PlayerUI : MonoBehaviour
         abilityUIs.Add(absorbUI = Instantiate(absorbAbilityUI, abilityUIContainer).GetComponent<AbilityUI>());
         abilityUIs.Add(menuUI = Instantiate(menuButtonUI, menuUITransform).GetComponent<AbilityUI>());
 
+        //If it's the first level (the tutorial) or any of the scenarios, the ability UIs are hidden
         if ((SceneManager.GetActiveScene().buildIndex == 1) || SceneManager.GetActiveScene().buildIndex > 5)
         {
             foreach (AbilityUI abilityUI in abilityUIs)
             {
                 abilityUI.gameObject.SetActive(false);
             }
+            //Ability UI 0 is the menu button in the top right of the screen, so it stays active
             abilityUIs[0].gameObject.SetActive(true);
             menuUI.gameObject.SetActive(true);
         }
@@ -109,6 +114,7 @@ public class PlayerUI : MonoBehaviour
 
     private void Update() 
     {
+        //Recalculates the cooldown slider of each applicable ability UI during every frame
         if (!playerCooldowns.IsFireboltReady())
         {
             fireboltUI.SetCooldownSliderValue(playerCooldowns.GetFireboltCooldownNormalised());
@@ -154,7 +160,7 @@ public class PlayerUI : MonoBehaviour
             absorbUI.SetCooldownSliderValue(0f);
         }
 
-
+        //Recalculates the mana slider of each applicable ability UI during every frame
         if (!playerMana.HasMana(playerStats.GetLichDodgeManaCost()))
         {
             dashUI.SetManaSliderValue(1 - (playerMana.GetMana() / playerStats.GetLichDodgeManaCost()));
@@ -172,6 +178,7 @@ public class PlayerUI : MonoBehaviour
             absorbUI.SetManaSliderValue(1 - (playerMana.GetMana() / playerStats.GetLichAbsorbManaCost()));
         }
 
+        //If the player has no bones, the heal and mine abilities are set to look unavailable
         if (playerBones.GetBones() < 1)
         {
             healUI.SetManaSliderValue(1f);
@@ -185,6 +192,7 @@ public class PlayerUI : MonoBehaviour
 
     }
 
+    //Activates a disabled ability. Used primarily in the tutorial when the player is unlocking their abilities.
     public void ActivateAbility(LichSkill skill)
     {
         switch(skill)
@@ -219,6 +227,7 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    //UI is updated based on what state the player is in. Certain abilities cannot be used while aiming and vice versa
     public void UpdateUI(object sender, State state)
     {
         if (state.GetStateName() == "FreeLookState")
@@ -239,6 +248,7 @@ public class PlayerUI : MonoBehaviour
         menuUI.SetImageActive(IsFreeLookState());
     }
 
+    //Helper script for Update UI
     private bool IsFreeLookState()
     {
         if (currentState == StateEnum.FreeLook)
@@ -251,6 +261,7 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
+    //Particle effects spawn in the UI upon healing, taking damage, or collecting a bone
     private void UIHeal()
     {
         GameObject healFlash = Instantiate(uiHealFlash, healthImage.transform);
@@ -269,6 +280,7 @@ public class PlayerUI : MonoBehaviour
         Destroy(boneFlash, 3f);
     }
 
+    //Changes the button prompts in the ability UIs if the player starts using a different input method
     private void OnPlaystationInput()
     {
         if (currentInput == "Playstation") {return;}

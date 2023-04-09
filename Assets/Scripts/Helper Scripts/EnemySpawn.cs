@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Used by the LevelManager to store information about an enemy. This information is used when respawning them
 [Serializable]
 public class EnemySpawn
 {

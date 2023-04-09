@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Stores volume settings and controls music in a scene. Instanced so that all scripts can make use of it
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
@@ -16,10 +17,10 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        //A singleton object persists between scenes
         SetUpSingleton();
         if (Instance != null)
         {
-            //Debug.LogError("There's more than one SoundManager! " + transform + " - " + Instance);
             Destroy(gameObject);
             return;
         }
@@ -44,6 +45,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    //Changes music when a new scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex > sceneMusic.Length - 1) {return;}
@@ -125,18 +127,18 @@ public class SoundManager : MonoBehaviour
         this.sfxVolume = sfxVolume;
     }
 
-    private void SoundSlider_OnAnySliderChanged(object sender, SliderStruct e)
+    private void SoundSlider_OnAnySliderChanged(object sender, SliderStruct changedSlider)
     {
-        switch (e.GetSoundSlider())
+        switch (changedSlider.GetSoundSlider())
         {
             case SliderStruct.SoundType.Master:
-                SetMasterVolume(e.GetValue());
+                SetMasterVolume(changedSlider.GetValue());
                 break;
             case SliderStruct.SoundType.Music:
-                SetMusicVolume(e.GetValue());
+                SetMusicVolume(changedSlider.GetValue());
                 break;
             case SliderStruct.SoundType.SFX:
-                SetSoundEffectVolume(e.GetValue());
+                SetSoundEffectVolume(changedSlider.GetValue());
                 break;    
         }
     }

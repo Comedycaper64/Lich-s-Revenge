@@ -4,6 +4,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Class used by multiple UI elements in the menu screen and main menu.
 public class MenuManager : MonoBehaviour
 {
     public static bool gameIsPaused;
@@ -29,8 +30,7 @@ public class MenuManager : MonoBehaviour
 
     private void Update() 
     {
-        //if (currentSceneIndex == 0) {return;}
-
+        //A slightly unoptimal way of disabling the menu screen if the tutorial is open.
         if (tutorialManager.currentOpenScreen && currentOpenScreen)
         {
             currentOpenScreen.SetActive(false);
@@ -40,11 +40,11 @@ public class MenuManager : MonoBehaviour
             currentOpenScreen.SetActive(true);
         }
 
+        //The cursor is typically not seen during gameplay. It is enabled if the menu is open, so that the player can navigate through it
         if (gameIsPaused)
         {
             if (InputReader.controllerBeingUsed)
             {
-                //Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }   
             else
@@ -92,6 +92,7 @@ public class MenuManager : MonoBehaviour
         deathScreen.SetActive(enable);
     }
 
+    //Plays an introduction dialogue if story mode is enabled
     public void StartGame(bool inStoryMode)
     {
         OptionsManager.Instance.SetStoryMode(inStoryMode);
