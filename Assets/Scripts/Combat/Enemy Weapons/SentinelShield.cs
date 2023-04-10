@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//A script attached to a sentinel's shield. It's detected by the player's firebolt and fireball scripts
 public class SentinelShield : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) 
-    {
-        if (other.GetComponent<FireBoltProjectile>() || other.GetComponent<FireBallProjectile>())
-        {
-            //other.transform.Rotate(new Vector3(0, 180, 0));
-        }    
-    }
+    
 }

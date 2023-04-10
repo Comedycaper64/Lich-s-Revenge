@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script attached to the Hammerer's hammer
 public class HammererWeapon : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
@@ -38,6 +39,7 @@ public class HammererWeapon : MonoBehaviour
         TryAttack(other);
     }
 
+    //Very similar to the MinerWeapon. Deals damage on contact with the player
     private void TryAttack(Collider collider)
     {
         if (collider ==  myCollider) {return;}
@@ -73,6 +75,7 @@ public class HammererWeapon : MonoBehaviour
         }
     }
 
+    //Slightly different behaviour than above for the Slam Attack
     public void TrySlamAttack(Collider collider)
     {
         if(collider.TryGetComponent<LichAegis>(out LichAegis aegis))

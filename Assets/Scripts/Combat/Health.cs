@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Resource used by enemies and the player
 public class Health : MonoBehaviour
 {
     [SerializeField] private float maxHealth = 100;
@@ -52,6 +53,7 @@ public class Health : MonoBehaviour
     {
         if (invulnerable) {return;}
 
+        //Max operation used so that health doesn't go below zero
         health = Mathf.Max(health - damage, 0);
 
         UpdateHealthbar();

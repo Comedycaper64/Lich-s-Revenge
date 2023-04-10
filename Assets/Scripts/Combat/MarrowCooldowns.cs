@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Stats;
 using UnityEngine;
 
+//Similar to the PlayerCooldowns script, but for the boss enemy
 public class MarrowCooldowns : MonoBehaviour
 {
     private MarrowStats stats;

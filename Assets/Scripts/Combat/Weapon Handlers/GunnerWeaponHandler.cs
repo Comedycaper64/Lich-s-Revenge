@@ -5,6 +5,7 @@ using Units.Enemy.Gunner;
 using Units.Player;
 using UnityEngine;
 
+//Script used for the Gunner's attacks
 public class GunnerWeaponHandler : MonoBehaviour
 {
     private Transform playerTransform;
@@ -20,6 +21,8 @@ public class GunnerWeaponHandler : MonoBehaviour
         gunnerStats = GetComponent<DwarfGunnerStats>();
     }
 
+    //One of the few instances where an attack does not deal damage via collision
+    //When the gunner's weapon is fired, it tests to see if the player is within the gun's attack range and attack arc. If so, then it deals damage
     public void FireWeapon()
     {
         playerDirection = (GetPlayerPosition() - weaponTransform.position).normalized;
@@ -35,6 +38,7 @@ public class GunnerWeaponHandler : MonoBehaviour
             float knockback = gunnerStats.GetAttack() * 2;    
             if(playerTransform.TryGetComponent<PlayerStateMachine>(out PlayerStateMachine stateMachine))
             {
+                //Doesn't deal damage if the player is using the Absorb ability
                 if (stateMachine.Aegis.absorbing)
                 {
                     stateMachine.Aegis.DamageAegis();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script that's attached to the flame pillars summoned by the boss
 public class FlamePillar : MonoBehaviour
 {
     private Collider casterCollider;
@@ -15,6 +16,7 @@ public class FlamePillar : MonoBehaviour
     private void Start() 
     {
         pillarCollider = GetComponent<Collider>();
+        //Chooses a random direction for the pillar to gradually move in
         ChooseMovementDirection();
     }
 
@@ -23,6 +25,7 @@ public class FlamePillar : MonoBehaviour
         transform.Translate(new Vector3(movementDirection.x, 0, movementDirection.y) * movementSpeed * Time.deltaTime);
         if (timeToLive > 0f)
         {
+            //Disables the collider of the pillar in the last few seconds of its existence, as the visual effect makes it look like it's waning at the end of its lifespan
             timeToLive -= Time.deltaTime;
             if ((timeToLive <= 2f) && pillarCollider.enabled)
             {
@@ -68,6 +71,7 @@ public class FlamePillar : MonoBehaviour
         this.timeToLive = timeToLive;
     }
 
+    //Similar to FlameWave
     private void OnTriggerEnter(Collider other) 
     {
         if (other == casterCollider) {return;}

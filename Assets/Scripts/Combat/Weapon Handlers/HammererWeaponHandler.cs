@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script that handles the Hammerer's attacks
 public class HammererWeaponHandler : MonoBehaviour
 {
     [SerializeField] private HammererWeapon weaponLogic;
@@ -15,6 +16,7 @@ public class HammererWeaponHandler : MonoBehaviour
         weaponLogic.SetHandler(this); 
     }
 
+    //Same as miner
     public void EnableWeapon()
     {
         weaponLogic.gameObject.SetActive(true);
@@ -29,6 +31,9 @@ public class HammererWeaponHandler : MonoBehaviour
         weaponLogic.gameObject.SetActive(false);
     }
 
+    //To calculate if the player is within the range of the Slam attack (which happens at the end of a leap),
+    //two objects are checked. To replicate the shape of a short cylinder, this method checks if the player is both within
+    // a box and a sphere.
     public void Slam()
     {
         if (Physics.CheckBox(transform.position, new Vector3(slamRadius, 1f, slamRadius), Quaternion.identity, playerLayerMask))

@@ -4,6 +4,7 @@ using Stats;
 using Units.Enemy.Marrow;
 using UnityEngine;
 
+//Script used for the boss's attacks
 public class MarrowWeaponHandler : MonoBehaviour
 {
     private MarrowStats stats;
@@ -37,16 +38,18 @@ public class MarrowWeaponHandler : MonoBehaviour
     {
         stats = GetComponent<MarrowStats>(); 
         stateMachine = GetComponent<MarrowStateMachine>();   
-        float explodeRadius = stats.GetFireballExplodeRadius() * 1.6f; //fireball visual is smaller than it should be due to lich parent, so needs 2.6 buff
+        float explodeRadius = stats.GetFireballExplodeRadius() * 1.6f; //fireball visual is smaller than it should be due to marrow parent, so needs 1.6 buff
         fireballVisual.localScale = new Vector3(explodeRadius, explodeRadius, explodeRadius);
         fireballVisual.SetParent(null);
     }
 
+    //Summons enemies around the boss arena
     public void SummonEnemies()
     {
         usedSpawnLocation = new bool[stateMachine.enemySpawnWaypoints.Length];
         for (int i = 0; i < stats.GetEnemySpawnNumber(); i++)
         {
+            //Uses a while loop to randomly find an available spawn location for an enemy. Two enemies cannot use the same location
             Vector3 spawnLocation = Vector3.zero;
             while(spawnLocation == Vector3.zero)
             {
@@ -75,6 +78,7 @@ public class MarrowWeaponHandler : MonoBehaviour
         }
     }
 
+    //Fireball attack that's very similar to the player's
     public void SpawnFireball()
     {
         currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform).GetComponent<FireBallProjectile>();
@@ -115,6 +119,7 @@ public class MarrowWeaponHandler : MonoBehaviour
         }
     }
 
+    //Shows the player where flame pillars are about to be spawned
     public void SetFlamePillarVisuals()
     {
         flamePillarLocations.Clear();
@@ -130,6 +135,7 @@ public class MarrowWeaponHandler : MonoBehaviour
         }
     }
 
+    //Spawns flame pillars in the locations defined in the above method
     public void SpawnFlamePillars()
     {
         ClearFlamePillarVisuals();
@@ -143,7 +149,6 @@ public class MarrowWeaponHandler : MonoBehaviour
             newPillar.SetCasterCollider(stateMachine.Controller);
             newPillar.SetDamage(stats.GetFlamePillarAttack());
             newPillar.SetMovementSpeed(stats.GetFlamePillarMovement());
-            //newPillar.SetPillarRadius(stats.GetFlamePillarRadius());
             newPillar.SetTimeToLive(stats.GetFlamePillarTimeToLive());
         }
         stateMachine.Cooldowns.SetFlamePillarCooldown();
@@ -156,6 +161,7 @@ public class MarrowWeaponHandler : MonoBehaviour
         flameWaveCoroutine = StartCoroutine(SpawnFlameWave());
     }
 
+    //Spawns a wave of flame originating from the boss every few seconds
     private IEnumerator SpawnFlameWave()
     {
         FlameWave wave = Instantiate(flameWavePrefab, transform.position, Quaternion.identity).GetComponent<FlameWave>();

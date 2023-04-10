@@ -4,6 +4,7 @@ using UnityEngine;
 using Units.Enemy.Miner;
 using System;
 
+//Script that deals with the Miner enemy's attacks
 public class MinerWeaponHandler : MonoBehaviour
 {
     [SerializeField] private MinerWeapon weaponLogic;
@@ -14,6 +15,7 @@ public class MinerWeaponHandler : MonoBehaviour
         weaponLogic.SetHandler(this); 
     }
 
+    //An enabled weapon can deal damage to the player
     public void EnableWeapon()
     {
         weaponLogic.gameObject.SetActive(true);
@@ -23,6 +25,7 @@ public class MinerWeaponHandler : MonoBehaviour
         }
     }
 
+    //Alternate attack used in one of the scenarios
     public void DebugAttack()
     {
         DwarfMinerStateMachine stateMachine = GetComponent<DwarfMinerStateMachine>();

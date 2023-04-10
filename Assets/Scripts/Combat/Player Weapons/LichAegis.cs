@@ -5,23 +5,18 @@ using Stats;
 using UnityEngine;
 using UnityEngine.VFX;
 
+//Script used by the player's Absorb ability
 public class LichAegis : MonoBehaviour
 {
-    //[SerializeField] private Mana lichMana;
-    //[SerializeField] private PlayerCooldowns cooldowns;
     [SerializeField] private Health lichHealth;
     [SerializeField] private LichStats lichStats;
     [SerializeField] private LichBones lichBones;
-    //[SerializeField] private Material absorbMaterial;
-    //[SerializeField] private Material blockMaterial;
     [SerializeField] private MeshRenderer aegisRenderer;
     [SerializeField] private Collider aegisCollider;
     [SerializeField] public GameObject buffVFX;
     [SerializeField] public AudioClip absorbBuffSFX;
     private VisualEffect activeBuffVFX;
 
-    //public bool canEnable = true;
-    //public bool blocking = false;
     public bool absorbing = false;
     public bool blocking = false;
     public bool attackBuffed = false;
@@ -30,6 +25,7 @@ public class LichAegis : MonoBehaviour
 
     private void Update() 
     {
+        //Decrements time on the attack buff if it's active
         if (attackBuffed)
         {
             remainingBuffTime -= Time.deltaTime;
@@ -42,6 +38,7 @@ public class LichAegis : MonoBehaviour
         }    
     }
 
+    //Late update allows the BuffVFX to follow the player more smoothly
     private void LateUpdate() 
     {
         if (attackBuffed && activeBuffVFX)
@@ -50,11 +47,7 @@ public class LichAegis : MonoBehaviour
         }
     }
 
-    // public void ToggleCanEnable(bool canEnable)
-    // {
-    //     this.canEnable = canEnable;
-    // }
-
+    //Mechanic found in the fifth scenario. Causes miner enemy to be knocked back and take damage when hitting the shield that surrounds the player
     public void ToggleAegis(bool enable)
     {
         blocking = enable;
@@ -63,36 +56,19 @@ public class LichAegis : MonoBehaviour
         lichHealth.SetInvulnerable(enable);
     }
 
+    //Toggle for the Absorb ability
     public void ToggleAbsorb(bool enable)
     {
-        //blocking = enable;
-        //aegisRenderer.material = absorbMaterial;
         aegisCollider.enabled = enable;
         aegisRenderer.enabled = enable;
         lichHealth.SetInvulnerable(enable);
         absorbing = enable;
     }
 
-    // public void DamageAegis(float damage, bool isProjectile)
-    // {
-    //     if (absorbing)
-    //     {
-    //         if (isProjectile)
-    //         {
-    //             AbsorbProjectile();
-    //         }
-    //     }
-    //     else if (!lichMana.TryUseMana(damage))
-    //     {
-    //         lichMana.UseMana(damage);
-    //         ToggleAegis(false);
-    //         ToggleCanEnable(false);
-    //         cooldowns.SetAegisCooldown();
-    //     }
-    // }
-
+    //Aegis refers to the Absorb shield around the player during the Absorb ability
     public void DamageAegis()
     {
+        //If a bone is available, the player's attack is increased
         if (!attackBuffed && !lichBones.TryUseBones(1)) {return;}
 
         if (!attackBuffed)

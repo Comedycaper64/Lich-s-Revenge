@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Units.Player;
 using UnityEngine;
 
+//Script attached to the projectile spawned by the player's Fireball ability
 public class FireBallProjectile : MonoBehaviour
 {
     [SerializeField] private Collider fireballCollider;
@@ -36,6 +37,7 @@ public class FireBallProjectile : MonoBehaviour
         transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);    
         if (detonationTime > 0f)
         {
+            //If flying through the air for long enough, destroys itself
             detonationTime -= Time.deltaTime;
             if (detonationTime <= 0f)
             {
@@ -81,6 +83,7 @@ public class FireBallProjectile : MonoBehaviour
         fireballCollider.enabled = enable;
     }
     
+    //If player's casting of the fireball is interrupted, gets destroyed
     private IEnumerator SeeIfLaunched()
     {
         yield return new WaitForSeconds(animationTime);
@@ -94,6 +97,7 @@ public class FireBallProjectile : MonoBehaviour
         }
     }
 
+    //Explodes, dealing damage to enemies in an area
     private void ExplodeFireball()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, fireballExplodeRadius);
@@ -137,18 +141,12 @@ public class FireBallProjectile : MonoBehaviour
             reflected = true;
             return;
         }
-        //when collides with health or layer 6 collider, do damage in sphere with radius based on stats
+        //When collides with health or layer 6 collider, do damage in sphere with radius based on stats
 
         if(other.TryGetComponent<Health>(out Health health) || other.gameObject.layer == 6 || other.gameObject.layer == 0)
         {
             ExplodeFireball();
         }
-
-        // if (other.TryGetComponent<ForceReceiver>(out ForceReceiver forceReceiver))
-        // {
-        //     forceReceiver.AddForce((other.transform.position - playerCollider.transform.position).normalized * knockback);
-        //     Destroy(gameObject);
-        // }
     }
 
     private void OnDestroy() 

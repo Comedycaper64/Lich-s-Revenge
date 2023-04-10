@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script attached to the Hammerer's slam visual
 public class HammererSlam : MonoBehaviour
 {
     [SerializeField] private GameObject slamVisual;

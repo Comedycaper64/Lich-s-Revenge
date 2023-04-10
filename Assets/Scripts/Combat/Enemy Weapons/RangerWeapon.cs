@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script attached to the ranger's crossbow bolts
 public class RangerWeapon : MonoBehaviour
 {
     private Collider myCollider;
@@ -44,6 +45,7 @@ public class RangerWeapon : MonoBehaviour
         myCollider = collider;
     }
 
+    //On contact with the player, damages them if they're not Absorbing. This destroys the bolt
     private void OnTriggerEnter(Collider other) 
     {
         if (other ==  myCollider) {return;}

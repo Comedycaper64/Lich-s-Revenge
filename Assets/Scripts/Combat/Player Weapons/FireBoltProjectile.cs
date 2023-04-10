@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script attached to the projectile launched by the player's Firebolt ability
 public class FireBoltProjectile : MonoBehaviour
 {
     [SerializeField] private GameObject fireboltExplosion;
@@ -46,11 +47,11 @@ public class FireBoltProjectile : MonoBehaviour
     {
         if ((other == playerCollider) && !reflected) {return;}
 
+        //The firebolt is reflected back at the player if it hits a Sentinel's shield
         if (other.GetComponent<SentinelShield>())
         {
             reflected = true;
             transform.LookAt((playerCollider.transform.position) + new Vector3(0, 0.9f, 0));
-            //GameObject explosion = Instantiate(fireboltExplosion, transform.position, Quaternion.identity);  
             if (SoundManager.Instance)
             {
                 AudioSource.PlayClipAtPoint(fireboltExplosionSFX, transform.position, SoundManager.Instance.GetSoundEffectVolume());
@@ -58,6 +59,7 @@ public class FireBoltProjectile : MonoBehaviour
             return;
         }
 
+        //Damages an enemy on hit
         if(other.TryGetComponent<Health>(out Health health))
         {
             health.DealDamage(damage);
@@ -69,6 +71,7 @@ public class FireBoltProjectile : MonoBehaviour
             Destroy(gameObject);
         }
 
+        //If the firebolt hits a piece of the environment, it is destroyed
         int layer = other.gameObject.layer;
         if ((layer == 6 || layer == 0))
         {

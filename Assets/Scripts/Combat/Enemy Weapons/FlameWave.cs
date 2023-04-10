@@ -4,6 +4,7 @@ using Units.Player;
 using UnityEngine;
 using UnityEngine.VFX;
 
+//Script attached to the boss's flame waves
 public class FlameWave : MonoBehaviour
 {
     private VisualEffect flameEffect;
@@ -14,6 +15,7 @@ public class FlameWave : MonoBehaviour
     private float timeToLive;
     private float duration;
 
+    //This object is heavily intertwined with its visual effect, so variables stored within the effect are utilised here as well
     private void Awake()
     {
         flameEffect = GetComponent<VisualEffect>();
@@ -24,6 +26,7 @@ public class FlameWave : MonoBehaviour
         duration = 0;
     }
 
+    //Gradually increases the size of the wave based on how much of the duration has been gone through
     private void Update() 
     {
         duration += Time.deltaTime;
@@ -45,12 +48,15 @@ public class FlameWave : MonoBehaviour
     {
         if (other == casterCollider) {return;}
 
+        //The player will likely only contact a flame wave once, so if it gets blocked then the damage is disabled
         if(other.TryGetComponent<LichAegis>(out LichAegis aegis))
         {
             aegis.DamageAegis();
             flameDamage = 0;
         }
 
+        //The flame wave travels across the ground. Reuses the "CanJumpToPlayer" check to see if flames will damage the player.
+        //CanJumpToPlayer returns true only if the player is on the ground and not dashing
         if(other.TryGetComponent<Health>(out Health health))
         {
             if (health.TryGetComponent<PlayerStateMachine>(out PlayerStateMachine player))

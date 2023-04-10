@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//A resource used by the player for abilities
 public class Mana : MonoBehaviour
 {
     private float maxMana;
@@ -44,6 +45,7 @@ public class Mana : MonoBehaviour
     public bool TryUseMana(float manaUse)
     {
         if (manaUse > mana) {return false;}
+        
         mana -= manaUse;
         UpdateManaBar();
         return true;
@@ -58,12 +60,6 @@ public class Mana : MonoBehaviour
     {
         return mana;
     }
-
-    // public void AddMana(float manaAdd)
-    // {
-    //     mana = Mathf.Min(mana + manaAdd, maxMana);
-    //     UpdateManaBar();
-    // }
 
     public void UseMana(float manaUse)
     {

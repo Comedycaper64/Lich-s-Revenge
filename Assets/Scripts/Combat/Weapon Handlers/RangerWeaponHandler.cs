@@ -4,6 +4,7 @@ using Stats;
 using Units.Enemy.Ranger;
 using UnityEngine;
 
+//Script used for the Ranger's attack
 public class RangerWeaponHandler : MonoBehaviour
 {
     private Transform playerTransform;
@@ -28,6 +29,7 @@ public class RangerWeaponHandler : MonoBehaviour
         rangerStats = GetComponent<DwarfRangerStats>();
     }
 
+    //Enables line that is drawn between the ranger and player
     public void AimWeapon()
     {
         aimRenderer.enabled = true;
@@ -39,6 +41,8 @@ public class RangerWeaponHandler : MonoBehaviour
         }
     }
 
+    //Draws the line between the ranger and player. Uses the line rendered component to set a start and end point for the aim visual.
+    //The line can be blocked by objects in certain layers. This is so that the player doesn't think the ranger can shoot through walls
     public void SetAimVisual()
     {
         Vector3[] positionArray = new Vector3[2];
@@ -47,6 +51,7 @@ public class RangerWeaponHandler : MonoBehaviour
         int layermask2 = 1 << 6;
         int layermask3 = 1 << 0;
         int layermask = layermask1 | layermask2 | layermask3;
+        //If aiming, line goes to the player
         if (!weaponFired)
         {        
             Physics.Raycast(projectileEmitter.position, GetPlayerPosition() - projectileEmitter.position, out hit, 500f, layermask);
@@ -54,6 +59,7 @@ public class RangerWeaponHandler : MonoBehaviour
         }
         else
         {
+            //If weapon has been fired, line goes forward to where the projectile is going
             if (projectile)
             {
                 Physics.Raycast(projectile.transform.position, playerDirection, out hit, 500f, layermask);
@@ -64,6 +70,7 @@ public class RangerWeaponHandler : MonoBehaviour
         aimRenderer.SetPositions(positionArray);
     }
 
+    //Spawns the crossbow bolt that flies at the player
     public void FireWeapon()
     {
         SetAimVisual();

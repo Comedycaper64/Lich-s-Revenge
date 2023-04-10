@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Units.Player;
 using UnityEngine;
 
+//Used by the player statemachine to find out if certain abilities are ready to be used.
 public class PlayerCooldowns : MonoBehaviour
 {
     [SerializeField] private PlayerStateMachine stateMachine;
@@ -157,6 +158,7 @@ public class PlayerCooldowns : MonoBehaviour
         mineCooldown = stateMachine.LichStats.GetMineCooldown();
     }
 
+    //Activated when the player takes damage, gives a brief period of invincibility
     public void SetLichInvincibility()
     {
         if (lichIframes != null)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Units.Enemy.Miner;
 using UnityEngine;
 
+//Script attached to the Miner's pickaxe
 public class MinerWeapon : MonoBehaviour
 {
     [SerializeField] private Collider myCollider;
@@ -34,6 +35,7 @@ public class MinerWeapon : MonoBehaviour
         alreadyCollidedWith.Clear();    
     }
 
+    //Damages the player on contact with them. Includes alternate behaviour used in scenario 5, where the player has access to a new mechanic
     private void OnTriggerEnter(Collider other) 
     {
         if (other ==  myCollider) {return;}

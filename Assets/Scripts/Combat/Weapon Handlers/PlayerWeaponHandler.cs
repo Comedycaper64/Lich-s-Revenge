@@ -4,6 +4,7 @@ using Stats;
 using Units.Player;
 using UnityEngine;
 
+//Script used by the player's offensive abilities
 public class PlayerWeaponHandler : MonoBehaviour
 {
     private LichStats lichStats;
@@ -28,6 +29,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     private FireBallProjectile currentFireball;
     private Quaternion fireballRotation;
     [SerializeField] private GameObject fireballQTEVFX;
+
     [Header("Fireball SFX")]
     [SerializeField] private AudioClip fireballCastSFX;
     [SerializeField] private AudioClip fireballLaunchSFX;
@@ -39,7 +41,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         fireboltStats = gameObject.GetComponent<FireboltStats>();
         fireballStats = gameObject.GetComponent<FireballStats>();
         MainCameraTransform = Camera.main.transform;
-        float explodeRadius = fireballStats.GetFireballExplodeRadius() * 2.6f; //fireball visual is smaller than it should be due to lich parent, so needs 2.6 buff
+        float explodeRadius = fireballStats.GetFireballExplodeRadius() * 2.6f; //fireball visual is smaller than it should be due to lich parent, so needs 2.6 increase
         fireballVisual.localScale = new Vector3(explodeRadius, explodeRadius, explodeRadius);
     }
 
@@ -50,8 +52,10 @@ public class PlayerWeaponHandler : MonoBehaviour
         Vector3 relativePos;
         int layermask1 = 1 << 7;
         int layermask2 = 1 << 6;
-        //int layermask3 = 1 << 0;
-        int layermask = layermask1 | layermask2; //| layermask3;
+        int layermask = layermask1 | layermask2;
+        //If the centre of the screen has a target (enemy or environment), causes the projectile to go towards it.
+        //Otherwise just launches projectile into the middle of the screen.
+        //Basically a slight aim adjustment due to the camera perspective
         if (Physics.Raycast(MainCameraTransform.position, MainCameraTransform.forward, out hit, 100f, layermask))
         {
             relativePos = hit.point - emitter.position;
@@ -66,6 +70,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
     }
 
+    //Updates location of the explosion visual present when casting the fireball
     public void UpdateFireballVisual(Vector3 newLocation)
     {
         if (newLocation != Vector3.zero)
@@ -79,6 +84,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
     }
 
+    //Same as above, but for the line showing where the fireball will go
     public void UpdateFireballAimLine(Vector3[] newLine)
     {
         if (newLine != null)
@@ -92,9 +98,9 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
     }
 
+    //Instantiates firebolt at emitter, sets damage of firebolt, ensures it doesn't hit player
     public void SpawnFirebolt()
     {
-        //Instantiates firebolt at emitter, sets damage of firebolt, ensures it doesn't hit player
         FireBoltProjectile firebolt = Instantiate(fireboltPrefab, fireboltEmitter.position, Quaternion.LookRotation(GetDirectionToCameraCentre(fireboltEmitter), Vector3.up)).GetComponent<FireBoltProjectile>();
         firebolt.SetAttack(fireboltStats.GetFireboltSpellAttack(), 10f);
         firebolt.SetProjectileSpeed(fireboltStats.GetFireboltSpellProjectileSpeed());
@@ -109,6 +115,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
     }
 
+    //Same as above, but for the fireball
     public void SpawnFireball()
     {
         currentFireball = Instantiate(fireballPrefab, fireballEmitter.transform).GetComponent<FireBallProjectile>();
@@ -123,6 +130,9 @@ public class PlayerWeaponHandler : MonoBehaviour
         }
     }
 
+    //The fireball features a mechanic that rewards player timing. If the player releases the fireball as soon as it appears
+    //above the player's head, it deals more damage and doesn't harm the player if he's within the explosion radius.
+    //If the player times the release correctly, CompleteQTE is executed
     public void StartQTE()
     {
         QTEActive = true;
@@ -135,6 +145,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         LaunchFireball();
     }
 
+    //Launches the fireball towards where the player is aiming it
     public void LaunchFireball()
     {
         if (!fireballLaunched)

@@ -4,10 +4,12 @@ using UnityEngine;
 using TMPro;
 using System;
 
+//Resource used by the player to do powerful abilities
 public class LichBones : MonoBehaviour
 {
     [SerializeField] private int maxBones;
     [SerializeField] private int bones;
+    //Bone text is the UI element that displays the player's bones
     [SerializeField] public TextMeshProUGUI boneText;
     [SerializeField] public AudioClip boneGetSFX;
 

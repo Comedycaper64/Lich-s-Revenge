@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class used by enemies to leave behind a physics-affected body upon death
 public class Ragdoll : MonoBehaviour
 {
     [SerializeField] private Animator animator;
@@ -19,6 +20,7 @@ public class Ragdoll : MonoBehaviour
         ToggleRagdoll(false);
     }
 
+    //Toggles whether body parts of the enemy conform to gravity and collide with other objects
     public void ToggleRagdoll(bool isRagdoll)
     {
         foreach(Collider collider in allColliders)
